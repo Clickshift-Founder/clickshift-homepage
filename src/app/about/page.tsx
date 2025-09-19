@@ -5,10 +5,14 @@ import {
   Target, 
   Brain, 
   Globe, 
+  TrendingUp, 
+  Users, 
   Heart,
   Zap,
   Award,
   ArrowRight,
+  Play,
+  CheckCircle,
   Star,
   Quote
 } from 'lucide-react';
