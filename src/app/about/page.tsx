@@ -5,14 +5,10 @@ import {
   Target, 
   Brain, 
   Globe, 
-  TrendingUp, 
-  Users, 
   Heart,
   Zap,
   Award,
   ArrowRight,
-  Play,
-  CheckCircle,
   Star,
   Quote
 } from 'lucide-react';
@@ -118,7 +114,8 @@ const AboutPage = () => {
       setCurrentMetric(prev => (prev + 1) % metrics.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [metrics.length]);
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white">
