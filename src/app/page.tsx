@@ -393,9 +393,9 @@ const ClickShiftHomepage = () => {
               </div>
             </div>
 
-            <button onClick={() => window.open('https://leverage.clickshift.io', '_blank')}
+            <button onClick={() => window.open('https://t.me/ClickShiftAlerts', '_blank')}
             className="bg-gradient-to-r from-purple-500 to-pink-600 px-8 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
-              <span>Secure Launch Detector Access →</span>
+              <span>Secure Launch Detector Access</span>
                <ExternalLink className="h-4 w-4" />
             </button>
           </div>
@@ -480,9 +480,11 @@ const ClickShiftHomepage = () => {
             </div>
           </div>
 
-          <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all">
-            Join Our Telegram →
-          </button>
+          <button onClick={() => window.open('https://t.me/ClickShiftAlerts', '_blank')}
+          className="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all">
+                <span>Join Our Telegram</span>
+               <ExternalLink className="h-4 w-4" />
+            </button>
         </div>
       </section>
 
@@ -516,16 +518,16 @@ const ClickShiftHomepage = () => {
             <div>
               <h4 className="font-semibold mb-3">Products</h4>
               <div className="space-y-2 text-sm text-slate-400">
-                <div><a href="#" className="hover:text-white transition-colors">ClickShift Alpha</a></div>
-                <div><a href="#" className="hover:text-white transition-colors">ClickShift Leverage</a></div>
-                <div><a href="#" className="hover:text-white transition-colors">Launch Detector (Soon)</a></div>
+                <div><a href="alpha.clickshift.io" className="hover:text-white transition-colors">ClickShift Alpha</a></div>
+                <div><a href="leverage.clickshift.io" className="hover:text-white transition-colors">ClickShift Leverage</a></div>
+                <div><a href="https://t.me/ClickShiftAlerts" className="hover:text-white transition-colors">Launch Detector (Soon)</a></div>
               </div>
             </div>
             
             <div>
               <h4 className="font-semibold mb-3">Community</h4>
               <div className="space-y-2 text-sm text-slate-400">
-                <div><a href="#" className="hover:text-white transition-colors">Telegram</a></div>
+                <div><a href="https://t.me/ClickShiftAlerts" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Telegram</a></div>
                 <div><a href="#" className="hover:text-white transition-colors">Discord</a></div>
                 <div><a href="#" className="hover:text-white transition-colors">Twitter</a></div>
                 <div><a href="#" className="hover:text-white transition-colors">Medium</a></div>
