@@ -171,7 +171,7 @@ const ClickShiftHomepage = () => {
               onClick={() => window.open('https://leverage.clickshift.io', '_blank')}
               className="group bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center space-x-2"
             >
-              <span>⚡ Master Leverage Trading</span>
+              <span>⚡ Profit From Futures</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -323,11 +323,11 @@ const ClickShiftHomepage = () => {
                 <div className="text-3xl">⚡</div>
                 <div>
                   <h3 className="text-2xl font-bold">ClickShift Leverage</h3>
-                  <p className="text-orange-400">Futures Mastery</p>
+                  <p className="text-orange-400">Milk Futures</p>
                 </div>
               </div>
               
-              <p className="text-lg text-slate-300 mb-6">"Master leverage without losing your account"</p>
+              <p className="text-lg text-slate-300 mb-6">"Never lose your portfolio to Futures Trading again"</p>
               
               <div className="bg-slate-900/50 rounded-lg p-4 mb-6 font-mono text-sm">
                 <div className="text-green-400">BTC/USDT Analysis - Completed in 2.3s</div>
@@ -360,7 +360,7 @@ const ClickShiftHomepage = () => {
                 onClick={() => window.open('https://leverage.clickshift.io', '_blank')}
                 className="w-full bg-gradient-to-r from-orange-500 to-red-600 px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all flex items-center justify-center space-x-2"
               >
-                <span>Master Leverage Trading</span>
+                <span>Profit From Futures</span>
                 <ExternalLink className="h-4 w-4" />
               </button>
             </div>
@@ -393,8 +393,10 @@ const ClickShiftHomepage = () => {
               </div>
             </div>
 
-            <button className="bg-gradient-to-r from-purple-500 to-pink-600 px-8 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
-              Secure Launch Detector Access →
+            <button onClick={() => window.open('https://leverage.clickshift.io', '_blank')}
+            className="bg-gradient-to-r from-purple-500 to-pink-600 px-8 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
+              <span>Secure Launch Detector Access →</span>
+               <ExternalLink className="h-4 w-4" />
             </button>
           </div>
         </div>
