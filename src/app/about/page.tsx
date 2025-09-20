@@ -1,103 +1,74 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { 
-  Shield, 
-  Target, 
-  Brain, 
-  Globe, 
-  TrendingUp, 
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import {
+  Shield,
+  Target,
+  Brain,
+  Globe,
   Heart,
   Award,
   ArrowRight,
   Star,
-  Quote
-} from 'lucide-react';
+  Quote,
+} from "lucide-react";
 
 const AboutPage = () => {
-  const [activeTab, setActiveTab] = useState('mission');
+  const [activeTab, setActiveTab] = useState("mission");
   const [currentMetric, setCurrentMetric] = useState(0);
 
   const metrics = [
-    { number: '525+', label: 'Daily Active Traders', color: 'text-blue-400' },
-    { number: '73.2%', label: 'Prediction Accuracy', color: 'text-green-400' },
-    { number: '91', label: 'NPS Score', color: 'text-purple-400' },
-    { number: '47', label: 'Countries Served', color: 'text-orange-400' },
-    { number: '$2.4M', label: 'Losses Prevented', color: 'text-pink-400' },
-    { number: '76%', label: 'Day-7 Retention', color: 'text-cyan-400' }
+    { number: "525+", label: "Daily Active Traders", color: "text-blue-400" },
+    { number: "73.2%", label: "Prediction Accuracy", color: "text-green-400" },
+    { number: "91", label: "NPS Score", color: "text-purple-400" },
+    { number: "47", label: "Countries Served", color: "text-orange-400" },
+    { number: "$2.4M", label: "Losses Prevented", color: "text-pink-400" },
+    { number: "76%", label: "Day-7 Retention", color: "text-cyan-400" },
   ];
 
   const founderStory = {
-    image: "🧑‍💻", // Placeholder for founder image
-    quote: "I lost 9 months of my salary trading crypto because tools like ClickShift didn't exist. I was making decisions based on hope, not intelligence.",
-    details: "That devastating loss in 2023 became my mission. I realized that 95% of traders lose money not because opportunities don't exist, but because they lack the intelligence tools that institutions use. ClickShift was born from personal pain and the determination to democratize trading intelligence."
+    image: "🧑‍💻",
+    quote:
+      "I lost 9 months of my salary trading crypto because tools like ClickShift didn't exist. I was making decisions based on hope, not intelligence.",
+    details:
+      "That devastating loss in 2023 became my mission. I realized that 95% of traders lose money not because opportunities don't exist, but because they lack the intelligence tools that institutions use. ClickShift was born from personal pain and the determination to democratize trading intelligence.",
   };
 
   const teamValues = [
     {
       icon: <Shield className="h-8 w-8 text-blue-400" />,
       title: "Protection First",
-      description: "We believe in shielding traders from costly mistakes before focusing on profits. Safety is the foundation of sustainable trading."
+      description:
+        "We believe in shielding traders from costly mistakes before focusing on profits. Safety is the foundation of sustainable trading.",
     },
     {
       icon: <Brain className="h-8 w-8 text-purple-400" />,
       title: "Intelligence Over Intuition",
-      description: "Data-driven decisions beat emotional trading every time. We build AI that thinks faster and more accurately than human emotions."
+      description:
+        "Data-driven decisions beat emotional trading every time. We build AI that thinks faster and more accurately than human emotions.",
     },
     {
       icon: <Globe className="h-8 w-8 text-green-400" />,
       title: "Global Accessibility",
-      description: "From Lagos to London, from students to institutions - intelligent trading should be accessible to everyone, everywhere."
+      description:
+        "From Lagos to London, from students to institutions - intelligent trading should be accessible to everyone, everywhere.",
     },
     {
       icon: <Heart className="h-8 w-8 text-red-400" />,
       title: "Community First",
-      description: "We grow together. Every trader's success makes our platform smarter and our community stronger."
-    }
+      description:
+        "We grow together. Every trader's success makes our platform smarter and our community stronger.",
+    },
   ];
 
   const milestones = [
-    {
-      year: "2023",
-      title: "The Genesis",
-      description: "Founder loses life savings to DeFi trading. Realizes the need for predictive intelligence.",
-      status: "completed"
-    },
-    {
-      year: "Early 2024",
-      title: "Alpha Development",
-      description: "First MVP of ClickShift Alpha. Initial algorithms for whale tracking and exit prediction.",
-      status: "completed"
-    },
-    {
-      year: "Mid 2024",
-      title: "Leverage Launch",
-      description: "ClickShift Leverage goes live. Patent-pending MACD+OBV fusion algorithm.",
-      status: "completed"
-    },
-    {
-      year: "Late 2024",
-      title: "Explosive Growth",
-      description: "525+ daily users. 91 NPS score. $0 customer acquisition cost.",
-      status: "completed"
-    },
-    {
-      year: "Q1 2025",
-      title: "Launch Detector",
-      description: "Real-time token launch detection with legitimacy scoring.",
-      status: "progress"
-    },
-    {
-      year: "Q2 2025",
-      title: "ClickBot Auto-Trade",
-      description: "Intelligent auto-trading with trailing stops and risk management.",
-      status: "upcoming"
-    },
-    {
-      year: "Q3 2025",
-      title: "Global Expansion",
-      description: "Multi-chain support. Institutional partnerships. Series A funding.",
-      status: "upcoming"
-    }
+    { year: "2023", title: "The Genesis", description: "Founder loses life savings to DeFi trading. Realizes the need for predictive intelligence.", status: "completed" },
+    { year: "Early 2024", title: "Alpha Development", description: "First MVP of ClickShift Alpha. Initial algorithms for whale tracking and exit prediction.", status: "completed" },
+    { year: "Mid 2024", title: "Leverage Launch", description: "ClickShift Leverage goes live. Patent-pending MACD+OBV fusion algorithm.", status: "completed" },
+    { year: "Late 2024", title: "Explosive Growth", description: "525+ daily users. 91 NPS score. $0 customer acquisition cost.", status: "completed" },
+    { year: "Q1 2025", title: "Launch Detector", description: "Real-time token launch detection with legitimacy scoring.", status: "progress" },
+    { year: "Q2 2025", title: "ClickBot Auto-Trade", description: "Intelligent auto-trading with trailing stops and risk management.", status: "upcoming" },
+    { year: "Q3 2025", title: "Global Expansion", description: "Multi-chain support. Institutional partnerships. Series A funding.", status: "upcoming" },
   ];
 
   const achievements = [
@@ -106,16 +77,15 @@ const AboutPage = () => {
     { icon: "🎯", title: "Industry-Leading Accuracy", desc: "73%+ prediction accuracy vs 45% industry average" },
     { icon: "🌍", title: "Global Reach", desc: "Trusted in 47+ countries worldwide" },
     { icon: "💎", title: "Best-in-Class Retention", desc: "76% Day-7 retention vs 23% industry" },
-    { icon: "🛡️", title: "Zero Security Incidents", desc: "Enterprise-grade security from day one" }
+    { icon: "🛡️", title: "Zero Security Incidents", desc: "Enterprise-grade security from day one" },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentMetric(prev => (prev + 1) % metrics.length);
+      setCurrentMetric((prev) => (prev + 1) % metrics.length);
     }, 3000);
     return () => clearInterval(interval);
   }, [metrics.length]);
-  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white">
@@ -127,9 +97,9 @@ const AboutPage = () => {
             <span className="text-xl font-bold">ClickShift</span>
           </div>
           <div className="flex items-center space-x-6">
-            <a href="/" className="hover:text-blue-400 transition-colors">Home</a>
-            <a href="/products" className="hover:text-blue-400 transition-colors">Products</a>
-            <a href="/community" className="hover:text-blue-400 transition-colors">Community</a>
+            <Link href="/" className="hover:text-blue-400 transition-colors">Home</Link>
+            <Link href="/products" className="hover:text-blue-400 transition-colors">Products</Link>
+            <Link href="/community" className="hover:text-blue-400 transition-colors">Community</Link>
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
               Launch App
             </button>
@@ -137,7 +107,7 @@ const AboutPage = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
+        {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-6xl text-center">
           <div className="mb-12">
@@ -472,20 +442,20 @@ const AboutPage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <link 
               href="/alpha"
               className="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
             >
               <span>🔮 Try Alpha Intelligence</span>
               <ArrowRight className="h-5 w-5" />
-            </a>
-            <a 
+            </link>
+            <link 
               href="/leverage"
               className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
             >
               <span>⚡ Try Leverage Mastery</span>
               <ArrowRight className="h-5 w-5" />
-            </a>
+            </link>
           </div>
         </div>
       </section>
