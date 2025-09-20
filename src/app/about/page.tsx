@@ -333,7 +333,8 @@ const AboutPage = () => {
                   we're proving that <strong>intelligence wins over speculation</strong>.
                 </p>
                 <div className="mt-6">
-                  <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all">
+                  <button onClick={() => window.open('https://t.me/ClickShiftAlerts', '_blank')}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all">
                     Join Our Community →
                   </button>
                 </div>
