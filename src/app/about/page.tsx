@@ -273,8 +273,8 @@ const AboutPage = () => {
                         {founderStory.details}
                       </p>
                       <div className="mt-6">
-                        <div className="text-sm text-slate-400">Emmanuel Ohanwe</div>
-                        <div className="text-xs text-slate-500">Founder & CEO, ClickShift</div>
+                        <div className="text-sm text-slate-400">Emmanuel. O</div>
+                        <div className="text-xs text-slate-500">Founder & Senior PM, ClickShift</div>
                       </div>
                     </div>
                   </div>
