@@ -99,8 +99,8 @@ const AboutPage = () => {
           </div>
           <div className="flex items-center space-x-6">
             <Link href="/" className="hover:text-blue-400 transition-colors">Home</Link>
-            <Link href="/products" className="hover:text-blue-400 transition-colors">Products</Link>
-            <Link href="/community" className="hover:text-blue-400 transition-colors">Community</Link>
+            <Link href="#products" className="hover:text-blue-400 transition-colors">Products</Link>
+            <Link href="#community" className="hover:text-blue-400 transition-colors">Community</Link>
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
               Launch App
             </button>
