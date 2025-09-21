@@ -158,20 +158,20 @@ const ClickShiftHomepage = () => {
 
           {/* Primary CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <button 
-              onClick={() => window.open('https://alpha.clickshift.io', '_blank')}
+            <a 
+              href='https://alpha.clickshift.io'
               className="group bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center space-x-2"
             >
               <span>🔮 Explore Alpha Intelligence</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button 
-              onClick={() => window.open('https://leverage.clickshift.io', '_blank')}
+            </a>
+            <a 
+              href='https://leverage.clickshift.io'
               className="group bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center space-x-2"
             >
               <span>⚡ Profit From Futures</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
           </div>
 
           <button className="flex items-center space-x-2 mx-auto text-slate-300 hover:text-white transition-colors group">
@@ -364,42 +364,50 @@ const ClickShiftHomepage = () => {
             </div>
           </div>
 
-          {/* Coming Soon */}
-          <div className="mt-12 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 text-center">
-            <div className="text-4xl mb-4">🚨</div>
-            <h3 className="text-2xl font-bold mb-4">Coming Soon: Launch Detector Pro</h3>
-            <p className="text-lg text-slate-300 mb-6">"Catch the next 100x before it moons"</p>
-            
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div className="text-left">
-                <h4 className="font-semibold mb-2">What It Does:</h4>
-                <ul className="space-y-1 text-sm text-slate-300">
+           {/* Coming Soon - Updated with ClickBot */}
+            <div className="mt-12 grid md:grid-cols-2 gap-8">
+              {/* Launch Detector */}
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 text-center">
+                <div className="text-4xl mb-4">🚨</div>
+                <h3 className="text-2xl font-bold mb-4">Launch Detector Pro</h3>
+                <p className="text-lg text-slate-300 mb-6">"Catch the next 100x before it moons"</p>
+                
+                <ul className="space-y-2 mb-6 text-sm text-slate-300 text-left">
                   <li>• Identifies high-potential tokens within 15 minutes of launch</li>
                   <li>• Cross-validates legitimacy across 7+ data sources</li>
                   <li>• Provides pump probability scores and safe entry windows</li>
                   <li>• Sends instant alerts to your Telegram/Discord/SMS</li>
                 </ul>
+
+                <button onClick={() => window.location.href = "https://alpha.clickshift.io"}
+                className="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
+                  Secure Early Access →
+                </button>
               </div>
-              <div className="text-left">
-                <h4 className="font-semibold mb-2">Early Access Benefits:</h4>
-                <ul className="space-y-1 text-sm text-slate-300">
-                  <li>✅ Free premium features for 6 months</li>
-                  <li>✅ Priority alerts (2-5 seconds before public)</li>
-                  <li>✅ Exclusive community access</li>
-                  <li>✅ Direct founder feedback channel</li>
+
+              {/* ClickBot Auto Trade */}
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 text-center">
+                <div className="text-4xl mb-4">🤖</div>
+                <h3 className="text-2xl font-bold mb-4">ClickBot Auto Trade</h3>
+                <p className="text-lg text-slate-300 mb-6">"Never miss profits or hold through dumps"</p>
+                
+                <ul className="space-y-2 mb-6 text-sm text-slate-300 text-left">
+                  <li>• Intelligent trailing stop-loss that moves with profits</li>
+                  <li>• Automatic exit before major whale dumps</li>
+                  <li>• Smart position scaling based on momentum</li>
+                  <li>• 24/7 monitoring with instant execution</li>
                 </ul>
+
+                <button 
+                onClick={() => window.location.href = "https://alpha.clickshift.io"}             
+                className="bg-gradient-to-r from-green-500 to-blue-600 px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all">
+                  Join ClickBot Waitlist →
+                </button>
               </div>
             </div>
-
-            <button onClick={() => window.open('https://t.me/ClickShiftAlerts', '_blank')}
-            className="bg-gradient-to-r from-purple-500 to-pink-600 px-8 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
-              <span>Secure Launch Detector Access</span>
-               <ExternalLink className="h-4 w-4" />
-            </button>
           </div>
-        </div>
-      </section>
-
+        </section>
+        
       {/* Testimonials */}
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">

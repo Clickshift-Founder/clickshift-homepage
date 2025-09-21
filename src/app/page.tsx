@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from "next/link";
 import { 
   ArrowRight, 
@@ -12,8 +12,184 @@ import {
   CheckCircle,
   ExternalLink,
   Menu,
+  ChevronLeft,
+  ChevronRight,
   X
 } from 'lucide-react';
+
+// Animated Background Particles Component
+const AnimatedBackground = () => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return; // early exit if null
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Particle system
+    type Particle = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  opacity: number;
+};
+
+const particles: Particle[] = [];
+const particleCount = 150;
+
+    // Create particles
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.5 + 0.1
+      });
+    }
+
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Update and draw particles
+      particles.forEach((particle, index) => {
+        // Update position
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        
+        // Wrap around edges
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+        
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(59, 130, 246, ${particle.opacity})`;
+        ctx.fill();
+        
+        // Draw connections
+        particles.slice(index + 1).forEach(otherParticle => {
+          const dx = particle.x - otherParticle.x;
+          const dy = particle.y - otherParticle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(otherParticle.x, otherParticle.y);
+            ctx.strokeStyle = `rgba(59, 130, 246, ${0.1 * (1 - distance / 100)})`;
+            ctx.stroke();
+          }
+        });
+      });
+      
+      requestAnimationFrame(animate);
+    };
+    
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 pointer-events-none"
+      style={{ zIndex: 1 }}
+    />
+  );
+};
+
+// Smooth Scrolling Partners Component
+interface Partner {
+  name: string;
+  desc: string;
+}
+const SmoothScrollingPartners: React.FC<{ partners: Partner[] }> = ({ partners }) => {
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (!isHovered) {
+      const interval = setInterval(() => {
+        setCurrentIndex(prev => (prev + 1) % partners.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [isHovered, partners.length]);
+
+  const nextPartner = () => {
+    setCurrentIndex(prev => (prev + 1) % partners.length);
+  };
+
+  const prevPartner = () => {
+    setCurrentIndex(prev => (prev - 1 + partners.length) % partners.length);
+  };
+
+  const getVisiblePartners = () => {
+    const visible = [];
+    for (let i = 0; i < 6; i++) {
+      visible.push(partners[(currentIndex + i) % partners.length]);
+    }
+    return visible;
+  };
+
+  return (
+    <div 
+      className="relative overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="flex transition-transform duration-500 ease-in-out">
+        {getVisiblePartners().map((partner, index) => (
+          <div
+            key={`${partner.name}-${index}`}
+            className="flex-shrink-0 w-1/6 px-2"
+          >
+            <div className="bg-slate-800/50 rounded-lg p-4 text-center border border-slate-700 hover:border-slate-600 transition-all transform hover:scale-105">
+              <div className="font-semibold mb-1 text-sm">{partner.name}</div>
+              <div className="text-xs text-slate-400">{partner.desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      {/* Navigation arrows */}
+      <button
+        onClick={prevPartner}
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 rounded-full p-2 transition-all"
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </button>
+      <button
+        onClick={nextPartner}
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 rounded-full p-2 transition-all"
+      >
+        <ChevronRight className="h-4 w-4" />
+      </button>
+    </div>
+  );
+};
 
 const ClickShiftHomepage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,11 +247,21 @@ const ClickShiftHomepage = () => {
     { name: 'DexScreener', desc: 'DEX Analytics' },
     { name: 'Jupiter', desc: 'Solana Aggregator' },
     { name: 'CoinGecko', desc: 'Market Data' },
-    { name: 'Moralis', desc: 'Cross-Chain API' }
+    { name: 'Moralis', desc: 'Cross-Chain API' },
+    { name: 'HelloMoon', desc: 'On-Chain Analytics' },
+    { name: 'Chainlink', desc: 'Oracle Network' }
+    
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white overflow-x-hidden">
+       {/* Animated Background */}
+      <div className="fixed inset-0" style={{ zIndex: 0 }}>
+        <AnimatedBackground />
+      </div>
+
+      {/* Content Container */}
+      <div className="relative" style={{ zIndex: 2 }}></div>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-700">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -306,13 +492,13 @@ const ClickShiftHomepage = () => {
                 </li>
               </ul>
 
-              <button 
-                onClick={() => window.open('https://alpha.clickshift.io', '_blank')}
+              <a 
+                href='https://alpha.clickshift.io'
                 className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all flex items-center justify-center space-x-2"
               >
                 <span>Explore Alpha Intelligence</span>
-                <ExternalLink className="h-4 w-4" />
-              </button>
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
 
             {/* Leverage */}
@@ -354,13 +540,13 @@ const ClickShiftHomepage = () => {
                 </li>
               </ul>
 
-              <button 
-                onClick={() => window.open('https://leverage.clickshift.io', '_blank')}
+              <a 
+                href='https://leverage.clickshift.io'
                 className="w-full bg-gradient-to-r from-orange-500 to-red-600 px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all flex items-center justify-center space-x-2"
               >
                 <span>Profit From Futures</span>
                 <ExternalLink className="h-4 w-4" />
-              </button>
+              </a>
             </div>
           </div>
 
@@ -379,7 +565,7 @@ const ClickShiftHomepage = () => {
                   <li>• Sends instant alerts to your Telegram/Discord/SMS</li>
                 </ul>
 
-                <button onClick={() => window.location.href = "https://alpha.clickshift.io"}
+                <button onClick={() => window.location.href = "https://t.me/ClickShiftAlerts"}
                 className="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
                   Secure Early Access →
                 </button>
@@ -399,7 +585,7 @@ const ClickShiftHomepage = () => {
                 </ul>
 
                 <button 
-                onClick={() => window.location.href = "https://alpha.clickshift.io"}             
+                onClick={() => window.location.href = "https://t.me/ClickShiftAlerts"}             
                 className="bg-gradient-to-r from-green-500 to-blue-600 px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all">
                   Join ClickBot Waitlist →
                 </button>
@@ -436,20 +622,13 @@ const ClickShiftHomepage = () => {
         </div>
       </section>
 
-      {/* Partners */}
+      {/* Partners with smooth scrolling */}
       <section className="py-20 px-4 bg-slate-800/30">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl font-bold text-center mb-4">🤝 Powered by the Best</h2>
           <p className="text-slate-300 text-center mb-12">Strategic Partners</p>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {partners.map((partner, index) => (
-              <div key={index} className="bg-slate-800/50 rounded-lg p-4 text-center border border-slate-700 hover:border-slate-600 transition-all">
-                <div className="font-semibold mb-1">{partner.name}</div>
-                <div className="text-xs text-slate-400">{partner.desc}</div>
-              </div>
-            ))}
-          </div>
+                      <SmoothScrollingPartners partners={partners} />
 
           <p className="text-center text-slate-400 mt-8 italic">
             "The infrastructure powering the world's most accurate trading intelligence"
