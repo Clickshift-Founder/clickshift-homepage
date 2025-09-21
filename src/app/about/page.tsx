@@ -119,7 +119,7 @@ const AboutPage = () => {
             </h1>
             <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               ClickShift exists to make Web3 trading <strong>smarter, safer, and simpler</strong>. 
-              Most traders lose money not because opportunities don't exist — but because of bad timing, 
+              Most traders lose money not because opportunities don't exist; but because of bad timing, 
               blind risks, and overwhelming complexity. We're here to change that.
             </p>
           </div>
@@ -214,7 +214,7 @@ const AboutPage = () => {
                       <div className="flex items-start space-x-3">
                         <div className="text-2xl">⚡</div>
                         <div>
-                          <h4 className="font-semibold mb-1">Leverage Mastery</h4>
+                          <h4 className="font-semibold mb-1">Profit From Futures</h4>
                           <p className="text-sm text-slate-400">Risk-aware futures insights that map liquidation zones and recommend safe position sizes.</p>
                         </div>
                       </div>
@@ -444,20 +444,21 @@ const AboutPage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/alpha"
+              <a 
+              href="https:alpha.clickshift.io"
+
               className="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
             >
-              <span>🔮 Try Alpha Intelligence</span>
+              <span>🔮 10x with tokens launched on Solana</span>
               <ArrowRight className="h-5 w-5" />
-            </Link>
-            <Link 
-              href="/leverage"
+            </a>
+            <a 
+              href="https://leverage.clickshift.io"
               className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
             >
-              <span>⚡ Try Leverage Mastery</span>
+              <span>⚡ Try Futures Trading</span>
               <ArrowRight className="h-5 w-5" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>

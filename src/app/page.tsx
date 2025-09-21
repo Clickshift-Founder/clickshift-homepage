@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Link from "next/link";
 import { 
   ArrowRight, 
   Shield, 
@@ -90,7 +91,7 @@ const ClickShiftHomepage = () => {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#products" className="hover:text-blue-400 transition-colors">Products</a>
             <a href="#community" className="hover:text-blue-400 transition-colors">Community</a>
-            <a href="/about" className="hover:text-blue-400 transition-colors">About</a>
+            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105">
               Launch App
             </button>
@@ -515,8 +516,8 @@ const ClickShiftHomepage = () => {
             <div>
               <h4 className="font-semibold mb-3">Products</h4>
               <div className="space-y-2 text-sm text-slate-400">
-                <div><a href="alpha.clickshift.io" className="hover:text-white transition-colors">ClickShift Alpha</a></div>
-                <div><a href="leverage.clickshift.io" className="hover:text-white transition-colors">ClickShift Leverage</a></div>
+                <div><a href="https://alpha.clickshift.io" className="hover:text-white transition-colors">ClickShift Alpha</a></div>
+                <div><a href="https://leverage.clickshift.io" className="hover:text-white transition-colors">ClickShift Leverage</a></div>
                 <div><a href="https://t.me/ClickShiftAlerts" className="hover:text-white transition-colors">Launch Detector (Soon)</a></div>
               </div>
             </div>
@@ -534,7 +535,7 @@ const ClickShiftHomepage = () => {
             <div>
               <h4 className="font-semibold mb-3">Company</h4>
               <div className="space-y-2 text-sm text-slate-400">
-                <div><a href="/about" className="hover:text-white transition-colors">About</a></div>
+                <div><Link href="/about" className="hover:text-white transition-colors">About</Link></div>
                 <div><a href="#" className="hover:text-white transition-colors">Blog</a></div>
                 <div><a href="#" className="hover:text-white transition-colors">Careers</a></div>
                 <div><a href="#" className="hover:text-white transition-colors">Contact</a></div>
