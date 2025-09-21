@@ -1,16 +1,13 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ArrowRight, 
   Shield, 
   Zap, 
   Target, 
   Globe, 
-  TrendingUp, 
   Star,
   Play,
-  Users,
-  Clock,
   CheckCircle,
   ExternalLink,
   Menu,
