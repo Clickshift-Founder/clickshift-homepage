@@ -444,20 +444,20 @@ const AboutPage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <link 
+            <Link 
               href="/alpha"
               className="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
             >
               <span>🔮 Try Alpha Intelligence</span>
               <ArrowRight className="h-5 w-5" />
-            </link>
-            <link 
+            </Link>
+            <Link 
               href="/leverage"
               className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
             >
               <span>⚡ Try Leverage Mastery</span>
               <ArrowRight className="h-5 w-5" />
-            </link>
+            </Link>
           </div>
         </div>
       </section>
