@@ -379,7 +379,8 @@ const ClickShiftHomepage = () => {
                   <li>• Sends instant alerts to your Telegram/Discord/SMS</li>
                 </ul>
 
-                <button className="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
+                <button onClick={() => window.location.href = "https://alpha.clickshift.io"}
+                className="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
                   Secure Early Access →
                 </button>
               </div>
@@ -397,7 +398,9 @@ const ClickShiftHomepage = () => {
                   <li>• 24/7 monitoring with instant execution</li>
                 </ul>
 
-                <button className="bg-gradient-to-r from-green-500 to-blue-600 px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all">
+                <button 
+                onClick={() => window.location.href = "https://alpha.clickshift.io"}             
+                className="bg-gradient-to-r from-green-500 to-blue-600 px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all">
                   Join ClickBot Waitlist →
                 </button>
               </div>
