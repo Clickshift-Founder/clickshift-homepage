@@ -17,6 +17,16 @@ import {
   X
 } from 'lucide-react';
 
+  // Particle system
+    type Particle = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  opacity: number;
+};
+
 // Animated Background Particles Component
 const AnimatedBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -25,6 +35,7 @@ const AnimatedBackground = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return; // early exit if null
+    
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
@@ -37,15 +48,7 @@ const AnimatedBackground = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Particle system
-    type Particle = {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  opacity: number;
-};
+  
 
 const particles: Particle[] = [];
 const particleCount = 150;
