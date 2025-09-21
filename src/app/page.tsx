@@ -158,13 +158,13 @@ const ClickShiftHomepage = () => {
 
           {/* Primary CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <button 
-              onClick={() => window.open('https://alpha.clickshift.io', '_blank')}
+            <a 
+              href='https://alpha.clickshift.io'
               className="group bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center space-x-2"
             >
               <span>🔮 Explore Alpha Intelligence</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
             <button 
               onClick={() => window.open('https://leverage.clickshift.io', '_blank')}
               className="group bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center space-x-2"
