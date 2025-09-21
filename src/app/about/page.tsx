@@ -478,7 +478,7 @@ const AboutPage = () => {
           
           <div className="flex justify-center space-x-6 mt-8">
             <a href="#" className="text-slate-400 hover:text-white transition-colors">Twitter</a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">Telegram</a>
+            <a href="https://t.me/ClickShiftAlerts" className="text-slate-400 hover:text-white transition-colors">Telegram</a>
             <a href="#" className="text-slate-400 hover:text-white transition-colors">Medium</a>
             <a href="#" className="text-slate-400 hover:text-white transition-colors">Discord</a>
           </div>
