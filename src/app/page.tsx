@@ -279,8 +279,9 @@ const ClickShiftHomepage = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#products" className="hover:text-blue-400 transition-colors">Products</a>
+            <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
             <a href="#community" className="hover:text-blue-400 transition-colors">Community</a>
-            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
+            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>            
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105">
               Launch App
             </button>
@@ -300,6 +301,7 @@ const ClickShiftHomepage = () => {
           <div className="md:hidden bg-slate-800 border-t border-slate-700">
             <div className="container mx-auto px-4 py-4 space-y-3">
               <a href="#products" className="block hover:text-blue-400 transition-colors">Products</a>
+              <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
               <a href="#community" className="block hover:text-blue-400 transition-colors">Community</a>
               <a href="/about" className="block hover:text-blue-400 transition-colors">About</a>
               <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
@@ -716,6 +718,7 @@ const ClickShiftHomepage = () => {
               <h4 className="font-semibold mb-3">Community</h4>
               <div className="space-y-2 text-sm text-slate-400">
                 <div><a href="https://t.me/ClickShiftAlerts" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Telegram</a></div>
+                <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
                 <div><a href="#" className="hover:text-white transition-colors">Discord</a></div>
                 <div><a href="#" className="hover:text-white transition-colors">Twitter</a></div>
                 <div><a href="#" className="hover:text-white transition-colors">Medium</a></div>
