@@ -741,7 +741,7 @@ const ClickShiftHomepage = () => {
               <div className="space-y-2 text-sm text-slate-400">
                 <div><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></div>
                 <div><a href="#" className="hover:text-white transition-colors">Terms of Service</a></div>
-                <div><a href="#" className="hover:text-white transition-colors">Risk Disclosure</a></div>
+                <div><a href="/risk-disclosure" className="hover:text-white transition-colors">Risk Disclosure</a></div>
               </div>
             </div>
           </div>
