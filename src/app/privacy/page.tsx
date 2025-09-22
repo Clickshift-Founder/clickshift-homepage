@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Link from "next/link";
 import { 
   Shield, 
   Lock, 
@@ -11,8 +12,7 @@ import {
   Mail,
   Calendar,
   ArrowRight,
-  CheckCircle,
-  ExternalLink
+  CheckCircle
 } from 'lucide-react';
 
 const PrivacyPolicyPage = () => {
@@ -413,8 +413,8 @@ const PrivacyPolicyPage = () => {
           </div>
           <div className="flex items-center space-x-6">
             <a href="/" className="hover:text-blue-400 transition-colors">Home</a>
-            <a href="/about" className="hover:text-blue-400 transition-colors">About</a>
-            <a href="/terms" className="hover:text-blue-400 transition-colors">Terms</a>
+            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
+            <Link href="/terms" className="hover:text-blue-400 transition-colors">Terms</Link>
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
               Contact Us
             </button>
