@@ -10,14 +10,7 @@ import {
   ArrowRight,
   Star,
   Users,
-  Smartphone,
-  Globe,
   TrendingUp,
-  Bell,
-  Code,
-  BarChart3,
-  Lock,
-  Headphones
 } from 'lucide-react';
 
 const PricingPage = () => {
