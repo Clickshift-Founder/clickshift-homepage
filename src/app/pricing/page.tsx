@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, ReactNode } from 'react';
+import Link from "next/link";
 import { 
   Shield, 
   Zap, 
@@ -14,9 +15,8 @@ import {
 } from 'lucide-react';
 
 const PricingPage = () => {
-  const [billingCycle, setBillingCycle] = useState<"monthly" | "annually">("monthly");
-  const [selectedPlan, setSelectedPlan] = useState(null);
-
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
+  
   type BillingCycle = "monthly" | "annually";
 
 type PlanPrice = {
@@ -194,9 +194,9 @@ interface Plan {
             <span className="text-xl font-bold">ClickShift</span>
           </div>
           <div className="flex items-center space-x-6">
-            <a href="/" className="hover:text-blue-400 transition-colors">Home</a>
-            <a href="/about" className="hover:text-blue-400 transition-colors">About</a>
-            <a href="/community" className="hover:text-blue-400 transition-colors">Community</a>
+            <Link href="/" className="hover:text-blue-400 transition-colors">Home</Link>
+            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
+            <Link href="/#community" className="hover:text-blue-400 transition-colors">Community</Link>
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
               Launch App
             </button>
