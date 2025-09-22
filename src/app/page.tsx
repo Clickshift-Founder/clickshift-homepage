@@ -264,7 +264,7 @@ const ClickShiftHomepage = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative" style={{ zIndex: 2 }}></div>
+      <div className="relative" style={{ zIndex: 2 }}>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-700">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -755,6 +755,7 @@ const ClickShiftHomepage = () => {
           </div>
         </div>
       </footer>
+    </div>
     </div>
   );
 };
