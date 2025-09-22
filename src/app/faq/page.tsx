@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useMemo } from 'react';
+import Link from "next/link";
 import { 
   Search, 
   Shield, 
@@ -13,10 +14,6 @@ import {
   Lock,
   TrendingUp,
   Users,
-  Globe,
-  Zap,
-  Target,
-  AlertTriangle
 } from 'lucide-react';
 
 const FAQPage = () => {
@@ -303,9 +300,9 @@ const FAQPage = () => {
             <span className="text-xl font-bold">ClickShift</span>
           </div>
           <div className="flex items-center space-x-6">
-            <a href="/" className="hover:text-blue-400 transition-colors">Home</a>
-            <a href="/about" className="hover:text-blue-400 transition-colors">About</a>
-            <a href="/pricing" className="hover:text-blue-400 transition-colors">Pricing</a>
+            <Link href="/" className="hover:text-blue-400 transition-colors">Home</Link>
+            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
+            <Link href="/pricing" className="hover:text-blue-400 transition-colors">Pricing</Link>
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
               Launch App
             </button>
