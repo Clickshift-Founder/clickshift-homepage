@@ -1,27 +1,18 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Link from "next/link";
 import { 
   Shield, 
   Rocket, 
   Target, 
-  TrendingUp,
   Globe,
-  Zap,
   Brain,
   Users,
   Crown,
   Building2,
   CheckCircle,
-  Clock,
-  Star,
-  ArrowRight,
-  Calendar,
   DollarSign,
-  Code,
-  Smartphone,
-  Database,
-  Lock,
-  Headphones
+  Code
 } from 'lucide-react';
 
 const RoadmapPage = () => {
@@ -301,9 +292,9 @@ interface Milestone {
             <span className="text-xl font-bold">ClickShift</span>
           </div>
           <div className="flex items-center space-x-6">
-            <a href="/" className="hover:text-blue-400 transition-colors">Home</a>
-            <a href="/about" className="hover:text-blue-400 transition-colors">About</a>
-            <a href="/pricing" className="hover:text-blue-400 transition-colors">Pricing</a>
+            <Link href="/" className="hover:text-blue-400 transition-colors">Home</Link>
+            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
+            <Link href="/pricing" className="hover:text-blue-400 transition-colors">Pricing</Link>
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
               Join Mission
             </button>
@@ -563,9 +554,9 @@ interface Milestone {
               <p className="text-slate-300 text-sm mb-4">
                 Build the intelligence infrastructure that powers the future of finance
               </p>
-              <a href="/careers" className="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded text-sm font-semibold transition-all inline-block">
+              <Link href="/careers" className="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded text-sm font-semibold transition-all inline-block">
                 View Careers
-              </a>
+              </Link>
             </div>
             
             <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 hover:border-green-500/50 transition-all">

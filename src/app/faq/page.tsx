@@ -21,7 +21,7 @@ const FAQPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [expandedItems, setExpandedItems] = useState(new Set());
 
-  const categories = [
+  const categories = useMemo(() => [
     { id: 'all', name: 'All Questions', icon: <HelpCircle className="h-4 w-4" />, count: 0 },
     { id: 'general', name: 'General', icon: <Shield className="h-4 w-4" />, count: 0 },
     { id: 'pricing', name: 'Pricing & Plans', icon: <DollarSign className="h-4 w-4" />, count: 0 },
@@ -30,9 +30,9 @@ const FAQPage = () => {
     { id: 'security', name: 'Security & Privacy', icon: <Lock className="h-4 w-4" />, count: 0 },
     { id: 'mobile', name: 'Mobile & Apps', icon: <Smartphone className="h-4 w-4" />, count: 0 },
     { id: 'api', name: 'API & Developers', icon: <Code className="h-4 w-4" />, count: 0 }
-  ];
+  ], []);
 
-  const faqs = [
+  const faqs = useMemo(() => [
     // General Questions
     {
       id: 1,
@@ -242,7 +242,7 @@ const FAQPage = () => {
       answer: 'Yes! We implement intelligent rate limiting to prevent abuse while allowing legitimate usage. API plans include different rate limits, and we offer custom limits for enterprise users.',
       tags: ['rate-limiting', 'protection', 'abuse', 'enterprise']
     }
-  ];
+  ], []);
 
   // Update category counts
   const categoriesWithCounts = useMemo(() => {
@@ -257,7 +257,7 @@ const FAQPage = () => {
       ...cat,
       count: counts[cat.id] || 0
     }));
-  }, [faqs]);
+  }, [faqs, categories]);
 
   // Filter FAQs based on search and category
   const filteredFAQs = useMemo(() => {

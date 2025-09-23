@@ -219,8 +219,8 @@ interface Plan {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-            {stats.map((stat, _index) => (
-              <div key={_index} className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
+            {stats.map((stat) => (
+              <div key={stat.label} className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
                 <div className="flex items-center justify-center space-x-2 mb-2">
                   {stat.icon}
                   <span className="text-2xl font-bold text-blue-400">{stat.number}</span>
@@ -251,7 +251,7 @@ interface Plan {
       <section className="pb-20 px-4">
         <div className="container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-4 gap-8">
-            {plans.map((plan, index) => (
+            {plans.map((plan) => (
               <div
                 key={plan.id}
                 className={`relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 border transition-all duration-300 transform hover:-translate-y-2 ${
@@ -347,8 +347,8 @@ interface Plan {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {apiPlans.map((plan, index) => (
-              <div key={index} className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500/50 transition-all">
+            {apiPlans.map((plan) => (
+              <div key={plan.name} className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 border border-slate-700 hover:border-blue-500/50 transition-all">
                 <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
                 <div className="mb-4">
                   {typeof plan.price[billingCycle] === 'number' ? (
@@ -453,8 +453,8 @@ interface Plan {
           </h2>
 
           <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+            {faqs.map((faq) => (
+              <div key={faq.q} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
                 <h3 className="font-semibold text-lg mb-3">{faq.q}</h3>
                 <p className="text-slate-300">{faq.a}</p>
               </div>

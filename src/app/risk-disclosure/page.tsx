@@ -4,19 +4,14 @@ import Link from "next/link";
 import { 
   AlertTriangle, 
   TrendingDown, 
-  DollarSign, 
   Shield, 
-  Clock,
   Globe,
   Zap,
-  Target,
   Brain,
   Lock,
   Users,
   BarChart3,
-  Calendar,
   ArrowRight,
-  ExternalLink,
   CheckCircle
 } from 'lucide-react';
 
