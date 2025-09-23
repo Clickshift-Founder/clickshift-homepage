@@ -117,7 +117,7 @@ const DocumentationPage = () => {
                       Predictive intelligence for Solana tokens. Exit cluster detection, whale tracking, 
                       and RSI-based pump predictions.
                     </p>
-                    <a href="/alpha" className="text-blue-400 hover:text-blue-300 text-sm font-semibold mt-3 inline-block">
+                    <a href="alpha.clickshift.io" className="text-blue-400 hover:text-blue-300 text-sm font-semibold mt-3 inline-block">
                       Try Alpha →
                     </a>
                   </div>
@@ -129,7 +129,7 @@ const DocumentationPage = () => {
                       Advanced futures trading intelligence. Liquidation risk calculation, MACD+OBV fusion, 
                       and position sizing assistance.
                     </p>
-                    <a href="/leverage" className="text-orange-400 hover:text-orange-300 text-sm font-semibold mt-3 inline-block">
+                    <a href="leverage.clickshift.io" className="text-orange-400 hover:text-orange-300 text-sm font-semibold mt-3 inline-block">
                       Try Leverage →
                     </a>
                   </div>

@@ -279,9 +279,12 @@ const ClickShiftHomepage = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#products" className="hover:text-blue-400 transition-colors">Products</a>
+            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link> 
             <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
             <a href="#community" className="hover:text-blue-400 transition-colors">Community</a>
-            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>            
+            <Link href="/docs" className="hover:text-blue-400 transition-colors">API Documentation</Link>
+            <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link> 
+                       
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105">
               Launch App
             </button>
