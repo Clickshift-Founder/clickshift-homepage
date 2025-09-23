@@ -621,7 +621,7 @@ X-RateLimit-Reset: 1673875200`}</code>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
               <Zap className="h-6 w-6 text-green-400 mx-auto mb-2" />
-              <div className="text-lg font-bold">&it 2s</div>
+              <div className="text-lg font-bold">&lt 2s</div>
               <div className="text-sm text-slate-400">Response time</div>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">

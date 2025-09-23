@@ -729,6 +729,7 @@ const ClickShiftHomepage = () => {
               <h4 className="font-semibold mb-3">Company</h4>
               <div className="space-y-2 text-sm text-slate-400">
                 <div><Link href="/about" className="hover:text-white transition-colors">About</Link></div>
+                <div><Link href="/docs" className="hover:text-white transition-colors">API Documentation</Link></div>
                 <div><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></div>
                 <div><a href="#" className="hover:text-white transition-colors">Blog</a></div>
                 <div><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></div>
