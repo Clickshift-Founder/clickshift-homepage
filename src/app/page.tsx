@@ -304,10 +304,14 @@ const ClickShiftHomepage = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-slate-800 border-t border-slate-700">
             <div className="container mx-auto px-4 py-4 space-y-3">
-              <a href="#products" className="block hover:text-blue-400 transition-colors">Products</a>
-              <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
-              <a href="#community" className="block hover:text-blue-400 transition-colors">Community</a>
-              <a href="/about" className="block hover:text-blue-400 transition-colors">About</a>
+              <Link href="#products" className="hover:text-blue-400 transition-colors">Products</Link>
+             <Link href="/pricing" className="hover:text-blue-400 transition-colors">Pricing</Link> 
+             <Link href="/docs" className="hover:text-blue-400 transition-colors">API Documentation</Link>
+             <Link href="#community" className="hover:text-blue-400 transition-colors">Community</Link>
+             <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
+            <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
+            
+            
               <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
                 Launch App
               </button>
