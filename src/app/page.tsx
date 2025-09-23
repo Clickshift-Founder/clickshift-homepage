@@ -264,6 +264,7 @@ const ClickShiftHomepage = () => {
       </div>
 
       {/* Content Container */}
+      
       <div className="relative" style={{ zIndex: 2 }}>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-700">
