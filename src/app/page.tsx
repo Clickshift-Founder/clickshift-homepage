@@ -731,7 +731,7 @@ const ClickShiftHomepage = () => {
                 <div><Link href="/about" className="hover:text-white transition-colors">About</Link></div>
                 <div><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></div>
                 <div><a href="#" className="hover:text-white transition-colors">Blog</a></div>
-                <div><a href="#" className="hover:text-white transition-colors">Careers</a></div>
+                <div><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></div>
                 <div><a href="#" className="hover:text-white transition-colors">Contact</a></div>
               </div>
             </div>
@@ -740,8 +740,8 @@ const ClickShiftHomepage = () => {
               <h4 className="font-semibold mb-3">Legal</h4>
               <div className="space-y-2 text-sm text-slate-400">
                 <div><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></div>
-                <div><a href="#" className="hover:text-white transition-colors">Terms of Service</a></div>
-                <div><a href="/risk-disclosure" className="hover:text-white transition-colors">Risk Disclosure</a></div>
+                <div><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></div>
+                <div><Link href="/risk-disclosure" className="hover:text-white transition-colors">Risk Disclosure</Link></div>
               </div>
             </div>
           </div>
