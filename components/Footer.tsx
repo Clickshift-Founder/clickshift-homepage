@@ -1,39 +1,42 @@
-"use client";
-
+import React from 'react';
 import Link from "next/link";
-import { Shield } from "lucide-react";
-
-const countries = [
-  { flag: "🇺🇸", name: "USA" },
-  { flag: "🇬🇧", name: "UK" },
-  { flag: "🇳🇬", name: "Nigeria" },
-  // add more as needed...
-];
+import { Shield } from 'lucide-react';
 
 const Footer = () => {
+  // Countries data for trust indicators
+  const countries = [
+    { flag: "🇺🇸", name: "USA" },
+    { flag: "🇬🇧", name: "UK" },
+    { flag: "🇨🇦", name: "Canada" },
+    { flag: "🇦🇺", name: "Australia" },
+    { flag: "🇩🇪", name: "Germany" },
+    { flag: "🇫🇷", name: "France" },
+    { flag: "🇯🇵", name: "Japan" },
+    { flag: "🇰🇷", name: "S. Korea" },
+    { flag: "🇸🇬", name: "Singapore" },
+    { flag: "🇦🇪", name: "UAE" },
+    { flag: "🇳🇱", name: "Netherlands" },
+    { flag: "🇪🇸", name: "Spain" }
+  ];
+
   return (
     <footer className="py-12 px-4 bg-slate-900 border-t border-slate-700">
       <div className="container mx-auto max-w-6xl">
-        {/* Logo & Tagline */}
+        {/* Header */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center space-x-2 mb-4">
+          <Link href="/" className="flex items-center justify-center space-x-2 mb-4 hover:opacity-80 transition-opacity">
             <Shield className="h-8 w-8 text-blue-400" />
             <span className="text-2xl font-bold">ClickShift</span>
-          </div>
-          <p className="text-lg text-slate-300">
-            Building DeFi's Intelligence Infrastructure
-          </p>
+          </Link>
+          <p className="text-lg text-slate-300">Building DeFi's Intelligence Infrastructure</p>
         </div>
 
-        {/* Global Trust */}
+        {/* Global Trust Indicators */}
         <div className="text-center mb-8">
           <p className="text-slate-400 mb-4">Trusted by intelligent traders in:</p>
           <div className="flex flex-wrap justify-center gap-2 text-sm">
             {countries.map((country, index) => (
-              <span
-                key={index}
-                className="inline-flex items-center space-x-1 bg-slate-800 px-2 py-1 rounded"
-              >
+              <span key={index} className="inline-flex items-center space-x-1 bg-slate-800 px-2 py-1 rounded">
                 <span>{country.flag}</span>
                 <span>{country.name}</span>
               </span>
@@ -42,30 +45,37 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Links */}
+        {/* Footer Links Grid */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
+          {/* Products */}
           <div>
             <h4 className="font-semibold mb-3">Products</h4>
             <div className="space-y-2 text-sm text-slate-400">
               <div>
-                <a
-                  href="https://alpha.clickshift.io"
+                <a 
+                  href="https://alpha.clickshift.io" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="hover:text-white transition-colors"
                 >
                   ClickShift Alpha
                 </a>
               </div>
               <div>
-                <a
-                  href="https://leverage.clickshift.io"
+                <a 
+                  href="https://leverage.clickshift.io" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="hover:text-white transition-colors"
                 >
                   ClickShift Leverage
                 </a>
               </div>
               <div>
-                <a
-                  href="https://t.me/ClickShiftAlerts"
+                <a 
+                  href="https://t.me/ClickShiftAlerts" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="hover:text-white transition-colors"
                 >
                   Launch Detector (Soon)
@@ -73,109 +83,53 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
+          
+          {/* Community */}
           <div>
             <h4 className="font-semibold mb-3">Community</h4>
             <div className="space-y-2 text-sm text-slate-400">
               <div>
-                <a
-                  href="https://t.me/ClickShiftAlerts"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a 
+                  href="https://t.me/ClickShiftAlerts" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="hover:text-white transition-colors"
                 >
                   Telegram
                 </a>
               </div>
-              <Link href="/faq" className="hover:text-blue-400 transition-colors">
-                FAQ
-              </Link>
-              <div>
-                <a href="#" className="hover:text-white transition-colors">
-                  Discord
-                </a>
-              </div>
-              <div>
-                <a href="#" className="hover:text-white transition-colors">
-                  Twitter
-                </a>
-              </div>
-              <div>
-                <a href="#" className="hover:text-white transition-colors">
-                  Medium
-                </a>
-              </div>
+              <div><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></div>
+              <div><a href="#" className="hover:text-white transition-colors">Discord</a></div>
+              <div><a href="#" className="hover:text-white transition-colors">Twitter</a></div>
+              <div><a href="#" className="hover:text-white transition-colors">Medium</a></div>
             </div>
           </div>
-
+          
+          {/* Company */}
           <div>
             <h4 className="font-semibold mb-3">Company</h4>
             <div className="space-y-2 text-sm text-slate-400">
-              <div>
-                <Link href="/about" className="hover:text-white transition-colors">
-                  About
-                </Link>
-              </div>
-              <div>
-                <Link href="/docs" className="hover:text-white transition-colors">
-                  API Documentation
-                </Link>
-              </div>
-              <div>
-                <Link href="/pricing" className="hover:text-white transition-colors">
-                  Pricing
-                </Link>
-              </div>
-              <div>
-                <a href="#" className="hover:text-white transition-colors">
-                  Blog
-                </a>
-              </div>
-              <div>
-                <Link href="/careers" className="hover:text-white transition-colors">
-                  Careers
-                </Link>
-              </div>
-              <div>
-                <a href="#" className="hover:text-white transition-colors">
-                  Contact
-                </a>
-              </div>
+              <div><Link href="/about" className="hover:text-white transition-colors">About</Link></div>
+              <div><Link href="/docs" className="hover:text-white transition-colors">API Documentation</Link></div>
+              <div><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></div>
+              <div><a href="#" className="hover:text-white transition-colors">Blog</a></div>
+              <div><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></div>
+              <div><a href="#" className="hover:text-white transition-colors">Contact</a></div>
             </div>
           </div>
-
+          
+          {/* Legal */}
           <div>
             <h4 className="font-semibold mb-3">Legal</h4>
             <div className="space-y-2 text-sm text-slate-400">
-              <div>
-                <Link
-                  href="/privacy"
-                  className="hover:text-white transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-              </div>
-              <div>
-                <Link
-                  href="/terms"
-                  className="hover:text-white transition-colors"
-                >
-                  Terms of Service
-                </Link>
-              </div>
-              <div>
-                <Link
-                  href="/risk-disclosure"
-                  className="hover:text-white transition-colors"
-                >
-                  Risk Disclosure
-                </Link>
-              </div>
+              <div><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></div>
+              <div><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></div>
+              <div><Link href="/risk-disclosure" className="hover:text-white transition-colors">Risk Disclosure</Link></div>
             </div>
           </div>
         </div>
 
-        {/* Contact */}
+        {/* Contact Information */}
         <div className="text-center space-y-2 text-sm text-slate-400 mb-8">
           <div>Business Inquiries: trust@clickshift.io</div>
           <div>Support: clickndshift@gmail.com</div>
@@ -184,10 +138,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center text-sm text-slate-500 border-t border-slate-700 pt-8">
           <p>© 2025 ClickShift Intelligence Inc. All Rights Reserved</p>
-          <p className="mt-1">
-            Patent-pending algorithms. Regulatory compliant. Built for global
-            scale.
-          </p>
+          <p className="mt-1">Patent-pending algorithms. Regulatory compliant. Built for global scale.</p>
         </div>
       </div>
     </footer>
