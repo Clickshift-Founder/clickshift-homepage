@@ -439,10 +439,7 @@ const ClickShiftHomepage = () => {
               <h3 className="text-xl font-bold mb-3">🛡️ Protection First</h3>
               <p className="text-slate-300">
                 Our AI identifies exit clusters before whales dump. 73% accuracy means you sell at peaks, not crashes.
-              </p>
-              <div className="text-sm text-red-400">
-              🚨 Whale exit alerts • ⚡ 2-min early warning • 🎯 73% accuracy rate
-              </div>
+              </p>            
             </div>
 
             <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all transform hover:-translate-y-2">
@@ -450,10 +447,7 @@ const ClickShiftHomepage = () => {
               <h3 className="text-xl font-bold mb-3">⚡ Lightning-Fast Alert</h3>
               <p className="text-slate-300">
                 While others analyze for 30 minutes, our algorithms deliver precise signals in 2.1 seconds before major price moves.
-              </p>
-               <div className="text-sm text-blue-400">
-                  ⚡ Sub-second detection • 🎯 99.2% uptime • 🔔 Smart filtering
-                </div>
+              </p>              
             </div>
 
             <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all transform hover:-translate-y-2">
@@ -461,10 +455,7 @@ const ClickShiftHomepage = () => {
               <h3 className="text-xl font-bold mb-3">🎯 Surgical Entry/Exit Precision</h3>
               <p className="text-slate-300">
                 "RSI oversold at 28, ATR suggests 67% pump probability in next 4 hours." Turn market volatility into systematic profits with AI-powered RSI and volume analysis.
-              </p>
-              <div className="text-sm text-purple-400">
-                  📊 Multi-timeframe analysis • 🎯 Smart position sizing • 📈 Risk management
-                </div>
+              </p>             
             </div>
 
             <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all transform hover:-translate-y-2">
@@ -472,10 +463,7 @@ const ClickShiftHomepage = () => {
               <h3 className="text-xl font-bold mb-3">🌐 Global Intelligence</h3>
               <p className="text-slate-300">
                 Every trade, every outcome, every pattern feeds our learning engine. 525+ traders make every prediction smarter.
-              </p>
-              <div className="text-sm text-blue-400">
-            🧠 AI learning engine • 📈 525+ data contributors • 🔮 Predictive insights
-            </div>
+              </p>              
             </div>
           </div>
         </div>
@@ -637,6 +625,7 @@ const ClickShiftHomepage = () => {
       {/* Testimonials */}
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16"></div>
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
             📊 Proven Results, Real Traders
           </h2>
