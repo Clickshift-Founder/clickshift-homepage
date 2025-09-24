@@ -221,9 +221,15 @@ const ClickShiftHomepage = () => {
     { flag: '🇺🇸', name: 'USA', traders: 121, volume: '$847K' },
     { flag: '🇬🇧', name: 'UK', traders: 89, volume: '£623K' },
     { flag: '🇦🇪', name: 'UAE', traders: 72, volume: 'AED 1.2M' },
+     { flag: "🇨🇦", name: "Canada", traders: "67", volume: "$1.2M" },
+    { flag: "🇦🇺", name: "Australia", traders: "54", volume: "$987K" },
     { flag: '🇳🇬', name: 'Nigeria', traders: 67, volume: '₦145M' },
     { flag: '🇸🇬', name: 'Singapore', traders: 55, volume: 'S$389K' },
     { flag: '🇮🇳', name: 'India', traders: 43, volume: '₹2.8M' },
+     { flag: "🇩🇪", name: "Germany", traders: "43", volume: "$756K" },
+    { flag: "🇫🇷", name: "France", traders: "38", volume: "$692K" },
+    { flag: "🇯🇵", name: "Japan", traders: "31", volume: "$543K" },
+    { flag: "🇰🇷", name: "S. Korea", traders: "29", volume: "$512K" },
   ];
 
   const testimonials = [
@@ -386,7 +392,7 @@ const ClickShiftHomepage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
             <h3 className="text-lg md:text-xl text-slate-300 mb-4">
-              Trusted by 525+ intelligent traders across 47 nations
+              Trusted by 525+ focused traders across 47 nations
             </h3>
           </div>
           
@@ -420,7 +426,11 @@ const ClickShiftHomepage = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
                 We Predict Traders.
               </span>
-            </h2>
+            </h2>            
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+                Our algorithms analyze 847 data points in real-time across 12 blockchains. 
+                From whale movements to sentiment shifts - we turn chaos into clarity.
+              </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -430,22 +440,31 @@ const ClickShiftHomepage = () => {
               <p className="text-slate-300">
                 Our AI identifies exit clusters before whales dump. 73% accuracy means you sell at peaks, not crashes.
               </p>
+              <div className="text-sm text-red-400">
+              🚨 Whale exit alerts • ⚡ 2-min early warning • 🎯 73% accuracy rate
+              </div>
             </div>
 
             <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all transform hover:-translate-y-2">
               <Zap className="h-12 w-12 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">⚡ Speed Intelligence</h3>
+              <h3 className="text-xl font-bold mb-3">⚡ Lightning-Fast Alert</h3>
               <p className="text-slate-300">
-                While others analyze for 30 minutes, our algorithms deliver precise signals in 2.1 seconds.
+                While others analyze for 30 minutes, our algorithms deliver precise signals in 2.1 seconds before major price moves.
               </p>
+               <div className="text-sm text-blue-400">
+                  ⚡ Sub-second detection • 🎯 99.2% uptime • 🔔 Smart filtering
+                </div>
             </div>
 
             <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all transform hover:-translate-y-2">
               <Target className="h-12 w-12 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">🎯 Surgical Precision</h3>
+              <h3 className="text-xl font-bold mb-3">🎯 Surgical Entry/Exit Precision</h3>
               <p className="text-slate-300">
-                "RSI oversold at 28, ATR suggests 67% pump probability in next 4 hours." Specific predictions, not vague signals.
+                "RSI oversold at 28, ATR suggests 67% pump probability in next 4 hours." Turn market volatility into systematic profits with AI-powered RSI and volume analysis.
               </p>
+              <div className="text-sm text-purple-400">
+                  📊 Multi-timeframe analysis • 🎯 Smart position sizing • 📈 Risk management
+                </div>
             </div>
 
             <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all transform hover:-translate-y-2">
@@ -454,6 +473,9 @@ const ClickShiftHomepage = () => {
               <p className="text-slate-300">
                 Every trade, every outcome, every pattern feeds our learning engine. 525+ traders make every prediction smarter.
               </p>
+              <div className="text-sm text-blue-400">
+            🧠 AI learning engine • 📈 525+ data contributors • 🔮 Predictive insights
+            </div>
             </div>
           </div>
         </div>
@@ -463,7 +485,11 @@ const ClickShiftHomepage = () => {
       <section id="products" className="py-20 px-4 bg-slate-800/30">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
-            🚀 The Intelligence Arsenal
+            Trading Tools. One Mission:
+                <br />
+                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  Maximize Your Edge
+                </span>
           </h2>
 
           <div className="grid lg:grid-cols-2 gap-12">
@@ -510,7 +536,7 @@ const ClickShiftHomepage = () => {
                 href='https://alpha.clickshift.io'
                 className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all flex items-center justify-center space-x-2"
               >
-                <span>Explore Alpha Intelligence</span>
+                <span>Launch Alpha</span>
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
@@ -612,8 +638,11 @@ const ClickShiftHomepage = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
-            📊 Proof That Works
+            📊 Proven Results, Real Traders
           </h2>
+          <p className="text-xl text-slate-300">
+                Our users consistently outperform the market. Here's what they're saying:
+              </p>
 
           <div className="grid lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
