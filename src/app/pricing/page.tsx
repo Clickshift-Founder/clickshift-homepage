@@ -186,24 +186,7 @@ interface Plan {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-700">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Shield className="h-8 w-8 text-blue-400" />
-            <span className="text-xl font-bold">ClickShift</span>
-          </div>
-          <div className="flex items-center space-x-6">
-            <Link href="/" className="hover:text-blue-400 transition-colors">Home</Link>
-            <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
-            <Link href="/#community" className="hover:text-blue-400 transition-colors">Community</Link>
-            <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
-              Launch App
-            </button>
-          </div>
-        </div>
-      </nav>
-
+      
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-6xl text-center">
