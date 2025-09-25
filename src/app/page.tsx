@@ -272,61 +272,7 @@ const ClickShiftHomepage = () => {
       {/* Content Container */}
       
       <div className="relative" style={{ zIndex: 2 }}>
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-700">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="relative">
-              <Shield className="h-8 w-8 text-blue-400" />
-              <div className="absolute inset-0 bg-blue-400/20 rounded-full animate-pulse"></div>
-            </div>
-            <span className="text-xl font-bold">ClickShift</span>
-          </div>
-          
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="#products" className="hover:text-blue-400 transition-colors">Products</Link>
-             <Link href="/pricing" className="hover:text-blue-400 transition-colors">Pricing</Link> 
-             <Link href="/docs" className="hover:text-blue-400 transition-colors">API Documentation</Link>
-             <Link href="#community" className="hover:text-blue-400 transition-colors">Community</Link>
-             <Link href="/about" className="hover:text-blue-400 transition-colors">About</Link>
-            <Link href="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
-            
-                       
-            <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105">
-              Launch App
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-slate-800 border-t border-slate-700">
-            <div className="container mx-auto px-4 py-4 space-y-3">
-              <Link href="#products" className="block hover:text-blue-400 transition-colors">Products</Link>
-             <Link href="/pricing" className="block hover:text-blue-400 transition-colors">Pricing</Link> 
-             <Link href="/docs" className="block hover:text-blue-400 transition-colors">API Documentation</Link>
-             <Link href="#community" className="block hover:text-blue-400 transition-colors">Community</Link>
-             <Link href="/about" className="block hover:text-blue-400 transition-colors">About</Link>
-            <Link href="/faq" className="block hover:text-blue-400 transition-colors">FAQ</Link>
-            
-            
-              <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all">
-                Launch App
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
-
+    
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4">
         <div className="container mx-auto text-center max-w-6xl">
@@ -428,7 +374,7 @@ const ClickShiftHomepage = () => {
               </span>
             </h2>            
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Our algorithms analyze 847 data points in real-time across 12 blockchains. 
+                Our algorithms analyze 847 data points in real-time across 12 blockchains.
                 From whale movements to sentiment shifts - we turn chaos into clarity.
               </p>
           </div>
@@ -452,15 +398,15 @@ const ClickShiftHomepage = () => {
 
             <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all transform hover:-translate-y-2">
               <Target className="h-12 w-12 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">🎯 Surgical Entry/Exit Precision</h3>
+              <h3 className="text-xl font-bold mb-3">🎯 Surgical Precision</h3>
               <p className="text-slate-300">
-                "RSI oversold at 28, ATR suggests 67% pump probability in next 4 hours." Turn market volatility into systematic profits with AI-powered RSI and volume analysis.
+                "RSI oversold at 28, ATR suggests 67% pump probability in next 4 hours." Turn market volatility into huge profits.
               </p>             
             </div>
 
             <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all transform hover:-translate-y-2">
               <Globe className="h-12 w-12 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">🌐 Global Intelligence</h3>
+              <h3 className="text-xl font-bold mb-3">🌐 Cross-Chain Intelligence</h3>
               <p className="text-slate-300">
                 Every trade, every outcome, every pattern feeds our learning engine. 525+ traders make every prediction smarter.
               </p>              
@@ -572,33 +518,32 @@ const ClickShiftHomepage = () => {
                 href='https://leverage.clickshift.io'
                 className="w-full bg-gradient-to-r from-orange-500 to-red-600 px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all flex items-center justify-center space-x-2"
               >
-                <span>Profit From Futures</span>
+                <span>Launch Futures</span>
                 <ExternalLink className="h-4 w-4" />
               </a>
             </div>
           </div>
 
            {/* Coming Soon - Updated with ClickBot */}
-            <div className="mt-12 grid md:grid-cols-2 gap-8">
-              {/* Launch Detector */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 text-center">
-                <div className="text-4xl mb-4">🚨</div>
-                <h3 className="text-2xl font-bold mb-4">Launch Detector Pro</h3>
-                <p className="text-lg text-slate-300 mb-6">"Catch the next 100x before it moons"</p>
-                
-                <ul className="space-y-2 mb-6 text-sm text-slate-300 text-left">
-                  <li>• Identifies high-potential tokens within 15 minutes of launch</li>
-                  <li>• Cross-validates legitimacy across 7+ data sources</li>
-                  <li>• Provides pump probability scores and safe entry windows</li>
-                  <li>• Sends instant alerts to your Telegram/Discord/SMS</li>
-                </ul>
+<div className="mt-12 grid md:grid-cols-2 gap-8">
+  {/* Launch Detector */}
+  <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700">
+    <div className="text-4xl mb-4">🚨</div>
+    <h3 className="text-2xl font-bold mb-4">Launch Detector Pro</h3>
+    <p className="text-lg text-slate-300 mb-6">"Catch the next 100x before it moons"</p>
+    
+    <ul className="space-y-2 mb-6 text-sm text-slate-300">
+      <li>• Identifies high-potential tokens within 15 minutes of launch</li>
+      <li>• Cross-validates legitimacy across 7+ data sources</li>
+      <li>• Provides pump probability scores and safe entry windows</li>
+      <li>• Sends instant alerts to your Telegram/Discord/SMS</li>
+    </ul>
 
-                <button onClick={() => window.location.href = "https://t.me/ClickShiftAlerts"}
-                className="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
-                  Secure Early Access →
-                </button>
-              </div>
-
+    <button onClick={() => window.location.href = "https://t.me/ClickShiftAlerts"}
+    className="inline-block bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
+      Secure Early Access →
+    </button>
+  </div>
               {/* ClickBot Auto Trade */}
               <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 text-center">
                 <div className="text-4xl mb-4">🤖</div>
