@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from 'react';
 import Link from "next/link";
-import { Shield, Menu, X } from 'lucide-react';
+import { Shield, Menu, X, Home } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Centralized menu items - easy to update from one place
   const menuItems = [
+    { href: "/home", label: "Home"},
     { href: "/products", label: "Products" },           // ← Changed from # to /products
     { href: "/pricing", label: "Pricing" },
     { href: "/docs", label: "API Documentation" },
