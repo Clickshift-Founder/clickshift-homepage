@@ -8,10 +8,10 @@ const Navbar = () => {
 
   // Centralized menu items - easy to update from one place
   const menuItems = [
-    { href: "#products", label: "Products" },
+    { href: "/products", label: "Products" },           // ← Changed from # to /products
     { href: "/pricing", label: "Pricing" },
     { href: "/docs", label: "API Documentation" },
-    { href: "#community", label: "Community" },
+    { href: "https://t.me/ClickShiftAlerts", label: "Community", external: true }, // ← Direct Telegram link
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
   ];
@@ -31,13 +31,25 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           {menuItems.map((item, index) => (
-            <Link 
-              key={index} 
-              href={item.href} 
-              className="hover:text-blue-400 transition-colors"
-            >
-              {item.label}
-            </Link>
+            item.external ? (
+              <a
+                key={index}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link 
+                key={index} 
+                href={item.href} 
+                className="hover:text-blue-400 transition-colors"
+              >
+                {item.label}
+              </Link>
+            )
           ))}
           
           <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105">
@@ -59,14 +71,27 @@ const Navbar = () => {
         <div className="md:hidden bg-slate-800 border-t border-slate-700">
           <div className="container mx-auto px-4 py-4 space-y-3">
             {menuItems.map((item, index) => (
-              <Link 
-                key={index} 
-                href={item.href} 
-                className="block hover:text-blue-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)} // Close menu on click
-              >
-                {item.label}
-              </Link>
+              item.external ? (
+                <a
+                  key={index}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-blue-400 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link 
+                  key={index} 
+                  href={item.href} 
+                  className="block hover:text-blue-400 transition-colors"
+                  onClick={() => setIsMenuOpen(false)} // Close menu on click
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
             
             <button 

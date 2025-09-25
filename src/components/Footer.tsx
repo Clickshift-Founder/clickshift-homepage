@@ -24,9 +24,12 @@ const Footer = () => {
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <Link href="/" className="flex items-center justify-center space-x-2 mb-4 hover:opacity-80 transition-opacity">
-            <Shield className="h-8 w-8 text-blue-400" />
-            <span className="text-2xl font-bold">ClickShift</span>
+          <Link href="/" className="inline-flex items-center justify-center space-x-2 mb-4 hover:opacity-80 transition-opacity group">
+            <div className="relative">
+              <Shield className="h-8 w-8 text-blue-400 group-hover:scale-110 transition-transform" />
+              <div className="absolute inset-0 bg-blue-400/20 rounded-full animate-pulse group-hover:bg-blue-400/30"></div>
+            </div>
+            <span className="text-2xl font-bold group-hover:text-blue-300 transition-colors">ClickShift</span>
           </Link>
           <p className="text-lg text-slate-300">Building DeFi's Intelligence Infrastructure</p>
         </div>
@@ -112,7 +115,6 @@ const Footer = () => {
               <div><Link href="/about" className="hover:text-white transition-colors">About</Link></div>
               <div><Link href="/docs" className="hover:text-white transition-colors">API Documentation</Link></div>
               <div><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></div>
-              <div><Link href="/roadmap" className="hover:text-white transition-colors">Road Map</Link></div>
               <div><a href="#" className="hover:text-white transition-colors">Blog</a></div>
               <div><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></div>
               <div><a href="#" className="hover:text-white transition-colors">Contact</a></div>
