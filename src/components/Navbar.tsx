@@ -8,7 +8,7 @@ const Navbar = () => {
 
   // Centralized menu items - easy to update from one place
   const menuItems = [
-    { href: "/home", label: "Home"},
+    { href: "/", label: "Home"},
     { href: "/products", label: "Products" },           // ← Changed from # to /products
     { href: "/pricing", label: "Pricing" },
     { href: "/docs", label: "API Documentation" },
