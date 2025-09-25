@@ -406,9 +406,9 @@ const ClickShiftHomepage = () => {
 
             <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all transform hover:-translate-y-2">
               <Globe className="h-12 w-12 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">Cross-Chain Intelligence</h3>
+              <h3 className="text-xl font-bold mb-3">Cross-Chain IQ</h3>
               <p className="text-slate-300">
-                Every trade, every outcome, every pattern feeds our learning engine. 525+ traders make every prediction smarter.
+                Every trade, every outcome, every pattern feeds our learning engine. 525+ traders across Solana, Ethereum, BSC, etc make every prediction smarter.
               </p>              
             </div>
           </div>
@@ -575,6 +575,7 @@ const ClickShiftHomepage = () => {
             📊 Proven Results, Real Traders
           </h2>
           <p className="text-xl text-slate-300">
+            <div className="text-center mb-16"></div>
                 Our users consistently outperform the market. Here's what they're saying:
               </p>
 
