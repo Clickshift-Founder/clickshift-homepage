@@ -382,7 +382,7 @@ const ClickShiftHomepage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all transform hover:-translate-y-2">
               <Shield className="h-12 w-12 text-blue-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">🛡️ Protection First</h3>
+              <h3 className="text-xl font-bold mb-3">Protection First</h3>
               <p className="text-slate-300">
                 Our AI identifies exit clusters before whales dump. 73% accuracy means you sell at peaks, not crashes.
               </p>            
@@ -390,7 +390,7 @@ const ClickShiftHomepage = () => {
 
             <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all transform hover:-translate-y-2">
               <Zap className="h-12 w-12 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">⚡ Lightning-Fast Alert</h3>
+              <h3 className="text-xl font-bold mb-3">Lightning-Fast Alert</h3>
               <p className="text-slate-300">
                 While others analyze for 30 minutes, our algorithms deliver precise signals in 2.1 seconds before major price moves.
               </p>              
@@ -398,7 +398,7 @@ const ClickShiftHomepage = () => {
 
             <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all transform hover:-translate-y-2">
               <Target className="h-12 w-12 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">🎯 Surgical Precision</h3>
+              <h3 className="text-xl font-bold mb-3">Surgical Precision</h3>
               <p className="text-slate-300">
                 "RSI oversold at 28, ATR suggests 67% pump probability in next 4 hours." Turn market volatility into huge profits.
               </p>             
@@ -406,7 +406,7 @@ const ClickShiftHomepage = () => {
 
             <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all transform hover:-translate-y-2">
               <Globe className="h-12 w-12 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">🌐 Cross-Chain Intelligence</h3>
+              <h3 className="text-xl font-bold mb-3">Cross-Chain Intelligence</h3>
               <p className="text-slate-300">
                 Every trade, every outcome, every pattern feeds our learning engine. 525+ traders make every prediction smarter.
               </p>              
