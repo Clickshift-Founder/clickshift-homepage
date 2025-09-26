@@ -113,7 +113,7 @@ const ProductsPage = () => {
     {
       id: 'alpha',
       name: 'ClickShift Alpha',
-      tagline: 'Spot Trading Intelligence',
+      tagline: 'Spot Trading of Solana tokens',
       icon: '🔮',
       status: 'LIVE',
       statusColor: 'bg-green-500',
@@ -180,7 +180,7 @@ const ProductsPage = () => {
         'Smart contract audit integration',
         'Whale wallet tracking on new launches'
       ],
-      eta: 'Q1 2025',
+      eta: 'Q1 2026',
       gradient: 'from-purple-500 to-pink-600',
       borderGradient: 'from-purple-500/50 to-pink-600/50'
     },
@@ -201,7 +201,7 @@ const ProductsPage = () => {
         'Market sentiment integration',
         'Cross-platform execution'
       ],
-      eta: 'Q2 2025',
+      eta: 'Q2 2026',
       gradient: 'from-cyan-500 to-blue-600',
       borderGradient: 'from-cyan-500/50 to-blue-600/50'
     }
@@ -269,7 +269,7 @@ const ProductsPage = () => {
                 Intelligence Suite.
                 <br />
                 <span className="italic text-lg bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Built for traders, Ready for markets
+                  Built for traders, Ready for markets.
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">

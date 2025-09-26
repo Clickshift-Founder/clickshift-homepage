@@ -60,7 +60,7 @@ interface Plan {
         { name: 'Custom alerts', included: false }
       ],
       cta: 'Start Free',
-      ctaLink: '/alpha'
+      ctaLink: '/products'
     },
     {
       id: 'pro',
@@ -193,7 +193,7 @@ interface Plan {
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
             Simple Pricing.
             <br />
-            Powerful Intelligence.
+            Powerful Tools.
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
             Start free and scale as you grow. From hobbyist traders to institutional firms, 
