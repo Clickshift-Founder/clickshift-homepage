@@ -571,13 +571,13 @@ const ClickShiftHomepage = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16"></div>
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
             📊 Proven Results, Real Traders
-            </h2>
-             <p className="text-xl text-slate-300 max-w-3xl mx-auto">    
+            <span className="text-sm text-slate-300 max-w-3xl mx-auto">    
                 Our users consistently outperform the market. Here's what they're saying:
-              </p>
-
+              </span>
+            </h2>
+             
             <div className="grid lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
