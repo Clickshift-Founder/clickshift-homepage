@@ -374,7 +374,7 @@ const ClickShiftHomepage = () => {
               </span>
             </h2>            
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Our algorithms analyze 847 data points in real-time across 12 blockchains.
+                Our algorithms analyze 847 data points in real-time across 3 leading blockchains.
                 From whale movements to sentiment shifts - we turn chaos into clarity.
               </p>
           </div>
@@ -433,7 +433,7 @@ const ClickShiftHomepage = () => {
                 <div className="text-3xl">🔮</div>
                 <div>
                   <h3 className="text-2xl font-bold">ClickShift Alpha</h3>
-                  <p className="text-blue-400">Solana Intelligence</p>
+                  <p className="text-blue-400">Solana Signals</p>
                 </div>
               </div>
               
@@ -481,7 +481,7 @@ const ClickShiftHomepage = () => {
                 <div className="text-3xl">⚡</div>
                 <div>
                   <h3 className="text-2xl font-bold">ClickShift Leverage</h3>
-                  <p className="text-orange-400">Milk Futures</p>
+                  <p className="text-orange-400">Capital Multiplier</p>
                 </div>
               </div>
               
@@ -545,7 +545,7 @@ const ClickShiftHomepage = () => {
     </button>
   </div>
               {/* ClickBot Auto Trade */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 text-center">
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700">
                 <div className="text-4xl mb-4">🤖</div>
                 <h3 className="text-2xl font-bold mb-4">ClickBot Auto Trade</h3>
                 <p className="text-lg text-slate-300 mb-6">"Never miss profits or hold through dumps"</p>
@@ -573,13 +573,11 @@ const ClickShiftHomepage = () => {
           <div className="text-center mb-16"></div>
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
             📊 Proven Results, Real Traders
-          </h2>
-          <p className="text-xl text-slate-300">
-            <div className="text-center mb-16"></div>
+            <p className="text-xl text-slate-300 text-center">    
                 Our users consistently outperform the market. Here's what they're saying:
               </p>
-
-          <div className="grid lg:grid-cols-3 gap-8">
+          </h2>
+                    <div className="grid lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
                 <div className="mb-4">
