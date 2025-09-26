@@ -268,8 +268,8 @@ const ProductsPage = () => {
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
                 Intelligence Suite.
                 <br />
-                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Maximize Your Edge
+                <span className="italic text-lg bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  Built for traders, Ready for markets
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
