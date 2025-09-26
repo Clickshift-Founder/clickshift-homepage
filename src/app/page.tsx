@@ -491,7 +491,7 @@ const ClickShiftHomepage = () => {
                 <div className="text-green-400">BTC/USDT Analysis - Completed in 2.3s</div>
                 <div className="text-blue-400">📈 LONG Signal | MODERATE Risk</div>
                 <div>💰 Position Size: 3% of portfolio recommended</div>
-                <div>🎯 Entry: $67,500 | Liquidation: $63,800 | Target: $72,100</div>
+                <div>🎯 Entry: $95,500 | Liquidation: $91,800 | Target: $105,100</div>
                 <div className="text-purple-400">⚖️ Risk/Reward: 1:2.8 | Win Probability: 74%</div>
               </div>
 
@@ -573,11 +573,12 @@ const ClickShiftHomepage = () => {
           <div className="text-center mb-16"></div>
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
             📊 Proven Results, Real Traders
-            <p className="text-xl text-slate-300 text-center">    
+            </h2>
+             <p className="text-xl text-slate-300 max-w-3xl mx-auto">    
                 Our users consistently outperform the market. Here's what they're saying:
               </p>
-          </h2>
-                    <div className="grid lg:grid-cols-3 gap-8">
+
+            <div className="grid lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
                 <div className="mb-4">
