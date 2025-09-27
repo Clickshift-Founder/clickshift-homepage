@@ -198,7 +198,7 @@ const FAQPage = () => {
       id: 22,
       category: 'mobile',
       question: 'Do you have a mobile app?',
-      answer: 'We have a progressive web app (PWA) that works perfectly on mobile devices. A dedicated mobile app for iOS and Android is launching in Q2 2025 with push notifications and offline analysis.',
+      answer: 'We have a progressive web app (PWA) that works perfectly on mobile devices. A dedicated mobile app for iOS and Android is launching in Q2 2026 with push notifications and offline analysis.',
       tags: ['mobile', 'app', 'pwa', 'notifications']
     },
     {
@@ -444,23 +444,23 @@ const FAQPage = () => {
                         <div className="px-6 pb-6">
                           <div className="border-t border-slate-700 pt-4">
                            {faq.hasLink ? (
-                              <p className="text-slate-300 leading-relaxed mb-4">
-                                {faq.answer.split(`'${faq.linkText}'`).map((part, index, array) => (
-                                  <span key={index}>
-                                    {part}
-                                    {index < array.length - 1 && (
-                                      <Link href={faq.linkUrl} className="text-blue-400 hover:text-blue-300 underline hover:no-underline font-semibold transition-all">
-                                        '{faq.linkText}'
-                                      </Link>
-                                    )}
-                                  </span>
-                                ))}
-                              </p>
-                            ) : (
-                              <p className="text-slate-300 leading-relaxed mb-4">
-                                {faq.answer}
-                              </p>
-                            )}
+                            <p className="text-slate-300 leading-relaxed mb-4">
+                              {faq.answer.split(`'${faq.linkText}'`).map((part, index, array) => (
+                                <span key={index}>
+                                  {part}
+                                  {index < array.length - 1 && (
+                                    <Link href={faq.linkUrl} className="text-blue-400 hover:text-blue-300 underline hover:no-underline font-semibold transition-all">
+                                      '{faq.linkText}'
+                                    </Link>
+                                  )}
+                                </span>
+                              ))}
+                            </p>
+                          ) : (
+                            <p className="text-slate-300 leading-relaxed mb-4">
+                              {faq.answer}
+                            </p>
+                          )}
                             
                             {/* Tags */}
                             <div className="flex flex-wrap gap-2">

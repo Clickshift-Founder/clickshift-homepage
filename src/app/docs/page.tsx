@@ -756,7 +756,8 @@ X-RateLimit-Reset: 1673875200`}</code>
               <p className="text-slate-300 text-sm mb-4">
                 Get technical support from our engineering team
               </p>
-              <button className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-sm font-semibold transition-all">
+              <button onClick={() => window.open('mailto:trust@clickshift.io?subject=API Partnership Inquiry&body=Hello ClickShift team, I am interested in...', '_blank')}
+              className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-sm font-semibold transition-all">
                 Contact Support
               </button>
             </div>

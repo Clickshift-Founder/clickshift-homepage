@@ -405,9 +405,9 @@ const AboutPage = () => {
                   <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all">
                     Join Our Mission →
                   </button>
-                  <button className="bg-slate-700 hover:bg-slate-600 px-6 py-3 rounded-lg font-semibold transition-all">
-                    Read Our Roadmap
-                  </button>
+                  <Link href="/roadmap" className="inline-block bg-slate-700 hover:bg-slate-600 px-6 py-3 rounded-lg font-semibold transition-all">
+                   Read Our Roadmap
+                  </Link>
                 </div>
               </div>
             </div>
