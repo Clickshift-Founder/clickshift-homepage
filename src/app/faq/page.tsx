@@ -52,7 +52,7 @@ const FAQPage = () => {
       id: 3,
       category: 'general',
       question: 'Which blockchains and tokens do you support?',
-      answer: 'Currently, ClickShift Alpha supports all Solana tokens, while ClickShift Leverage supports major crypto futures pairs (BTC, ETH, SOL, etc.). We\'re expanding to Ethereum, Base, and BSC in Q3 2025.',
+      answer: 'Currently, ClickShift Alpha supports all Solana tokens, while ClickShift Leverage supports major crypto futures pairs (BTC, ETH, SOL, etc.). We\'re expanding to Ethereum, Base, and BSC in Q1 2026.',
       tags: ['blockchain', 'solana', 'ethereum', 'tokens', 'support']
     },
     {
@@ -64,12 +64,15 @@ const FAQPage = () => {
     },
 
     // Pricing & Plans
-    {
+      {
       id: 5,
       category: 'pricing',
       question: 'Is there a free plan available?',
-      answer: 'Yes! Our Explorer plan is completely free and includes 10 token analyses per month, basic whale alerts, and community access. It\'s perfect for getting started with intelligent trading.',
-      tags: ['free', 'plan', 'explorer', 'trial']
+      answer: "Yes! Our Explorer plan is completely free and includes 10 token analyses per month, basic whale alerts, and community access. It's perfect for getting started with intelligent trading. You can 'click' to visit our product page",
+      tags: ['free', 'plan', 'explorer', 'trial'],
+      hasLink: true, 
+      linkText: 'click',
+      linkUrl: '/products'
     },
     {
       id: 6,
@@ -440,9 +443,24 @@ const FAQPage = () => {
                       {expandedItems.has(faq.id) && (
                         <div className="px-6 pb-6">
                           <div className="border-t border-slate-700 pt-4">
-                            <p className="text-slate-300 leading-relaxed mb-4">
-                              {faq.answer}
-                            </p>
+                           {faq.hasLink ? (
+                              <p className="text-slate-300 leading-relaxed mb-4">
+                                {faq.answer.split(`'${faq.linkText}'`).map((part, index, array) => (
+                                  <span key={index}>
+                                    {part}
+                                    {index < array.length - 1 && (
+                                      <Link href={faq.linkUrl} className="text-blue-400 hover:text-blue-300 underline hover:no-underline font-semibold transition-all">
+                                        '{faq.linkText}'
+                                      </Link>
+                                    )}
+                                  </span>
+                                ))}
+                              </p>
+                            ) : (
+                              <p className="text-slate-300 leading-relaxed mb-4">
+                                {faq.answer}
+                              </p>
+                            )}
                             
                             {/* Tags */}
                             <div className="flex flex-wrap gap-2">
