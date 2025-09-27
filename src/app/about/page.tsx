@@ -402,7 +402,8 @@ const AboutPage = () => {
                   the essential tool that every serious trader relies on for market intelligence.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all">
+                  <button onClick={() => window.open('mailto:trust@clickshift.io', '_blank')}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all">
                     Join Our Mission →
                   </button>
                   <Link href="/roadmap" className="inline-block bg-slate-700 hover:bg-slate-600 px-6 py-3 rounded-lg font-semibold transition-all">
