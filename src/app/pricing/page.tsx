@@ -352,19 +352,20 @@ interface Plan {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 py-2 px-4 rounded-lg font-semibold transition-all">
+                <button onClick={() => window.open('mailto:trust@clickshift.io?subject=API Partnership Inquiry&body=Hello ClickShift team, I am interested in...', '_blank')}
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 py-2 px-4 rounded-lg font-semibold transition-all">
                   Get API Access
                 </button>
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-12">
-            <p className="text-slate-400 mb-4">Need higher limits or custom endpoints?</p>
-            <button className="bg-slate-700 hover:bg-slate-600 px-6 py-3 rounded-lg font-semibold transition-all">
-              Contact Our API Team
-            </button>
-          </div>
+              <div className="text-center mt-12">
+                <p className="text-slate-400 mb-4">Need higher limits or custom endpoints?</p>
+                <button onClick={() => window.open('mailto:trust@clickshift.io?subject=API Partnership Inquiry&body=Hello ClickShift team, I am interested in...', '_blank')}
+                className="bg-slate-700 hover:bg-slate-600 px-6 py-3 rounded-lg font-semibold transition-all">
+                  Contact Our API Team
+                </button>
+              </div>
         </div>
       </section>
 
