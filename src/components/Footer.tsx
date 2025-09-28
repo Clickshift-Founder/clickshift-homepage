@@ -119,7 +119,7 @@ const Footer = () => {
               <div><Link href="/roadmap" className="hover:text-white transition-colors">Road map</Link></div>
               <div><a href="#" className="hover:text-white transition-colors">Blog</a></div>
               <div><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></div>
-              <div><a href="#" className="hover:text-white transition-colors">Contact</a></div>
+              <div><a href="mailto:trust@clickshift.io" className="hover:text-white transition-colors">Contact</a></div>
             </div>
           </div>
           

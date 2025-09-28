@@ -61,7 +61,7 @@ const RoadmapPage = () => {
     {
       id: 'q2-2025',
       phase: 'Intelligence Expansion',
-      period: 'Q2 2025',
+      period: 'Q2 2026',
       status: 'in-progress',
       icon: <Brain className="h-8 w-8" />,
       color: 'blue',
@@ -95,7 +95,7 @@ const RoadmapPage = () => {
     {
       id: 'q3-2025',
       phase: 'Multi-Chain Dominance',
-      period: 'Q3 2025',
+      period: 'Q3 2026',
       status: 'planned',
       icon: <Globe className="h-8 w-8" />,
       color: 'purple',
@@ -129,7 +129,7 @@ const RoadmapPage = () => {
     {
       id: 'q4-2025',
       phase: 'Global Scale',
-      period: 'Q4 2025',
+      period: 'Q4 2026',
       status: 'planned',
       icon: <Rocket className="h-8 w-8" />,
       color: 'orange',
@@ -163,7 +163,7 @@ const RoadmapPage = () => {
     {
       id: '2026',
       phase: 'Market Leadership',
-      period: '2026',
+      period: '2027',
       status: 'vision',
       icon: <Crown className="h-8 w-8" />,
       color: 'gold',
@@ -197,12 +197,12 @@ const RoadmapPage = () => {
   ];
 
   const milestones: Milestone[] = [
-    { date: '2024 Q4', title: 'Product-Market Fit Achieved', status: 'completed' },
-    { date: '2025 Q1', title: 'Launch Detector Beta', status: 'in-progress' },
-    { date: '2025 Q2', title: 'Premium Monetization', status: 'planned' },
-    { date: '2025 Q3', title: 'Multi-Chain Expansion', status: 'planned' },
-    { date: '2025 Q4', title: 'Series A Funding', status: 'planned' },
-    { date: '2026 Q2', title: 'Global Market Leader', status: 'vision' }
+    { date: '2025 Q2', title: 'Product-Market Fit Achieved', status: 'completed' },
+    { date: '2026 Q1', title: 'Launch Detector Beta', status: 'in-progress' },
+    { date: '2026 Q2', title: 'Premium Monetization', status: 'planned' },
+    { date: '2026 Q3', title: 'Multi-Chain Expansion', status: 'planned' },
+    { date: '2026 Q4', title: 'Series A Funding', status: 'planned' },
+    { date: '2027 Q4', title: 'Global Market Leader', status: 'vision' }
   ];
 
   const metrics = [
@@ -447,15 +447,15 @@ interface Milestone {
               </h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span>2025 Q2</span>
+                  <span>2026 Q2</span>
                   <span className="font-bold text-green-400">$50K MRR</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span>2025 Q4</span>
+                  <span>2026 Q4</span>
                   <span className="font-bold text-green-400">$200K MRR</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span>2026 EOY</span>
+                  <span>2027 EOY</span>
                   <span className="font-bold text-green-400">$1M+ MRR</span>
                 </div>
               </div>
@@ -473,11 +473,11 @@ interface Milestone {
                   <span className="font-bold text-blue-400">525 DAU</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span>2025 Q4</span>
+                  <span>2026 Q4</span>
                   <span className="font-bold text-blue-400">25K DAU</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span>2026 EOY</span>
+                  <span>2027 EOY</span>
                   <span className="font-bold text-blue-400">100K+ DAU</span>
                 </div>
               </div>
