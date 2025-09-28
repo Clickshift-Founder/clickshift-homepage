@@ -27,7 +27,7 @@ const RoadmapPage = () => {
     {
       id: 'current',
       phase: 'Current State',
-      period: 'Q4 2024 - Q1 2025',
+      period: 'Q2 2025 - Q3 2025',
       status: 'completed',
       icon: <CheckCircle className="h-8 w-8" />,
       color: 'green',
@@ -305,7 +305,7 @@ interface Milestone {
             <h2 className="text-2xl font-bold mb-4">🎯 Our North Star</h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
               "To democratize institutional-grade trading intelligence, making sophisticated market analysis 
-              accessible to everyone from retail traders in Lagos to hedge funds in London."
+              accessible to everyone from retail traders in Nairobi to hedge funds in NewYork."
             </p>
           </div>
 
