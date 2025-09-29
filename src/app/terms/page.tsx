@@ -585,7 +585,7 @@ const TermsOfServicePage = () => {
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
               <Calendar className="h-6 w-6 text-green-400 mx-auto mb-2" />
               <div className="font-bold">Effective Date</div>
-              <div className="text-sm text-slate-400">January 22, 2025</div>
+              <div className="text-sm text-slate-400">July 22, 2025</div>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
               <Globe className="h-6 w-6 text-blue-400 mx-auto mb-2" />
@@ -698,8 +698,8 @@ const TermsOfServicePage = () => {
               <h4 className="font-semibold text-blue-400 mb-2">Company Information</h4>
               <div className="text-slate-300 text-sm space-y-1">
                 <p>ClickShift Intelligence Inc.</p>
-                <p>Incorporated in Delaware, United States</p>
-                <p>Registered Address: [Corporate Address]</p>
+                <p>Incorporated in Delaware, United States(in progress)</p>
+                <p>Registered Address: To be disclosed after reg completion</p>
                 <p>For service of legal process: legal@clickshift.io</p>
               </div>
             </div>
@@ -708,7 +708,7 @@ const TermsOfServicePage = () => {
           {/* Footer */}
           <div className="mt-8 text-center space-y-2 text-sm text-slate-400 border-t border-slate-700 pt-8">
             <p>ClickShift Intelligence Inc. © 2025</p>
-            <p>These Terms of Service are effective as of January 22, 2025</p>
+            <p>These Terms of Service are effective as of July 22, 2025</p>
             <p>For the most current version, visit clickshift.io/terms</p>
             <div className="flex justify-center space-x-4 mt-4">
               <a href="/privacy" className="text-blue-400 hover:text-blue-300">Privacy Policy</a>

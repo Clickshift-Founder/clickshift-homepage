@@ -565,7 +565,7 @@ interface Milestone {
           </div>
           <p className="text-slate-400 mb-4">Building DeFi's Intelligence Infrastructure</p>
           <div className="text-sm text-slate-500">
-            Last Updated: January 22, 2025 | This roadmap represents our current plans and may be subject to change based on market conditions and user feedback.
+            Last Updated: July 22, 2025 | This roadmap represents our current plans and may be subject to change based on market conditions and user feedback.
           </div>
         </div>
       </section>

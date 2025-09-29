@@ -425,7 +425,7 @@ const PrivacyPolicyPage = () => {
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
               <Calendar className="h-6 w-6 text-green-400 mx-auto mb-2" />
               <div className="font-bold">Last Updated</div>
-              <div className="text-sm text-slate-400">January 22, 2025</div>
+              <div className="text-sm text-slate-400">July 22, 2025</div>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
               <Globe className="h-6 w-6 text-blue-400 mx-auto mb-2" />
@@ -546,7 +546,7 @@ const PrivacyPolicyPage = () => {
           {/* Company Information */}
           <div className="mt-8 text-center space-y-2 text-sm text-slate-400 border-t border-slate-700 pt-8">
             <p>ClickShift Intelligence Inc.</p>
-            <p>This Privacy Policy is effective as of January 22, 2025</p>
+            <p>This Privacy Policy is effective as of July 22, 2025</p>
             <p>For the most current version, visit clickshift.io/privacy</p>
           </div>
         </div>
