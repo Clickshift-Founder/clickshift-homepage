@@ -96,14 +96,11 @@ const Footer = () => {
                   href="https://t.me/ClickShiftAlerts" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Telegram
-                </a>
-              </div>
+                  className="hover:text-white transition-colors">Telegram</a></div>
               <div><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></div>
+              <div><Link href="/results" className="hover:text-white transition-colors">Results from ClickShift</Link></div>
+              <div><a href="https://x.com/ClickShiftHQ" className="hover:text-white transition-colors">Twitter</a></div>
               <div><a href="#" className="hover:text-white transition-colors">Discord</a></div>
-              <div><a href="#" className="hover:text-white transition-colors">Twitter</a></div>
               <div><a href="#" className="hover:text-white transition-colors">Medium</a></div>
             </div>
           </div>
