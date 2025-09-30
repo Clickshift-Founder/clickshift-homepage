@@ -255,7 +255,7 @@ const ProductsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white overflow-x-hidden">
       {/* Animated Background */}
-      <div className="fixed inset-0" style={{ zIndex: 0 }}>
+      <div className="fixed inset-0" style={{ zIndex: 0, pointerEvents: 'none'}}>
         <AnimatedBackground />
       </div>
 

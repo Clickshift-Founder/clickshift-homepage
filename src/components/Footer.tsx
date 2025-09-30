@@ -20,7 +20,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative z-50 py-12 px-4 bg-slate-900 border-t border-slate-700" style={{ backgroundColor: 'rgb(15, 23, 42)' }}>
+    <footer className="relative py-12 px-4 bg-slate-900 border-t border-slate-700" style={{ backgroundColor: 'rgb(15, 23, 42)' }}>
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-8">
