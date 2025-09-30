@@ -70,6 +70,27 @@ export default function RootLayout({
     gtag('js', new Date());
     gtag('config', 'G-75MZH565VW');
   `}
+  <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ClickShift",
+      "applicationCategory": "FinanceApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "525"
+      }
+    })
+  }}
+/>
 </Script>
 </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
