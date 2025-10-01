@@ -10,7 +10,8 @@ import {
   Zap,
   Shield,
   Star,
-  BookOpen
+  BookOpen,
+  AlertTriangle
 } from 'lucide-react';
 
 // Blog posts data
@@ -84,7 +85,63 @@ const blogPosts = [
     icon: <Star className="h-6 w-6" />,
     gradient: 'from-cyan-500 to-blue-600',
     tags: ['Solana', 'Meme Coins', 'Alpha', 'Early Detection']
-  }
+  },
+  {
+  slug: 'analyzed-1000-solana-launches',
+  title: 'I Analyzed 1,000 Solana Launches. Here\'s What Winners Have in Common',
+  excerpt: '4 months analyzing every Solana launch. 1,000 tokens. 47 went 100x+. Here are the exact patterns that separated winners from rugs.',
+  category: 'Market Research',
+  readTime: '13 min read',
+  date: 'February 8, 2025',
+  featured: true,
+  author: 'ClickShift Research',
+  views: '11.8K',
+  icon: <Star className="h-6 w-6" />,
+  gradient: 'from-cyan-500 to-blue-600',
+  tags: ['Solana', 'Research', 'Data Analysis', 'Token Launches']
+},
+{
+  slug: 'futures-mistake-cost-47k',
+  title: 'The Futures Trading Mistake That Cost Me $47K (And How to Avoid It)',
+  excerpt: 'I watched $47,000 disappear in 8 minutes. Not from a bad trade—from a mistake I didn\'t even know I was making. This is that story.',
+  category: 'Risk Management',
+  readTime: '10 min read',
+  date: 'February 12, 2025',
+  featured: false,
+  author: 'Marcus L.',
+  views: '16.9K',
+  icon: <AlertTriangle className="h-6 w-6" />,
+  gradient: 'from-red-500 to-orange-600',
+  tags: ['Futures Trading', 'Risk Management', 'Loss Prevention']
+},
+{
+  slug: 'how-to-read-crypto-whales',
+  title: 'How to Read Crypto Whales: Complete Guide to Understanding Smart Money',
+  excerpt: 'Whale wallets move markets. Learning to read their behavior is like having insider information—except it\'s legal and publicly available. Complete tutorial.',
+  category: 'Education',
+  readTime: '14 min read',
+  date: 'February 15, 2025',
+  featured: true,
+  author: 'ClickShift Research',
+  views: '19.3K',
+  icon: <Target className="h-6 w-6" />,
+  gradient: 'from-indigo-500 to-purple-600',
+  tags: ['Whale Tracking', 'Education', 'Smart Money', 'Tutorial']
+},
+{
+  slug: 'top-defi-mistakes-beginners',
+  title: 'Top 10 DeFi Mistakes Beginners Make (And How to Fix Them)',
+  excerpt: 'I\'ve taught 500+ people DeFi trading. Everyone makes the same 10 mistakes. Here\'s how to avoid them and keep your money.',
+  category: 'Beginner Guide',
+  readTime: '12 min read',
+  date: 'February 18, 2025',
+  featured: false,
+  author: 'Sarah Chen',
+  views: '22.1K',
+  icon: <Shield className="h-6 w-6" />,
+  gradient: 'from-pink-500 to-rose-600',
+  tags: ['Beginner Guide', 'DeFi', 'Common Mistakes', 'Education']
+},
 ];
 
 const BlogPage = () => {

@@ -65,5 +65,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    {
+  url: `${baseUrl}/blog`,
+  lastModified: new Date(),
+  changeFrequency: 'weekly',
+  priority: 0.9,
+},
+{
+  url: `${baseUrl}/blog/how-to-avoid-liquidation-futures`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${baseUrl}/blog/whale-tracking-guide-2025`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${baseUrl}/blog/best-defi-trading-tools`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${baseUrl}/blog/rsi-signals-crypto-trading`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
+{
+  url: `${baseUrl}/blog/solana-meme-coins-intelligence`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8,
+},
   ]
 }
