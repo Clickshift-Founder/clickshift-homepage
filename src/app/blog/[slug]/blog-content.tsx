@@ -1072,11 +1072,11 @@ export const blogContent: Record<string, BlogPost> = {
         <div className="bg-red-900/20 border-l-4 border-red-500 p-6 rounded-lg">
           <h4 className="font-bold mb-3 text-red-400">Rugs/Losers (953 tokens):</h4>
           <ul className="space-y-2 text-sm text-slate-300">
-            <li>• Initial liquidity: &lt$20K or &gt$500K</li>
-            <li>• Liquidity locked: 71% unlocked or &lt7 days</li>
+            <li>• Initial liquidity: &lt;$20K or &gt;$500K</li>
+            <li>• Liquidity locked: 71% unlocked or &lt;7 days</li>
             <li>• LP adds in first hour: 0-1 (suspicious)</li>
             <li>• Initial buy pressure: Explosive then crash</li>
-            <li>• Holder count T+15min: &lt50 or &gt1000 (bots)</li>
+            <li>• Holder count T+15min: &lt;50 or &gt;1000 (bots)</li>
           </ul>
         </div>
       </div>
@@ -1170,7 +1170,7 @@ export const blogContent: Record<string, BlogPost> = {
             <span className="font-bold">3,000 members (collapse)</span>
           </div>
           <div className="border-t border-slate-700 pt-3 mt-3">
-            <strong>Red flags:</strong> Instant 10K+ members, low message count (&lt100/day), 
+            <strong>Red flags:</strong> Instant 10K+ members, low message count (&lt;100/day), 
             generic "to the moon" spam, no organic content, admin-only posts
           </div>
         </div>
@@ -1230,7 +1230,7 @@ export const blogContent: Record<string, BlogPost> = {
 
       <p className="mb-6">
         Based on these patterns, I created a 100-point scoring system. Tokens scoring 70+ had a 42% chance of 100x. 
-        Tokens scoring &lt40 had 0% success rate.
+        Tokens scoring &lt;40 had 0% success rate.
       </p>
 
       <div className="bg-slate-800/50 rounded-xl p-6 mb-8 border border-slate-700">
@@ -1273,7 +1273,7 @@ export const blogContent: Record<string, BlogPost> = {
             <span className="font-bold text-green-400">100 points</span>
           </div>
           <p className="text-xs text-slate-400 mt-2">
-            70+ = High potential | 40-69 = Medium risk | &lt40 = Avoid
+            70+ = High potential | 40-69 = Medium risk | &lt;40 = Avoid
           </p>
         </div>
       </div>
@@ -1353,7 +1353,7 @@ export const blogContent: Record<string, BlogPost> = {
         </div>
 
         <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-          <h4 className="font-bold mb-2">Small Cap (&lt$100M)</h4>
+          <h4 className="font-bold mb-2">Small Cap (&lt;$100M)</h4>
           <p className="text-sm text-slate-300 mb-2">
             New tokens, meme coins, early projects
           </p>
@@ -1464,8 +1464,8 @@ export const blogContent: Record<string, BlogPost> = {
           <div className="bg-slate-900 rounded-lg p-3 text-sm">
             <p className="text-green-400 mb-1">Example alert setup:</p>
             <p className="text-slate-300">
-              "Alert me when any of these 10 whale wallets: (1) Transfers &gt$100K to exchanges, 
-              (2) Makes sells &gt$50K, (3) Accumulates &gt$100K in single transaction"
+              "Alert me when any of these 10 whale wallets: (1) Transfers &gt;$100K to exchanges, 
+              (2) Makes sells &gt;$50K, (3) Accumulates &gt;$100K in single transaction"
             </p>
           </div>
         </div>
@@ -1504,7 +1504,7 @@ export const blogContent: Record<string, BlogPost> = {
           <h4 className="font-bold mb-2">Mistake #2: Following Every Single Transaction</h4>
           <p className="text-sm text-slate-300">
             Whales make dozens of transactions daily. Most are noise—wallet management, yield farming, small rotations. 
-            Only track SIGNIFICANT moves: &gt$50K transactions or multiple coordinated transactions.
+            Only track SIGNIFICANT moves: &gt;$50K transactions or multiple coordinated transactions.
           </p>
         </div>
 
@@ -1557,7 +1557,7 @@ export const blogContent: Record<string, BlogPost> = {
           </div>
           <div className="flex items-start space-x-3">
             <CheckCircle className="h-5 w-5 text-green-400 mt-1 flex-shrink-0" />
-            <span>Is the transaction size significant? (&gt$50K or &gt1% of daily volume)</span>
+            <span>Is the transaction size significant? (&gt;$50K or &gt;1% of daily volume)</span>
           </div>
           <div className="flex items-start space-x-3">
             <CheckCircle className="h-5 w-5 text-green-400 mt-1 flex-shrink-0" />
@@ -1746,7 +1746,7 @@ export const blogContent: Record<string, BlogPost> = {
           <div className="flex items-start space-x-3">
             <AlertTriangle className="h-5 w-5 text-red-400 mt-1 flex-shrink-0" />
             <div>
-              <strong>Unsustainably high APY</strong> (&gt200%) = Likely ponzi mechanics
+              <strong>Unsustainably high APY</strong> (&gt;200%) = Likely ponzi mechanics
             </div>
           </div>
           <div className="flex items-start space-x-3">
@@ -1867,7 +1867,7 @@ export const blogContent: Record<string, BlogPost> = {
           </div>
           <div className="flex items-start space-x-3">
             <CheckCircle className="h-5 w-5 text-green-400 mt-1 flex-shrink-0" />
-            <span>Check audits before depositing. 5 minutes of research &gt losing everything.</span>
+            <span>Check audits before depositing. 5 minutes of research &gt; losing everything.</span>
           </div>
         </div>
       </div>
