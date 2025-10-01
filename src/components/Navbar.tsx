@@ -12,6 +12,7 @@ const Navbar = () => {
     { href: "/products", label: "Products" },           // ← Changed from # to /products
     { href: "/pricing", label: "Pricing" },
     { href: "/docs", label: "API Documentation" },
+    { href: "/blog", label: "Blog" },
     { href: "https://t.me/ClickShiftAlerts", label: "Community", external: true }, // ← Direct Telegram link
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },

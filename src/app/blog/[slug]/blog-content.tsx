@@ -1,6 +1,19 @@
 import { Shield, AlertTriangle, CheckCircle, TrendingUp, Target, Zap, Star } from 'lucide-react';
+import React from 'react';
+type BlogPost = {
+  title: string;
+  category: string;
+  readTime: string;
+  date: string;
+  views: string;
+  author: string;
+  role: string;
+  gradient: string;
+  tags: string[];
+  content: React.ReactNode;
+};
 
-export const blogContent: Record<string, any> = {
+export const blogContent: Record<string, BlogPost> = {
   'how-to-avoid-liquidation-futures': {
     title: 'How I Saved My Portfolio From Liquidation Using ClickShift Leverage',
     category: 'Futures Trading',

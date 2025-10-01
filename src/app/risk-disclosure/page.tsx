@@ -529,7 +529,7 @@ const RiskDisclosurePage = () => {
                 <ul className="text-slate-300 text-sm space-y-1">
                   <li>• <a href="/docs" className="text-blue-400 hover:text-blue-300">Trading Documentation</a></li>
                   <li>• <a href="/tutorials" className="text-blue-400 hover:text-blue-300">Risk Management Tutorials</a></li>
-                  <li>• <a href="/blog" className="text-blue-400 hover:text-blue-300">Market Analysis Blog</a></li>
+                  <li>• <Link href="/blog" className="text-blue-400 hover:text-blue-300">Market Analysis Blog</Link></li>
                 </ul>
               </div>
               <div>
