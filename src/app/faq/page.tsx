@@ -10,7 +10,7 @@ export const metadata = {
 
 import FAQContent from "./FAQContent";
 
-export default function AboutPage() {
+export default function FAQPage() {
   return <FAQContent />;
 }
 
