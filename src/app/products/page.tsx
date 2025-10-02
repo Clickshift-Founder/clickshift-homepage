@@ -21,6 +21,16 @@ import {
   Star
 } from 'lucide-react';
 
+    export const metadata = {
+      title: "Our Products | ClickShift",
+      description: "Professional-grade AI tools that transform crypto trading from guesswork to intelligence. Built for traders who demand precision, speed, and consistent profits.",
+      openGraph: {
+        title: "Crypto Tools that gives you a competitive advantage | ClickShift",
+        description: "Professional-grade AI tools that transform crypto trading from guesswork to intelligence. Built for traders who demand precision, speed, and consistent profits.",
+        images: ["/og-image.png"],
+      }
+    }
+
 // Animated Background Particles Component (reused from home)
 const AnimatedBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);

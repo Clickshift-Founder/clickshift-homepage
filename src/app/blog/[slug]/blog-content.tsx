@@ -11,14 +11,15 @@ type BlogPost = {
   gradient: string;
   tags: string[];
   content: React.ReactNode;
+  excerpt?: string;
 };
 
 export const metadata = {
   title: "Trading Intelligence Insights and Strategies | ClickShift",
   description: "Real stories, proven strategies, and actionable intelligence from 525+ traders who've mastered DeFi markets with ClickShift.",
   openGraph: {
-    title: "...",
-    description: "...",
+    title: "Trading Intelligence Insights and Strategies | ClickShift",
+    description: "Real stories, proven strategies, and actionable intelligence from 525+ traders who've mastered DeFi markets with ClickShift.",
     images: ["/og-image.png"],
   }
 }
@@ -27,7 +28,7 @@ export const blogContent: Record<string, BlogPost> = {
   'how-to-avoid-liquidation-futures': {
     title: 'How I Saved My Portfolio From Liquidation Using ClickShift Leverage',
     category: 'Futures Trading',
-    readTime: '8 min read',
+    readTime: '3 min read',
     date: 'February 15, 2025',
     views: '12.4K',
     author: 'Emmanuel. O',
@@ -248,7 +249,7 @@ export const blogContent: Record<string, BlogPost> = {
   'whale-tracking-guide-2025': {
     title: 'The Whale Tracking Strategy That Predicted a 847% Pump',
     category: 'Trading Intelligence',
-    readTime: '12 min read',
+    readTime: '4 min read',
     date: 'January 12, 2025',
     views: '18.2K',
     author: 'ClickShift Research Team',
@@ -457,8 +458,8 @@ export const blogContent: Record<string, BlogPost> = {
   'best-defi-trading-tools': {
     title: 'I Tested 27 DeFi Trading Tools. Only 3 Are Worth Your Money.',
     category: 'Tool Reviews',
-    readTime: '15 min read',
-    date: 'January 10, 2025',
+    readTime: '5 min read',
+    date: 'June 10, 2025',
     views: '9.8K',
     author: 'Sarah Chen',
     role: 'Professional Trader & Tool Analyst',
@@ -627,8 +628,8 @@ export const blogContent: Record<string, BlogPost> = {
   'rsi-signals-crypto-trading': {
     title: 'The RSI Secret That Gave Me 76% Win Rate (Not What You Think)',
     category: 'Technical Analysis',
-    readTime: '10 min read',
-    date: 'January 8, 2025',
+    readTime: '4 min read',
+    date: 'April 8, 2025',
     views: '15.7K',
     author: 'Marcus Rodriguez',
     role: 'Quantitative Trader',
@@ -814,8 +815,8 @@ export const blogContent: Record<string, BlogPost> = {
   'solana-meme-coins-intelligence': {
     title: 'How AI Caught the Next 100x Solana Meme Coin in 15 Minutes',
     category: 'Solana Trading',
-    readTime: '11 min read',
-    date: 'January 5, 2025',
+    readTime: '4 min read',
+    date: 'July 5, 2025',
     views: '21.3K',
     author: 'ClickShift Research Team',
     role: 'Solana Intelligence Division',
@@ -1023,8 +1024,8 @@ export const blogContent: Record<string, BlogPost> = {
 'analyzed-1000-solana-launches': {
   title: 'I Analyzed 1,000 Solana Launches. Here\'s What Winners Have in Common',
   category: 'Market Research',
-  readTime: '13 min read',
-  date: 'February 8, 2025',
+  readTime: '6 min read',
+  date: 'May 8, 2025',
   views: '11.8K',
   author: 'ClickShift Research',
   role: 'Data Analysis Team',
@@ -1310,8 +1311,8 @@ export const blogContent: Record<string, BlogPost> = {
 'how-to-read-crypto-whales': {
   title: 'How to Read Crypto Whales: Complete Guide to Understanding Smart Money',
   category: 'Education',
-  readTime: '14 min read',
-  date: 'February 15, 2025',
+  readTime: '6 min read',
+  date: 'August 25, 2025',
   views: '19.3K',
   author: 'ClickShift Research',
   role: 'Market Intelligence Division',
@@ -1607,8 +1608,8 @@ export const blogContent: Record<string, BlogPost> = {
 'top-defi-mistakes-beginners': {
   title: 'Top 10 DeFi Mistakes Beginners Make (And How to Fix Them)',
   category: 'Beginner Guide',
-  readTime: '12 min read',
-  date: 'February 18, 2025',
+  readTime: '4 min read',
+  date: 'September 18, 2025',
   views: '22.1K',
   author: 'Sarah Chen',
   role: 'DeFi Education Lead',
@@ -1905,8 +1906,8 @@ export const blogContent: Record<string, BlogPost> = {
 'futures-mistake-cost-47k': {
   title: 'The Futures Trading Mistake That Cost Me $47K (And How to Avoid It)',
   category: 'Risk Management',
-  readTime: '10 min read',
-  date: 'February 12, 2025',
+  readTime: '5 min read',
+  date: 'October 1, 2025',
   views: '16.9K',
   author: 'Marcus L.',
   role: 'Former Professional Trader',

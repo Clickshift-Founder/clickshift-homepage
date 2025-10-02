@@ -14,6 +14,17 @@ import {
   TrendingUp,
 } from "lucide-react";
 
+
+export const metadata = {
+  title: "About Us | ClickShift",
+  description: "ClickShift exists to make Web3 trading smarter, safer, and simpler.",
+  openGraph: {
+    title: "About ClickShift | Building the Bloomberg of Web3",
+    description: "Most traders lose money not because opportunities don't exist; but because of bad timing, blind risks, and overwhelming complexity. We're here to change that.",
+    images: ["/og-image.png"],
+  }
+}
+
 const AboutPage = () => {
   const [activeTab, setActiveTab] = useState("mission");
   const [currentMetric, setCurrentMetric] = useState(0);
