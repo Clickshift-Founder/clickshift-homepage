@@ -17,19 +17,6 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = blogContent[params.slug];
-  
-  return {
-    title: `${post.title} | ClickShift Blog`,
-    description: post.excerpt || post.title,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      images: ["/og-blog.png"],
-    }
-  };
-}
 
 import { blogContent } from './blog-content';
 
