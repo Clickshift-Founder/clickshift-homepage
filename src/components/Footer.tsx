@@ -1,3 +1,4 @@
+import NewsletterFooter from "@/components/NewsletterFooter";
 import React from 'react';
 import Link from "next/link";
 import { Shield } from 'lucide-react';
@@ -136,6 +137,9 @@ const Footer = () => {
           <div>Business Inquiries: trust@clickshift.io</div>
           <div>Support: clickndshift@gmail.com</div>
         </div>
+
+        {/* Newsletter in footer */}
+        <NewsletterFooter />
 
         {/* Copyright */}
         <div className="text-center text-sm text-slate-500 border-t border-slate-700 pt-8">
