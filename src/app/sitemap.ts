@@ -3,6 +3,7 @@ import { MetadataRoute } from 'next'
  
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://clickshift.io'
+  const now = new Date().toISOString();
   
   return [
     {
