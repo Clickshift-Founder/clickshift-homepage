@@ -49,6 +49,9 @@ const Footer = () => {
           </div>
         </div>
 
+         {/* Newsletter in footer */}
+        <NewsletterFooter />
+
         {/* Footer Links Grid */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
           {/* Products */}
@@ -138,10 +141,7 @@ const Footer = () => {
           <div>Support: hello@clickshift.io</div>
         </div>
 
-        {/* Newsletter in footer */}
-        <NewsletterFooter />
-
-        {/* Copyright */}
+       {/* Copyright */}
         <div className="text-center text-sm text-slate-500 border-t border-slate-700 pt-8">
           <p>© 2025 ClickShift Intelligence Inc. All Rights Reserved</p>
           <p className="mt-1">Patent-pending algorithms. Regulatory compliant. Built for global scale.</p>
