@@ -135,7 +135,7 @@ const Footer = () => {
         {/* Contact Information */}
         <div className="text-center space-y-2 text-sm text-slate-400 mb-8">
           <div>Business Inquiries: trust@clickshift.io</div>
-          <div>Support: clickndshift@gmail.com</div>
+          <div>Support: hello@clickshift.io</div>
         </div>
 
         {/* Newsletter in footer */}
