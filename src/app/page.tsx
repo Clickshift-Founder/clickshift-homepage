@@ -284,7 +284,7 @@ const ClickShiftHomepage = () => {
             </h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               ClickShift makes Web3 trading accessible. 
-              Our AI shields you from costly mistakes and empowers you to capture opportunities with confidence as a newbie or pro.
+              Our AI shields you from costly mistakes and empowers you to capture opportunities with confidence as a newbie starting out, pro rebuilding a lost portfolio or developer with our SDKs.
             </p>
           </div>
 
