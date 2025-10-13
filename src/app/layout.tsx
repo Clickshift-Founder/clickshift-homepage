@@ -94,7 +94,6 @@ export default function RootLayout({
     })
   }}
 />
-</Script>
 </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar />
