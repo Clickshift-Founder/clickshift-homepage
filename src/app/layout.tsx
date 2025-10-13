@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "ClickShift",
     images: [
       {
-        url: "/og-banner.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "ClickShift – DeFi Intelligence",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "The Intelligent AI Terminal for DeFi Traders",
     description:
       "ClickShift gets you onchain safely. AI-powered tools to prevent losses, boost profits, and trade with precision in DeFi.",
-    images: ["/og-banner.png"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -70,6 +70,9 @@ export default function RootLayout({
     gtag('js', new Date());
     gtag('config', 'G-75MZH565VW');
   `}
+  </Script>
+
+{/* Schema.org structured data */}
   <script
   type="application/ld+json"
   dangerouslySetInnerHTML={{

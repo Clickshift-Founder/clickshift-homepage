@@ -1,8 +1,8 @@
 export const metadata = {
   title: "Pricing & Plans | ClickShift",
-  description: "Choose the perfect plan for your trading needs. Free Explorer tier, Professional at $79/month, or Elite at $199/month.",
+  description: "Choose the perfect plan for your trading, and API needs, as a starter, rebuilder or builder. Free Explorer tier, Professional at $79/month, or Elite at $199/month.",
    alternates: { 
-    canonical: "https://clickshift.io/about" },
+    canonical: "https://clickshift.io/pricing" },
   openGraph: {
     title: "ClickShift Pricing - DeFi Trading Intelligence",
     description: "Professional-grade trading tools starting free. Upgrade for unlimited analysis and advanced features.",

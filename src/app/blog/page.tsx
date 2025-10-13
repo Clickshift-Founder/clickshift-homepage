@@ -1,12 +1,12 @@
 export const metadata = {
   title: "ClickShift Blog",
-  description: "Insights, strategies, and updates from ClickShift.",
+  description: "Insights, strategies, stories and updates from ClickShift and guest users.",
    alternates: { 
-    canonical: "https://clickshift.io/about" },
+    canonical: "https://clickshift.io/blog" },
   openGraph: {
     title: "ClickShift Blog",
     description: "Smarter, safer, simpler trading with AI intelligence.",
-    images: ["/og-blog.png"],
+    images: ["/og-image.png"],
   },
 };
 

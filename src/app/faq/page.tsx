@@ -2,7 +2,7 @@ export const metadata = {
   title: "Frequently Asked Questions | ClickShift",
   description: "Everything you need to know about ClickShift's intelligent trading platform. Can't find what you're looking for? Contact our support team.",
    alternates: { 
-    canonical: "https://clickshift.io/about" },
+    canonical: "https://clickshift.io/faq" },
   openGraph: {
     title: "The A to Z of ClickShift and how to take advantage| ClickShift",
     description: "Everything you need to know about ClickShift's intelligent trading platform. Can't find what you're looking for? Contact our support team.",
