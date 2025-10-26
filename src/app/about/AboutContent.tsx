@@ -33,7 +33,7 @@ const AboutPage = () => {
     quote:
       "I lost 9 months of my salary trading crypto because tools like ClickShift didn't exist. I was making decisions based on hope, not intelligence.",
     details:
-      "That devastating loss in 2023 became my mission. I realized that 95% of traders lose money not because opportunities don't exist, but because they lack the intelligence tools that institutions use. ClickShift was born from personal pain and the determination to democratize trading intelligence.",
+      "That devastating loss in 2021 became my mission. I realized that 95% of traders lose money not because opportunities don't exist, but because they lack the intelligence tools that institutions use. ClickShift was born from personal pain and the determination to democratize trading intelligence.",
   };
 
   const teamValues = [
