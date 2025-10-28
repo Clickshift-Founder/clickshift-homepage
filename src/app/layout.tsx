@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "ClickShift",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://clickshift.io/og-image.png",
         width: 1200,
         height: 630,
         alt: "ClickShift – DeFi Intelligence",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "The Intelligent AI Terminal for DeFi Traders",
     description:
       "ClickShift gets you onchain safely. AI-powered tools to prevent losses, boost profits, and trade with precision in DeFi.",
-    images: ["/og-image.png"],
+    images: ["https://clickshift.io/og-image.png"],
   },
 };
 
