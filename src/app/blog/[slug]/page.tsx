@@ -21,16 +21,32 @@ import {
 import { blogContent } from './blog-content';
 
 /* ✅ Named export for the Share + Bookmark buttons */
-export function ShareAndBookmark({ title, url }: { title: string; url: string }) {
+export function ShareAndBookmark({
+  title,
+  slug,
+  category,
+}: {
+  title: string;
+  slug: string;
+  category: string;
+}) {
+  const fullUrl = `https://www.clickshift.io/blog/${slug}`;
+
   const handleShare = async () => {
+    const shareData = {
+      title: `${title} | ClickShift Blog`,
+      text: `As the world migrates to Web3, stay ahead of the pack with ${category.toLowerCase()} insights from ClickShift. Read below 👇`,
+      url: fullUrl,
+    };
+
     if (navigator.share) {
       try {
-        await navigator.share({ title, url });
+        await navigator.share(shareData);
       } catch (error) {
         console.error("Error sharing:", error);
       }
     } else {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(fullUrl);
       alert("Link copied to clipboard!");
     }
   };
@@ -59,6 +75,8 @@ export function ShareAndBookmark({ title, url }: { title: string; url: string })
     </div>
   );
 }
+
+
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
   const post = blogContent[params.slug];
@@ -118,10 +136,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
             
             {/* ✅ Drop-in functional buttons here */}
-            <ShareAndBookmark
-              title={post.title}
-              url={typeof window !== "undefined" ? window.location.href : ""}
-            />
+         <ShareAndBookmark title={post.title} slug={params.slug} category={post.category} />
+
           </div>
 
           {/* Article Content */}
