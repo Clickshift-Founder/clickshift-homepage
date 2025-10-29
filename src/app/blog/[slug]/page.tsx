@@ -32,10 +32,14 @@ export function ShareAndBookmark({
 }) {
   const fullUrl = `https://www.clickshift.io/blog/${slug}`;
 
+  // Capitalize category neatly
+  const formattedCategory =
+    category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+
   const handleShare = async () => {
     const shareData = {
       title: `${title} | ClickShift Blog`,
-      text: `As the world migrates to Web3, stay ahead of the pack with ${category.toLowerCase()} insights from ClickShift. Read below 👇`,
+      text: `As the world migrates to Web3, stay ahead of the pack with ${formattedCategory} insights from ClickShift. Read below 👇`,
       url: fullUrl,
     };
 
@@ -75,7 +79,6 @@ export function ShareAndBookmark({
     </div>
   );
 }
-
 
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
