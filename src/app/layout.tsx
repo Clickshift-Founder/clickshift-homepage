@@ -33,9 +33,9 @@ export const metadata: Metadata = {
     siteName: "ClickShift",
     images: [
       {
-        url: "https://clickshift.io/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "https://clickshift.io/og-whatsapp.png",
+        width: 512,
+        height: 512,
         alt: "ClickShift – DeFi Intelligence",
       },
     ],
@@ -58,42 +58,41 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-      <Script
-  src="https://www.googletagmanager.com/gtag/js?id=G-75MZH565VW"
-  strategy="afterInteractive"
-/>
-<Script id="google-analytics" strategy="afterInteractive">
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-75MZH565VW');
-  `}
+     <head>
+  <Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-75MZH565VW"
+    strategy="afterInteractive"
+  />
+  <Script id="google-analytics" strategy="afterInteractive">
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-75MZH565VW');
+    `}
   </Script>
 
-{/* Schema.org structured data */}
+  {/* Schema.org structured data */}
   <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "ClickShift",
-      "applicationCategory": "FinanceApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "525"
-      }
-    })
-  }}
-/>
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "ClickShift",
+        applicationCategory: "FinanceApplication",
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "525" },
+      }),
+    }}
+  />
+
+  {/* OG fallbacks for WhatsApp */}
+  <meta property="og:image" content="https://clickshift.io/og-image.png" />
+  <meta property="og:image" content="https://clickshift.io/og-whatsapp.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="ClickShift Logo" />
 </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar />
