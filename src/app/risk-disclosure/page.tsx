@@ -546,7 +546,7 @@ const RiskDisclosurePage = () => {
           {/* Footer */}
           <div className="mt-8 text-center space-y-2 text-sm text-slate-400 border-t border-slate-700 pt-8">
             <p>ClickShift Intelligence Inc.</p>
-            <p>This Risk Disclosure is effective as of January 22, 2025</p>
+            <p>This Risk Disclosure is effective as of August 1 22, 2025</p>
             <p>For the most current version, visit clickshift.io/risk-disclosure</p>
             <div className="flex justify-center space-x-4 mt-4">
               <a href="/terms" className="text-blue-400 hover:text-blue-300">Terms of Service</a>
