@@ -43,7 +43,7 @@ export const blogContent: Record<string, BlogPost> = {
             <div>
               <h3 className="font-bold text-lg mb-2">The $12,000 Wake-Up Call</h3>
               <p className="text-slate-300">
-                March 2024. I watched my entire position get liquidated in 47 seconds. Nine months of trading profits—gone. 
+                March 2021. I watched my entire position get liquidated in 47 seconds. Nine months of trading profits—gone. 
                 That's when I knew something had to change.
               </p>
             </div>
