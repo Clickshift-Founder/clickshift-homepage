@@ -20,6 +20,46 @@ import {
 
 import { blogContent } from './blog-content';
 
+/* ✅ Named export for the Share + Bookmark buttons */
+export function ShareAndBookmark({ title, url }: { title: string; url: string }) {
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      await navigator.clipboard.writeText(url);
+      alert("Link copied to clipboard!");
+    }
+  };
+
+  const handleBookmark = () => {
+    alert("Press Ctrl+D (Windows) or Cmd+D (Mac) to bookmark this page.");
+  };
+
+  return (
+    <div className="flex items-center space-x-3">
+      <button
+        onClick={handleShare}
+        className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all"
+        aria-label="Share article"
+      >
+        <Share2 className="h-5 w-5 text-white" />
+      </button>
+
+      <button
+        onClick={handleBookmark}
+        className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all"
+        aria-label="Bookmark article"
+      >
+        <BookmarkPlus className="h-5 w-5 text-white" />
+      </button>
+    </div>
+  );
+}
+
 export default function BlogPost({ params }: { params: { slug: string } }) {
   const post = blogContent[params.slug];
 
@@ -76,14 +116,12 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3">
-              <button className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all">
-                <Share2 className="h-5 w-5" />
-              </button>
-              <button className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all">
-                <BookmarkPlus className="h-5 w-5" />
-              </button>
-            </div>
+            
+            {/* ✅ Drop-in functional buttons here */}
+            <ShareAndBookmark
+              title={post.title}
+              url={typeof window !== "undefined" ? window.location.href : ""}
+            />
           </div>
 
           {/* Article Content */}
