@@ -97,15 +97,15 @@ const AboutPage = () => {
         <div className="container mx-auto max-w-6xl text-center">
           <div className="mb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-              Building the Bloomberg Terminal
+              Building the Brain that enables
               <br />
-              of Web3
+              Humans and Agents move with precision On-chain
             </h1>
             <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              ClickShift exists to make Web3 trading <strong>smarter, safer, and simpler</strong>. 
-              Most traders lose money not because opportunities don't exist; but because of bad timing, 
-              blind risks, and overwhelming complexity. We're here to change that.
-            </p>
+             AI agents need predictions, not dashboards. ClickShift provides 
+            the memory for autonomous agents and traders to execute actions profitably;
+            from trading, to lending, to stablecoin capital effciency.  
+               </p>
           </div>
 
           {/* Rotating Metrics */}

@@ -278,13 +278,15 @@ const ClickShiftHomepage = () => {
         <div className="container mx-auto text-center max-w-6xl">
           <div className="mb-8">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-              Start, rebuild, or build.
+              The Bloomberg Terminal
               <br />
-              We help you win in Web3.
+              Powering Agents On-Chain.
             </h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              ClickShift makes Web3 trading accessible. 
-              Our AI shields you from costly mistakes and empowers you to capture opportunities with confidence as a newbie starting out, pro rebuilding a lost portfolio or developer with our SDKs.
+              ClickShift powers AI agents with real-time trading intelligence. 
+             Our APIs tell AI agents when to enter, where whales will exit, and 
+            how to position. Humans can access the same intelligence through 
+            our interface.
             </p>
           </div>
 

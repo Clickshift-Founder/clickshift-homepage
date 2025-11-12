@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Intelligent AI Terminal for DeFi Traders",
+  title: "The Intelligent AI Terminal for DeFi Agents and Traders",
   description:
-    "ClickShift gets you onchain safely. AI-powered tools to prevent losses, boost profits, and trade with precision in DeFi.",
+    "Empowering Autonomous Agents and traders On-chain to profit in DeFi.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-32x32.png",
