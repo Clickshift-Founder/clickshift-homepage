@@ -270,12 +270,12 @@ const ProductsPage = () => {
                 Intelligence Suite.
                 <br />
                 <span className="italic text-lg bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Built for traders, Ready for markets.
+                  Built for traders, powering agents, Ready for markets.
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
                 Professional-grade AI tools that transform crypto trading from guesswork to intelligence.
-                Built for traders who demand precision, speed, and consistent profits.
+                Built for traders/Autonomous agents who demand precision, speed, and consistent profits.
               </p>
             </div>
 

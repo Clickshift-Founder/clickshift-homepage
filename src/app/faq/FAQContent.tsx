@@ -40,7 +40,7 @@ const FAQPage = () => {
       id: 1,
       category: 'general',
       question: 'What is ClickShift and how does it work?',
-      answer: 'ClickShift is the world\'s first predictive trading intelligence platform for DeFi. We use AI to analyze market patterns, whale movements, and exit clusters to predict where token prices will move before they happen. Our algorithms have 73%+ accuracy in predicting market movements.',
+      answer: 'ClickShift is the world\'s first predictive Web3 terminal that powers agents and humans with 6 intelligencies to remain profitable on-chain. From trading, to lending, to stablecoin capital efficiency. We use AI to analyze market patterns, whale movements, and exit clusters to predict where token prices will move before they happen. Our algorithms have 73%+ accuracy in predicting market movements.',
       tags: ['basics', 'overview', 'ai', 'prediction']
     },
     {
@@ -54,7 +54,7 @@ const FAQPage = () => {
       id: 3,
       category: 'general',
       question: 'Which blockchains and tokens do you support?',
-      answer: 'Currently, ClickShift Alpha supports all Solana tokens, while ClickShift Leverage supports major crypto futures pairs (BTC, ETH, SOL, etc.). We\'re expanding to Ethereum, Base, and BSC in Q1 2026.',
+      answer: 'Currently, ClickShift Alpha supports all Solana tokens, while ClickShift Leverage supports major crypto futures pairs (BTC, ETH, SOL, etc.). We\'re expanding to Sui, Base, and BSC in Q1 2026.',
       tags: ['blockchain', 'solana', 'ethereum', 'tokens', 'support']
     },
     {
@@ -308,7 +308,7 @@ const FAQPage = () => {
             Questions
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-            Everything you need to know about ClickShift's intelligent trading platform. 
+            Everything you need to know about ClickShift's intelligent terminal. 
             Can't find what you're looking for? Contact our support team.
           </p>
 
