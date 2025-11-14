@@ -97,7 +97,7 @@ const AboutPage = () => {
         <div className="container mx-auto max-w-6xl text-center">
           <div className="mb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-              Building the Brain that enables
+              The Brain enabling
               <br />
               Humans and Agents move with precision On-chain
             </h1>
