@@ -16,8 +16,8 @@ import {
   ChevronRight,
   X
 } from 'lucide-react';
-import Image from 'next/image';
 import ChipShowcase from '@/components/ChipShowcase';
+import Image from 'next/image';
 
   // Particle system
     type Particle = {
