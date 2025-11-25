@@ -1,8 +1,6 @@
 
 
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
-import Link from "next/link";
 import { 
   ArrowRight, 
   Shield, 
@@ -10,13 +8,7 @@ import {
   Target, 
   Globe, 
   Star,
-  Play,
-  CheckCircle,
   ExternalLink,
-  Menu,
-  ChevronLeft,
-  ChevronRight,
-  X
 } from 'lucide-react';
 import Image from 'next/image';
 

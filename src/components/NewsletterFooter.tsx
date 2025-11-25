@@ -30,7 +30,7 @@ export default function NewsletterFooter() {
       } else {
         setMessage(`⚠️ ${data.error || "Subscription failed."}`);
       }
-    } catch (error) {
+    } catch (_error) {
       setMessage("⚠️ Something went wrong. Please try again.");
     } finally {
       setLoading(false);

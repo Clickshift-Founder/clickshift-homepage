@@ -423,11 +423,11 @@ const ClickShiftHomepage = () => {
       </section>
 
     {/* CHIP Showcase Component (New Section) */}
-      <ChipShowcase />
+       <ChipShowcase />
 
-     // *******************************************************************
-// NEW ALIGNED PRODUCT SHOWCASE SECTION
-// *******************************************************************
+  
+{/* NEW ALIGNED PRODUCT SHOWCASE SECTION
+ ********************************************************************/}
 <section id="products" className="py-20 px-4 bg-slate-800/30">
   <div className="container mx-auto max-w-6xl">
     <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
