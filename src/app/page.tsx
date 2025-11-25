@@ -256,7 +256,7 @@ const ChipShowcase = () => {
                             rel="noopener noreferrer"
                             className="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:from-green-600 hover:to-blue-700 transition-all transform hover:scale-[1.02]"
                         >
-                            <span>Integrate Our Chip (Intent Form)</span>
+                            <span>Integrate Our Chip</span>
                             <ArrowRight className="h-5 w-5" />
                         </a>
                         <p className="text-sm text-slate-400 mt-3">Intended for Fund Management, Company Trading Desks, and Bot Integration.</p>
@@ -525,152 +525,169 @@ const ClickShiftHomepage = () => {
       <section id="products" className="py-20 px-4 bg-slate-800/30">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">
-            Two Markets. One Chip:
+            Three Tools. One Chip:
                 <br />
                 <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Maximize Your Edge
+                  The ClickShift Product Suite
                 </span>
           </h2>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Alpha */}
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 hover:border-blue-500/50 transition-all">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="text-3xl">🔮</div>
-                <div>
-                  <h3 className="text-2xl font-bold">ClickShift Alpha</h3>
-                  <p className="text-blue-400">Solana Signals</p>
-                </div>
-              </div>
-              
-              <p className="text-lg text-slate-300 mb-6">"See the future before it happens"</p>
-              
-              <div className="bg-slate-900/50 rounded-lg p-4 mb-6 font-mono text-sm">
-                <div className="text-green-400">BONK Analysis - Completed in 1.9s</div>
-                <div className="text-blue-400">🎯 BUY Signal | HIGH Confidence (87%)</div>
-                <div>📊 Entry: $0.000019 | Stop: $0.000016 | Target: $0.000034</div>
-                <div className="text-orange-400">⏰ Prediction expires in 43 minutes</div>
-                <div className="text-purple-400">💡 Pattern Match: Similar to WIF 3 days before 340% run</div>
-              </div>
+<div className="grid lg:grid-cols-3 gap-12">
+            
+            {/* 1. CLICKBOT: The Automated Agent (New Focus) */}
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 hover:border-green-500/50 transition-all">
+              <div className="flex items-center space-x-3 mb-6">
+                {/* Use the new logo file here */}
+                <div className="w-8 h-8 relative">
+                  <Image src="/clickbot-logo.png" alt="ClickBot Logo" fill className="rounded-full" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">ClickBot</h3>
+                  <p className="text-green-400">Autonomous Trading Agent</p>
+                </div>
+              </div>
+              
+              <p className="text-lg text-slate-300 mb-6">"Powered by the ClickShift Chip. Maximize profit, minimize risk."</p>
+              
+              <div className="bg-slate-900/50 rounded-lg p-4 mb-6 font-mono text-sm">
+                <div className="text-green-400">Agent Status: ACTIVE</div>
+                <div className="text-blue-400">🤖 Last Action: $BONK Exit Optimization</div>
+                <div>📈 Result: Set 2x target, took 5.2x profit.</div>
+                <div className="text-orange-400">🔒 Security: AES-256 (Bank-Level)</div>
+                <div className="text-purple-400">👥 Used by 525+ traders daily</div>
+              </div>
 
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span>15-minute pump warnings with 73%+ accuracy</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span>Whale movement tracking across all DEXs</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span>Real-time holder distribution analysis</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span>Smart entry/exit recommendations with expiry times</span>
-                </li>
-              </ul>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>**Trailing Profit:** Intelligently exits near the peak (e.g., 5x on a 6x run).</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>**Rug Detection:** Active monitoring to avoid malicious contracts.</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>**Non-Custodial:** Bank-level security (AES-256). You control your keys.</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>**One-Tap Trading:** Best price execution via Jupiter integration.</span>
+                </li>
+              </ul>
 
-              <a 
-                href='https://alpha.clickshift.io'
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all flex items-center justify-center space-x-2"
-              >
-                <span>Launch Alpha</span>
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
+              <a 
+                href='https://t.me/clicksolbot'
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gradient-to-r from-green-500 to-blue-600 px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all flex items-center justify-center space-x-2"
+              >
+                <span>Start ClickBot on Telegram</span>
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
 
-            {/* Leverage */}
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 hover:border-orange-500/50 transition-all">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="text-3xl">⚡</div>
-                <div>
-                  <h3 className="text-2xl font-bold">ClickShift Leverage</h3>
-                  <p className="text-orange-400">Capital Multiplier</p>
-                </div>
-              </div>
-              
-              <p className="text-lg text-slate-300 mb-6">"Never lose your portfolio to Futures Trading again"</p>
-              
-              <div className="bg-slate-900/50 rounded-lg p-4 mb-6 font-mono text-sm">
-                <div className="text-green-400">BTC/USDT Analysis - Completed in 2.3s</div>
-                <div className="text-blue-400">📈 LONG Signal | MODERATE Risk</div>
-                <div>💰 Position Size: 3% of portfolio recommended</div>
-                <div>🎯 Entry: $95,500 | Liquidation: $91,800 | Target: $105,100</div>
-                <div className="text-purple-400">⚖️ Risk/Reward: 1:2.8 | Win Probability: 74%</div>
-              </div>
+            {/* 2. Alpha */}
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 hover:border-blue-500/50 transition-all">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="text-3xl">🔮</div>
+                <div>
+                  <h3 className="text-2xl font-bold">ClickShift Alpha</h3>
+                  <p className="text-blue-400">Solana Signals</p>
+                </div>
+              </div>
+              
+              <p className="text-lg text-slate-300 mb-6">"See the future before it happens"</p>
+              
+              <div className="bg-slate-900/50 rounded-lg p-4 mb-6 font-mono text-sm">
+                <div className="text-green-400">BONK Analysis - Completed in 1.9s</div>
+                <div className="text-blue-400">🎯 BUY Signal | HIGH Confidence (87%)</div>
+                <div>📊 Entry: $0.000019 | Stop: $0.000016 | Target: $0.000034</div>
+                <div className="text-orange-400">⏰ Prediction expires in 43 minutes</div>
+                <div className="text-purple-400">💡 Pattern Match: Similar to WIF 3 days before 340% run</div>
+              </div>
 
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span>Real-time liquidation risk calculator</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span>MACD + OBV fusion algorithm (Patent Pending)</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span>Multi-exchange data validation</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span>Position sizing assistant with risk management</span>
-                </li>
-              </ul>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>15-minute pump warnings with **73%+ accuracy**</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>**Whale exit detection** across all DEXs</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>Real-time holder distribution and **rug risk assessment**</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>Smart entry/exit recommendations with **confidence scores**</span>
+                </li>
+              </ul>
 
-              <a 
-                href='https://leverage.clickshift.io'
-                className="w-full bg-gradient-to-r from-orange-500 to-red-600 px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all flex items-center justify-center space-x-2"
-              >
-                <span>Launch Futures</span>
-                <ExternalLink className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
+              <a 
+                href='https://alpha.clickshift.io'
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all flex items-center justify-center space-x-2"
+              >
+                <span>Launch Alpha</span>
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
 
-           {/* Coming Soon - Updated with ClickBot */}
-<div className="mt-12 grid md:grid-cols-2 gap-8">
-  {/* Launch Detector */}
-  <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700">
-    <div className="text-4xl mb-4">🚨</div>
-    <h3 className="text-2xl font-bold mb-4">Launch Detector Pro</h3>
-    <p className="text-lg text-slate-300 mb-6">"Catch the next 100x before it moons"</p>
-    
-    <ul className="space-y-2 mb-6 text-sm text-slate-300">
-      <li>• Identifies high-potential tokens within 15 minutes of launch</li>
-      <li>• Cross-validates legitimacy across 7+ data sources</li>
-      <li>• Provides pump probability scores and safe entry windows</li>
-      <li>• Sends instant alerts to your Telegram/Discord/SMS</li>
-    </ul>
+            {/* 3. Leverage (Kept the structure from original code) */}
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 hover:border-orange-500/50 transition-all">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="text-3xl">⚡</div>
+                <div>
+                  <h3 className="text-2xl font-bold">ClickShift Leverage</h3>
+                  <p className="text-orange-400">Capital Multiplier</p>
+                </div>
+              </div>
+              
+              <p className="text-lg text-slate-300 mb-6">"Never lose your portfolio to Futures Trading again"</p>
+              
+              <div className="bg-slate-900/50 rounded-lg p-4 mb-6 font-mono text-sm">
+                <div className="text-green-400">BTC/USDT Analysis - Completed in 2.3s</div>
+                <div className="text-blue-400">📈 LONG Signal | MODERATE Risk</div>
+                <div>💰 Position Size: 3% of portfolio recommended</div>
+                <div>🎯 Entry: $95,500 | Liquidation: $91,800 | Target: $105,100</div>
+                <div className="text-purple-400">⚖️ Risk/Reward: 1:2.8 | Win Probability: 74%</div>
+              </div>
 
-    <button onClick={() => window.location.href = "https://t.me/ClickShiftAlerts"}
-    className="inline-block bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-700 transition-all">
-      Secure Early Access →
-    </button>
-  </div>
-              {/* ClickBot Auto Trade */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700">
-                <div className="text-4xl mb-4">🤖</div>
-                <h3 className="text-2xl font-bold mb-4">ClickBot Auto Trade</h3>
-                <p className="text-lg text-slate-300 mb-6">"Never miss profits or hold through dumps"</p>
-                
-                <ul className="space-y-2 mb-6 text-sm text-slate-300 text-left">
-                  <li>• Intelligent trailing stop-loss that moves with profits</li>
-                  <li>• Automatic exit before major whale dumps</li>
-                  <li>• Smart position scaling based on momentum</li>
-                  <li>• 24/7 monitoring with instant execution</li>
-                </ul>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>Real-time **liquidation risk calculator**</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>MACD + OBV fusion algorithm (Patent Pending)</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>Multi-exchange data validation</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <CheckCircle className="h-4 w-4 text-green-400" />
+                  <span>Position sizing assistant with **smart risk management**</span>
+                </li>
+              </ul>
 
-                <button 
-                onClick={() => window.location.href = "https://t.me/ClickShiftAlerts"}             
-                className="bg-gradient-to-r from-green-500 to-blue-600 px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all">
-                  Join ClickBot Waitlist →
-                </button>
-              </div>
-            </div>
-          </div>
+              <a 
+                href='https://leverage.clickshift.io'
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gradient-to-r from-orange-500 to-red-600 px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all flex items-center justify-center space-x-2"
+              >
+                <span>Launch Futures</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+         </div>
         </section>
         
       {/* Testimonials */}
