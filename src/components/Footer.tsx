@@ -58,6 +58,16 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-3">Products</h4>
             <div className="space-y-2 text-sm text-slate-400">
+               <div>
+                <a 
+                  href="https://t.me/clicksolbot" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-white transition-colors"
+                >
+                  ClickBot
+                </a>
+              </div>
               <div>
                 <a 
                   href="https://alpha.clickshift.io" 
