@@ -288,9 +288,9 @@ const ClickShiftHomepage = () => {
               Powering Agents On-Chain.
             </h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              ClickShift powers AI agents with real-time trading intelligence. 
+              We empower AI agents with real-time on-chain intelligence. 
              Our Chip tell AI agents when to enter, where whales will exit, and 
-            how to position. Humans can access the same intelligence through 
+            how to position for profit. Humans can access the same intelligence through 
             our interface.
             </p>
           </div>
@@ -315,20 +315,39 @@ const ClickShiftHomepage = () => {
             </div>
           </div>
 
-          {/* Primary CTAs */}
+                {/* Primary CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            
+            {/* 1. CLICKBOT CTA (New, Primary Focus) */}
             <a 
-              href='https://alpha.clickshift.io'
-              className="group bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center space-x-2"
+              href='https://t.me/clicksolbot'
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-gradient-to-r from-green-500 to-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all transform hover:scale-105 flex items-center space-x-2 w-full sm:w-auto text-center"
             >
-              <span>🔮 Explore Alpha Intelligence</span>
+              <span>🤖 Start 5x Auto-Profit Agent</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
+            
+            {/* 2. ALPHA CTA (Revised) */}
+            <a 
+              href='https://alpha.clickshift.io'
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center space-x-2 w-full sm:w-auto text-center"
+            >
+              <span>🔮 Get 73% Accurate Signals</span>
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            
+            {/* 3. LEVERAGE CTA (Revised) */}
             <a 
               href='https://leverage.clickshift.io'
-              className="group bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center space-x-2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center space-x-2 w-full sm:w-auto text-center"
             >
-              <span>⚡ Profit From Futures</span>
+              <span>⚡ Trade Futures, Zero Liquidation Risk</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
@@ -369,6 +388,9 @@ const ClickShiftHomepage = () => {
         </div>
       </section>
 
+          {/* CHIP Showcase Component (New Section) */}
+       <ChipShowcase />
+
       {/* Core Value Proposition */}
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
@@ -381,8 +403,8 @@ const ClickShiftHomepage = () => {
               </span>
             </h2>            
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Our algorithms analyze 847 data points in real-time across 3 leading blockchains.
-                From whale movements to sentiment shifts - we turn chaos into clarity.
+                Integrating the ClickShift Chip, we analyze millions of on-chain data points to calculate 
+                crowd behavior, market opportunities and anticipate price shifts.
               </p>
           </div>
 
@@ -391,7 +413,7 @@ const ClickShiftHomepage = () => {
               <Shield className="h-12 w-12 text-blue-400 mb-4" />
               <h3 className="text-xl font-bold mb-3">Protection First</h3>
               <p className="text-slate-300">
-                Our AI identifies exit clusters before whales dump. 73% accuracy means you sell at peaks, not crashes.
+                Our Chip identifies exit clusters before whales dump. 73% accuracy means you sell at peaks, not crashes.
               </p>            
             </div>
 
@@ -399,7 +421,7 @@ const ClickShiftHomepage = () => {
               <Zap className="h-12 w-12 text-purple-400 mb-4" />
               <h3 className="text-xl font-bold mb-3">Lightning-Fast Alert</h3>
               <p className="text-slate-300">
-                While others analyze for 30 minutes, our algorithms deliver precise signals in 2.1 seconds before major price moves.
+                While others analyze for 30 minutes, our Chip deliver precise signals in 2.1 seconds before major price moves.
               </p>              
             </div>
 
@@ -415,15 +437,12 @@ const ClickShiftHomepage = () => {
               <Globe className="h-12 w-12 text-orange-400 mb-4" />
               <h3 className="text-xl font-bold mb-3">Cross-Chain IQ</h3>
               <p className="text-slate-300">
-                Every trade, every outcome, every pattern feeds our learning engine. 525+ traders across Solana, Ethereum, BSC, etc make every prediction smarter.
+                Every trade, every outcome, every pattern across Solana, Ethereum, BSC, etc feeds our learning engine; making every prediction smarter.
               </p>              
             </div>
           </div>
         </div>
       </section>
-
-    {/* CHIP Showcase Component (New Section) */}
-       <ChipShowcase />
 
   
 {/* NEW ALIGNED PRODUCT SHOWCASE SECTION
@@ -469,19 +488,19 @@ const ClickShiftHomepage = () => {
         <ul className="space-y-3 mb-8 flex-grow"> 
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">**Trailing Profit:** Intelligently exits near the peak (e.g., 5x on a 6x run).</span>
+            <span className="text-slate-300"><strong>Trailing Profit:</strong> Intelligently exits near the peak (e.g., 5x on a 6x run).</span>
           </li>
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">**Rug Detection:** Active monitoring to avoid malicious contracts.</span>
+            <span className="text-slate-300"><strong>Rug Detection:</strong> Active monitoring to avoid malicious contracts.</span>
           </li>
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">**Non-Custodial:** Bank-level security (AES-256). You control your keys.</span>
+            <span className="text-slate-300"><strong>Non-Custodial:</strong> Bank-level security (AES-256). You control your keys.</span>
           </li>
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">**One-Tap Trading:** Best price execution via Jupiter integration.</span>
+            <span className="text-slate-300"><strong>One-Tap Trading:</strong> Best price execution via Jupiter integration.</span>
           </li>
         </ul>
 
@@ -522,19 +541,19 @@ const ClickShiftHomepage = () => {
         <ul className="space-y-3 mb-8 flex-grow">
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">15-minute pump warnings with **73%+ accuracy**</span>
+            <span className="text-slate-300">15-minute pump warnings with <strong>73%+ accuracy</strong></span>
           </li>
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">**Whale exit detection** across all DEXs</span>
+            <span className="text-slate-300"><strong>Whale exit detection</strong> across all DEXs</span>
           </li>
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">Real-time holder distribution and **rug risk assessment**</span>
+            <span className="text-slate-300">Real-time holder distribution and <strong>rug risk assessment</strong></span>
           </li>
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">Smart entry/exit recommendations with **confidence scores**</span>
+            <span className="text-slate-300">Smart entry/exit recommendations with <strong>confidence scores</strong></span>
           </li>
         </ul>
 
@@ -555,7 +574,7 @@ const ClickShiftHomepage = () => {
         <div className="flex items-start space-x-4 mb-6">
           <div className="text-4xl flex-shrink-0">⚡</div> {/* Adjusted to 4xl */}
           <div>
-            <h3 className="text-2xl font-bold">ClickShift Leverage</h3>
+            <h3 className="text-2xl font-bold">Click Leverage</h3>
             <p className="text-orange-400">Capital Multiplier</p>
           </div>
         </div>
@@ -575,7 +594,7 @@ const ClickShiftHomepage = () => {
         <ul className="space-y-3 mb-8 flex-grow">
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">Real-time **liquidation risk calculator**</span>
+            <span className="text-slate-300">Real-time <strong>liquidation risk calculator</strong></span>
           </li>
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
@@ -587,7 +606,7 @@ const ClickShiftHomepage = () => {
           </li>
           <li className="flex items-start space-x-3">
             <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 mt-1" />
-            <span className="text-slate-300">Position sizing assistant with **smart risk management**</span>
+            <span className="text-slate-300">Position sizing assistant with <strong>smart risk management</strong></span>
           </li>
         </ul>
 

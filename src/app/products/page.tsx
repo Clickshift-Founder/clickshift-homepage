@@ -1,6 +1,6 @@
   export const metadata = {
       title: "Our Products | ClickShift",
-      description: "Professional-grade AI tools that transform crypto trading from guesswork to intelligence. Built for traders who demand precision, speed, and consistent profits.",
+      description: "Professional-grade AI tools that transform crypto trading from guesswork to intelligence. Built for agents and traders onchain to bring back profit.",
        alternates: { 
     canonical: "https://clickshift.io/products" },
       openGraph: {
