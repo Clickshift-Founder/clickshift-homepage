@@ -64,13 +64,13 @@ const AboutPage = () => {
   ];
 
   const milestones = [
-    { year: "2023", title: "The Genesis", description: "Founder loses life savings to DeFi trading. Realizes the need for predictive intelligence.", status: "completed" },
-    { year: "Early 2024", title: "Alpha Development", description: "First MVP of ClickShift Alpha. Initial algorithms for whale tracking and exit prediction.", status: "completed" },
-    { year: "Mid 2024", title: "Leverage Launch", description: "ClickShift Leverage goes live. Patent-pending MACD+OBV fusion algorithm.", status: "completed" },
-    { year: "Late 2024", title: "Explosive Growth", description: "525+ daily users. 91 NPS score. $0 customer acquisition cost.", status: "completed" },
-    { year: "Q1 2025", title: "Launch Detector", description: "Real-time token launch detection with legitimacy scoring.", status: "progress" },
-    { year: "Q2 2025", title: "ClickBot Auto-Trade", description: "Intelligent auto-trading with trailing stops and risk management.", status: "upcoming" },
-    { year: "Q3 2025", title: "Global Expansion", description: "Multi-chain support. Institutional partnerships. Series A funding.", status: "upcoming" },
+    { year: "2021", title: "The Genesis", description: "Founder loses life savings to DeFi trading. Realizes the need for predictive intelligence.", status: "completed" },
+    { year: "July 2025", title: "Alpha Development", description: "First MVP of ClickShift Alpha. Initial algorithms for whale tracking and exit prediction.", status: "completed" },
+    { year: "August 2025", title: "Leverage Launch", description: "ClickShift Leverage goes live. Patent-pending MACD+OBV fusion algorithm.", status: "completed" },
+    { year: "September 2025", title: "Explosive Growth", description: "525+ daily users. 91 NPS score. $0 customer acquisition cost.", status: "completed" },
+    { year: "October 2025", title: "Launch Detector", description: "Real-time token launch detection with legitimacy scoring.", status: "Completed" },
+    { year: "November 2025", title: "ClickBot Auto-Trade", description: "Intelligent auto-trading with trailing stops and risk management.", status: "Completed" },
+    { year: "Q2 2026", title: "Global Expansion", description: "Multi-chain support. Institutional partnerships. Series A funding.", status: "upcoming" },
   ];
 
   const achievements = [
@@ -434,7 +434,7 @@ const AboutPage = () => {
 
               className="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
             >
-              <span>🔮 10x with tokens launched on Solana</span>
+              <span>🔮 10x with Solana tokens</span>
               <ArrowRight className="h-5 w-5" />
             </a>
             <a 
@@ -464,7 +464,7 @@ const AboutPage = () => {
           </div>
           
           <div className="flex justify-center space-x-6 mt-8">
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">Twitter</a>
+            <a href="https://x.com/ClickShiftai" className="text-slate-400 hover:text-white transition-colors">Twitter</a>
             <a href="https://t.me/ClickShiftAlerts" className="text-slate-400 hover:text-white transition-colors">Telegram</a>
             <a href="#" className="text-slate-400 hover:text-white transition-colors">Medium</a>
             <a href="#" className="text-slate-400 hover:text-white transition-colors">Discord</a>

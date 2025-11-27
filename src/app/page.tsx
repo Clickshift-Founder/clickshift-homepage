@@ -347,7 +347,7 @@ const ClickShiftHomepage = () => {
               rel="noopener noreferrer"
               className="group bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center space-x-2 w-full sm:w-auto text-center"
             >
-              <span>⚡ Trade Futures, Zero Liquidation Risk</span>
+              <span>⚡ Trade Futures, Zero Liquidation</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

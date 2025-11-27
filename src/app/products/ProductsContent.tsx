@@ -539,7 +539,7 @@ const ProductsPage = () => {
                   <p className="text-lg text-slate-300 max-w-4xl mx-auto leading-relaxed">
                     By 2026, ClickShift will be the essential intelligence layer that every serious DeFi trader, 
                     fund, and institution relies on. We're not just building tools—we're creating the future 
-                    of how humans and AI collaborate to navigate financial markets.
+                    of how humans and Autonomous Agents collaborate to navigate financial markets.
                   </p>
                   
                   <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">

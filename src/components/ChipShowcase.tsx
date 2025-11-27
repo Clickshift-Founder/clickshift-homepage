@@ -44,7 +44,7 @@ const ChipShowcase = () => {
                         </span>
                     </h2>
                     <p className="text-xl text-slate-300 max-w-4xl mx-auto">
-                        An advanced <strong>on-chain chip</strong> powering autonomous DeFi agents. It is the intelligence layer that transforms trading from a gamble into <strong>intelligent decision-making.</strong>
+                        An advanced <strong>on-chain chip</strong> powering autonomous DeFi agents. It is the intelligence layer that powers our products and that of ecosystem developers in the agentic economy
                     </p>
                 </div>
 
