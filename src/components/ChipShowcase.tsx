@@ -43,17 +43,24 @@ const ChipShowcase = () => {
                             The ClickShift Chip
                         </span>
                     </h2>
+
+
                     {/*Explainer video*/}
-                    <div className="relative w-full aspect-video md:aspect-[16/6] overflow-hidden rounded-xl shadow-2xl shadow-blue-500/30">
-                        <iframe
-                            className="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/PULnceuGTkI?autoplay=1&mute=1&loop=1&playlist=PULnceuGTkI&controls=0&modestbranding=1&rel=0"
-                            title="ClickShift Chip Value Proposition"
-                            frameBorder="0"
-                            allow="autoplay; encrypted-media; picture-in-picture"
-                            allowFullScreen
-                        ></iframe>
+                    <div className="my-12">
+                        <div className="relative w-full aspect-video md:aspect-[16/6] overflow-hidden rounded-xl shadow-2xl shadow-blue-500/30">
+                            <iframe
+                                // Add pointer-events-none to prevent clicks (and therefore pausing/controls)
+                                className="absolute top-0 left-0 w-full h-full pointer-events-none" 
+                                src="https://www.youtube.com/embed/PULnceuGTkI?autoplay=1&mute=1&loop=1&playlist=PULnceuGTkI&controls=0&modestbranding=1&rel=0&showinfo=0"
+                                title="ClickShift Chip Value Proposition"
+                                frameBorder="0"
+                                // Simplify allow permissions, focusing on autoplay
+                                allow="autoplay" 
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </div>
+                    
                     <p className="text-xl text-slate-300 max-w-4xl mx-auto">
                         An advanced <strong>on-chain chip</strong> powering autonomous DeFi agents. It is the intelligence layer that powers our products and that of ecosystem developers in the agentic economy
                     </p>
