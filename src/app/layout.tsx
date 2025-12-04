@@ -26,9 +26,9 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "The Intelligent AI Terminal for DeFi Traders",
+    title: "The Intelligent AI Terminal for DeFi Autonomous Agents and Traders Onchain",
     description:
-      "ClickShift gets you onchain safely. AI-powered tools to prevent losses, boost profits, and trade with precision in DeFi.",
+      "ClickShift is the Bloomberg Terminal for DeFi with a Chip Technology that enables agents go into the market and bring back profit. Humans access same intelligence on our interface.",
     url: "https://clickshift.io",
     siteName: "ClickShift",
     images: [
