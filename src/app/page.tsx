@@ -320,7 +320,7 @@ const ClickShiftHomepage = () => {
             
             {/* 1. CLICKBOT CTA (New, Primary Focus) */}
             <a 
-              href='https://t.me/clicksolbot'
+              href='https://clickbot.clickshift.io'
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-gradient-to-r from-green-500 to-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all transform hover:scale-105 flex items-center space-x-2 w-full sm:w-auto text-center"
@@ -469,7 +469,7 @@ const ClickShiftHomepage = () => {
           </div>
           <div>
             <h3 className="text-2xl font-bold">ClickBot</h3>
-            <p className="text-green-400">Autonomous Trading Agent</p>
+            <p className="text-green-400">Web3 Siri on Solana</p>
           </div>
         </div>
         
@@ -506,7 +506,7 @@ const ClickShiftHomepage = () => {
 
         {/* Button (Uses mt-auto to push it to the bottom for vertical alignment) */}
         <a 
-          href='https://t.me/clicksolbot'
+          href='https://clickbot.clickshift.io'
           target="_blank"
           rel="noopener noreferrer"
           className="w-full bg-gradient-to-r from-green-500 to-blue-600 px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-700 transition-all flex items-center justify-center space-x-2 mt-auto"
