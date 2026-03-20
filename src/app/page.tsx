@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import ChipShowcase from '@/components/ChipShowcase';
 import ProductShowcase from '@/components/ProductShowcase';
+import AgentThoughtStream from '@/components/AgentThoughtStream';
 import Image from 'next/image';
 
   // Particle system
@@ -405,6 +406,10 @@ const ClickShiftHomepage = () => {
           </div>
         </div>
       </section>
+
+
+       {/* Getting thought stream (New Section) */}
+      <AgentThoughtStream />
 
           {/* CHIP Showcase Component (New Section) */}
        <ChipShowcase />
