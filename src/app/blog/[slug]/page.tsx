@@ -17,11 +17,10 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-
 import { blogContent } from './blog-content';
 
-/* ✅ Named export for the Share + Bookmark buttons */
-export function ShareAndBookmark({
+/* ✅ NOT exported — used only inside this file */
+function ShareAndBookmark({
   title,
   slug,
   category,
@@ -32,7 +31,6 @@ export function ShareAndBookmark({
 }) {
   const fullUrl = `https://www.clickshift.io/blog/${slug}`;
 
-  // Capitalize category neatly
   const formattedCategory =
     category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
 
@@ -137,10 +135,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               </div>
             </div>
 
-            
-            {/* ✅ Drop-in functional buttons here */}
-         <ShareAndBookmark title={post.title} slug={params.slug} category={post.category} />
-
+            <ShareAndBookmark title={post.title} slug={params.slug} category={post.category} />
           </div>
 
           {/* Article Content */}
