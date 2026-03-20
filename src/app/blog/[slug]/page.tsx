@@ -79,17 +79,18 @@ function ShareAndBookmark({
 }
 
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogContent[params.slug];
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = blogContent[slug];
 
   if (!post) {
     notFound();
   }
 
   const relatedPosts = Object.entries(blogContent)
-    .filter(([slug]) => slug !== params.slug)
+    .filter(([s]) => s !== slug)
     .slice(0, 3)
-    .map(([slug, content]) => ({ slug, ...content }));
+    .map(([s, content]) => ({ slug: s, ...content }));
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white">
@@ -135,7 +136,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               </div>
             </div>
 
-            <ShareAndBookmark title={post.title} slug={params.slug} category={post.category} />
+            <ShareAndBookmark title={post.title} slug={slug} category={post.category} />
           </div>
 
           {/* Article Content */}
