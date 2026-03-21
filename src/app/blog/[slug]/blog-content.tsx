@@ -15,10 +15,10 @@ type BlogPost = {
 };
 
 export const metadata = {
-  title: "Trading Intelligence Insights and Strategies | ClickShift",
+  title: "Agent Intelligence Insights and Strategies | ClickShift",
   description: "Real stories, proven strategies, and actionable intelligence from 525+ traders who've mastered DeFi markets with ClickShift.",
   openGraph: {
-    title: "Trading Intelligence Insights and Strategies | ClickShift",
+    title: "Agent Intelligence Insights and Strategies | ClickShift",
     description: "Real stories, proven strategies, and actionable intelligence from 525+ traders who've mastered DeFi markets with ClickShift.",
     images: ["/og-image.png"],
   }
@@ -2173,5 +2173,587 @@ export const blogContent: Record<string, BlogPost> = {
       </div>
     </div>
   )
-}
+},
+
+// ─── Pulse ARTICLE 1 ───────────────────────────────────────────────────────────────
+ 
+  'autonomous-ai-agents-defi-trading': {
+    title: 'The Wallet That Never Sleeps: How Autonomous AI Agents Are Replacing Manual DeFi Trading',
+    category: 'Agentic DeFi',
+    readTime: '5 min read',
+    date: 'March 18, 2025',
+    views: '0',
+    author: 'Emmanuel O.',
+    role: 'Founder, ClickShift Intelligence',
+    gradient: 'from-cyan-500 to-teal-600',
+    tags: ['Agentic DeFi', 'AI Agents', 'Autonomous Trading', 'Pulse', 'Solana', 'Future of DeFi'],
+    content: (
+      <div>
+        <div className="bg-cyan-900/20 border-l-4 border-cyan-500 p-6 rounded-lg mb-8">
+          <div className="flex items-start space-x-3">
+            <Zap className="h-6 w-6 text-cyan-400 flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="font-bold text-lg mb-2">A Different Kind of Trader</h3>
+              <p className="text-slate-300">
+                The average active DeFi trader spends 4 to 6 hours per day watching charts, waiting for signals,
+                second-guessing entries, and losing sleep over open positions. That's 30+ hours a week — 
+                a part-time job with no guaranteed salary. What if none of that was necessary?
+              </p>
+            </div>
+          </div>
+        </div>
+ 
+        <p className="mb-6">
+          We are at an inflection point in DeFi. The first era was about access — anyone could trade on-chain without a broker.
+          The second era was about intelligence — tools like ClickShift Alpha gave retail traders institutional-grade signals.
+          The third era, which is happening right now, is about <strong>autonomy</strong>. 
+          AI agents that don't just advise you — they act.
+        </p>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6 flex items-center space-x-3">
+          <Shield className="h-8 w-8 text-cyan-400" />
+          <span>Why Manual DeFi Trading Has a Ceiling</span>
+        </h2>
+ 
+        <p className="mb-6">
+          No matter how good your signals are, manual trading has an unavoidable constraint: you.
+        </p>
+ 
+        <div className="bg-slate-800/50 rounded-xl p-6 mb-8 border border-slate-700">
+          <h3 className="font-bold text-xl mb-4">The Manual Trader's Invisible Handicap:</h3>
+          <ul className="space-y-4">
+            <li className="flex items-start space-x-3">
+              <AlertTriangle className="h-5 w-5 text-red-400 flex-shrink-0 mt-1" />
+              <div>
+                <strong>You sleep.</strong> The biggest moves in crypto — especially on Solana — happen between 
+                2 AM and 6 AM UTC. Flash pumps, rug pulls, whale accumulations. You miss them because you're human.
+              </div>
+            </li>
+            <li className="flex items-start space-x-3">
+              <AlertTriangle className="h-5 w-5 text-red-400 flex-shrink-0 mt-1" />
+              <div>
+                <strong>You feel.</strong> Fear, greed, hesitation, FOMO. Even with the best signal in the world,
+                emotions corrupt execution. You enter late. You exit early. You override your own rules.
+              </div>
+            </li>
+            <li className="flex items-start space-x-3">
+              <AlertTriangle className="h-5 w-5 text-red-400 flex-shrink-0 mt-1" />
+              <div>
+                <strong>You can only watch one thing at a time.</strong> DeFi runs across hundreds of pools, 
+                thousands of tokens, multiple chains, simultaneously. Humans are serially-processed. Markets are not.
+              </div>
+            </li>
+            <li className="flex items-start space-x-3">
+              <AlertTriangle className="h-5 w-5 text-red-400 flex-shrink-0 mt-1" />
+              <div>
+                <strong>You get tired.</strong> Decision fatigue is real. Trade 47 makes decisions you would 
+                never make on trade 1. The market doesn't get tired. You do.
+              </div>
+            </li>
+          </ul>
+        </div>
+ 
+        <p className="mb-6">
+          These aren't skill problems. They're human problems. And for the first time in DeFi history, 
+          there is a solution that doesn't require you to become superhuman. It requires you to deploy agents that are.
+        </p>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">What an Autonomous AI Agent Actually Looks Like</h2>
+ 
+        <p className="mb-6">
+          The term "AI agent" gets thrown around constantly. Let's be specific about what it means in the context of DeFi — 
+          and what it definitely doesn't mean.
+        </p>
+ 
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-red-900/20 rounded-xl p-6 border border-red-500/30">
+            <h3 className="font-bold text-lg mb-3 text-red-400">What it is NOT:</h3>
+            <ul className="space-y-2 text-sm text-slate-300">
+              <li>✗ A chatbot that executes trades when you type a command</li>
+              <li>✗ An alert system that sends you notifications to act on</li>
+              <li>✗ A copy-trading bot that mirrors a fixed signal</li>
+              <li>✗ A script that runs on a schedule you manually configure</li>
+              <li>✗ An automation that still requires your approval per transaction</li>
+            </ul>
+          </div>
+          <div className="bg-green-900/20 rounded-xl p-6 border border-green-500/30">
+            <h3 className="font-bold text-lg mb-3 text-green-400">What it IS:</h3>
+            <ul className="space-y-2 text-sm text-slate-300">
+              <li>✓ An entity with its own wallet and its own capital</li>
+              <li>✓ A reasoning system that reads market data and makes decisions</li>
+              <li>✓ A persistent process that wakes, thinks, and acts on its own</li>
+              <li>✓ A system bounded by safety rules it cannot override</li>
+              <li>✓ Something that executes while you sleep without asking permission</li>
+            </ul>
+          </div>
+        </div>
+ 
+        <p className="mb-6">
+          A true autonomous agent has four properties: its own identity (wallet address), its own resources (capital), 
+          its own reasoning (AI), and its own action capability (transaction signing). Remove any one of those, 
+          and you have a tool, not an agent.
+        </p>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">The Heartbeat Architecture: How Agents Stay Alive</h2>
+ 
+        <p className="mb-6">
+          Traditional bots are reactive — they execute when triggered by an external event. Autonomous agents are 
+          proactive — they have an internal clock, and they wake themselves up.
+        </p>
+ 
+        <div className="bg-blue-900/20 border border-blue-500/30 rounded-xl p-8 mb-8">
+          <h3 className="font-bold text-xl mb-4">The Agent Heartbeat Cycle:</h3>
+          
+          <div className="space-y-4">
+            {[
+              { step: '1. WAKE', color: 'bg-cyan-500', desc: "Agent's internal timer fires. It becomes active and begins a new reasoning cycle." },
+              { step: '2. READ', color: 'bg-blue-500', desc: 'Ingests live market data, current portfolio state, and mission directives. No stale data.' },
+              { step: '3. THINK', color: 'bg-purple-500', desc: 'AI reasoning engine evaluates options, calculates risk, considers context.' },
+              { step: '4. PLAN', color: 'bg-orange-500', desc: 'Formulates a specific action or a decision to remain idle. Both are valid outcomes.' },
+              { step: '5. EXECUTE', color: 'bg-green-500', desc: 'If acting: signs and broadcasts the transaction. Every action passes through the safety system.' },
+              { step: '6. SLEEP', color: 'bg-slate-500', desc: 'Cycle complete. Agent rests until next heartbeat. Resources conserved.' },
+            ].map((item) => (
+              <div key={item.step} className="flex items-start space-x-4">
+                <div className={`${item.color} text-white px-3 py-1 rounded-lg font-bold text-sm whitespace-nowrap flex-shrink-0`}>
+                  {item.step}
+                </div>
+                <p className="text-slate-300 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+ 
+          <p className="text-sm text-slate-400 mt-6 italic">
+            This isn't a cron job. The cycle runs inside the Node.js process — the agent is the clock. 
+            No external scheduler. No dependency on outside infrastructure to keep it alive.
+          </p>
+        </div>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">Meet Pulse: The First Agentic Wallet OS on Solana</h2>
+ 
+        <p className="mb-6">
+          Pulse is the concrete expression of everything described above. It is not a trading interface, 
+          not a signal platform, and not a portfolio tracker. It is an <strong>operating system for autonomous agents</strong> — 
+          built on Solana, powered by the ClickShift intelligence layer.
+        </p>
+ 
+        <div className="grid md:grid-cols-3 gap-4 mb-8">
+          {[
+            { icon: '🧠', title: 'Orchestrator', desc: 'The brain. Receives natural language commands and coordinates all agents in the swarm.' },
+            { icon: '📈', title: 'DCA Agent', desc: 'Dollar-cost averages into target tokens via Jupiter V6. Buys on schedule, no clicks required.' },
+            { icon: '📉', title: 'Trailing Stop', desc: 'Monitors price peaks in real time. Auto-exits if the price drops N% from the high.' },
+            { icon: '🔭', title: 'Scout Agent', desc: 'Scans new pools and early-stage tokens. Flags gems. Detects rug patterns before they execute.' },
+            { icon: '🚨', title: 'Risk Manager', desc: 'Runs RugCheck on every position on every heartbeat. Can halt the entire swarm instantly.' },
+            { icon: '💸', title: 'Off-Ramp Agent', desc: 'Monitors P&L. When profit targets are hit, sweeps funds autonomously to cold wallet.' },
+          ].map((agent) => (
+            <div key={agent.title} className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+              <div className="text-2xl mb-2">{agent.icon}</div>
+              <h4 className="font-bold mb-1">{agent.title}</h4>
+              <p className="text-sm text-slate-400">{agent.desc}</p>
+            </div>
+          ))}
+        </div>
+ 
+        <p className="mb-6">
+          Six independent agents. Six encrypted Solana wallets. Six heartbeat loops running simultaneously. 
+          You set the mission once. They execute indefinitely.
+        </p>
+ 
+        <div className="bg-slate-800/50 rounded-xl p-6 mb-8 border border-cyan-500/30">
+          <h3 className="font-bold text-xl mb-3 text-cyan-400">The Three-Step User Experience:</h3>
+          <div className="space-y-3">
+            <div className="flex items-center space-x-4">
+              <div className="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
+              <div><strong>Fund the vault.</strong> Send SOL to the orchestrator wallet. It's your capital pool.</div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">2</div>
+              <div><strong>Set a mission.</strong> Type in plain English: "Accumulate BONK below $0.000030. Exit above $0.000055. Protect capital." Done.</div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">3</div>
+              <div><strong>Walk away.</strong> The swarm reads your mission, distributes capital, and begins executing. At 3 AM when you're asleep, they're still working.</div>
+            </div>
+          </div>
+        </div>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">The Safety Layer You Can't Override</h2>
+ 
+        <p className="mb-6">
+          The most common concern about autonomous agents is obvious: what if the AI makes a bad decision? 
+          What if it tries to spend everything in one transaction? What if it hallucinates?
+        </p>
+ 
+        <p className="mb-6">
+          Pulse answers this with the <strong>Governor</strong> — a 7-layer safety system that sits between every 
+          agent and every transaction. The AI doesn't have a vote on these rules. It cannot reason its way around them.
+        </p>
+ 
+        <div className="bg-slate-800/50 rounded-xl p-6 mb-8 border border-slate-700">
+          <h3 className="font-bold text-xl mb-4">The Governor's 7 Layers (all must pass):</h3>
+          <div className="space-y-2">
+            {[
+              'Max per-transaction SOL cap',
+              'Daily aggregate spend limit',
+              'Slippage tolerance guard',
+              'Liquidity depth threshold',
+              'Token blacklist check',
+              'RugCheck risk score minimum',
+              'Balance verification (always leave reserve)',
+            ].map((layer, i) => (
+              <div key={i} className="flex items-center space-x-3 text-sm">
+                <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0" />
+                <span className="text-slate-300">{layer}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-slate-500 mt-4 italic">
+            When you tried to spend from 2 SOL with a 2 SOL minimum rule active, the Governor blocked it. 
+            That's not a bug. That's the system working exactly as designed.
+          </p>
+        </div>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">Why This Is the Future, Not a Feature</h2>
+ 
+        <p className="mb-6">
+          Every major technology shift follows the same arc: access → intelligence → autonomy. 
+          Email gave us access to communication. Smartphones gave us intelligent communication tools. 
+          Now AI assistants act on our behalf — scheduling meetings, ordering groceries, managing calendars.
+        </p>
+ 
+        <p className="mb-6">
+          DeFi is following the same arc — just compressed. The "access" phase was 2018-2021: anyone could use DEXes.
+          The "intelligence" phase is now: signal platforms, risk tools, data aggregators. The "autonomy" phase 
+          is what Pulse represents: agents that act on your behalf, with your capital, under your rules, indefinitely.
+        </p>
+ 
+        <p className="mb-6">
+          In five years, asking "did you manually execute your DeFi strategy today?" will sound as strange as asking 
+          "did you manually sort your email today?" The future is agents. The infrastructure is being built now.
+        </p>
+ 
+        <div className="bg-gradient-to-r from-cyan-500/10 to-teal-500/10 border border-cyan-500/30 rounded-xl p-8 mt-12">
+          <h3 className="text-2xl font-bold mb-4">Experience Autonomous DeFi Today</h3>
+          <p className="text-slate-300 mb-6">
+            Pulse is live on Solana devnet and moving to testnet. Early testers are being onboarded now — 
+            get direct access to the swarm and help shape what autonomous DeFi looks like.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://pulse.clickshift.io"
+              className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-teal-600 px-8 py-4 rounded-lg font-semibold hover:from-cyan-600 hover:to-teal-700 transition-all"
+            >
+              <span>Explore Pulse →</span>
+            </a>
+            <a
+              href="https://pulse.clickshift.io/dashboard.html"
+              className="inline-flex items-center justify-center space-x-2 bg-slate-800 border border-slate-600 px-8 py-4 rounded-lg font-semibold hover:bg-slate-700 transition-all"
+            >
+              <span>View Live Dashboard</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    )
+  },
+ 
+// ─── Pulse ARTICLE 2 ───────────────────────────────────────────────────────────────
+ 
+  'pulse-agentic-wallet-os-solana': {
+    title: '6 AI Agents, 1 Vault, Zero Clicks: Inside the Architecture of Pulse',
+    category: 'Agentic DeFi',
+    readTime: '6 min read',
+    date: 'March 20, 2025',
+    views: '0',
+    author: 'Emmanuel O.',
+    role: 'Founder, ClickShift Intelligence',
+    gradient: 'from-teal-500 to-cyan-600',
+    tags: ['Agentic DeFi', 'Pulse', 'Solana', 'AI Architecture', 'DeFi Security', 'Autonomous Agents'],
+    content: (
+      <div>
+        <div className="bg-teal-900/20 border-l-4 border-teal-500 p-6 rounded-lg mb-8">
+          <div className="flex items-start space-x-3">
+            <Target className="h-6 w-6 text-teal-400 flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="font-bold text-lg mb-2">What Does "Agentic Wallet OS" Actually Mean?</h3>
+              <p className="text-slate-300">
+                An operating system manages resources on behalf of programs. Windows manages your CPU, memory, 
+                and storage so applications can use them without fighting each other. Pulse manages capital, 
+                risk, and execution on behalf of AI agents — so they can trade without destroying your portfolio.
+                This is what we built. Here's exactly how it works.
+              </p>
+            </div>
+          </div>
+        </div>
+ 
+        <p className="mb-6">
+          Most "AI trading" products are dressed-up alert systems. You still click. You still approve. 
+          You are still the bottleneck. Pulse is architecturally different in a way that matters: 
+          the agents hold real Solana wallets, hold real capital, and execute real transactions. 
+          No human in the loop. No approval queue. This article walks through every layer of that architecture — 
+          why we built it this way, and why those decisions matter for anyone serious about autonomous DeFi.
+        </p>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">Layer 1: The Wallet Architecture</h2>
+ 
+        <p className="mb-6">
+          The first unusual decision in Pulse: every agent gets its own Solana wallet. Not a shared pool. 
+          Not a multi-sig with agent access. Their own Ed25519 keypair, their own on-chain address, their own balance.
+        </p>
+ 
+        <p className="mb-6">
+          This is deliberate. It creates natural blast radius containment. If one agent is compromised, 
+          the others are unaffected — the funds are in separate accounts, not one shared pool. It also creates 
+          a transparent audit trail: every agent's activity is publicly verifiable on-chain, by wallet address, 
+          independently of Pulse's infrastructure.
+        </p>
+ 
+        <div className="bg-slate-800/50 rounded-xl p-6 mb-8 border border-slate-700">
+          <h3 className="font-bold text-xl mb-4">The 6-Agent Wallet Structure:</h3>
+          <div className="space-y-3 font-mono text-sm">
+            {[
+              { id: 'orchestrator_main', role: 'VAULT + ORCHESTRATOR', note: 'Capital pool. Receives deposits. Distributes to agents.' },
+              { id: 'dca_agent_01', role: 'DCA AGENT', note: 'Executes scheduled token buys via Jupiter V6.' },
+              { id: 'trailing_agent_01', role: 'TRAILING STOP', note: 'Monitors peak prices, auto-exits on drawdown.' },
+              { id: 'scout_agent_01', role: 'SCOUT', note: 'Scans new pools, evaluates token legitimacy.' },
+              { id: 'risk_manager_01', role: 'RISK MANAGER', note: 'RugCheck scanner, emergency halt authority.' },
+              { id: 'offramp_agent_01', role: 'OFF-RAMP', note: 'Profit sweeper. Sends gains to cold wallet.' },
+            ].map((agent) => (
+              <div key={agent.id} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 pb-3 border-b border-slate-700 last:border-0">
+                <span className="text-cyan-400 w-48 flex-shrink-0">{agent.id}</span>
+                <span className="text-orange-400 w-36 flex-shrink-0">{agent.role}</span>
+                <span className="text-slate-400 text-xs">{agent.note}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">Layer 2: The Encryption Model</h2>
+ 
+        <p className="mb-6">
+          Giving agents real wallets immediately raises the obvious question: how are the private keys protected? 
+          This is where most projects make a catastrophic shortcut — they store the private key encrypted with a single 
+          application secret. If the secret leaks, every wallet is compromised simultaneously.
+        </p>
+ 
+        <p className="mb-6">
+          Pulse uses a different model, borrowed from Signal, TLS 1.3, and AWS KMS: <strong>key derivation, not key storage.</strong>
+        </p>
+ 
+        <div className="bg-blue-900/20 border border-blue-500/30 rounded-xl p-8 mb-8">
+          <h3 className="font-bold text-xl mb-6">The HKDF-SHA256 Key Architecture:</h3>
+          
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-bold text-blue-400 mb-2">Ingredient 1: The Environment Secret</h4>
+              <p className="text-slate-300 text-sm mb-2">
+                A high-entropy secret stored only in Railway environment variables. Never in code, 
+                never in version control, never on disk. Hardened with <code className="bg-slate-900 px-1 rounded">scrypt</code> (N=16,384) 
+                to produce the Master Key — making brute-force attacks computationally expensive.
+              </p>
+            </div>
+ 
+            <div>
+              <h4 className="font-bold text-blue-400 mb-2">Ingredient 2: The Per-Agent Salt</h4>
+              <p className="text-slate-300 text-sm mb-2">
+                32 cryptographically random bytes generated when the agent wallet is created. Stored in the 
+                wallet's JSON file on disk. Unique per agent. Useless on its own — it's not a secret, it's a differentiator.
+              </p>
+            </div>
+ 
+            <div>
+              <h4 className="font-bold text-blue-400 mb-2">Ingredient 3: The Agent Identity</h4>
+              <p className="text-slate-300 text-sm mb-2">
+                The agent's ID string (<code className="bg-slate-900 px-1 rounded">dca_agent_01</code>, etc.) 
+                as the HKDF info parameter. Binds the derived key to exactly one agent — the same Master Key 
+                cannot derive the DCA agent's key using the Scout agent's identity.
+              </p>
+            </div>
+ 
+            <div className="bg-slate-900 rounded-lg p-4 font-mono text-xs text-slate-300">
+              <div className="text-slate-500 mb-2">// The derivation — runs in memory, result zeroed after use</div>
+              <div>masterKey = scrypt(ENCRYPTION_SECRET, hardening_salt, N=16384)</div>
+              <div>agentKey  = HKDF(masterKey, perAgentSalt, "pulse:{"{"}agentId{"}"}:v2", 32 bytes)</div>
+              <div>// agentKey is used to AES-256-GCM decrypt the private key</div>
+              <div>// agentKey.fill(0) — wiped from memory within milliseconds</div>
+            </div>
+          </div>
+ 
+          <div className="mt-6 pt-4 border-t border-blue-500/30">
+            <p className="text-slate-300 text-sm">
+              <strong>What an attacker needs to compromise one wallet:</strong> the Environment Secret 
+              (on Railway's servers), the per-agent salt (in the wallet JSON file), AND the agent ID (in code). 
+              All three. Each from a different location. Blast radius per breach: exactly one agent's wallet — 
+              because every agent has a different salt.
+            </p>
+          </div>
+        </div>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">Layer 3: The Orchestrator + AI Reasoning</h2>
+ 
+        <p className="mb-6">
+          The Orchestrator is the only agent with language capability. It receives natural language commands 
+          via the API, interprets them using GPT-4o-mini, and translates intent into specific actions for the swarm.
+        </p>
+ 
+        <div className="bg-slate-800/50 rounded-xl p-6 mb-8 border border-slate-700">
+          <h3 className="font-bold text-xl mb-4">How a Command Becomes an Action:</h3>
+          
+          <div className="space-y-3">
+            {[
+              { step: 'Input', color: 'text-cyan-400', content: '"Start DCA into BONK with 0.05 SOL per round, every 30 minutes"' },
+              { step: 'Context', color: 'text-blue-400', content: 'Orchestrator builds portfolio context: current balances, active agents, mission state' },
+              { step: 'Reasoning', color: 'text-purple-400', content: 'GPT-4o-mini evaluates risk, validates against current portfolio, plans action' },
+              { step: 'Decision', color: 'text-orange-400', content: '{ "action": "start_dca", "agentId": "dca_agent_01", "params": { "amountPerRound": 0.05 } }' },
+              { step: 'Governor', color: 'text-red-400', content: 'Transaction request passes through all 7 safety layers' },
+              { step: 'Execution', color: 'text-green-400', content: 'Jupiter V6 swap signed by dca_agent_01\'s keypair and broadcast on-chain' },
+            ].map((item) => (
+              <div key={item.step} className="flex items-start gap-3">
+                <span className={`font-bold text-xs w-20 flex-shrink-0 mt-1 ${item.color}`}>{item.step}:</span>
+                <span className="text-slate-300 text-sm font-mono bg-slate-900/50 px-3 py-1 rounded flex-1">{item.content}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+ 
+        <p className="mb-6">
+          Crucially, the Orchestrator also understands the swarm's full context on every request — current balances 
+          across all agents, recent actions, the active mission, Governor limits. It doesn't give instructions blindly; 
+          it reasons about feasibility before acting. If the vault has 0.2 SOL and you ask it to distribute 1 SOL, 
+          it tells you that's impossible and explains why.
+        </p>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">Layer 4: The Mission System</h2>
+ 
+        <p className="mb-6">
+          Most trading systems are instruction-based: "buy X, sell Y, repeat." Pulse is mission-based. 
+          A mission is a strategic objective — not a sequence of commands.
+        </p>
+ 
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-red-900/20 rounded-lg p-4 border border-red-500/30">
+            <h4 className="font-bold mb-3 text-red-400">Instruction-Based (Old Model):</h4>
+            <p className="text-sm text-slate-300 font-mono">
+              Buy 0.01 SOL of BONK at 9:00 AM<br/>
+              Buy 0.01 SOL of BONK at 10:00 AM<br/>
+              If price drops 15%, stop<br/>
+              If price rises 50%, sell half<br/>
+              <span className="text-slate-500">...48 more rules...</span>
+            </p>
+            <p className="text-xs text-slate-500 mt-3">
+              Brittle. Breaks if market conditions change. Requires constant maintenance.
+            </p>
+          </div>
+          <div className="bg-green-900/20 rounded-lg p-4 border border-green-500/30">
+            <h4 className="font-bold mb-3 text-green-400">Mission-Based (Pulse):</h4>
+            <p className="text-sm text-slate-300">
+              "Accumulate BONK conservatively over 2 weeks. Average down on dips. 
+              Exit 50% if we hit +40%. Protect capital. Don't take more than 3% risk on any single move."
+            </p>
+            <p className="text-xs text-slate-500 mt-3">
+              Adaptive. Agents interpret intent and adjust to conditions. One sentence handles infinite scenarios.
+            </p>
+          </div>
+        </div>
+ 
+        <p className="mb-6">
+          Missions broadcast to all agents instantly. When you update the mission via Telegram or dashboard, 
+          the Orchestrator propagates it to every agent on their next heartbeat cycle. No restart. No redeployment. 
+          The swarm adapts in under 60 seconds.
+        </p>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">Layer 5: The Heartbeat — How Agents Stay Alive</h2>
+ 
+        <p className="mb-6">
+          One of the most technically important decisions in Pulse's architecture is how agents maintain their 
+          activity. It's not a cron job. There's no external scheduler. The agents are powered by 
+          <code className="bg-slate-800 px-2 py-0.5 rounded mx-1 text-sm">setInterval()</code> loops 
+          inside a long-running Node.js process.
+        </p>
+ 
+        <div className="bg-slate-800/50 rounded-xl p-6 mb-8 border border-slate-700">
+          <h3 className="font-bold text-lg mb-3">Why This Matters for Deployment:</h3>
+          <div className="space-y-3 text-sm text-slate-300">
+            <p>
+              <strong className="text-orange-400">Vercel (serverless) won't work.</strong> Serverless functions 
+              have a 10-second execution limit and terminate after responding. An agent trying to run a heartbeat 
+              on Vercel gets killed after its first cycle.
+            </p>
+            <p>
+              <strong className="text-green-400">Railway (persistent process) works perfectly.</strong> Railway 
+              keeps the Node.js process alive indefinitely. The agents' setInterval timers keep firing. 
+              The heartbeats keep running. This is why Pulse is deployed on Railway, not Vercel.
+            </p>
+            <p>
+              <strong className="text-blue-400">The implication for infrastructure:</strong> Any platform running 
+              autonomous agents needs a persistent process host. This is a fundamental architectural constraint, 
+              not a preference.
+            </p>
+          </div>
+        </div>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">Layer 6: On-Chain Proof — Every Action Is Verifiable</h2>
+ 
+        <p className="mb-6">
+          Pulse includes an on-chain proof endpoint that executes a real chain of micro-transactions — 
+          each agent signing and sending to the next in sequence. Every signature is returned with a Solana 
+          Explorer URL. Every hop is independently verifiable.
+        </p>
+ 
+        <div className="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-8">
+          <h4 className="font-bold mb-3">The Proof Chain (all real devnet transactions):</h4>
+          <div className="font-mono text-xs text-slate-300 space-y-1">
+            <div>orchestrator_main <span className="text-cyan-400">→</span> dca_agent_01 (0.001 SOL signed by orchestrator)</div>
+            <div>dca_agent_01 <span className="text-cyan-400">→</span> trailing_agent_01 (0.001 SOL signed by DCA agent)</div>
+            <div>trailing_agent_01 <span className="text-cyan-400">→</span> risk_manager_01 (signed by trailing agent)</div>
+            <div>risk_manager_01 <span className="text-cyan-400">→</span> offramp_agent_01 (signed by risk manager)</div>
+            <div>offramp_agent_01 <span className="text-cyan-400">→</span> orchestrator_main (signed by off-ramp agent)</div>
+          </div>
+          <p className="text-xs text-slate-500 mt-4">
+            No simulated transactions. No mock data. Each hop is signed by the sending agent's actual keypair 
+            and recorded on Solana devnet. The explorer links are real.
+          </p>
+        </div>
+ 
+        <h2 className="text-3xl font-bold mt-12 mb-6">The Bigger Picture: ClickShift as the Intelligence Layer</h2>
+ 
+        <p className="mb-6">
+          Pulse is built on the ClickShift Chip — the same intelligence layer powering Alpha signals and Leverage 
+          analysis. That's not a marketing statement; it's an architectural one. The same whale exit detection, 
+          the same rug scoring, the same confidence models that power ClickShift's human-facing tools 
+          are what the Pulse agents use to make decisions.
+        </p>
+ 
+        <p className="mb-6">
+          This is the core thesis of ClickShift: the intelligence layer should be the same for both humans and agents. 
+          Whether a human trader reads an Alpha signal or a Pulse DCA agent reads the same data to decide whether 
+          to execute a round — the underlying intelligence is identical. Humans get the interface. Agents get the autonomy.
+        </p>
+ 
+        <div className="bg-gradient-to-br from-cyan-900/30 to-teal-900/30 rounded-2xl p-8 border border-cyan-500/40 mt-12">
+          <h3 className="text-2xl font-bold mb-2">Pulse Is Moving to Testnet</h3>
+          <p className="text-slate-300 mb-6">
+            Early testers get direct access to the full 6-agent swarm on Solana testnet — their own vault, 
+            their own agents, real transactions, real data. If you want to run autonomous DeFi before it goes mainstream, 
+            this is the window.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://pulse.clickshift.io"
+              className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-cyan-500 to-teal-600 px-8 py-4 rounded-lg font-semibold hover:from-cyan-600 hover:to-teal-700 transition-all"
+            >
+              <span>Request Testnet Access →</span>
+            </a>
+            <a
+              href="https://pulse.clickshift.io/api/proof/wallets"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center space-x-2 bg-slate-800 border border-slate-600 px-8 py-4 rounded-lg font-semibold hover:bg-slate-700 transition-all"
+            >
+              <span>View Live Agent Wallets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    )
+  },
   };

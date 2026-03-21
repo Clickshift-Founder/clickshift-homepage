@@ -147,7 +147,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           {/* CTA Section */}
           <div className="mt-12 bg-gradient-to-br from-blue-900/30 to-purple-900/30 rounded-2xl p-8 border border-blue-500/30">
             <h3 className="text-2xl font-bold mb-4">
-              Ready to Trade with Intelligence?
+              Ready to profit with Intelligence?
             </h3>
             <p className="text-slate-300 mb-6">
               Join 525+ traders using ClickShift's AI-powered intelligence to make smarter trading decisions.

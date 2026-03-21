@@ -143,13 +143,42 @@ const blogPosts = [
   gradient: 'from-pink-500 to-rose-600',
   tags: ['Beginner Guide', 'DeFi', 'Common Mistakes', 'Education']
 },
+
+ {
+    slug: 'autonomous-ai-agents-defi-trading',
+    title: 'The Wallet That Never Sleeps: How Autonomous AI Agents Are Replacing Manual DeFi Trading',
+    excerpt: 'Manual DeFi trading has an unavoidable ceiling: you. You sleep, you feel, you get tired. Autonomous AI agents don\'t. Here\'s how Pulse is building the infrastructure for wallets that trade while you\'re asleep.',
+    category: 'Agentic DeFi',
+    readTime: '5 min read',
+    date: 'March 18, 2025',
+    featured: true,
+    author: 'Emmanuel O.',
+    views: '0',
+    icon: <Zap className="h-6 w-6" />,
+    gradient: 'from-cyan-500 to-teal-600',
+    tags: ['Agentic DeFi', 'AI Agents', 'Autonomous Trading', 'Pulse', 'Solana']
+  },
+  {
+    slug: 'pulse-agentic-wallet-os-solana',
+    title: '6 AI Agents, 1 Vault, Zero Clicks: Inside the Architecture of Pulse',
+    excerpt: 'Each agent has its own Solana wallet, its own capital, and its own heartbeat. Every transaction passes a 7-layer safety system. Every signature is verifiable on-chain. This is a deep-dive into how it actually works.',
+    category: 'Agentic DeFi',
+    readTime: '6 min read',
+    date: 'March 20, 2025',
+    featured: true,
+    author: 'Emmanuel O.',
+    views: '0',
+    icon: <Target className="h-6 w-6" />,
+    gradient: 'from-teal-500 to-cyan-600',
+    tags: ['Agentic DeFi', 'Pulse', 'Solana', 'AI Architecture', 'DeFi Security']
+  },
 ];
 
 const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = ['All', 'Futures Trading', 'Trading Intelligence', 'Technical Analysis', 'Solana Trading', 'Tool Reviews'];
+  const categories = ['All', 'Agentic DeFi', 'Futures Trading', 'Trading Intelligence', 'Technical Analysis', 'Solana Trading', 'Tool Reviews'];
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
