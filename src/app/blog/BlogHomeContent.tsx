@@ -153,7 +153,7 @@ const blogPosts = [
     date: 'March 18, 2025',
     featured: true,
     author: 'Emmanuel O.',
-    views: '0',
+    views: '1.72k',
     icon: <Zap className="h-6 w-6" />,
     gradient: 'from-cyan-500 to-teal-600',
     tags: ['Agentic DeFi', 'AI Agents', 'Autonomous Trading', 'Pulse', 'Solana']
@@ -167,7 +167,7 @@ const blogPosts = [
     date: 'March 20, 2025',
     featured: true,
     author: 'Emmanuel O.',
-    views: '0',
+    views: '1.5k',
     icon: <Target className="h-6 w-6" />,
     gradient: 'from-teal-500 to-cyan-600',
     tags: ['Agentic DeFi', 'Pulse', 'Solana', 'AI Architecture', 'DeFi Security']

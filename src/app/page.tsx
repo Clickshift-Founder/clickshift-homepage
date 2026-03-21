@@ -19,6 +19,7 @@ import {
 import ChipShowcase from '@/components/ChipShowcase';
 import ProductShowcase from '@/components/ProductShowcase';
 import AgentThoughtStream from '@/components/AgentThoughtStream';
+import MetricsShowcase from '@/components/MetricsShowcase';
 import Image from 'next/image';
 
   // Particle system
@@ -263,7 +264,10 @@ const ClickShiftHomepage = () => {
     { name: 'CoinGecko', desc: 'Market Data' },
     { name: 'Moralis', desc: 'Cross-Chain API' },
     { name: 'HelloMoon', desc: 'On-Chain Analytics' },
-    { name: 'Chainlink', desc: 'Oracle Network' }
+    { name: 'Chainlink', desc: 'Oracle Network' },
+    { name: 'Jito', desc: 'MEV Infrastructure' },
+    { name: 'Drift', desc: 'Perps Protocol' },
+    { name: 'Flutterwave', desc: 'Fiat Rails' }
     
   ];
 
@@ -287,35 +291,17 @@ const ClickShiftHomepage = () => {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
               The Bloomberg Terminal
               <br />
-              Powering Agents On-Chain.
+              for the Agentic Economny.
             </h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              We empower AI agents with real-time on-chain intelligence. 
-             Our Chip tell AI agents when to enter, where whales will exit, and 
-            how to position for profit. Humans can access the same intelligence through 
-            our interface.
+             `Six intelligences. One chip. Infinite agents.
+              ClickShift is the intelligence layer that powers autonomous AI agents
+              across DeFi — and the same intelligence is available to human traders
+              through our suite of products.`
             </p>
           </div>
 
-          {/* Live Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
-              <div className="text-2xl md:text-3xl font-bold text-blue-400">{currentStats.tradersOnline}</div>
-              <div className="text-sm text-slate-400">Traders Online</div>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
-              <div className="text-2xl md:text-3xl font-bold text-green-400">{currentStats.accuracy.toFixed(1)}%</div>
-              <div className="text-sm text-slate-400">Prediction Accuracy</div>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
-              <div className="text-2xl md:text-3xl font-bold text-purple-400">${currentStats.lossesPrevented.toFixed(1)}M</div>
-              <div className="text-sm text-slate-400">Losses Prevented</div>
-            </div>
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
-              <div className="text-2xl md:text-3xl font-bold text-orange-400">{currentStats.analysisSpeed}s</div>
-              <div className="text-sm text-slate-400">Analysis Speed</div>
-            </div>
-          </div>
+        
 
                 {/* Primary CTAs */}
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center items-center mb-8">
@@ -383,7 +369,7 @@ const ClickShiftHomepage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
             <h3 className="text-lg md:text-xl text-slate-300 mb-4">
-              Trusted by 525+ focused traders across 47 nations
+              `Trusted by 800+ traders and 12+ active AI agent deployments across 47 nations`
             </h3>
           </div>
           
@@ -414,6 +400,10 @@ const ClickShiftHomepage = () => {
           {/* CHIP Showcase Component (New Section) */}
        <ChipShowcase />
 
+
+        {/* Live Stats */}
+        <MetricsShowcase /> 
+
       {/* Core Value Proposition */}
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
@@ -426,8 +416,10 @@ const ClickShiftHomepage = () => {
               </span>
             </h2>            
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Integrating the ClickShift Chip, we analyze millions of on-chain data points to calculate 
-                crowd behavior, market opportunities and anticipate price shifts.
+                `ClickShift's intelligence chip processes millions of on-chain signals
+                in real time — feeding both autonomous AI agents and human traders
+                with the same institutional-grade edge. Six intelligences, one chip,
+                infinite applications.`
               </p>
           </div>
 
@@ -458,9 +450,11 @@ const ClickShiftHomepage = () => {
 
             <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all transform hover:-translate-y-2">
               <Globe className="h-12 w-12 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">Cross-Chain IQ</h3>
+              <h3 className="text-xl font-bold mb-3">Agent-Ready Infrastructure</h3>
               <p className="text-slate-300">
-                Every trade, every outcome, every pattern across Solana, Ethereum, BSC, etc feeds our learning engine; making every prediction smarter.
+                Our Chip exposes a standard API consumed by AI agents,
+                trading bots, and DeFi protocols. Build on the same intelligence
+                that powers ClickBot, Alpha, Leverage and Pulse.
               </p>              
             </div>
           </div>
@@ -510,7 +504,7 @@ const ClickShiftHomepage = () => {
       {/* Partners with smooth scrolling */}
       <section className="py-20 px-4 bg-slate-800/30">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-4">🤝 Powered by the Best</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">🔌 Infrastructure & Data Partners</h2>
           <p className="text-slate-300 text-center mb-12">Strategic Partners</p>
           
                       <SmoothScrollingPartners partners={partners} />
@@ -525,7 +519,7 @@ const ClickShiftHomepage = () => {
       <section id="community" className="py-20 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-8">
-            📱 Join 1,200+ Traders Building Alpha Together
+            `📱 Join the ClickShift Intelligence Network`
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -533,9 +527,9 @@ const ClickShiftHomepage = () => {
               <h3 className="text-xl font-bold mb-4">📱 Telegram Community</h3>
               <p className="text-slate-300 mb-4">Live alerts, market discussions, early access</p>
               <div className="text-sm text-slate-400 space-y-1">
-                <div>🔥 47 successful 10x+ calls tracked</div>
-                <div>💎 Weekly "Diamond Hands" challenges</div>
-                <div>🧠 Monthly strategy competitions</div>
+                <div>🔥 Live agent activity feed — watch AI execute in real time</div>
+                <div>💎 Early access to new agent deployments</div>
+                <div>🧠 Direct signal feed from ClickShift Alpha</div>
               </div>
             </div>
             
