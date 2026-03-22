@@ -294,10 +294,10 @@ const ClickShiftHomepage = () => {
               for the Agentic Economny.
             </h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-             `Six intelligences. One chip. Infinite agents.
+             Six intelligences. One chip. Infinite agents.
               ClickShift is the intelligence layer that powers autonomous AI agents
               across DeFi — and the same intelligence is available to human traders
-              through our suite of products.`
+              through our suite of products.
             </p>
           </div>
 
@@ -369,7 +369,7 @@ const ClickShiftHomepage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
             <h3 className="text-lg md:text-xl text-slate-300 mb-4">
-              `Trusted by 800+ traders and 12+ active AI agent deployments across 47 nations`
+              Trusted by 800+ traders and 12+ active AI agent deployments across 47 nations
             </h3>
           </div>
           
@@ -416,10 +416,10 @@ const ClickShiftHomepage = () => {
               </span>
             </h2>            
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                `ClickShift's intelligence chip processes millions of on-chain signals
+                ClickShift's intelligence chip processes millions of on-chain signals
                 in real time — feeding both autonomous AI agents and human traders
                 with the same institutional-grade edge. Six intelligences, one chip,
-                infinite applications.`
+                infinite applications.
               </p>
           </div>
 
@@ -519,7 +519,7 @@ const ClickShiftHomepage = () => {
       <section id="community" className="py-20 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-8">
-            `📱 Join the ClickShift Intelligence Network`
+            📱 Join the ClickShift Intelligence Network
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8 mb-12">
