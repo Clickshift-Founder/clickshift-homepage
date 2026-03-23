@@ -20,6 +20,7 @@ import ChipShowcase from '@/components/ChipShowcase';
 import ProductShowcase from '@/components/ProductShowcase';
 import AgentThoughtStream from '@/components/AgentThoughtStream';
 import MetricsShowcase from '@/components/MetricsShowcase';
+import ReferralLeaderboard from '@/components/ReferralLeaderboard';
 import Image from 'next/image';
 
   // Particle system
