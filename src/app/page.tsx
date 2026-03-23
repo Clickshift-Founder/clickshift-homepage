@@ -405,6 +405,9 @@ const ClickShiftHomepage = () => {
         {/* Live Stats */}
         <MetricsShowcase /> 
 
+        {/* The referral Program Leaderboard*/}
+        <ReferralLeaderboard/>
+
       {/* Core Value Proposition */}
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
