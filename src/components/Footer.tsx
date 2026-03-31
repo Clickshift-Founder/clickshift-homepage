@@ -70,6 +70,17 @@ const Footer = () => {
               </div>
               <div>
                 <a 
+                  href="https://api.clickshift.io/shift/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-white transition-colors"
+                >
+                  $Shift Token WhitePaper
+                </a>
+              </div>
+              
+              <div>
+                <a 
                   href="https://alpha.clickshift.io" 
                   target="_blank" 
                   rel="noopener noreferrer" 
@@ -78,6 +89,18 @@ const Footer = () => {
                   ClickShift Alpha
                 </a>
               </div>
+              <div>
+                <a 
+                  href="https://pulse.clickshift.io" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-white transition-colors"
+                >
+                  Pulse
+                </a>
+              </div>
+              
+             
               <div>
                 <a 
                   href="https://leverage.clickshift.io" 

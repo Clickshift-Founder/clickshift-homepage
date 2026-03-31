@@ -21,6 +21,7 @@ import ProductShowcase from '@/components/ProductShowcase';
 import AgentThoughtStream from '@/components/AgentThoughtStream';
 import MetricsShowcase from '@/components/MetricsShowcase';
 import ReferralLeaderboard from '@/components/ReferralLeaderboard';
+import ShiftSection from '@/components/ShiftSection';
 import Image from 'next/image';
 
   // Particle system
@@ -404,6 +405,9 @@ const ClickShiftHomepage = () => {
 
         {/* Live Stats */}
         <MetricsShowcase /> 
+        
+        {/* Trader Leaderboard for the $Shft Tokenive Stats */}
+        <ShiftSection />
 
         {/* The referral Program Leaderboard*/}
         <ReferralLeaderboard/>
