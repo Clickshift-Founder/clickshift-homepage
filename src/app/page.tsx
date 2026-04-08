@@ -293,7 +293,7 @@ const ClickShiftHomepage = () => {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
               The Bloomberg Terminal
               <br />
-              for the Agentic Economny.
+              for the Agentic Economy.
             </h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
              Six intelligences. One chip. Infinite agents.
