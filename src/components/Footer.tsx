@@ -181,7 +181,7 @@ const Footer = () => {
         {/* Contact Information */}
         <div className="text-center space-y-2 text-sm text-slate-400 mb-8">
           <div>Business Inquiries: trust@clickshift.io</div>
-          <div>Support: hello@clickshift.io, +19454093488</div>
+          <div>Support: hello@clickshift.io, 07034930975</div>
           <div>Dutse, aft Policesignboard, Tipper Garage,Bwari Area Council, Abuja</div>
         </div>
 
