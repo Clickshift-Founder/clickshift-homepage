@@ -182,7 +182,7 @@ const Footer = () => {
         <div className="text-center space-y-2 text-sm text-slate-400 mb-8">
           <div>Business Inquiries: trust@clickshift.io</div>
           <div>Support: hello@clickshift.io, +19454093488</div>
-          <div>Suite D02, Kenuj 02 Mall, Kaura District, Abuja</div>
+          <div>Dutse, aft Policesignboard, Tipper Garage,Bwari Area Council, Abuja</div>
         </div>
 
        {/* Copyright */}
