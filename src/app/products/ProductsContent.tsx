@@ -291,7 +291,7 @@ const ProductsPage = () => {
                 <div className="text-sm text-slate-400">Prediction Accuracy</div>
               </div>
               <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700">
-                <div className="text-2xl font-bold text-purple-400 mb-1">$2.7M</div>
+                <div className="text-2xl font-bold text-purple-400 mb-1">$25.4K</div>
                 <div className="text-sm text-slate-400">Losses Prevented</div>
               </div>
               <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700">
