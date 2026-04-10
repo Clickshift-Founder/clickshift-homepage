@@ -24,7 +24,7 @@ const AboutPage = () => {
     { number: "73.2%", label: "Prediction Accuracy", color: "text-green-400" },
     { number: "91", label: "NPS Score", color: "text-purple-400" },
     { number: "47", label: "Countries Served", color: "text-orange-400" },
-    { number: "$2.4M", label: "Losses Prevented", color: "text-pink-400" },
+    { number: "$25.4k", label: "Losses Prevented", color: "text-pink-400" },
     { number: "76%", label: "Day-7 Retention", color: "text-cyan-400" },
   ];
 
