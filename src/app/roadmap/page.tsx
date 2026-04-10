@@ -53,7 +53,7 @@ const RoadmapPage = () => {
         { 
           title: 'Product-Market Fit Validation', 
           description: 'Proven demand across 47+ countries',
-          metrics: ['$2.4M losses prevented', '1,200+ community members', 'Global user base'],
+          metrics: ['$25.4K losses prevented', '1,200+ community members', 'Global user base'],
           status: 'completed'
         }
       ]

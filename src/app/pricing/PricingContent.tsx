@@ -182,7 +182,7 @@ interface Plan {
     { number: '525+', label: 'Active Traders', icon: <Users className="h-5 w-5" /> },
     { number: '73%', label: 'Prediction Accuracy', icon: <TrendingUp className="h-5 w-5" /> },
     { number: '91', label: 'NPS Score', icon: <Star className="h-5 w-5" /> },
-    { number: '$2.4M', label: 'Losses Prevented', icon: <Shield className="h-5 w-5" /> }
+    { number: '$25.4K', label: 'Losses Prevented', icon: <Shield className="h-5 w-5" /> }
   ];
 
   return (

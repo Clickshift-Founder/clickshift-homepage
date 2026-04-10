@@ -200,7 +200,7 @@ const ResultsShowcase = () => {
               <div className="text-sm text-slate-400">Daily Active Traders</div>
             </div>
             <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
-              <div className="text-3xl font-bold text-purple-400">$2.7M+</div>
+              <div className="text-3xl font-bold text-purple-400">$25.4M+</div>
               <div className="text-sm text-slate-400">Losses Prevented</div>
             </div>
             <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
