@@ -62,7 +62,7 @@ const PRODUCTS: Product[] = [
       { label: "Trailing Profit", detail: "Intelligently exits near the peak (e.g., 5x on a 6x run)." },
       { label: "Rug Detection", detail: "Active monitoring to avoid malicious contracts." },
       { label: "Non-Custodial", detail: "Bank-level security (AES-256). You control your keys." },
-      { label: "One-Tap Trading", detail: "Best price execution via Jupiter integration." },
+      { label: "Smart Messenger", detail: "It moves with precision and Intelligence." },
     ],
     cta: "Start ClickBot on Telegram",
     href: "https://clickbot.clickshift.io",
