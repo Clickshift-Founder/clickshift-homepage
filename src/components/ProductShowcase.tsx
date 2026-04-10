@@ -45,7 +45,7 @@ const PRODUCTS: Product[] = [
       </div>
     ),
     name: "ClickBot",
-    tagline: "Autonomous Trading Agent",
+    tagline: "Web3 Siri on Solana",
     color: "text-green-400",
     borderHover: "hover:border-green-500/50",
     badgeGradient: "from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700",
