@@ -49,6 +49,16 @@ const Footer = () => {
           </div>
         </div>
 
+        <div style={{ background: '#0a0a0a', borderTop: '1px solid #222', padding: '16px 24px', textAlign: 'center' }}>
+  <p style={{ color: '#888', fontSize: '12px', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
+    ⚠️ <strong style={{ color: '#aaa' }}>Disclaimer:</strong> ClickShift as a startup offers analytics,
+    automation, and intelligence tools. No trading, currency exchange, or brokerage services
+    are conducted on this platform. Users connect their own independent wallets and initiate
+    all transactions directly. ClickShift does not hold, custody, or transmit funds on behalf
+    of any user.
+  </p>
+</div>
+
          {/* Newsletter in footer */}
         <NewsletterFooter />
 
