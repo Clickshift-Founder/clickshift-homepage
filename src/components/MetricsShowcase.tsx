@@ -43,6 +43,10 @@ interface SummaryStats {
   copy_trading: { total_copied_trades: number; active_sessions: number; success_rate_pct: number };
   perps: { total_positions: number; open_now: number; win_rate_pct: number };
   referrals: { total_referred: number; active_referrers: number };
+   // ── NEW ──
+  utility?: { total_payments: number; ngn_volume: number; success_rate_pct: number; payments_7d: number; electricity_count: number; airtime_count: number };
+  bank_transfers?: { transactions: number; ngn_volume: number; success_rate_pct: number; unique_banks: number };
+  yield?: { active_deposits: number; live_pool_usd: number; unique_stakers: number; avg_apy: string; platform_revenue: number };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -267,7 +271,11 @@ const MetricsShowcase: React.FC = () => {
         copy_trading: { total_copied_trades: 3241, active_sessions: 89, success_rate_pct: 71.2 },
         perps: { total_positions: 412, open_now: 47, win_rate_pct: 63.8 },
         referrals: { total_referred: 234, active_referrers: 67 },
-      });
+         // ── NEW demo values ──
+        utility: { total_payments: 156, ngn_volume: 18400000, success_rate_pct: 94.2, payments_7d: 42, electricity_count: 89, airtime_count: 47 },
+        bank_transfers: { transactions: 312, ngn_volume: 28700000, success_rate_pct: 91.8, unique_banks: 14 },
+        yield: { active_deposits: 23, live_pool_usd: 4200, unique_stakers: 18, avg_apy: '8.4', platform_revenue: 84 },
+    });
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -382,7 +390,7 @@ const MetricsShowcase: React.FC = () => {
           <HeroCard
             label="Transactions"
             value={fmtK(animTxs)}
-            sublabel="Spot · Fiat · Sniper · Perps"
+            sublabel="Spot · Fiat · Utility · Yield · Perps"
             accent="#fb923c"
             delay={240}
           />
@@ -491,6 +499,45 @@ const MetricsShowcase: React.FC = () => {
           />
 
         </div>
+
+        {/* Utility Bills */}
+          <ModuleCard
+            icon={<Zap className="w-4 h-4" />}
+            title="Utility Bills"
+            accent="#34d399"
+            badge={`${s.utility?.payments_7d || 0} this week`}
+            rows={[
+              { label: "Total payments", value: fmtK(s.utility?.total_payments || 0), highlight: true },
+              { label: "NGN volume", value: fmtNGN(s.utility?.ngn_volume || 0) },
+              { label: "Success rate", value: `${s.utility?.success_rate_pct || 0}%` },
+            ]}
+          />
+
+          {/* Bank Transfers */}
+          <ModuleCard
+            icon={<Banknote className="w-4 h-4" />}
+            title="Bank Transfers"
+            accent="#60a5fa"
+            badge={`${s.bank_transfers?.unique_banks || 0} banks`}
+            rows={[
+              { label: "Transactions", value: fmtK(s.bank_transfers?.transactions || 0), highlight: true },
+              { label: "NGN sent", value: fmtNGN(s.bank_transfers?.ngn_volume || 0) },
+              { label: "Success rate", value: `${s.bank_transfers?.success_rate_pct || 0}%` },
+            ]}
+          />
+
+          {/* Yield Engine */}
+          <ModuleCard
+            icon={<Activity className="w-4 h-4" />}
+            title="Yield Engine"
+            accent="#f472b6"
+            badge={`up to 14% APY`}
+            rows={[
+              { label: "Live pool", value: fmtUSD(s.yield?.live_pool_usd || 0), highlight: true },
+              { label: "Active stakers", value: (s.yield?.active_deposits || 0).toLocaleString() },
+              { label: "Platform revenue", value: fmtUSD(s.yield?.platform_revenue || 0) },
+            ]}
+          />
 
         {/* ── LOCKED REVENUE TEASER ─────────────────────────────── */}
         <div
