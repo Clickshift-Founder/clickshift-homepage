@@ -38,35 +38,35 @@ interface Product {
 ───────────────────────────────────────────────────────────────────────────── */
 const PRODUCTS: Product[] = [
   {
-    id: "clickbot",
-    logo: (
-      <div className="w-12 h-12 relative flex-shrink-0 mt-1">
-        <Image src="/clickbot-logo.png" alt="ClickBot" fill className="rounded-full object-cover" />
-      </div>
-    ),
-    name: "ClickBot",
-    tagline: "Solana-based Financial SperApp",
-    color: "text-green-400",
-    borderHover: "hover:border-green-500/50",
-    badgeGradient: "from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700",
-    consoleBg: "bg-slate-900/60",
-    taglineQuote: '"Powered by the ClickShift Chip. Trade, Earn, Spend, & Grow wealth."',
-    consoleLines: [
-      { text: "Agent Status: ACTIVE", color: "text-green-400" },
-      { text: "🤖 Last Action: $BONK Exit Optimization", color: "text-blue-400" },
-      { text: "📈 Result: Set 2x target, took 5.2x profit.", color: "text-slate-300" },
-      { text: "🔒 Security: AES-256 (Bank-Level)", color: "text-orange-400" },
-      { text: "👥 Used by 525+ traders daily", color: "text-purple-400" },
-    ],
-    features: [
-      { label: "Trailing Profit", detail: "Intelligently exits near the peak (e.g., 5x on a 6x run)." },
-      { label: "Rug Detection", detail: "Active monitoring to avoid malicious contracts." },
-      { label: "Non-Custodial", detail: "Bank-level security (AES-256). You control your keys." },
-      { label: "Smart Messenger", detail: "It moves with precision and Intelligence." },
-    ],
-    cta: "Start ClickBot on Telegram",
-    href: "https://clickbot.clickshift.io",
-  },
+  id: "clickbot",
+  logo: (
+    <div className="w-12 h-12 relative flex-shrink-0 mt-1">
+      <Image src="/clickbot-logo.png" alt="ClickBot" fill className="rounded-full object-cover" />
+    </div>
+  ),
+  name: "ClickBot",
+  tagline: "Solana-Powered Financial Super-App",
+  color: "text-green-400",
+  borderHover: "hover:border-green-500/50",
+  badgeGradient: "from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700",
+  consoleBg: "bg-slate-900/60",
+  taglineQuote: '"Trade Solana tokens. Pay your electricity bill. Earn 14% yield. All from Telegram."',
+  consoleLines: [
+    { text: "✅ Status: LIVE on Solana Mainnet", color: "text-green-400" },
+    { text: "📈 Last Trade: SOL → BONK → 5.2x exit via trailing", color: "text-blue-400" },
+    { text: "⚡ Last Bill: ₦5,000 AEDC electricity paid in USDC", color: "text-slate-300" },
+    { text: "🔒 Security: AES-256 | Non-custodial wallet", color: "text-orange-400" },
+    { text: "🌍 Users: Nigeria • Ghana • diaspora worldwide", color: "text-purple-400" },
+  ],
+  features: [
+    { label: "Trailing Profit", detail: "Follows the pump and auto-exits near the peak. Set 2x, capture 5x." },
+    { label: "Pay Bills in Crypto", detail: "Electricity, airtime, DStv, bank transfers — all paid with USDC from Telegram." },
+    { label: "Earn 14% APY", detail: "Deposit USDC and earn yield continuously. Flexible or locked plans." },
+    { label: "NGN ↔ USDC Rails", detail: "Buy USDC with Naira via virtual account. Cash out to any Nigerian bank." },
+  ],
+  cta: "Start ClickBot on Telegram",
+  href: "https://t.me/clicksolbot",
+},
   {
     id: "alpha",
     logo: <div className="text-4xl flex-shrink-0">🔮</div>,
