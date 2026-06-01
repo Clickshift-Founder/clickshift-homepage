@@ -45,12 +45,12 @@ const PRODUCTS: Product[] = [
       </div>
     ),
     name: "ClickBot",
-    tagline: "Web3 Siri on Solana",
+    tagline: "Solana-based Financial SperApp",
     color: "text-green-400",
     borderHover: "hover:border-green-500/50",
     badgeGradient: "from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700",
     consoleBg: "bg-slate-900/60",
-    taglineQuote: '"Powered by the ClickShift Chip. Maximize profit, minimize risk."',
+    taglineQuote: '"Powered by the ClickShift Chip. Trade, Earn, Spend, & Grow wealth."',
     consoleLines: [
       { text: "Agent Status: ACTIVE", color: "text-green-400" },
       { text: "🤖 Last Action: $BONK Exit Optimization", color: "text-blue-400" },
