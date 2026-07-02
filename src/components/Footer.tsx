@@ -157,7 +157,7 @@ const Footer = () => {
               <div><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></div>
               <div><Link href="/results" className="hover:text-white transition-colors">Results from ClickShift</Link></div>
               <div><a href="https://x.com/ClickShifthq" className="hover:text-white transition-colors">Twitter</a></div>
-              <div><a href="https://linkedin.com/in/ClickShifthq" className="hover:text-white transition-colors">LinkedIn</a></div>
+              <div><a href="https://www.linkedin.com/company/clickshifthq/" className="hover:text-white transition-colors">LinkedIn</a></div>
               <div><a href="#" className="hover:text-white transition-colors">Discord</a></div>
               <div><a href="#" className="hover:text-white transition-colors">Medium</a></div>
             </div>
