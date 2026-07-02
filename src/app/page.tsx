@@ -315,7 +315,7 @@ const ClickShiftHomepage = () => {
               rel="noopener noreferrer"
               className="group bg-gradient-to-r from-green-500 to-blue-600 px-6 py-4 rounded-lg text-base font-semibold hover:from-green-600 hover:to-blue-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto"
             >
-              <span>🤖 Start 5x Auto-Profit Agent</span>
+              <span>🤖 Web3 Siri on Solana</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           
