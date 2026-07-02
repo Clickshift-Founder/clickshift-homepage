@@ -221,10 +221,10 @@ const RoadmapPage = () => {
       icon: <Target className="h-5 w-5" />
     },
     { 
-      current: '$0', 
-      q2Target: '$50K', 
+      current: '$180', 
+      q4Target: '$50K', 
       yearTarget: '$2M+', 
-      label: 'Monthly Revenue',
+      label: 'Monthly Revenue across all Products',
       icon: <DollarSign className="h-5 w-5" />
     },
     { 
