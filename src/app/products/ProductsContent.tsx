@@ -21,6 +21,7 @@ import {
   Star
 } from 'lucide-react';
 import ChipShowcase from '@/components/ChipShowcase';
+import ProductShowcase from '@/components/ProductShowcase';
 
   
 // Animated Background Particles Component (reused from home)
@@ -304,6 +305,10 @@ const ProductsPage = () => {
 
             {/* CHIP Showcase Component (New Section) */}
        <ChipShowcase />
+
+   {/* NEW ALIGNED PRODUCT SHOWCASE SECTION
+          ********************************************************************/}
+          <ProductShowcase />
 
         {/* Product Categories */}
         <section className="py-12 px-4">
