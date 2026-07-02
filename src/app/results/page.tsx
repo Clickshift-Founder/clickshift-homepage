@@ -186,7 +186,7 @@ const ResultsShowcase = () => {
             </h1>
           </div>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-            See how ClickShift's AI-powered intelligence has helped 525+ traders make smarter decisions and generate consistent profits.
+            See how ClickShift's AI-powered intelligence has helped 525+ Users across our Products make smarter decisions and generate consistent profits.
           </p>
           
           {/* Stats */}
@@ -197,7 +197,7 @@ const ResultsShowcase = () => {
             </div>
             <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
               <div className="text-3xl font-bold text-blue-400">525+</div>
-              <div className="text-sm text-slate-400">Daily Active Traders</div>
+              <div className="text-sm text-slate-400">Users across our Products</div>
             </div>
             <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
               <div className="text-3xl font-bold text-purple-400">$25.4M+</div>
@@ -601,7 +601,7 @@ const ResultsShowcase = () => {
             Ready to Make Smarter Trading Decisions?
           </h2>
           <p className="text-xl text-slate-300 mb-12">
-            Join 525+ traders using AI-driven intelligence
+            Join 525+ Users across our Products using AI-driven intelligence
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

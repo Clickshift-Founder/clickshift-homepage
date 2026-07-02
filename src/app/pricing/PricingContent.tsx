@@ -179,7 +179,7 @@ interface Plan {
   ];
 
   const stats = [
-    { number: '525+', label: 'Active Traders', icon: <Users className="h-5 w-5" /> },
+    { number: '525+', label: 'Users across our Products', icon: <Users className="h-5 w-5" /> },
     { number: '73%', label: 'Prediction Accuracy', icon: <TrendingUp className="h-5 w-5" /> },
     { number: '91', label: 'NPS Score', icon: <Star className="h-5 w-5" /> },
     { number: '$25.4K', label: 'Losses Prevented', icon: <Shield className="h-5 w-5" /> }
@@ -466,7 +466,7 @@ interface Plan {
             Ready to Trade with Intelligence?
           </h2>
           <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-            Join 525+ traders who've discovered the power of predictive intelligence. 
+            Join 525+ Users across our Products who've discovered the power of predictive intelligence. 
             Start free, upgrade when ready.
           </p>
           

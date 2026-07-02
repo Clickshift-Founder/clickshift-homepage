@@ -16,10 +16,10 @@ type BlogPost = {
 
 export const metadata = {
   title: "Agent Intelligence Insights and Strategies | ClickShift",
-  description: "Real stories, proven strategies, and actionable intelligence from 525+ traders who've mastered DeFi markets with ClickShift.",
+  description: "Real stories, proven strategies, and actionable intelligence from 525+ users across our products who've mastered DeFi markets with ClickShift.",
   openGraph: {
     title: "Agent Intelligence Insights and Strategies | ClickShift",
-    description: "Real stories, proven strategies, and actionable intelligence from 525+ traders who've mastered DeFi markets with ClickShift.",
+    description: "Real stories, proven strategies, and actionable intelligence from 525+ Users across our Products who've mastered DeFi markets with ClickShift.",
     images: ["/og-image.png"],
   }
 }
@@ -219,7 +219,7 @@ export const blogContent: Record<string, BlogPost> = {
         <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/30 rounded-xl p-8 mt-12">
           <h3 className="text-2xl font-bold mb-4">Start Trading Smarter Today</h3>
           <p className="text-slate-300 mb-6">
-            Join 525+ traders who've stopped getting liquidated and started profiting consistently with ClickShift Leverage.
+            Join 525+ Users across our Products who've stopped getting liquidated and started profiting consistently with ClickShift Leverage.
           </p>
           <ul className="space-y-2 mb-6">
             <li className="flex items-center space-x-2">
@@ -442,7 +442,7 @@ export const blogContent: Record<string, BlogPost> = {
         <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-xl p-8 mt-12">
           <h3 className="text-2xl font-bold mb-4">Start Tracking Whales Like a Pro</h3>
           <p className="text-slate-300 mb-6">
-            Join 525+ traders using ClickShift Alpha's patent-pending exit cluster detection to catch pumps before they happen.
+            Join 525+ Users across our Products using ClickShift Alpha's patent-pending exit cluster detection to catch pumps before they happen.
           </p>
           <a
             href="https://alpha.clickshift.io"

@@ -263,7 +263,7 @@ const CareersPage = () => {
       salary: '$90K - $130K + equity',
       experience: '3+ years',
       featured: false,
-      description: 'Scale our growth from 525 to 25,000+ daily users. Build the marketing engine that makes ClickShift a household name in Web3.',
+      description: 'Scale our growth from 525 to 25,000+ Users across our Products. Build the marketing engine that makes ClickShift a household name in Web3.',
       requirements: [
         '3+ years of growth marketing experience',
         'Experience with B2B SaaS or fintech marketing',
@@ -323,7 +323,7 @@ const CareersPage = () => {
               Revolution
             </h1>
             <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              Help us build the Bloomberg Terminal of Web3. We're scaling from 525 daily users to millions, 
+              Help us build the Bloomberg Terminal of Web3. We're scaling from 525 Users across our Products to millions, 
               democratizing institutional-grade trading intelligence for traders worldwide.
             </p>
           </div>
@@ -332,7 +332,7 @@ const CareersPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
               <div className="text-2xl font-bold text-blue-400">525+</div>
-              <div className="text-sm text-slate-400">Daily Active Users</div>
+              <div className="text-sm text-slate-400">Users across our Products</div>
             </div>
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700">
               <div className="text-2xl font-bold text-green-400">73%</div>

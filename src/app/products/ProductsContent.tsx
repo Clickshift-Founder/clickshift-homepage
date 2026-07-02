@@ -284,7 +284,7 @@ const ProductsPage = () => {
             <div className="grid md:grid-cols-4 gap-6 mb-12">
               <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700">
                 <div className="text-2xl font-bold text-blue-400 mb-1">525+</div>
-                <div className="text-sm text-slate-400">Daily Active Users</div>
+                <div className="text-sm text-slate-400">Users across our Products</div>
               </div>
               <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700">
                 <div className="text-2xl font-bold text-green-400 mb-1">73%</div>
@@ -573,7 +573,7 @@ const ProductsPage = () => {
               Ready to Trade with Intelligence?
             </h2>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Join 525+ traders who've already discovered the power of predictive AI. 
+              Join 525+ Users across our Products who've already discovered the power of predictive AI. 
               Start with our free tools and experience the difference intelligence makes.
             </p>
             

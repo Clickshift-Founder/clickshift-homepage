@@ -34,7 +34,7 @@ const blogPosts = [
   {
     slug: 'whale-tracking-guide-2025',
     title: 'The Whale Tracking Strategy That Predicted a 847% Pump',
-    excerpt: 'When whales move, markets follow. Learn the exact signals that helped 525+ traders spot POPCAT at $80K market cap - 4 minutes before the pump that turned $1,000 into $8,470.',
+    excerpt: 'When whales move, markets follow. Learn the exact signals that helped 525+ Users across our Products spot POPCAT at $80K market cap - 4 minutes before the pump that turned $1,000 into $8,470.',
     category: 'Trading Intelligence',
     readTime: '12 min read',
     date: 'January 12, 2025',
@@ -239,7 +239,7 @@ const handleSubscribe = async () => {
               Insights & Strategies
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Real stories, proven strategies, and actionable intelligence from 525+ traders 
+              Real stories, proven strategies, and actionable intelligence from 525+ Users across our Products 
               who've mastered DeFi markets with ClickShift.
             </p>
           </div>

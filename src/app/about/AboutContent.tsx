@@ -20,7 +20,7 @@ const AboutPage = () => {
   const [currentMetric, setCurrentMetric] = useState(0);
 
   const metrics = [
-    { number: "525+", label: "Daily Active Traders", color: "text-blue-400" },
+    { number: "525+", label: "Users across all our Products", color: "text-blue-400" },
     { number: "73.2%", label: "Prediction Accuracy", color: "text-green-400" },
     { number: "91", label: "NPS Score", color: "text-purple-400" },
     { number: "47", label: "Countries Served", color: "text-orange-400" },
@@ -67,7 +67,7 @@ const AboutPage = () => {
     { year: "2021", title: "The Genesis", description: "Founder loses life savings to DeFi trading. Realizes the need for predictive intelligence.", status: "completed" },
     { year: "July 2025", title: "Alpha Development", description: "First MVP of ClickShift Alpha. Initial algorithms for whale tracking and exit prediction.", status: "completed" },
     { year: "August 2025", title: "Leverage Launch", description: "ClickShift Leverage goes live. Patent-pending MACD+OBV fusion algorithm.", status: "completed" },
-    { year: "September 2025", title: "Explosive Growth", description: "525+ daily users. 91 NPS score. $0 customer acquisition cost.", status: "completed" },
+    { year: "September 2025", title: "Explosive Growth", description: "525+ Users across all our Products. 91 NPS score. $0 customer acquisition cost.", status: "completed" },
     { year: "October 2025", title: "Launch Detector", description: "Real-time token launch detection with legitimacy scoring.", status: "Completed" },
     { year: "November 2025", title: "ClickBot Auto-Trade", description: "Intelligent auto-trading with trailing stops and risk management.", status: "Completed" },
     { year: "Q2 2026", title: "Global Expansion", description: "Multi-chain support. Institutional partnerships. Series A funding.", status: "upcoming" },
@@ -424,7 +424,7 @@ const AboutPage = () => {
             Ready to Trade with Intelligence?
           </h2>
           <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-            Join 525+ traders who've discovered the power of predictive DeFi intelligence. 
+            Join 525+ users across all our products who've discovered the power of predictive DeFi intelligence. 
             Where profit meets protection.
           </p>
           

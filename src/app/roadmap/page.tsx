@@ -210,7 +210,7 @@ const RoadmapPage = () => {
       current: '525+', 
       q2Target: '2,500+', 
       yearTarget: '25,000+', 
-      label: 'Daily Active Users',
+      label: 'Users across our Products',
       icon: <Users className="h-5 w-5" />
     },
     { 
@@ -295,7 +295,7 @@ interface Milestone {
               Intelligent Trading
             </h1>
             <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              Our journey from 525 daily users to becoming the Bloomberg Terminal of Web3. 
+              Our journey from 525 daily users across our Products to becoming the Bloomberg Terminal of Web3. 
               Here's how we're building the intelligence infrastructure for the next generation of finance.
             </p>
           </div>
