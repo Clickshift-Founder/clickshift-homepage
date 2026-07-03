@@ -169,6 +169,20 @@ const PHASES = [
         ]
       },
       {
+          icon: BarChart3, title: "Tokenized stock trading",
+          tag: "Revenue", tagColor: T.gold,
+          desc: "Buy Apple, Tesla, S&P 500 ETF and 170+ other stocks with USDC — directly in ClickBot. No US brokerage account, no wire transfers, no minimum balance. Fractional shares from $1. The feature that makes ClickBot a full financial OS, not just a crypto app.",
+          impl: [
+              "Integration: Ondo Finance API (ondo.finance) — fully regulated, 173+ tokenized stocks/ETFs on Solana mainnet. Titan Exchange for institutional RFQ execution.",
+              "Flow: 'buy $50 of Tesla' → NLP parses → Ondo quote returned → user confirms → USDC debited → OUSD stock token received in ClickBot wallet.",
+              "Portfolio display: add stock positions alongside crypto holdings in /wallet view. Show current price, P&L, entry date.",
+              "Selling: 'sell my Tesla' → Ondo RFQ → USDC returned to wallet → available for trading, bills, or NGN withdrawal.",
+              "Revenue: 0.5–1% markup on Ondo's spread. At $500K monthly stock volume = $2,500–5,000 additional revenue.",
+              "Regulatory: Ondo handles the securities custody and compliance. ClickBot is the interface layer — same model as how we handle VTPass for bills.",
+              "First stocks to offer: Apple, Tesla, NVIDIA, S&P 500 ETF, NASDAQ ETF. High name recognition for Nigerian users.",
+          ]
+      },
+      {
         icon: MessageSquare, title: "Pal — proactive intelligence",
         tag: "UX", tagColor: T.purple,
         desc: "Pal moves from reactive to proactive. Morning briefings, position alerts, bill reminders, win celebrations. Users feel genuinely cared for — not just served.",
