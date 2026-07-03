@@ -331,7 +331,7 @@ const MetricsShowcase: React.FC = () => {
           <div className="flex items-center justify-center gap-2 mb-3">
             <PulseDot color="#22d3ee" />
             <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
-              Live Platform Metrics
+              Live ClickBot Metrics
             </span>
             {isDemo && (
               <span className="text-[10px] text-slate-500 ml-1">(demo)</span>
