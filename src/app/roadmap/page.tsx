@@ -1,576 +1,505 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { 
-  Shield, 
-  Rocket, 
-  Target, 
-  Globe,
-  Brain,
-  Users,
-  Crown,
-  Building2,
-  CheckCircle,
-  DollarSign,
-  Code
-} from 'lucide-react';
 
-const RoadmapPage = () => {
-  const [selectedQuarter, setSelectedQuarter] = useState('current');
-  const [animationComplete, setAnimationComplete] = useState(false);
+const C = {
+  bg:      "#05080F",
+  s1:      "#090E1A",
+  s2:      "#0D1424",
+  border:  "#162035",
+  green:   "#00C864",
+  gdim:    "rgba(0,200,100,0.08)",
+  purple:  "#7C3AED",
+  pdim:    "rgba(124,58,237,0.08)",
+  gold:    "#F59E0B",
+  ydim:    "rgba(245,158,11,0.08)",
+  coral:   "#F43F5E",
+  cdim:    "rgba(244,63,94,0.08)",
+  blue:    "#3B82F6",
+  bdim:    "rgba(59,130,246,0.08)",
+  text:    "#EDF2F7",
+  mid:     "#94A3B8",
+  muted:   "#475569",
+  line:    "#1E2D45",
+};
 
-  useEffect(() => {
-    setTimeout(() => setAnimationComplete(true), 500);
-  }, []);
+type PhaseStatus = "shipped" | "building" | "upcoming" | "vision";
 
-  const roadmapPhases: Phase[] = [
-    {
-      id: 'current',
-      phase: 'Current State',
-      period: 'Q2 2025 - Q3 2025',
-      status: 'completed',
-      icon: <CheckCircle className="h-8 w-8" />,
-      color: 'green',
-      achievements: [
-        { 
-          title: 'ClickShift Alpha MVP', 
-          description: 'World\'s first predictive Solana token intelligence',
-          metrics: ['525+ Daily Active Users', '73% Prediction Accuracy', '91 NPS Score'],
-          status: 'completed'
-        },
-        { 
-          title: 'ClickShift Leverage Platform', 
-          description: 'Advanced futures trading risk management',
-          metrics: ['Patent-pending MACD+OBV fusion', 'Real-time liquidation calculator', 'Multi-exchange validation'],
-          status: 'completed'
-        },
-        { 
-          title: 'Explosive User Growth', 
-          description: 'Organic growth with zero customer acquisition cost',
-          metrics: ['22% WoW growth', '$0 CAC', '76% Day-7 retention'],
-          status: 'completed'
-        },
-        { 
-          title: 'Product-Market Fit Validation', 
-          description: 'Proven demand across 47+ countries',
-          metrics: ['$25.4K losses prevented', '1,200+ community members', 'Global user base'],
-          status: 'completed'
-        }
-      ]
-    },
-    {
-      id: 'q2-2025',
-      phase: 'Intelligence Expansion',
-      period: 'Q2 2026',
-      status: 'in-progress',
-      icon: <Brain className="h-8 w-8" />,
-      color: 'blue',
-      achievements: [
-        { 
-          title: 'Launch Detector Pro', 
-          description: 'AI-powered early detection of high-potential token launches',
-          metrics: ['15-minute launch alerts', '7+ data source validation', 'Legitimacy scoring'],
-          status: 'in-progress'
-        },
-        { 
-          title: 'ClickBot Auto-Trading', 
-          description: 'Intelligent automation with trailing stops and risk management',
-          metrics: ['Smart position scaling', 'Automatic whale dump exits', '24/7 monitoring'],
-          status: 'planned'
-        },
-        { 
-          title: 'Premium Monetization Launch', 
-          description: 'Freemium model with advanced intelligence features',
-          metrics: ['$79/mo Professional tier', 'API access integration', 'Advanced analytics'],
-          status: 'in-progress'
-        },
-        { 
-          title: 'Mobile App Beta', 
-          description: 'Native iOS and Android apps with push notifications',
-          metrics: ['Real-time alerts', 'Offline analysis', 'Biometric security'],
-          status: 'planned'
-        }
-      ]
-    },
-    {
-      id: 'q3-2025',
-      phase: 'Multi-Chain Dominance',
-      period: 'Q3 2026',
-      status: 'planned',
-      icon: <Globe className="h-8 w-8" />,
-      color: 'purple',
-      achievements: [
-        { 
-          title: 'Ethereum Integration', 
-          description: 'Expand intelligence platform to Ethereum ecosystem',
-          metrics: ['ERC-20 token analysis', 'DeFi protocol monitoring', 'MEV detection'],
-          status: 'planned'
-        },
-        { 
-          title: 'Base & BSC Support', 
-          description: 'Complete Layer 2 and alternative chain coverage',
-          metrics: ['Cross-chain arbitrage detection', 'Multi-chain portfolio tracking', 'Unified intelligence'],
-          status: 'planned'
-        },
-        { 
-          title: 'Institutional API Suite', 
-          description: 'Enterprise-grade APIs for institutional adoption',
-          metrics: ['White-label solutions', 'Custom SLA agreements', 'Dedicated infrastructure'],
-          status: 'planned'
-        },
-        { 
-          title: 'AI Model Enhancement', 
-          description: 'Next-generation prediction algorithms',
-          metrics: ['85%+ accuracy target', 'Pattern recognition upgrade', 'Sentiment analysis integration'],
-          status: 'planned'
-        }
-      ]
-    },
-    {
-      id: 'q4-2025',
-      phase: 'Global Scale',
-      period: 'Q4 2026',
-      status: 'planned',
-      icon: <Rocket className="h-8 w-8" />,
-      color: 'orange',
-      achievements: [
-        { 
-          title: 'Series A Funding Round', 
-          description: 'Raise $8M to accelerate global expansion',
-          metrics: ['$40M pre-money valuation', 'Tier 1 VC partnerships', 'International scaling'],
-          status: 'planned'
-        },
-        { 
-          title: 'European Market Entry', 
-          description: 'Full localization and regulatory compliance for EU',
-          metrics: ['GDPR compliance', 'Multi-language support', 'Local partnerships'],
-          status: 'planned'
-        },
-        { 
-          title: 'ClickShift Academy Launch', 
-          description: 'Educational platform with certification programs',
-          metrics: ['Trading courses', 'Expert certifications', 'Community education'],
-          status: 'planned'
-        },
-        { 
-          title: 'Advanced Portfolio Intelligence', 
-          description: 'Comprehensive portfolio management with AI insights',
-          metrics: ['Risk-adjusted returns', 'Automated rebalancing', 'Tax optimization'],
-          status: 'planned'
-        }
-      ]
-    },
-    {
-      id: '2026',
-      phase: 'Market Leadership',
-      period: '2027',
-      status: 'vision',
-      icon: <Crown className="h-8 w-8" />,
-      color: 'gold',
-      achievements: [
-        { 
-          title: 'Bloomberg Terminal Parity', 
-          description: 'Feature-complete institutional-grade platform',
-          metrics: ['Real-time news integration', 'Advanced charting', 'Institutional workflows'],
-          status: 'vision'
-        },
-        { 
-          title: 'Regulatory Partnerships', 
-          description: 'Work with regulators to shape DeFi compliance standards',
-          metrics: ['Regulatory sandboxes', 'Policy consultation', 'Compliance frameworks'],
-          status: 'vision'
-        },
-        { 
-          title: 'IPO Preparation', 
-          description: 'Position for potential public listing',
-          metrics: ['$100M+ ARR', 'SOX compliance', 'Public company readiness'],
-          status: 'vision'
-        },
-        { 
-          title: 'Global Market Expansion', 
-          description: 'Presence in all major financial markets worldwide',
-          metrics: ['Asia-Pacific expansion', 'LATAM presence', 'African markets'],
-          status: 'vision'
-        }
-      ]
-    }
-  ];
-
-  const milestones: Milestone[] = [
-    { date: '2025 Q2', title: 'Product-Market Fit Achieved', status: 'completed' },
-    { date: '2026 Q1', title: 'Launch Detector Beta', status: 'in-progress' },
-    { date: '2026 Q2', title: 'Premium Monetization', status: 'planned' },
-    { date: '2026 Q3', title: 'Multi-Chain Expansion', status: 'planned' },
-    { date: '2026 Q4', title: 'Series A Funding', status: 'planned' },
-    { date: '2027 Q4', title: 'Global Market Leader', status: 'vision' }
-  ];
-
-  const metrics = [
-    { 
-      current: '525+', 
-      q2Target: '2,500+', 
-      yearTarget: '25,000+', 
-      label: 'Users across our Products',
-      icon: <Users className="h-5 w-5" />
-    },
-    { 
-      current: '73%', 
-      q2Target: '78%', 
-      yearTarget: '85%+', 
-      label: 'Prediction Accuracy',
-      icon: <Target className="h-5 w-5" />
-    },
-    { 
-      current: '$180', 
-      q4Target: '$50K', 
-      yearTarget: '$2M+', 
-      label: 'Monthly Revenue across all Products',
-      icon: <DollarSign className="h-5 w-5" />
-    },
-    { 
-      current: '2', 
-      q2Target: '5', 
-      yearTarget: '10+', 
-      label: 'Supported Chains',
-      icon: <Globe className="h-5 w-5" />
-    }
-  ];
-
- type Status = 'completed' | 'in-progress' | 'planned' | 'vision';
-
-interface Achievement {
+interface Milestone {
   title: string;
-  description: string;
-  metrics: string[];
-  status: Status;
+  desc: string;
+  tag: string;
+  icon: string;
 }
 
 interface Phase {
   id: string;
-  phase: string;
-  period: string;
-  status: Status;
-  icon: React.ReactNode;
+  era: string;
+  label: string;
+  status: PhaseStatus;
+  accent: string;
+  dim: string;
+  headline: string;
+  sub: string;
+  milestones: Milestone[];
+}
+
+interface StatusConfig {
+  label: string;
   color: string;
-  achievements: Achievement[];
+  bg: string;
 }
 
-interface Milestone {
-  date: string;
-  title: string;
-  status: Status;
+const STATUS_CONFIG: Record<PhaseStatus, StatusConfig> = {
+  shipped:  { label: "Shipped",       color: C.green,  bg: C.gdim },
+  building: { label: "Building now",  color: C.purple, bg: C.pdim },
+  upcoming: { label: "Upcoming",      color: C.gold,   bg: C.ydim },
+  vision:   { label: "Vision",        color: C.coral,  bg: C.cdim },
+};
+
+const PHASES: Phase[] = [
+  {
+    id: "shipped",
+    era: "2025",
+    label: "Foundation",
+    status: "shipped",
+    accent: C.green,
+    dim: C.gdim,
+    headline: "From idea to live infrastructure",
+    sub: "Built the entire stack solo. Shipped to mainnet.",
+    milestones: [
+      { title: "ClickShift Alpha", icon: "📊", tag: "Shipped",
+        desc: "AI-powered token risk scoring for Solana. Six on-chain signals. One verdict: Buy or Avoid." },
+      { title: "ClickBot — Live on Solana Mainnet", icon: "🤖", tag: "Shipped",
+        desc: "A Telegram-native financial super-app combining trading, yield, bills, and NGN bank withdrawals in a single chat interface." },
+      { title: "NGN Fiat Bridge", icon: "🏦", tag: "Shipped",
+        desc: "Live USDC-to-Naira settlement to 200+ Nigerian banks in under 45 seconds. CBN-licensed rails. No P2P. No exchange." },
+      { title: "Utility Bill Payments", icon: "⚡", tag: "Shipped",
+        desc: "Pay electricity, airtime, data, and cable TV with USDC directly from your crypto wallet. 13 DISCOs, 4 networks." },
+      { title: "DeFi Suite", icon: "📈", tag: "Shipped",
+        desc: "Spot trading, token sniper with MEV protection, copy trading, perpetuals, and 14% APY yield — all from one Telegram chat." },
+      { title: "ClickBot Pal", icon: "🧠", tag: "Shipped",
+        desc: "An AI-native financial assistant. 'Hey ClickBot, send 5000 naira to GTBank' — it understands and executes." },
+      { title: "Leverage & SolanaFirst", icon: "🎯", tag: "Shipped",
+        desc: "Futures intelligence and gamified onboarding for new Solana users." },
+      { title: "Pulse — Agentic Wallet OS", icon: "🤖", tag: "Shipped",
+        desc: "Six autonomous AI agents holding their own encrypted Solana wallets, signing real transactions 24/7. Superteam Nigeria bounty winner." },
+    ],
+  },
+  {
+    id: "building",
+    era: "Q3 2026",
+    label: "Intelligence",
+    status: "building",
+    accent: C.purple,
+    dim: C.pdim,
+    headline: "Making ClickBot smarter and more inclusive",
+    sub: "Expanding what the product knows, accepts, and remembers.",
+    milestones: [
+      { title: "USDT Support Everywhere", icon: "💵", tag: "Building",
+        desc: "USDC and USDT accepted interchangeably across all features. ClickBot automatically uses whichever stable covers the transaction." },
+      { title: "ClickBot Account Statement", icon: "📄", tag: "Building",
+        desc: "A printable PDF statement of every trade, bill, transfer, withdrawal, and yield transaction — structured exactly like a bank statement." },
+      { title: "Pal Memory — RAG System", icon: "🧠", tag: "Building",
+        desc: "ClickBot Pal remembers your meter numbers, bank accounts, and favourite tokens. Every interaction becomes more personalised." },
+      { title: "Multichain Offramp", icon: "🌍", tag: "Building",
+        desc: "Withdraw crypto profits to Nigerian banks from BNB Chain, Ethereum, and Tron — not just Solana." },
+    ],
+  },
+  {
+    id: "q4_2026",
+    era: "Q4 2026",
+    label: "Token & Payments",
+    status: "upcoming",
+    accent: C.gold,
+    dim: C.ydim,
+    headline: "The $SHIFT token and global payment corridors",
+    sub: "Rewarding the community that built this with us.",
+    milestones: [
+      { title: "$SHIFT Token — TGE", icon: "🪙", tag: "Q4 2026",
+        desc: "The ClickShift governance and utility token. Fee discounts, staking yield, monthly cashback, and governance voting." },
+      { title: "$SHIFT Utility System", icon: "⚙️", tag: "Q4 2026",
+        desc: "Hold $SHIFT to unlock fee discounts up to 50%, premium Pal features, and priority access to new products." },
+      { title: "B2B Vendor Payments", icon: "🏭", tag: "Q4 2026",
+        desc: "Pay Chinese and Japanese suppliers in CNY and JPY using USDC. No SWIFT. No correspondent bank delays." },
+      { title: "Delaware Incorporation", icon: "🏛️", tag: "Q4 2026",
+        desc: "ClickShift Inc. formally incorporated in Delaware, enabling US and EU investor participation and global partnerships." },
+    ],
+  },
+  {
+    id: "q1_2027",
+    era: "Q1 2027",
+    label: "Cards & Corridors",
+    status: "upcoming",
+    accent: C.blue,
+    dim: C.bdim,
+    headline: "Spending crypto anywhere, sending money everywhere",
+    sub: "The features that make ClickBot a complete financial life.",
+    milestones: [
+      { title: "ClickBot Virtual Debit Card", icon: "💳", tag: "Q1 2027",
+        desc: "A Visa/Mastercard virtual card linked to your USDC balance. Spend crypto anywhere cards are accepted — no pre-load required." },
+      { title: "Tokenized Stock Trading", icon: "📊", tag: "Q1 2027",
+        desc: "Buy Apple, Tesla, NVIDIA, and 170+ stocks and ETFs with USDC. No US brokerage account. Fractional shares from $1, 24/7." },
+      { title: "Dollar & JPY/CNY Offramp", icon: "💱", tag: "Q1 2027",
+        desc: "Withdraw to US bank accounts in USD, Japanese banks in JPY, and Chinese banks in CNY. One USDC balance. Any currency." },
+      { title: "Multi-Country Expansion", icon: "🌍", tag: "Q1 2027",
+        desc: "ClickBot fiat rails extended to Ghana (GHS), Kenya (KES), and Egypt (EGP)." },
+    ],
+  },
+  {
+    id: "2027",
+    era: "2027+",
+    label: "Infrastructure",
+    status: "vision",
+    accent: C.coral,
+    dim: C.cdim,
+    headline: "Becoming the payment layer for African DeFi",
+    sub: "The rails others build on. The protocol that scales with the continent.",
+    milestones: [
+      { title: "ClickShift B2B API", icon: "🔌", tag: "2027+",
+        desc: "White-label ClickShift's NGN fiat bridge and Solana payment rails as a REST API — the Stripe for African DeFi." },
+      { title: "Pulse — Premium Agent Subscriptions", icon: "🤖", tag: "2027+",
+        desc: "Your own AI agent swarm managing your Solana portfolio autonomously — DCA, trailing stop, risk manager — 24/7." },
+      { title: "Physical ClickBot Card", icon: "💳", tag: "2027+",
+        desc: "A ClickShift-branded Visa card delivered to your address. Spend your crypto balance anywhere in Nigeria and beyond." },
+      { title: "ClickShift SDK", icon: "⚙️", tag: "2027+",
+        desc: "Developer tools for building on ClickShift's payment infrastructure — NGN bridge, stablecoin payments, and DeFi as composable modules." },
+    ],
+  },
+];
+
+function MilestoneCard({ m, accent }: { m: Milestone; accent: string }) {
+  return (
+    <div style={{
+      background: C.s1, border: `1px solid ${C.border}`,
+      borderRadius: "12px", padding: "18px 20px",
+      display: "flex", gap: "14px", alignItems: "flex-start",
+    }}>
+      <div style={{ fontSize: "22px", lineHeight: 1, flexShrink: 0, marginTop: "2px" }}>
+        {m.icon}
+      </div>
+      <div style={{ minWidth: 0 }}>
+        <div style={{
+          display: "flex", alignItems: "center",
+          gap: "8px", flexWrap: "wrap" as const, marginBottom: "6px",
+        }}>
+          <span style={{ fontSize: "14px", fontWeight: 600, color: C.text }}>{m.title}</span>
+          <span style={{
+            fontSize: "10px", fontWeight: 600,
+            letterSpacing: "0.1em", textTransform: "uppercase" as const,
+            padding: "2px 8px", borderRadius: "4px",
+            color: accent, background: `${accent}15`,
+            border: `1px solid ${accent}30`, flexShrink: 0,
+          }}>{m.tag}</span>
+        </div>
+        <p style={{ fontSize: "13px", color: C.mid, lineHeight: 1.6, margin: 0 }}>{m.desc}</p>
+      </div>
+    </div>
+  );
 }
 
-
-  const getStatusColor = (status:Status): string => {
-    switch(status) {
-      case 'completed': return 'text-green-400';
-      case 'in-progress': return 'text-blue-400';
-      case 'planned': return 'text-purple-400';
-      case 'vision': return 'text-yellow-400';
-      default: return 'text-slate-400';
-    }
-  };
-
-  const getStatusBg = (status:Status): string => {
-    switch(status) {
-      case 'completed': return 'bg-green-500/20 border-green-500/30';
-      case 'in-progress': return 'bg-blue-500/20 border-blue-500/30';
-      case 'planned': return 'bg-purple-500/20 border-purple-500/30';
-      case 'vision': return 'bg-yellow-500/20 border-yellow-500/30';
-      default: return 'bg-slate-500/20 border-slate-500/30';
-    }
-  };
+function PhaseSection({ phase, isLast }: { phase: Phase; isLast: boolean }) {
+  const cfg = STATUS_CONFIG[phase.status];
+  const isActive = phase.status === "building";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white">
-      
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4">
-        <div className="container mx-auto max-w-6xl text-center">
-          <div className="mb-8">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-              The Future of
-              <br />
-              Intelligent Trading
-            </h1>
-            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              Our journey from 525 daily users across our Products to becoming the Bloomberg Terminal of Web3. 
-              Here's how we're building the intelligence infrastructure for the next generation of finance.
-            </p>
-          </div>
+    <div style={{ display: "flex", gap: 0, position: "relative" }}>
+      <div style={{
+        display: "flex", flexDirection: "column" as const,
+        alignItems: "center", width: "48px", flexShrink: 0, paddingTop: "4px",
+      }}>
+        <div style={{
+          width: "14px", height: "14px", borderRadius: "50%",
+          background: phase.accent, border: `2px solid ${phase.accent}`,
+          boxShadow: isActive ? `0 0 20px ${phase.accent}` : "none",
+          flexShrink: 0, zIndex: 1,
+          animation: isActive ? "pulse-node 2.5s ease-in-out infinite" : "none",
+        }} />
+        {!isLast && (
+          <div style={{
+            width: "2px", flex: 1, minHeight: "40px",
+            background: `linear-gradient(180deg, ${phase.accent}60 0%, ${C.line} 100%)`,
+            marginTop: "8px",
+          }} />
+        )}
+      </div>
 
-          {/* Vision Statement */}
-          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-8 border border-blue-500/20 mb-12">
-            <h2 className="text-2xl font-bold mb-4">🎯 Our North Star</h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              "To democratize institutional-grade trading intelligence, making sophisticated market analysis 
-              accessible to everyone from retail traders in Nairobi to hedge funds in NewYork."
-            </p>
+      <div style={{
+        flex: 1, paddingLeft: "24px",
+        paddingBottom: isLast ? 0 : "64px", minWidth: 0,
+      }}>
+        <div style={{ marginBottom: "24px" }}>
+          <div style={{
+            display: "flex", alignItems: "center",
+            gap: "10px", flexWrap: "wrap" as const, marginBottom: "6px",
+          }}>
+            <span style={{
+              fontFamily: "var(--font-mono, monospace)",
+              fontSize: "11px", fontWeight: 700,
+              letterSpacing: "0.16em", textTransform: "uppercase" as const,
+              color: phase.accent,
+            }}>{phase.era}</span>
+            <span style={{
+              fontSize: "10px", fontWeight: 600,
+              letterSpacing: "0.1em", textTransform: "uppercase" as const,
+              padding: "3px 10px", borderRadius: "4px",
+              color: cfg.color, background: cfg.bg,
+              border: `1px solid ${cfg.color}30`,
+              display: "flex", alignItems: "center", gap: "6px",
+            }}>
+              {isActive && (
+                <span style={{
+                  display: "inline-block", width: "6px", height: "6px",
+                  borderRadius: "50%", background: cfg.color,
+                  animation: "pulse-dot 2s ease-in-out infinite",
+                }} />
+              )}
+              {cfg.label}
+            </span>
           </div>
-
-          {/* Key Metrics Progress */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-            {metrics.map((metric, index) => (
-              <div key={index} className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-slate-700 transform hover:scale-105 transition-all">
-                <div className="flex items-center justify-center space-x-2 mb-2">
-                  {metric.icon}
-                  <span className="text-lg font-bold text-blue-400">{metric.current}</span>
-                </div>
-                <div className="text-sm text-slate-400 mb-2">{metric.label}</div>
-                <div className="text-xs text-green-400">Target: {metric.yearTarget}</div>
-              </div>
-            ))}
-          </div>
+          <h2 style={{
+            fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 700,
+            color: C.text, letterSpacing: "-0.02em",
+            lineHeight: 1.2, marginBottom: "6px",
+          }}>
+            {phase.label} —{" "}
+            <span style={{ color: phase.accent }}>{phase.headline}</span>
+          </h2>
+          <p style={{ fontSize: "14px", color: C.mid, lineHeight: 1.6 }}>{phase.sub}</p>
         </div>
-      </section>
 
-      {/* Timeline Navigation */}
-      <section className="py-12 px-4 bg-slate-800/30">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {roadmapPhases.map((phase) => (
-              <button
-                key={phase.id}
-                onClick={() => setSelectedQuarter(phase.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-lg transition-all ${
-                  selectedQuarter === phase.id
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
-                }`}
-              >
-                <div className={getStatusColor(phase.status)}>{phase.icon}</div>
-                <div className="text-left">
-                  <div className="font-semibold text-sm">{phase.phase}</div>
-                  <div className="text-xs opacity-75">{phase.period}</div>
-                </div>
-              </button>
-            ))}
-          </div>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+          gap: "10px",
+        }}>
+          {phase.milestones.map((m: Milestone, i: number) => (
+            <MilestoneCard key={i} m={m} accent={phase.accent} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
-          {/* Timeline Visualization */}
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-gradient-to-b from-green-500 via-blue-500 to-purple-500"></div>
-            
-            <div className="space-y-8">
-              {milestones.map((milestone, index) => (
-                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8'}`}>
-                    <div className={`${getStatusBg(milestone.status)} rounded-lg p-4 border`}>
-                      <div className="font-bold">{milestone.title}</div>
-                      <div className="text-sm text-slate-400">{milestone.date}</div>
-                    </div>
-                  </div>
-                  
-                  <div className="relative z-10">
-                    <div className={`w-4 h-4 rounded-full border-4 ${
-                      milestone.status === 'completed' ? 'bg-green-500 border-green-400' :
-                      milestone.status === 'in-progress' ? 'bg-blue-500 border-blue-400' :
-                      milestone.status === 'planned' ? 'bg-purple-500 border-purple-400' :
-                      'bg-yellow-500 border-yellow-400'
-                    }`}></div>
-                  </div>
-                  
-                  <div className="w-1/2"></div>
-                </div>
-              ))}
+export default function RoadmapPage() {
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handler = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  const filteredPhases = activeFilter === "all"
+    ? PHASES
+    : PHASES.filter(p => p.status === activeFilter);
+
+  const FILTERS: { id: string; label: string }[] = [
+    { id: "all",      label: "All" },
+    { id: "shipped",  label: "Shipped" },
+    { id: "building", label: "Building now" },
+    { id: "upcoming", label: "Upcoming" },
+    { id: "vision",   label: "Vision" },
+  ];
+
+  return (
+    <div style={{ background: C.bg, minHeight: "100vh", color: C.text }}>
+      <style>{`
+        @keyframes pulse-dot {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+        @keyframes pulse-node {
+          0%, 100% { box-shadow: 0 0 8px currentColor; }
+          50% { box-shadow: 0 0 24px currentColor; }
+        }
+        @keyframes fade-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-a { animation: fade-up 0.5s ease both; }
+        .hero-b { animation: fade-up 0.5s 0.08s ease both; }
+        .hero-c { animation: fade-up 0.5s 0.16s ease both; }
+        * { box-sizing: border-box; }
+        @media (max-width: 640px) {
+          .stat-row { flex-wrap: wrap !important; }
+        }
+      `}</style>
+
+      {/* NAV */}
+      <nav style={{
+        position: "sticky", top: 0, zIndex: 50,
+        background: `rgba(5,8,15,${Math.min(scrollY / 80, 0.97)})`,
+        backdropFilter: "blur(12px)",
+        borderBottom: `1px solid ${scrollY > 20 ? C.border : "transparent"}`,
+        padding: "0 24px",
+        display: "flex", alignItems: "center",
+        justifyContent: "space-between",
+        height: "56px",
+        transition: "border-color 0.3s",
+      }}>
+        <Link href="/" style={{
+          fontSize: "15px", fontWeight: 700, color: C.text,
+          textDecoration: "none", letterSpacing: "-0.02em",
+        }}>ClickShift</Link>
+        <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+          <Link href="/about" style={{ fontSize: "13px", color: C.mid, textDecoration: "none" }}>About</Link>
+          <a href="https://t.me/clicksolbot" target="_blank" rel="noopener noreferrer"
+            style={{
+              fontSize: "13px", fontWeight: 600, color: "#000",
+              background: C.green, padding: "7px 16px", borderRadius: "8px", textDecoration: "none",
+            }}>Try ClickBot →</a>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section style={{ padding: "80px 24px 64px", maxWidth: "860px", margin: "0 auto", position: "relative" }}>
+        <div style={{
+          position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
+          width: "600px", height: "300px",
+          background: "radial-gradient(ellipse, rgba(0,200,100,0.05) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
+        <div className="hero-a" style={{
+          display: "inline-flex", alignItems: "center", gap: "8px",
+          background: `${C.purple}15`, border: `1px solid ${C.purple}40`,
+          borderRadius: "20px", padding: "5px 14px",
+          fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em",
+          color: C.purple, textTransform: "uppercase", marginBottom: "20px",
+        }}>
+          <span style={{
+            width: "6px", height: "6px", borderRadius: "50%",
+            background: C.purple, animation: "pulse-dot 2s ease-in-out infinite",
+          }} />
+          ClickShift Roadmap
+        </div>
+
+        <h1 className="hero-b" style={{
+          fontSize: "clamp(32px, 6vw, 60px)", fontWeight: 800,
+          letterSpacing: "-0.04em", lineHeight: 1.05, marginBottom: "20px",
+        }}>
+          Building the rails<br />
+          <span style={{ color: C.green }}>crypto needs to work</span><br />
+          in real life.
+        </h1>
+
+        <p className="hero-c" style={{
+          fontSize: "clamp(15px, 2vw, 18px)", color: C.mid,
+          lineHeight: 1.7, maxWidth: "600px", marginBottom: "36px",
+        }}>
+          ClickShift is an infrastructure company. We build the products that connect
+          Solana DeFi to everyday African financial life — starting with ClickBot,
+          expanding to the continent, and eventually powering the payment rails
+          that other builders deploy on.
+        </p>
+
+        <div className="stat-row hero-c" style={{ display: "flex", gap: "12px", flexWrap: "wrap" as const }}>
+          {[
+            { val: "110+",    label: "Wallets" },
+            { val: "50+",     label: "Countries" },
+            { val: "$8.7K",   label: "Volume" },
+            { val: "8",       label: "Products shipped" },
+            { val: "Q4 2026", label: "$SHIFT TGE" },
+          ].map((s, i) => (
+            <div key={i} style={{
+              background: C.s1, border: `1px solid ${C.border}`,
+              borderRadius: "10px", padding: "12px 18px", textAlign: "center", minWidth: "80px",
+            }}>
+              <div style={{
+                fontFamily: "var(--font-mono, monospace)",
+                fontSize: "18px", fontWeight: 700, color: C.green,
+                lineHeight: 1, marginBottom: "3px",
+              }}>{s.val}</div>
+              <div style={{ fontSize: "11px", color: C.muted }}>{s.label}</div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed Phase View */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          {roadmapPhases.map((phase) => (
-            selectedQuarter === phase.id && (
-              <div key={phase.id} className={`${animationComplete ? 'animate-fade-in' : 'opacity-0'} transition-all duration-500`}>
-                <div className="text-center mb-12">
-                  <div className={`inline-flex items-center space-x-3 ${getStatusBg(phase.status)} rounded-xl px-6 py-3 border mb-4`}>
-                    <div className={getStatusColor(phase.status)}>{phase.icon}</div>
-                    <h2 className="text-3xl font-bold">{phase.phase}</h2>
-                  </div>
-                  <p className="text-xl text-slate-300">{phase.period}</p>
-                </div>
-
-                <div className="grid lg:grid-cols-2 gap-8">
-                  {phase.achievements.map((achievement, index) => (
-                    <div key={index} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 hover:border-blue-500/50 transition-all transform hover:-translate-y-2">
-                      <div className="flex items-start justify-between mb-4">
-                        <h3 className="text-xl font-bold">{achievement.title}</h3>
-                        <div className={`px-2 py-1 rounded text-xs font-semibold ${
-                          achievement.status === 'completed' ? 'bg-green-500/20 text-green-400' :
-                          achievement.status === 'in-progress' ? 'bg-blue-500/20 text-blue-400' :
-                          achievement.status === 'planned' ? 'bg-purple-500/20 text-purple-400' :
-                          'bg-yellow-500/20 text-yellow-400'
-                        }`}>
-                          {achievement.status === 'completed' ? '✅ Done' :
-                           achievement.status === 'in-progress' ? '🚧 Building' :
-                           achievement.status === 'planned' ? '📋 Planned' :
-                           '🔮 Vision'}
-                        </div>
-                      </div>
-                      
-                      <p className="text-slate-300 mb-4">{achievement.description}</p>
-                      
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-sm text-blue-400">Key Metrics & Features:</h4>
-                        <ul className="space-y-1">
-                          {achievement.metrics.map((metric, metricIndex) => (
-                            <li key={metricIndex} className="flex items-center space-x-2 text-sm text-slate-300">
-                              <CheckCircle className="h-3 w-3 text-green-400" />
-                              <span>{metric}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )
           ))}
         </div>
       </section>
 
-      {/* Investment & Growth Projections */}
-      <section className="py-20 px-4 bg-slate-800/30">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-12">📊 Growth Projections</h2>
-          
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Revenue Growth */}
-            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-xl font-bold mb-4 flex items-center space-x-2">
-                <DollarSign className="h-6 w-6 text-green-400" />
-                <span>Revenue Growth</span>
-              </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span>2026 Q2</span>
-                  <span className="font-bold text-green-400">$50K MRR</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>2026 Q4</span>
-                  <span className="font-bold text-green-400">$200K MRR</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>2027 EOY</span>
-                  <span className="font-bold text-green-400">$1M+ MRR</span>
-                </div>
-              </div>
-            </div>
-
-            {/* User Growth */}
-            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-xl font-bold mb-4 flex items-center space-x-2">
-                <Users className="h-6 w-6 text-blue-400" />
-                <span>User Growth</span>
-              </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span>Current</span>
-                  <span className="font-bold text-blue-400">525 DAU</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>2026 Q4</span>
-                  <span className="font-bold text-blue-400">25K DAU</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>2027 EOY</span>
-                  <span className="font-bold text-blue-400">100K+ DAU</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Market Expansion */}
-            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-xl font-bold mb-4 flex items-center space-x-2">
-                <Globe className="h-6 w-6 text-purple-400" />
-                <span>Market Expansion</span>
-              </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span>Solana</span>
-                  <span className="font-bold text-purple-400">✅ Live</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Ethereum</span>
-                  <span className="font-bold text-purple-400">Q3 2025</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Multi-Chain</span>
-                  <span className="font-bold text-purple-400">Q4 2025</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* FILTER TABS */}
+      <div style={{ padding: "0 24px 40px", maxWidth: "860px", margin: "0 auto" }}>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" as const }}>
+          {FILTERS.map(f => {
+            const cfg = f.id !== "all" ? STATUS_CONFIG[f.id as PhaseStatus] : null;
+            const active = activeFilter === f.id;
+            return (
+              <button key={f.id} onClick={() => setActiveFilter(f.id)} style={{
+                padding: "7px 16px", borderRadius: "8px",
+                fontSize: "13px", fontWeight: 500, cursor: "pointer",
+                transition: "all 0.15s",
+                background: active ? (cfg?.color ?? C.green) : "transparent",
+                color: active ? "#000" : C.mid,
+                border: `1px solid ${active ? (cfg?.color ?? C.green) : C.border}`,
+              }}>{f.label}</button>
+            );
+          })}
         </div>
-      </section>
+      </div>
 
-      {/* Call to Action */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">
-            Ready to Join Our Mission?
+      {/* TIMELINE */}
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 24px 100px" }}>
+        {filteredPhases.map((phase, i) => (
+          <PhaseSection key={phase.id} phase={phase} isLast={i === filteredPhases.length - 1} />
+        ))}
+      </div>
+
+      {/* MISSION */}
+      <section style={{
+        borderTop: `1px solid ${C.border}`, padding: "80px 24px", textAlign: "center",
+      }}>
+        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+          <div style={{
+            fontFamily: "var(--font-mono, monospace)",
+            fontSize: "11px", fontWeight: 600, letterSpacing: "0.16em",
+            color: C.green, textTransform: "uppercase", marginBottom: "20px",
+          }}>The mission</div>
+          <h2 style={{
+            fontSize: "clamp(24px, 4vw, 40px)", fontWeight: 700,
+            color: C.text, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "20px",
+          }}>
+            500 million people hold crypto.<br />
+            <span style={{ color: C.green }}>Most can&apos;t use it where they live.</span>
           </h2>
-          <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-            We're building the future of intelligent trading. Whether you're an investor, 
-            developer, or trader, there's a place for you in our journey.
+          <p style={{ fontSize: "16px", color: C.mid, lineHeight: 1.8, marginBottom: "40px" }}>
+            The Naira lost 68% against the dollar in 18 months.
+            P2P spreads eat 5–8% every time someone tries to convert.
+            There is no product that lets a Nigerian hold USDC, earn yield on it,
+            pay bills with it, and cash out to their bank account in one place —
+            without switching apps, trusting a stranger, or waiting days.
+            ClickShift is building that product. It is live today.
           </p>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 hover:border-blue-500/50 transition-all">
-              <Building2 className="h-8 w-8 text-blue-400 mx-auto mb-4" />
-              <h3 className="font-bold text-lg mb-2">Investors</h3>
-              <p className="text-slate-300 text-sm mb-4">
-                Join our Series A round and help scale the Bloomberg Terminal of Web3
-              </p>
-              <button className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-sm font-semibold transition-all">
-                Investor Deck
-              </button>
-            </div>
-            
-            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 hover:border-purple-500/50 transition-all">
-              <Code className="h-8 w-8 text-purple-400 mx-auto mb-4" />
-              <h3 className="font-bold text-lg mb-2">Developers</h3>
-              <p className="text-slate-300 text-sm mb-4">
-                Build the intelligence infrastructure that powers the future of finance
-              </p>
-              <Link href="/careers" className="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded text-sm font-semibold transition-all inline-block">
-                View Careers
-              </Link>
-            </div>
-            
-            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 hover:border-green-500/50 transition-all">
-              <Users className="h-8 w-8 text-green-400 mx-auto mb-4" />
-              <h3 className="font-bold text-lg mb-2">Community</h3>
-              <p className="text-slate-300 text-sm mb-4">
-                Shape our roadmap and get early access to new features
-              </p>
-              <a href="https://t.me/ClickShiftAlerts" className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-sm font-semibold transition-all inline-block">
-                Join Telegram
-              </a>
-            </div>
-          </div>
+          <a href="https://t.me/clicksolbot" target="_blank" rel="noopener noreferrer"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "8px",
+              background: C.green, color: "#000",
+              padding: "14px 28px", borderRadius: "10px",
+              fontSize: "15px", fontWeight: 700, textDecoration: "none",
+            }}>Try ClickBot free →</a>
         </div>
       </section>
 
-      {/* Footer */}
-      <section className="py-12 px-4 border-t border-slate-700">
-        <div className="container mx-auto max-w-4xl text-center">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <Shield className="h-8 w-8 text-blue-400" />
-            <span className="text-2xl font-bold">ClickShift</span>
-          </div>
-          <p className="text-slate-400 mb-4">Building DeFi's Intelligence Infrastructure</p>
-          <div className="text-sm text-slate-500">
-            Last Updated: July 22, 2025 | This roadmap represents our current plans and may be subject to change based on market conditions and user feedback.
-          </div>
+      {/* FOOTER */}
+      <footer style={{
+        borderTop: `1px solid ${C.border}`, padding: "24px",
+        display: "flex", flexWrap: "wrap" as const,
+        justifyContent: "space-between", alignItems: "center", gap: "12px",
+        maxWidth: "860px", margin: "0 auto",
+      }}>
+        <span style={{ fontSize: "12px", color: C.muted }}>
+          ClickShift Inc. · Building on Solana · Abuja, Nigeria
+        </span>
+        <div style={{ display: "flex", gap: "20px" }}>
+          <a href="https://t.me/clicksolbot" target="_blank" rel="noopener noreferrer"
+            style={{ fontSize: "12px", color: C.muted, textDecoration: "none" }}>Telegram</a>
+          <a href="https://twitter.com/ClickShiftHQ" target="_blank" rel="noopener noreferrer"
+            style={{ fontSize: "12px", color: C.muted, textDecoration: "none" }}>Twitter</a>
+          <Link href="/future" style={{ fontSize: "12px", color: C.muted, textDecoration: "none" }}>
+            Investor view
+          </Link>
         </div>
-      </section>
+      </footer>
     </div>
   );
-};
-
-export default RoadmapPage;
+}
