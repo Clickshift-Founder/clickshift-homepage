@@ -21,6 +21,7 @@ const FILES = {
   "world-bank": "worldbank logo.png",
   "un-women": "UN Women logo.jpeg",
   fcdo: "FCDO logo (600x600).png",
+  "do-take-action": "dotakeaction logo.png",
 };
 
 for (const [slug, file] of Object.entries(FILES)) {

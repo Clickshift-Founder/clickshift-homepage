@@ -36,7 +36,7 @@
 - **Admin sign-in:** a show/hide button on the password field.
 - **Group email** (`/admin/email/group`): send one message to subscribers, people who sent a brief, or a hand-picked list, personalised with `{firstName}`, with a test send. Every group email has a signed unsubscribe link and one-click unsubscribe headers. New table `cs_campaigns` (created automatically).
 - **Unsubscribe page** at /unsubscribe. The privacy page already promised an unsubscribe link in every email; this makes it true.
-- **Brand strip logos:** SPPG, EndGame, Kobocent, QuantumHire, BFG, Digital Brothers, Hibreed and Dominion City now show their logos (`public/brands/`, prepared by `brand/logos.mjs`). World Bank, UN Women and FCDO stay as names: their emblems are protected and need written permission. Their files are in `public/brands/` if permission comes.
+- **Brand strip logos:** SPPG, EndGame, Kobocent, QuantumHire, BFG, Digital Brothers, Hibreed and Dominion City now show their logos (`public/brands/`, prepared by `brand/logos.mjs`). World Bank, UN Women, FCDO and DO Take Action logos were added on 2026-11-13 by founder decision (five years of programme work).
 - **Newsletter agent:** planned as a future build (docs/ADMIN.md). Nothing needed in the schema.
 - Verified: tsc, ESLint, build, and 27 end-to-end checks of group email and unsubscribe (Resend mocked), plus phone-width screenshots.
 

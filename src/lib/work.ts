@@ -779,18 +779,17 @@ export const CASES: Case[] = [
 export const caseBySlug = (slug: string) => CASES.find((c) => c.slug === slug);
 
 // For the marquee: brands we've built for.
-// The scrolling brand strip. A logo is shown only for brands whose logo we may use; the rest show their name.
-// World Bank, UN Women and FCDO stay as names: their emblems are protected (the UN emblem by UN rules, the royal arms in
-// the FCDO mark by UK government rules) and showing them can read as endorsement. Their files are in public/brands/ if
-// the founder gets written permission. Logos: brand/logos.mjs.
+// The scrolling brand strip. Logos are prepared by brand/logos.mjs into public/brands/; a brand without a file shows its name.
+// World Bank, UN Women and FCDO logos are shown by founder decision (2026-11-13): five years of programme work with them,
+// delivered with DO Take Action / EndGame as implementation partner. The case studies state that role.
 export type Brand = { name: string; logo?: string; bg?: string; mark?: boolean };
 export const BRANDS: Brand[] = [
-  { name: "World Bank" },
-  { name: "UN Women" },
-  { name: "UK FCDO · Chevening" },
+  { name: "World Bank", logo: "/brands/world-bank.png" },
+  { name: "UN Women", logo: "/brands/un-women.png" },
+  { name: "UK FCDO · Chevening", logo: "/brands/fcdo.png" },
   { name: "SPPG", logo: "/brands/sppg.png", bg: "#fcfcfc" },
   { name: "EndGame", logo: "/brands/endgame.png", mark: true },
-  { name: "DO Take Action" },
+  { name: "DO Take Action", logo: "/brands/do-take-action.png", mark: true },
   { name: "Kobocent", logo: "/brands/kobocent.svg", mark: true },
   { name: "QuantumHire", logo: "/brands/quantumhire.svg", mark: true },
   { name: "BFG Global Consulting", logo: "/brands/bfg.png" },
