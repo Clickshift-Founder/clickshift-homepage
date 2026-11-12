@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { checkCredentials, clearSessionCookie, clientKey, requireAdmin, setSessionCookie, totpRequired, verifyTotp } from "@/lib/server/auth";
 import { db, dbConfigured, overLimit } from "@/lib/server/db";
 import { sendEmail } from "@/lib/server/email";
+import { MAX_GROUP, personalise, sendCampaign, type Recipient } from "@/lib/server/groupEmail";
 import { ENQUIRY_STATUSES } from "@/lib/enquiry";
 import { POSTS } from "@/lib/posts";
 
@@ -93,6 +94,48 @@ export async function sendAdminEmail(_: SendState, f: FormData): Promise<SendSta
     revalidatePath(`/admin/enquiries/${enquiryId}`);
   }
   return { ok: true, at: Date.now() };
+}
+
+/* ---------- Group email ---------- */
+
+export type GroupState = { error?: string; ok?: boolean; test?: string; sent?: number; failed?: number; skipped?: number; at?: number } | undefined;
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+export async function sendGroupEmail(_: GroupState, f: FormData): Promise<GroupState> {
+  await requireAdmin();
+  const mode = s(f, "mode", 10);
+  const subject = s(f, "subject", 300);
+  const body = s(f, "body", 50_000).replace(/\r\n?/g, "\n");
+  const audienceLabel = s(f, "audience", 200) || "Selected people";
+  const emails = [...new Set(f.getAll("to").map((v) => String(v).trim().toLowerCase()).filter((e) => EMAIL_RE.test(e)))];
+  if (!subject || body.length < 5) return { error: "Add a subject and a message." };
+  if (/\{(?!firstName\}|name\})\w+\}/i.test(subject + body)) return { error: "There is a {placeholder} other than {firstName} or {name}. Replace it before sending." };
+  if (emails.length === 0) return { error: "Choose at least one person." };
+  if (emails.length > MAX_GROUP) return { error: `Up to ${MAX_GROUP} people per send. You chose ${emails.length}.` };
+
+  const sql = await db();
+  const named = await sql<{ email: string; name: string }[]>`
+    SELECT DISTINCT ON (lower(email)) lower(email) AS email, name FROM cs_enquiries WHERE lower(email) = ANY(${emails}) ORDER BY lower(email), created_at DESC`;
+  const names = new Map(named.map((r) => [r.email, r.name]));
+  const list: Recipient[] = emails.map((e) => ({ email: e, name: names.get(e) ?? null }));
+
+  if (mode === "test") {
+    const me = process.env.ADMIN_NOTIFY_EMAIL || process.env.ADMIN_EMAIL;
+    if (!me) return { error: "Set ADMIN_NOTIFY_EMAIL to receive tests." };
+    const r = await sendEmail({ to: me, subject: `[Test] ${personalise(subject, list[0])}`, text: personalise(body, list[0]), kind: "test" });
+    return r.ok ? { ok: true, test: me, at: Date.now() } : { error: r.error ?? "Test failed." };
+  }
+
+  const [c] = await sql<{ id: number }[]>`
+    INSERT INTO cs_campaigns (created_at, subject, body, audience, status) VALUES (${Date.now()}, ${subject}, ${body}, ${audienceLabel}, 'sending') RETURNING id`;
+  try {
+    const r = await sendCampaign(Number(c.id), list);
+    revalidatePath("/admin/email/group");
+    return { ok: true, sent: r.sent, failed: r.failed, skipped: r.skipped, at: Date.now() };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "Send failed." };
+  }
 }
 
 /* ---------- Notifications ---------- */

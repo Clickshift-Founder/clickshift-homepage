@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <!-- QuantumHire favicon — Split Seed mark on Forest square -->
+  <!-- Optimised for 16px, 32px, 64px rendering -->
+
+  <!-- Background square (forest green, rounded for app icon contexts) -->
+  <rect width="60" height="60" rx="13" fill="#182c16"/>
+
+  <!-- Split Seed mark, scaled and centered -->
+  <!-- Original mark: 60×78 viewBox, seed body y:6–74 (68px), x:5–55 (50px) -->
+  <!-- Scale 0.676, translate(10, 3) → body fits y:7–53, x:13–47 inside 60×60 -->
+  <g transform="translate(10,3) scale(0.676)">
+
+    <!-- Left half: mid-forest green (visible on dark bg) -->
+    <path d="M30 6 C16 6 5 20 5 40 C5 60 16 74 30 74 Z" fill="#2d4a28"/>
+
+    <!-- Right half: amber -->
+    <path d="M30 6 C44 6 55 20 55 40 C55 60 44 74 30 74 Z" fill="#d09030"/>
+
+    <!-- Centre seam -->
+    <line x1="30" y1="6" x2="30" y2="74"
+      stroke="rgba(255,255,255,0.15)" stroke-width="1.4"/>
+
+    <!-- Stem -->
+    <path d="M30 6 Q31 3 33 1"
+      stroke="#d09030" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+
+  </g>
+</svg>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { TARGET_2045 } from "@/lib/site";
+import type { Brand } from "@/lib/work";
 
 /* ---------- Reveal on scroll ---------- */
 export function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
@@ -152,21 +153,30 @@ export function ProductionBoard() {
 }
 
 /* ---------- Marquee ---------- */
-export function Marquee({ items, tone = "light" }: { items: string[]; tone?: "light" | "dark" }) {
+export function Marquee({ items, tone = "light" }: { items: Brand[]; tone?: "light" | "dark" }) {
   const row = [...items, ...items];
+  const text = tone === "light" ? "text-ink/75" : "text-paper/75";
   return (
     <div className="relative overflow-hidden" aria-label="Brands we have built for">
       <div className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r ${tone === "light" ? "from-paper" : "from-ink"} to-transparent`} />
       <div className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l ${tone === "light" ? "from-paper" : "from-ink"} to-transparent`} />
-      <ul className="flex w-max animate-marquee items-center gap-10 py-2 hover:[animation-play-state:paused] sm:gap-14">
+      <ul className="flex w-max animate-marquee items-center gap-4 py-2 hover:[animation-play-state:paused] sm:gap-6">
         {row.map((b, i) => (
-          <li
-            key={i}
-            aria-hidden={i >= items.length}
-            className={`flex items-center gap-10 whitespace-nowrap font-display text-xl tracking-[-0.02em] sm:gap-14 sm:text-2xl ${tone === "light" ? "text-ink/70" : "text-paper/70"}`}
-          >
-            {b}
-            <span className={`inline-block h-2 w-2 rotate-45 ${tone === "light" ? "bg-cobalt" : "bg-signal"}`} />
+          <li key={i} aria-hidden={i >= items.length} className="shrink-0">
+            {b.logo && !b.mark ? (
+              <span className="flex h-14 items-center overflow-hidden rounded-xl border border-ink/8 sm:h-16" style={{ background: b.bg ?? "#ffffff" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={b.logo} alt={b.name} loading="lazy" className="h-full w-auto" />
+              </span>
+            ) : (
+              <span className={`flex h-14 items-center gap-2.5 whitespace-nowrap rounded-xl border px-4 font-display text-lg tracking-[-0.02em] sm:h-16 sm:px-5 sm:text-xl ${tone === "light" ? "border-ink/8 bg-white" : "border-paper/10 bg-paper/5"} ${text}`}>
+                {b.logo && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={b.logo} alt="" loading="lazy" className="h-8 w-auto" />
+                )}
+                {b.name}
+              </span>
+            )}
           </li>
         ))}
       </ul>

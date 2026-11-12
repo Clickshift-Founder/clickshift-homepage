@@ -12,7 +12,15 @@ export default async function EmailPage({ searchParams }: { searchParams: Promis
   const sent = await sentEmails(40);
   return (
     <>
-      <PageTitle title="Email" sub="Write to anyone from your ClickShift address. To answer an enquiry, open it: the reply fills itself in." />
+      <PageTitle
+        title="Email"
+        sub="Write to anyone from your ClickShift address. To answer an enquiry, open it: the reply fills itself in."
+        action={
+          <Link href="/admin/email/group" className="inline-flex min-h-11 items-center rounded-full bg-ink px-5 text-[14px] text-paper hover:bg-cobalt">
+            Group email
+          </Link>
+        }
+      />
       <div className="grid grid-cols-1 gap-4 [&>*]:min-w-0 lg:grid-cols-5">
         <Card title="New email" className="lg:col-span-3">
           <Composer to={to} ready={emailConfigured()} />

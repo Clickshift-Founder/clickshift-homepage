@@ -32,6 +32,14 @@
 - End-to-end against a throwaway Postgres: 30 of 30 checks pass.
 - A strict 390 px sweep found no page wider than the phone, across 17 public and 10 admin pages.
 
+### Added later on 2026-11-12
+- **Admin sign-in:** a show/hide button on the password field.
+- **Group email** (`/admin/email/group`): send one message to subscribers, people who sent a brief, or a hand-picked list, personalised with `{firstName}`, with a test send. Every group email has a signed unsubscribe link and one-click unsubscribe headers. New table `cs_campaigns` (created automatically).
+- **Unsubscribe page** at /unsubscribe. The privacy page already promised an unsubscribe link in every email; this makes it true.
+- **Brand strip logos:** SPPG, EndGame, Kobocent, QuantumHire, BFG, Digital Brothers, Hibreed and Dominion City now show their logos (`public/brands/`, prepared by `brand/logos.mjs`). World Bank, UN Women and FCDO stay as names: their emblems are protected and need written permission. Their files are in `public/brands/` if permission comes.
+- **Newsletter agent:** planned as a future build (docs/ADMIN.md). Nothing needed in the schema.
+- Verified: tsc, ESLint, build, and 27 end-to-end checks of group email and unsubscribe (Resend mocked), plus phone-width screenshots.
+
 ## Open items: founder
 1. Commit and push this work, then merge to `main`.
 2. Set up Vercel (`docs/DEPLOY.md`): add Neon from Storage, add the admin and email variables, delete the `NEXT_PUBLIC_*` Brevo/stats ones, then deploy and check /admin → Settings.

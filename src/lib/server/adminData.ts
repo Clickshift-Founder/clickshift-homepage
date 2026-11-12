@@ -194,3 +194,50 @@ export async function recentVisits(limit = 30) {
     SELECT id, ts, path, country, city, ref_host, utm_source, device, duration_ms, scroll_pct, is_new FROM cs_pageviews ORDER BY ts DESC LIMIT ${limit}`;
   return rows.map((r) => num(r, ["id", "ts", "duration_ms", "scroll_pct"]));
 }
+
+/* ---------------- Group email ---------------- */
+
+export type Contact = {
+  email: string;
+  name: string | null;
+  subscriber: boolean;
+  enquiry: boolean;
+  enquiryStatus: string | null;
+  service: string | null;
+  unsubscribed: boolean;
+  at: number;
+};
+
+/** Everyone we can write to: subscribers and people who sent a brief, one row per email, newest first. */
+export async function audience(): Promise<Contact[]> {
+  const sql = await db();
+  const rows = await sql<{ email: string; name: string | null; sub_status: string | null; enq: boolean; enquiry_status: string | null; service: string | null; at: number }[]>`
+    WITH e AS (
+      SELECT DISTINCT ON (lower(email)) lower(email) AS email, name, status, service, created_at
+      FROM cs_enquiries WHERE status <> 'spam' ORDER BY lower(email), created_at DESC
+    ), s AS (
+      SELECT lower(email) AS email, status, created_at FROM cs_subscribers
+    )
+    SELECT coalesce(e.email, s.email) AS email, e.name, s.status AS sub_status, (e.email IS NOT NULL) AS enq,
+           e.status AS enquiry_status, e.service, greatest(coalesce(e.created_at, 0), coalesce(s.created_at, 0)) AS at
+    FROM e FULL OUTER JOIN s ON s.email = e.email
+    ORDER BY at DESC
+    LIMIT 5000`;
+  return rows.map((r) => ({
+    email: r.email,
+    name: r.name,
+    subscriber: r.sub_status === "active",
+    enquiry: r.enq,
+    enquiryStatus: r.enquiry_status,
+    service: r.service,
+    unsubscribed: r.sub_status !== null && r.sub_status !== "active",
+    at: Number(r.at),
+  }));
+}
+
+export async function campaigns(limit = 20) {
+  const sql = await db();
+  const rows = await sql<{ id: number; created_at: number; sent_at: number | null; subject: string; audience: string | null; status: string; recipients: number; sent: number; failed: number; skipped: number }[]>`
+    SELECT id, created_at, sent_at, subject, audience, status, recipients, sent, failed, skipped FROM cs_campaigns ORDER BY created_at DESC LIMIT ${limit}`;
+  return rows.map((r) => num(r, ["id", "created_at", "sent_at"]));
+}

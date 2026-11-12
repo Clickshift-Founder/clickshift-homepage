@@ -52,6 +52,8 @@ and runs without `DATABASE_URL`: the forms then fall back to email, and the Jour
 - **The about page describes disciplines, not invented people.** It shows the studio's roles (engineers, designers, analysts and so on). Never add named team members, headcounts or stock photos of "the team" unless the founder supplies real people.
 - Illustrative UI (the hero "production board" feed) must stay labelled as illustrative.
 - The SPPG graduate numbers differ between thesppg.org and thespln.org, so we quote none of them.
+- **Logos in the brand strip:** only for brands whose logo we may use. The World Bank, UN Women and FCDO (royal arms) emblems are protected; keep them as names unless the founder has written permission (`BRANDS` in `work.ts`).
+- **Every group email or newsletter carries an unsubscribe link** and skips unsubscribed addresses (`sendCampaign()` does both). Never send group mail another way.
 
 ### Products we built: positioning (founder, 2026-11-12)
 - Kobocent, QuantumHire, Pulse, Alpha, Leverage and SolanaFirst are listed as **products ClickShift built and delivered** (line "Products & platforms"). **Never write that ClickShift owns, runs or operates them**: no "our products", "our ventures", "in-house".

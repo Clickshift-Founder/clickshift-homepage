@@ -128,6 +128,24 @@ CREATE TABLE IF NOT EXISTS cs_rate (
   ts BIGINT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS cs_rate_key_ts ON cs_rate (key, ts);
+
+-- Group emails and (later) the newsletter. A campaign is one message sent to many people, one email each.
+-- status: draft (saved, e.g. by a future newsletter agent, waiting for approval) | sending | sent
+CREATE TABLE IF NOT EXISTS cs_campaigns (
+  id BIGSERIAL PRIMARY KEY,
+  created_at BIGINT NOT NULL,
+  sent_at BIGINT,
+  subject TEXT NOT NULL,
+  body TEXT NOT NULL,
+  audience TEXT,
+  status TEXT NOT NULL DEFAULT 'draft',
+  recipients INTEGER NOT NULL DEFAULT 0,
+  sent INTEGER NOT NULL DEFAULT 0,
+  failed INTEGER NOT NULL DEFAULT 0,
+  skipped INTEGER NOT NULL DEFAULT 0
+);
+ALTER TABLE cs_emails ADD COLUMN IF NOT EXISTS campaign_id BIGINT;
+CREATE INDEX IF NOT EXISTS cs_emails_campaign ON cs_emails (campaign_id);
 `;
 
 /** The connection, with the schema created on first use. Throws if DATABASE_URL is not set. */

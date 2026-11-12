@@ -779,23 +779,28 @@ export const CASES: Case[] = [
 export const caseBySlug = (slug: string) => CASES.find((c) => c.slug === slug);
 
 // For the marquee: brands we've built for.
-export const BRANDS = [
-  "World Bank",
-  "UN Women",
-  "UK FCDO · Chevening",
-  "SPPG",
-  "EndGame",
-  "DO Take Action",
-  "Kobocent",
-  "QuantumHire",
-  "The BFG",
-  "Digital Brothers",
-  "Apex Armor",
-  "CuraWell",
-  "Hibreed",
-  "Elsa Proptech",
-  "SolanaFirst",
-  "Dominion City",
+// The scrolling brand strip. A logo is shown only for brands whose logo we may use; the rest show their name.
+// World Bank, UN Women and FCDO stay as names: their emblems are protected (the UN emblem by UN rules, the royal arms in
+// the FCDO mark by UK government rules) and showing them can read as endorsement. Their files are in public/brands/ if
+// the founder gets written permission. Logos: brand/logos.mjs.
+export type Brand = { name: string; logo?: string; bg?: string; mark?: boolean };
+export const BRANDS: Brand[] = [
+  { name: "World Bank" },
+  { name: "UN Women" },
+  { name: "UK FCDO · Chevening" },
+  { name: "SPPG", logo: "/brands/sppg.png", bg: "#fcfcfc" },
+  { name: "EndGame", logo: "/brands/endgame.png", mark: true },
+  { name: "DO Take Action" },
+  { name: "Kobocent", logo: "/brands/kobocent.svg", mark: true },
+  { name: "QuantumHire", logo: "/brands/quantumhire.svg", mark: true },
+  { name: "BFG Global Consulting", logo: "/brands/bfg.png" },
+  { name: "Digital Brothers", logo: "/brands/digital-brothers.png", bg: "#2d3b56" },
+  { name: "Apex Armor" },
+  { name: "CuraWell" },
+  { name: "Hibreed", logo: "/brands/hibreed.png", bg: "#02fff8" },
+  { name: "Elsa Proptech" },
+  { name: "SolanaFirst" },
+  { name: "Dominion City", logo: "/brands/dominion-city.png" },
 ];
 
 // Headline numbers. Each has a source in CASES above.

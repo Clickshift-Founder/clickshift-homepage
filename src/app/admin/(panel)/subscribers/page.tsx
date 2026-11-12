@@ -14,9 +14,14 @@ export default async function SubscribersPage() {
         title="Subscribers"
         sub={`${active} active · from the footer, the Journal and article pages`}
         action={
-          <a href="/api/admin/subscribers" className="inline-flex min-h-11 items-center rounded-full bg-ink px-5 text-[14px] text-paper hover:bg-cobalt">
-            Download CSV
-          </a>
+          <div className="flex flex-wrap gap-2">
+            <a href="/admin/email/group?audience=subscribers" className="inline-flex min-h-11 items-center rounded-full bg-ink px-5 text-[14px] text-paper hover:bg-cobalt">
+              Email subscribers
+            </a>
+            <a href="/api/admin/subscribers" className="inline-flex min-h-11 items-center rounded-full border border-ink/12 px-5 text-[14px] hover:bg-ink hover:text-paper">
+              Download CSV
+            </a>
+          </div>
         }
       />
       <Card>

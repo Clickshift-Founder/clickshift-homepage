@@ -13,7 +13,7 @@ export const emailConfigured = () => Boolean(process.env.RESEND_API_KEY && proce
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 /** Plain text in, a clean branded HTML email out. Blank lines make paragraphs; URLs become links. */
-export function toHtml(text: string) {
+export function toHtml(text: string, unsubscribeUrl?: string) {
   const paras = text
     .trim()
     .split(/\n\s*\n/)
@@ -25,7 +25,7 @@ export function toHtml(text: string) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:18px;overflow:hidden">
 <tr><td style="background:#0B0C10;padding:18px 24px"><span style="display:inline-block;width:10px;height:10px;background:#D4FF3A;margin-right:8px"></span><span style="color:#F3F0E8;font-weight:600;font-size:16px;letter-spacing:-0.2px">ClickShift</span></td></tr>
 <tr><td style="padding:28px 24px 8px;font-size:15px;line-height:1.65">${paras}</td></tr>
-<tr><td style="padding:0 24px 24px;font-size:12px;color:#5A5E67">ClickShift · the solutions factory · <a href="${SITE.url}" style="color:#5A5E67">clickshift.io</a></td></tr>
+<tr><td style="padding:0 24px 24px;font-size:12px;color:#5A5E67">ClickShift · the solutions factory · <a href="${SITE.url}" style="color:#5A5E67">clickshift.io</a>${unsubscribeUrl ? ` · <a href="${esc(unsubscribeUrl)}" style="color:#5A5E67">Unsubscribe</a>` : ""}</td></tr>
 </table></td></tr></table></body></html>`;
 }
 
@@ -35,7 +35,7 @@ export async function sendEmail(opts: {
   to: string;
   subject: string;
   text: string;
-  kind: "ack" | "admin-alert" | "reply" | "compose";
+  kind: "ack" | "admin-alert" | "reply" | "compose" | "test";
   enquiryId?: number | null;
   replyTo?: string;
 }): Promise<SendResult> {

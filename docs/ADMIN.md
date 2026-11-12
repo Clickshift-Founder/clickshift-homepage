@@ -11,6 +11,7 @@ One place to run the business side of the site. It is mobile-first: a bottom tab
 | **Visitors** `/admin/analytics` | Over 7, 30 or 90 days: visitors, page views, time on page, visit length, one-page visits, visitors per day, sources (referrers and `utm_source`), countries, cities, campaigns (`utm_campaign`), landing pages, devices, browsers and systems, and a live feed of page views. |
 | **Journal** `/admin/posts` | Write, preview (side by side on desktop, tabs on a phone), save drafts and publish articles. A published article is live on /blog straight away. Built-in articles (`src/lib/posts.ts`) can be edited, hidden from the site, or restored to the original. |
 | **Email** `/admin/email` | Write to anyone from the ClickShift address, with the same templates, and see what has been sent. |
+| **Group email** `/admin/email/group` | Write once to many: choose subscribers, people who sent a brief (filter by status), or tick people by hand. Each person gets their own email with `{firstName}` filled in and an unsubscribe link. "Send me a test" goes only to `ADMIN_NOTIFY_EMAIL`. Unsubscribed people are shown but can't be chosen, and are skipped even if forced. Past group sends are listed with sent, failed and skipped counts. Up to 1,000 people per send. |
 | **Subscribers** | Newsletter sign-ups, with unsubscribe/restore and a CSV download. |
 | **Settings** | What is connected and what is missing. It never shows a secret. |
 
@@ -32,6 +33,24 @@ One place to run the business side of the site. It is mobile-first: a bottom tab
 - **Every brief gets an acknowledgement.** It confirms receipt, sets the expectation of one working day, and gives the sender a copy of what they sent. Nobody wonders if the form worked, and it is the first touch of the follow-up.
 - **Resend sends all email:** acknowledgements, alerts and replies. One HTTP call, no SDK. Kobocent already uses Resend, but ClickShift gets **its own verified domain (clickshift.io) and its own API key**, restricted to that domain.
 - **Visitor analytics are first-party.** No cookies and no stored IP addresses; Do Not Track and Global Privacy Control are respected. Location comes from Vercel's edge headers (Cloudflare's are read too, if the site ever moves behind its proxy). Google Analytics stays alongside it for now.
+
+## Group email and unsubscribing
+
+- Sent through Resend's batch endpoint, 100 emails per call, one email per person (nobody sees anyone else's address). Each chunk carries an idempotency key, so a retry never sends twice.
+- Every group email has an unsubscribe link (footer and plain text) and `List-Unsubscribe` + `List-Unsubscribe-Post` headers, so Gmail and Apple Mail show their own one-click unsubscribe.
+- The link is signed (HMAC of the address with `ADMIN_SESSION_SECRET`), so it can only unsubscribe the address it was sent to. Opening it shows a confirm button; nothing changes on a plain visit, because mail scanners open links. Changing `ADMIN_SESSION_SECRET` makes old links say "this link doesn't work any more", with a mailto fallback.
+- An unsubscribe sets that address to `unsubscribed` in `cs_subscribers` (adding it if it was only an enquirer) and puts a notification in the admin.
+- Code: `src/lib/server/groupEmail.ts`, `src/lib/server/unsubscribe.ts`, `src/app/unsubscribe/`, `src/app/api/unsubscribe/`.
+
+## Future build: the newsletter agent (not built; founder, 2026-11-12)
+
+Wait until there are subscribers worth writing to. The pieces are already in place:
+1. **Trigger:** a Vercel Cron Job (`vercel.json` → `/api/cron/newsletter` every 14 days), checked with `CRON_SECRET`.
+2. **Draft:** the route collects what is new since the last sent campaign (published Journal posts from `allPosts()`, new case studies), asks Claude (Anthropic API, `ANTHROPIC_API_KEY`, server-only) to write the issue in the brand voice (BRAND.md), and saves it as a `cs_campaigns` row with status `draft`.
+3. **Approve:** the founder gets an admin notification and an email, opens the draft in /admin/email/group, edits if needed, and sends. Nothing goes out without that click.
+4. **Send:** `sendCampaign()` to active subscribers, with the same unsubscribe handling.
+
+Adding it means one cron route, one "drafts" list on the group page, and one env var. No schema change.
 
 ## Environment variables
 
@@ -77,3 +96,4 @@ All tables are prefixed `cs_`, with time stored as BIGINT epoch milliseconds. Th
 | `cs_pageviews` | Visitor analytics |
 | `cs_notifications` | The admin's notifications |
 | `cs_rate` | Rate-limit hits |
+| `cs_campaigns` | Group sends (and, later, newsletter drafts): subject, body, audience, status, counts. `cs_emails.campaign_id` links each email to its send. |
