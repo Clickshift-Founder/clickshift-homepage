@@ -16,12 +16,12 @@ The public site has:
 | `HANDOFF.md` | Current state and what's next |
 | `BRAND.md` | Brand guide: logo, colour, type, voice |
 | `docs/ADMIN.md` | The admin dashboard and its settings |
-| `docs/DEPLOY.md` | Running it on our DigitalOcean server |
+| `docs/DEPLOY.md` | Vercel + Neon setup |
 
 ```bash
 npm ci
 npm run dev          # http://localhost:3000 (works without a database)
-npm run build && npm run start:prod   # production, on 127.0.0.1:3100
+npm run build && npm start            # production build, locally
 ```
 
 The old Web3 terminal is archived: branch `archive/web3-terminal-2026-11`, plus `_archive/`.

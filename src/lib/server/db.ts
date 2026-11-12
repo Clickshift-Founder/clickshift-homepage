@@ -1,14 +1,14 @@
 import postgres from "postgres";
 
 // One Postgres for the admin: enquiries, emails, subscribers, journal posts, visitor analytics, notifications.
-// DATABASE_URL is any Postgres connection string. Default home (founder, 2026-11-12): the `clickshift` database in the
-// Postgres on our own DigitalOcean server, reached on 127.0.0.1 because the site runs there too (docs/DEPLOY.md).
+// DATABASE_URL is any Postgres connection string. In production (founder, 2026-11-12): Neon, added through Vercel's
+// Neon integration, which injects the pooled address as DATABASE_URL (docs/DEPLOY.md).
 // Every time column is BIGINT epoch milliseconds (Date.now()), never TIMESTAMP. Tables are prefixed cs_.
 // Without DATABASE_URL the public site still builds and runs: forms fall back to email and the journal uses src/lib/posts.ts.
 
 type Sql = postgres.Sql;
-// Next bundles each route separately, so module state is per bundle. Keep one pool for the whole process on globalThis:
-// the Postgres is shared with Kobocent and QuantumHire, so connections are not ours to waste.
+// Next bundles each route separately, so module state is per bundle. Keep one pool for the whole process on globalThis,
+// so a serverless instance never holds more connections than DATABASE_POOL_MAX.
 const g = globalThis as unknown as { __csSql?: Sql; __csReady?: Promise<void> | null };
 
 export const dbConfigured = () => Boolean(process.env.DATABASE_URL);

@@ -28,10 +28,10 @@ One place to run the business side of the site. It is mobile-first: a bottom tab
 
 ## Decisions made (2026-11-12)
 
-- **Brevo is gone.** Briefs and subscribers live in our own database.
+- **Brevo is gone.** Briefs and subscribers live in our own Postgres database, hosted by Neon.
 - **Every brief gets an acknowledgement.** It confirms receipt, sets the expectation of one working day, and gives the sender a copy of what they sent. Nobody wonders if the form worked, and it is the first touch of the follow-up.
 - **Resend sends all email:** acknowledgements, alerts and replies. One HTTP call, no SDK. Kobocent already uses Resend, but ClickShift gets **its own verified domain (clickshift.io) and its own API key**, restricted to that domain.
-- **Visitor analytics are first-party.** No cookies and no stored IP addresses; Do Not Track and Global Privacy Control are respected. Location comes from the host's edge headers: Cloudflare on our server, Vercel elsewhere. Google Analytics stays alongside it for now.
+- **Visitor analytics are first-party.** No cookies and no stored IP addresses; Do Not Track and Global Privacy Control are respected. Location comes from Vercel's edge headers (Cloudflare's are read too, if the site ever moves behind its proxy). Google Analytics stays alongside it for now.
 
 ## Environment variables
 
@@ -39,7 +39,7 @@ All are server-only. Never give any of them a `NEXT_PUBLIC_` name.
 
 | Variable | Needed for | How to get it |
 |---|---|---|
-| `DATABASE_URL` | Everything in the admin, the forms and analytics | `scripts/db-create.mjs` on the server (docs/DEPLOY.md) |
+| `DATABASE_URL` | Everything in the admin, the forms and analytics | Added automatically by Vercel's Neon integration (docs/DEPLOY.md) |
 | `ADMIN_EMAIL` | Sign-in | The email you sign in with |
 | `ADMIN_PASSWORD_HASH` | Sign-in | `node scripts/admin-password.mjs` (the password itself is never stored) |
 | `ADMIN_SESSION_SECRET` | Sign-in | Printed by the same script. Changing it signs everyone out. |

@@ -4,7 +4,7 @@
 > 1. **This file**: what the site is, the rules and why they exist
 > 2. **`HANDOFF.md`**: current state, what is deployed, what is next. **Update it at the end of every session.**
 > 3. **`BRAND.md`**: the brand guide. Read it before touching anything visual.
-> 4. **`docs/ADMIN.md`** (admin dashboard) and **`docs/DEPLOY.md`** (how it runs on our server)
+> 4. **`docs/ADMIN.md`** (admin dashboard) and **`docs/DEPLOY.md`** (Vercel + Neon setup)
 
 ## What this is
 
@@ -35,7 +35,7 @@ platforms, automations and AI agents for development programmes, schools, compan
   - Postgres via the `postgres` package (`src/lib/server/db.ts`);
   - email via Resend (`src/lib/server/email.ts`);
   - first-party analytics: `src/components/Tracker.tsx` sends to `src/app/api/collect/route.ts`.
-- **Hosting (founder, 2026-11-12):** our own DigitalOcean server next to Kobocent and QuantumHire. PM2 process `clickshift`, on 127.0.0.1:3100, behind nginx and Cloudflare. The steps are in `docs/DEPLOY.md`. It was on Vercel before; the code still runs there (it reads Vercel or Cloudflare geo headers).
+- **Hosting (founder, 2026-11-12):** Vercel, with the database in **Neon Postgres** added through Vercel's Neon integration (it injects `DATABASE_URL`, the pooled address). It deliberately does **not** run on the DigitalOcean server with Kobocent and QuantumHire: a public marketing site stays off the money server. The steps are in `docs/DEPLOY.md`.
 
 ### Building locally (Windows laptop)
 
@@ -66,14 +66,14 @@ and runs without `DATABASE_URL`: the forms then fall back to email, and the Jour
 - Every admin page and server action starts with `requireAdmin()`. No admin route without it.
 - Secrets are server-only env vars. **Never give one a `NEXT_PUBLIC_` name** (the old site leaked a Brevo key that way). Never log a secret or any part of one. Settings shows only whether a value is set.
 - Time columns are **BIGINT epoch ms**; tables are prefixed `cs_` and created in `SCHEMA` in `db.ts`. A new table goes there.
-- The database is shared with Kobocent and QuantumHire, so use one connection pool per process (`globalThis.__csSql`). Never open a second pool.
+- Use one connection pool per process (`globalThis.__csSql`), because Next gives each route bundle its own module state. Never open a second pool.
 - Analytics stores no IP addresses and no cookies, respects DNT/GPC, and never tracks `/admin` or `/api`. Keep the privacy page (`src/app/privacy/page.tsx`) true whenever data collection changes.
 - A lead with a budget of $2,000 or more is "priority" (`src/lib/enquiry.ts`).
 
-### Server (shared with Kobocent and QuantumHire)
-- The app listens on **127.0.0.1** only. Never open a port in ufw; everything goes through nginx and Cloudflare (orange cloud).
-- After `pm2 start` or `pm2 restart`, check `pm2 ls` and a `curl` of the site before `pm2 save`.
-- Read `git pull --ff-only` output before building; a failed pull followed by a build deploys nothing new.
+### Hosting (Vercel + Neon)
+- Schema changes go in `SCHEMA` in `db.ts` (`CREATE … IF NOT EXISTS`), never in a hand-run query, so a fresh Neon database builds itself.
+- Use `DATABASE_URL` (the pooled `-pooler` address); `prepare: false` must stay for the pooler.
+- Never move this site onto the Kobocent server without the founder deciding it again; the separation is deliberate.
 
 ### Design
 - **Mobile-first is the requirement.** Design at 390 px first, use 44 px tap targets, respect safe areas, and never hide anything behind hover.

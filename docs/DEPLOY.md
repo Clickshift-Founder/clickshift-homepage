@@ -1,74 +1,57 @@
-# Deploying clickshift.io on our DigitalOcean server
+# Deploying clickshift.io: Vercel + Neon
 
-**Decision (founder, 2026-11-12):** clickshift.io runs on our own DigitalOcean server, the one that runs Kobocent and
-QuantumHire, with its data in a `clickshift` database in the same Postgres.
+**Decision (founder, 2026-11-12):** clickshift.io stays on **Vercel**, with its data in **Neon Postgres** added through
+Vercel's Neon integration. It does **not** run on the DigitalOcean server that runs Kobocent and QuantumHire.
 
-**Why the whole site moves, not only the database:** the server's firewall allows 22, 80 and 443 only, with 80/443 open
-to Cloudflare's addresses alone. Vercel would need Postgres (5432) open to the internet, and Vercel has no fixed IPs to
-allow-list. Our rule is never to open a port for a new service, so the app runs on the server, talks to Postgres on
-127.0.0.1, and is reached only through nginx behind Cloudflare, exactly like the others.
+**Why:** a marketing site with a public form and an admin sign-in should not share a machine with a money app. A hosted
+Postgres also means no port to open, no nginx, no certificates and no PM2, and the server keeps its memory for Kobocent.
 
 | Piece | Where |
 |---|---|
-| App | `~/clickshift-homepage`, PM2 process **`clickshift`**, `npm run start:prod` → 127.0.0.1:3100 |
-| Database | Postgres database `clickshift`, role `clickshift` (created by `scripts/db-create.mjs`) |
-| Secrets | `~/clickshift-homepage/.env.local` (never committed: `.env*` is git-ignored) |
-| Web | nginx site `deploy/nginx-clickshift.io.conf`, Cloudflare proxied (orange), SSL "Full (strict)" with a Cloudflare Origin Certificate |
+| App | Vercel project for `Clickshift-Founder/clickshift-homepage`, deployed from `main` |
+| Database | Neon (Vercel → Storage), injected as `DATABASE_URL` (the pooled address) |
+| Secrets | Vercel → Project → Settings → Environment Variables (never in git) |
 | Email | Resend, domain clickshift.io |
-| Backups | the Kobocent repo's `scripts/db-backup.js --name clickshift --env ~/clickshift-homepage/.env.local`, nightly |
+| DNS | Cloudflare, pointing at Vercel as before |
+
+**No SQL to run.** The seven `cs_` tables are created automatically the first time the site talks to the database
+(`SCHEMA` in `src/lib/server/db.ts`). A new table goes there too, never into a hand-run query.
 
 ---
 
-## First deploy (once)
+## First setup (once)
 
-Run these on the server, one block at a time, and read each output before the next.
+**1. Add Neon.** Vercel → the clickshift project → **Storage** → **Create Database** → **Neon** (Serverless Postgres).
+- Region: the same one as the project's functions (Project → Settings → Functions; Vercel's default is Washington, D.C.,
+  `iad1`, which matches Neon's **US East (N. Virginia)**). The same region keeps every query fast.
+- Plan: Free is enough to start.
+- Connect it to the project for **Production, Preview and Development**, and keep the default variable prefix so the
+  connection arrives as `DATABASE_URL`.
 
-**1. Room to build.** A Next.js build needs about 1.5 GB of free memory.
+Check: Settings → Environment Variables now lists `DATABASE_URL` (and others such as `DATABASE_URL_UNPOOLED`). The site
+uses `DATABASE_URL`, the pooled one: its host contains `-pooler`. Leave the others alone.
 
-```bash
-free -m
-ss -ltnp | grep -E ':3100\b' || echo "port 3100 is free"
+**2. Admin sign-in values.** These scripts need Node. The laptop has no Node installed, so install it once with
+`winget install OpenJS.NodeJS.LTS` and open a new terminal. Then, in the repo folder:
+
+```powershell
+cd C:\Users\User\projects\clickshift-homepage
+node scripts/admin-password.mjs
+node scripts/admin-totp.mjs
 ```
 
-If "available" is under 1500, add swap first (only if `swapon --show` prints nothing):
+The first prints `ADMIN_PASSWORD_HASH` and `ADMIN_SESSION_SECRET`. The second prints `ADMIN_TOTP_SECRET` and a link to
+add to your authenticator app. Copy them straight into Vercel; don't save them in a file.
 
-```bash
-sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-```
-
-**2. Code.**
-
-```bash
-cd ~ && git clone https://github.com/Clickshift-Founder/clickshift-homepage.git && cd clickshift-homepage
-git checkout main && npm ci
-```
-
-**3. Database.** First try with Kobocent's own connection (it is read into the command, never printed):
-
-```bash
-cd ~/clickshift-homepage
-PG_ADMIN_URL="$(grep -E '^DATABASE_URL=' ~/clickbot/.env | cut -d= -f2-)" node scripts/db-create.mjs
-```
-
-If it says *permission denied to create role*, use the postgres superuser over the local socket instead:
-
-```bash
-sudo -u postgres PG_ADMIN_SOCKET=/var/run/postgresql/.s.PGSQL.5432 "$(command -v node)" scripts/db-create.mjs
-```
-
-It prints one `DATABASE_URL=...` line. Keep it for step 4. It is shown once.
-
-**4. Secrets.** Create `.env.local` with `nano ~/clickshift-homepage/.env.local`. Fill each value. The full list is in
-`docs/ADMIN.md` ("Environment variables").
+**3. Environment variables.** Vercel → Settings → Environment Variables, for **Production** (and Preview if you want to try
+the admin on preview links). The full list and what each does is in `docs/ADMIN.md`.
 
 ```
-DATABASE_URL=            (from step 3)
 ADMIN_EMAIL=
-ADMIN_PASSWORD_HASH=     (node scripts/admin-password.mjs)
-ADMIN_SESSION_SECRET=    (printed by the same script)
-ADMIN_TOTP_SECRET=       (node scripts/admin-totp.mjs; recommended)
-RESEND_API_KEY=
+ADMIN_PASSWORD_HASH=
+ADMIN_SESSION_SECRET=
+ADMIN_TOTP_SECRET=          (recommended)
+RESEND_API_KEY=             (step 4)
 EMAIL_FROM=ClickShift <hello@clickshift.io>
 EMAIL_REPLY_TO=
 ADMIN_NOTIFY_EMAIL=
@@ -76,74 +59,40 @@ ADMIN_TELEGRAM_BOT_TOKEN=   (optional)
 ADMIN_TELEGRAM_CHAT_ID=     (optional)
 ```
 
-```bash
-chmod 600 ~/clickshift-homepage/.env.local
+**Delete** the old `NEXT_PUBLIC_BREVO_API_KEY`, `NEXT_PUBLIC_BREVO_LIST_ID` and `NEXT_PUBLIC_STATS_API_URL` while you are there.
+
+**4. Email (Resend).** Resend → Domains → Add `clickshift.io`. Add the DNS records it lists in Cloudflare as
+**DNS only** (grey cloud). When it shows Verified, create an API key with "Sending access" for clickshift.io only, and
+put it in `RESEND_API_KEY`.
+
+**5. Deploy.** Merge the branch to `main` and push. Vercel builds it. (After changing variables, redeploy:
+Deployments → the latest → Redeploy.)
+
+**6. Check it.**
+- https://clickshift.io/admin/login → sign in → **Settings** should show the database, sign-in and email as connected.
+- Send yourself a brief from /contact: it should appear under Enquiries, and the acknowledgement should arrive.
+- Optional, in Neon's SQL Editor (Vercel → Storage → the database → Open in Neon), to see the tables:
+
+```sql
+SELECT table_name FROM information_schema.tables WHERE table_name LIKE 'cs\_%' ORDER BY 1;
 ```
 
-**5. Build and start.** Check it before saving the PM2 list.
-
-```bash
-cd ~/clickshift-homepage && npm run build
-pm2 start npm --name clickshift -- run start:prod
-pm2 ls
-curl -s -o /dev/null -w "home %{http_code}\n" http://127.0.0.1:3100/
-curl -s -o /dev/null -w "admin %{http_code}\n" http://127.0.0.1:3100/admin/login
-```
-
-Both should say 200. Only then run `pm2 save`.
-
-**6. TLS certificate.** In Cloudflare go to clickshift.io → SSL/TLS → Origin Server → Create Certificate, with hostnames
-`clickshift.io, *.clickshift.io` and a 15-year validity. Save it on the server:
-
-```bash
-sudo mkdir -p /etc/ssl/cloudflare
-sudo nano /etc/ssl/cloudflare/clickshift.io.pem     # paste the certificate
-sudo nano /etc/ssl/cloudflare/clickshift.io.key     # paste the private key
-sudo chmod 600 /etc/ssl/cloudflare/clickshift.io.key
-```
-
-(The same `*.clickshift.io` certificate can also fix pulse.clickshift.io's 526 error, if its nginx block points to it.)
-
-**7. nginx.** Check that nothing else already claims clickshift.io (api.clickshift.io is fine):
-
-```bash
-grep -rn "server_name" /etc/nginx/sites-enabled/ | grep -E "[^.]clickshift\.io|www\.clickshift\.io"
-sudo cp ~/clickshift-homepage/deploy/nginx-clickshift.io.conf /etc/nginx/sites-available/clickshift.io
-sudo ln -s /etc/nginx/sites-available/clickshift.io /etc/nginx/sites-enabled/clickshift.io
-sudo nginx -t && sudo systemctl reload nginx
-curl -sk --resolve clickshift.io:443:127.0.0.1 -o /dev/null -w "through nginx %{http_code}\n" https://clickshift.io/
-```
-
-**8. Switch DNS (Cloudflare).**
-- clickshift.io: replace the Vercel record with an **A** record pointing to the server's IP, **proxied** (orange).
-- www: a **CNAME** to `clickshift.io`, proxied.
-- SSL/TLS mode: **Full (strict)**.
-- Rules → Transform Rules → Managed Transforms: turn on **Add visitor location headers**, so the admin shows cities as
-  well as countries.
-
-**9. Retire Vercel's copy.** Once https://clickshift.io loads from the server, remove the domain from the Vercel project
-(Project → Settings → Domains), and delete the old `NEXT_PUBLIC_BREVO_*` variables there.
-
-**10. Email (Resend).** In Resend: Domains → Add `clickshift.io`. Add the DNS records it lists in Cloudflare as
-**DNS only** (grey cloud). When it shows Verified, create an API key with "Sending access" for clickshift.io only, put it in
-`.env.local` and run `pm2 restart clickshift --update-env`.
-
-**11. Backups.** Add the ClickShift database to the nightly backup next to QuantumHire's line in `crontab -e`, with
-`--name clickshift --env /root/clickshift-homepage/.env.local` (use the real home path).
+It should list seven tables: cs_emails, cs_enquiries, cs_notifications, cs_pageviews, cs_posts, cs_rate, cs_subscribers.
 
 ---
 
 ## Every later deploy
 
-```bash
-cd ~/clickshift-homepage && git pull --ff-only
-```
+Push to `main`. Vercel builds and deploys it. Articles published from /admin don't need a deploy; they go live when you
+press Publish.
 
-Read the output. If it says "Not possible to fast-forward", stop and sort that out first.
+## Good to know
 
-```bash
-npm ci && npm run build && pm2 restart clickshift --update-env
-pm2 ls && curl -s -o /dev/null -w "home %{http_code}\n" http://127.0.0.1:3100/
-```
-
-Articles published from /admin don't need a deploy. They go live as soon as you press Publish.
+- **Neon's free plan sleeps** after a few minutes with no queries and wakes on the next one, which adds well under a
+  second to that first request. Nothing is lost.
+- **Backups:** Neon keeps a short restore history on the free plan. For a copy you hold, download the CSV from
+  /admin → Subscribers, or use the Neon console's backup and branch features.
+- **Vercel's Hobby plan is for non-commercial use.** ClickShift is a business, so the Pro plan is the one within Vercel's terms.
+- **Visitor location** comes from Vercel's `x-vercel-ip-*` headers (country, region, city), so no extra setup is needed.
+- pulse.clickshift.io (Cloudflare 526) is a separate issue on the DigitalOcean server: its origin needs a valid
+  certificate (a Cloudflare Origin Certificate for `*.clickshift.io` on that server's nginx).

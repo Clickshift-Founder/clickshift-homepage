@@ -20,7 +20,7 @@
   - Two DIY articles: personalised PDF letters from a Google Sheet, and a big-lead phone alert.
   - Articles now support code blocks.
 - **Admin:** dashboard, enquiries, reply composer with templates, visitor analytics, journal editor, email, subscribers and settings. Brevo was removed. Resend sends an acknowledgement to every brief. Docs: `docs/ADMIN.md`.
-- **Hosting:** prepared for the DigitalOcean server (`docs/DEPLOY.md`, `deploy/nginx-clickshift.io.conf`, `scripts/db-create.mjs`, `npm run start:prod`).
+- **Hosting:** stays on Vercel, with Neon Postgres via Vercel's integration (founder, 2026-11-12, replacing the earlier DigitalOcean plan). No SQL to run: the tables create themselves. Steps: `docs/DEPLOY.md`.
 - **Brand:**
   - `BRAND.md` (palette reviewed and kept; `signal-deep` #4E6B00 added for light layouts);
   - assets in `brand/assets/` and `Desktop/ClickShift Brand/`;
@@ -34,12 +34,12 @@
 
 ## Open items: founder
 1. Commit and push this work, then merge to `main`.
-2. Deploy on the server (`docs/DEPLOY.md`): database, `.env.local`, build, PM2, origin certificate, nginx, then the DNS switch.
+2. Set up Vercel (`docs/DEPLOY.md`): add Neon from Storage, add the admin and email variables, delete the `NEXT_PUBLIC_*` Brevo/stats ones, then deploy and check /admin → Settings.
 3. Resend: verify clickshift.io, then set `RESEND_API_KEY`, `EMAIL_FROM`, `EMAIL_REPLY_TO` and `ADMIN_NOTIFY_EMAIL`.
 4. Confirm the inbox hello@clickshift.io exists (it's the From address and is shown on the site).
 5. **Rotate the old Brevo API key.** It was in a `NEXT_PUBLIC_` variable, so it shipped in the old site's JavaScript. Delete it in Brevo, and remove the `NEXT_PUBLIC_BREVO_*` lines from Vercel and from the laptop's `.env.local`.
 6. Rotate the investor key that sat in the old roadmap page's source (it is in git history).
-7. pulse.clickshift.io returns Cloudflare 526 (invalid origin certificate). The `*.clickshift.io` origin certificate from DEPLOY step 6 can fix it.
+7. pulse.clickshift.io returns Cloudflare 526 (invalid origin certificate) from the DigitalOcean server. A Cloudflare Origin Certificate for `*.clickshift.io` on that server's nginx can fix it.
 8. mobilervrepairnow.com refused connections on 2026-11-12. Check it's up, since the case study links to it. Confirm the client name "Apex Armor".
 9. Prices, the 40% early-reservation discount and the bundle price were proposed, not decided.
 10. Real template screenshots, to replace the drawn previews.
