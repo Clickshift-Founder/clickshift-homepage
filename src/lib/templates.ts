@@ -111,7 +111,7 @@ export const TEMPLATES: Template[] = [
     includes: ["Applicant and reviewer tables", "Weighted scoring rubric", "AI scoring hook (Make)", "Decision board"],
     preview: "table",
     status: "soon",
-    fromCase: "endgame-ai-admissions",
+    fromCase: "sppg-admissions-ai",
   },
   {
     slug: "airtable-recruitment-scheduling",
@@ -123,7 +123,7 @@ export const TEMPLATES: Template[] = [
     includes: ["Candidate pipeline", "Panel availability", "Slot rules (buffers, breaks)", "Calendar view"],
     preview: "calendar",
     status: "soon",
-    fromCase: "endgame-platforms",
+    fromCase: "sppg-interview-scheduler",
   },
   {
     slug: "monday-course-delivery",

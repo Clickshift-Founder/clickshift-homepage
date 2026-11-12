@@ -76,7 +76,7 @@ const UNITS: Unit[] = [
   { id: "UN-03", name: "WEEAP · UN Women", what: "LMS in 4 countries, 2 languages", status: "SHIPPED", tone: "done", href: "/work/un-women-weeap" },
   { id: "WB-04", name: "SWEEP · World Bank", what: "765 women on one platform", status: "SHIPPED", tone: "done", href: "/work/world-bank-sweep" },
   { id: "FC-05", name: "SWEEAP · FCDO", what: "691 trained vs 600 target", status: "SHIPPED", tone: "done", href: "/work/chevening-fcdo-sweeap" },
-  { id: "EG-06", name: "EndGame", what: "AI review, 60%+ faster", status: "RUNNING", tone: "live", href: "/work/endgame-ai-admissions" },
+  { id: "SP-06", name: "SPPG", what: "AI admissions review, 60%+ faster", status: "RUNNING", tone: "live", href: "/work/sppg-admissions-ai" },
   { id: "ZM-07", name: "Zoom → Drive", what: "$1,000 bill → under $200", status: "RUNNING", tone: "live", href: "/work/zoom-to-drive" },
   { id: "NX-08", name: "Your project", what: "Next on the line", status: "OPEN", tone: "build", href: "/contact" },
 ];
@@ -87,6 +87,7 @@ const LOG = [
   "archiver › 6 recordings verified → drive",
   "reviewer › 38 applications scored · human queue",
   "router › lead $4,200 → CEO · 41s",
+  "letters › provisional letter sent · pdf archived",
   "m&e › cohort 2 completion 88% · report sent",
   "check › confirmation seen · proof saved",
   "sync › hubspot ⇄ salesforce · 0 conflicts",

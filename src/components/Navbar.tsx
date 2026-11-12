@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
+import { FlightProgress } from "./Flight";
 import { NAV } from "@/lib/site";
 
 export default function Navbar() {
@@ -79,6 +80,7 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
+      {!open && <FlightProgress />}
 
       {open && (
         <div id="mobile-menu" className="h-[calc(100dvh-64px)] overflow-y-auto bg-ink px-4 pb-10 pt-4 lg:hidden">

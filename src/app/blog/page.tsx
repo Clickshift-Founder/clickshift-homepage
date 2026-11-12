@@ -4,7 +4,9 @@ import { Arrow, Container, Eyebrow, PageHero } from "@/components/ui";
 import { PostCard } from "@/components/Cards";
 import { Reveal } from "@/components/Interactive";
 import NewsletterForm from "@/components/NewsletterForm";
-import { POSTS, sortedPosts } from "@/lib/posts";
+import { allPosts } from "@/lib/server/journal";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "The Journal: automation, AI and products built for 2045",
@@ -13,10 +15,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
 };
 
-export default function BlogPage() {
-  const all = sortedPosts();
+export default async function BlogPage() {
+  const all = await allPosts();
   const [lead, ...rest] = all;
-  const cats = Array.from(new Set(POSTS.map((p) => p.category)));
+  const cats = Array.from(new Set(all.map((p) => p.category)));
 
   return (
     <>
@@ -33,7 +35,7 @@ export default function BlogPage() {
         <div className="flex flex-wrap gap-2">
           {cats.map((c) => (
             <span key={c} className="rounded-full border border-white/15 px-3 py-1.5 font-mono text-[12px] text-paper/70">
-              {c} · {POSTS.filter((p) => p.category === c).length}
+              {c} · {all.filter((p) => p.category === c).length}
             </span>
           ))}
         </div>

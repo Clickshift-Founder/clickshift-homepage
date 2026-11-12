@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow, ArrowUpRight, Button, Container, Eyebrow, Tag } from "@/components/ui";
@@ -98,6 +99,24 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
                 ))}
               </ol>
             </Reveal>
+            {c.images && c.images.length > 0 && (
+              <Reveal>
+                <Eyebrow>Inside the build</Eyebrow>
+                <div className="mt-6 space-y-6">
+                  {c.images.map((img) => (
+                    <figure key={img.src} className="overflow-hidden rounded-[22px] border border-ink/8 bg-white">
+                      <a href={img.src} target="_blank" rel="noopener noreferrer" className="block overflow-x-auto" aria-label={`Open full size: ${img.caption}`}>
+                        <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes="(min-width: 1024px) 66vw, 100vw" className="h-auto w-full min-w-[560px] sm:min-w-0" />
+                      </a>
+                      <figcaption className="flex items-center justify-between gap-4 border-t border-ink/8 px-5 py-3 text-[13px] text-mute">
+                        <span>{img.caption}</span>
+                        <span className="hidden shrink-0 font-mono text-[11px] uppercase tracking-wider text-stone sm:inline">Tap to enlarge</span>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </Reveal>
+            )}
             <Reveal>
               <Eyebrow n="03">What changed</Eyebrow>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">

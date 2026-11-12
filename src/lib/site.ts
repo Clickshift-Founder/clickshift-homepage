@@ -6,7 +6,7 @@ export const SITE = {
   tagline: "The solutions factory.",
   promise: "We build what still works in 2045.",
   description:
-    "ClickShift is a solutions factory. We design, build and run software, AI agents and automations for programmes, companies and our own products, each one built to stay useful well beyond 2045.",
+    "ClickShift is a solutions factory. We design, build and run software, AI agents and automations for programmes, schools, companies and product teams, each one built to stay useful well beyond 2045.",
   // TODO(founder): confirm this inbox exists before launch.
   email: "hello@clickshift.io",
   location: "Abuja, Nigeria · working worldwide",
@@ -30,6 +30,7 @@ export const BRAND = {
   paper: "#F3F0E8",
   paper2: "#E9E4D8",
   signal: "#D4FF3A", // lime: fills on dark, never as text on paper
+  signalDeep: "#4E6B00", // the lime family on light surfaces (flyers, documents): text and icons
   cobalt: "#2E44FF", // links and buttons on paper
   stone: "#8C9099",
 } as const;

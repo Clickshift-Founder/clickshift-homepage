@@ -8,7 +8,7 @@ import { BRANDS, CASES, LINES, type Line } from "@/lib/work";
 export const metadata: Metadata = {
   title: "Work: brands and programmes we've built for",
   description:
-    "Case studies from ClickShift: platforms for World Bank, UN Women and FCDO-funded programmes, AI and CRM automation for companies in five countries, and our own products, Kobocent and QuantumHire.",
+    "Case studies from ClickShift: platforms for World Bank, UN Women and FCDO-funded programmes, AI and CRM automation for companies in five countries, and products such as Kobocent and QuantumHire.",
   alternates: { canonical: "/work" },
 };
 

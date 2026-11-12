@@ -5,7 +5,11 @@ import Prose, { headings } from "@/components/Prose";
 import { Arrow, Button, Container } from "@/components/ui";
 import { CaseCard, PostCard } from "@/components/Cards";
 import NewsletterForm from "@/components/NewsletterForm";
-import { POSTS, POST_AUTHOR, postBySlug } from "@/lib/posts";
+import { POSTS, POST_AUTHOR } from "@/lib/posts";
+import { allPosts, getPost } from "@/lib/server/journal";
+
+// Articles published from /admin appear within minutes (and at once: publishing revalidates the page).
+export const revalidate = 300;
 import { caseBySlug } from "@/lib/work";
 import { serviceBySlug } from "@/lib/services";
 import { SITE } from "@/lib/site";
@@ -16,7 +20,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const p = postBySlug(slug);
+  const p = await getPost(slug);
   if (!p) return {};
   return {
     title: p.title,
@@ -31,14 +35,15 @@ const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const p = postBySlug(slug);
+  const p = await getPost(slug);
   if (!p) notFound();
+  const list = await allPosts();
 
   const toc = headings(p.body);
   const cases = (p.cases ?? []).map(caseBySlug).filter((c): c is NonNullable<typeof c> => Boolean(c)).slice(0, 2);
   const services = (p.services ?? []).map(serviceBySlug).filter((s): s is NonNullable<typeof s> => Boolean(s));
-  const more = POSTS.filter((x) => x.slug !== p.slug && (x.category === p.category || x.cases?.some((c) => p.cases?.includes(c)))).slice(0, 3);
-  const others = more.length >= 2 ? more : POSTS.filter((x) => x.slug !== p.slug).slice(0, 3);
+  const more = list.filter((x) => x.slug !== p.slug && (x.category === p.category || x.cases?.some((c) => p.cases?.includes(c)))).slice(0, 3);
+  const others = more.length >= 2 ? more : list.filter((x) => x.slug !== p.slug).slice(0, 3);
 
   const ld = {
     "@context": "https://schema.org",
@@ -69,7 +74,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <span>·</span>
             <span>{p.readMinutes} min read</span>
           </div>
-          {p.originally && <p className="mt-3 text-[13px] text-paper/45">{p.originally.label}</p>}
+          {p.originally && (
+            <p className="mt-3 text-[13px] text-paper/45">
+              {p.originally.href ? (
+                <a href={p.originally.href} target="_blank" rel="noopener noreferrer" className="underline decoration-white/25 underline-offset-4 hover:text-signal">
+                  {p.originally.label}
+                </a>
+              ) : (
+                p.originally.label
+              )}
+            </p>
+          )}
         </Container>
       </header>
 

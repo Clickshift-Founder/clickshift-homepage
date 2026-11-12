@@ -1,36 +1,35 @@
 import { NextResponse } from "next/server";
+import { db, dbConfigured, notify, overLimit } from "@/lib/server/db";
+import { clientKey } from "@/lib/server/auth";
 
-// Server-only. Prefer BREVO_API_KEY / BREVO_LIST_ID; the old NEXT_PUBLIC_ names still work until Vercel is updated.
-// A NEXT_PUBLIC_ name can end up in the browser bundle, so rename them in Vercel and then delete the old ones.
-const apiKey = process.env.BREVO_API_KEY || process.env.NEXT_PUBLIC_BREVO_API_KEY;
-const listId = process.env.BREVO_LIST_ID || process.env.NEXT_PUBLIC_BREVO_LIST_ID;
+// Newsletter sign-ups are stored in our own database (cs_subscribers) and shown in /admin/subscribers.
+// Brevo is no longer used (founder, 2026-11-12): delete BREVO_* and NEXT_PUBLIC_BREVO_* from Vercel.
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export async function POST(req: Request) {
   try {
-    const { email } = await req.json();
-    if (typeof email !== "string" || !EMAIL.test(email) || email.length > 254) {
+    const { email, source } = await req.json();
+    if (typeof email !== "string" || !EMAIL.test(email.trim()) || email.length > 254) {
       return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
     }
-    if (!apiKey || !listId) {
-      console.error("Subscribe: Brevo is not configured");
+    if (!dbConfigured()) {
       return NextResponse.json({ error: "Sign-ups are paused. Please email us instead." }, { status: 503 });
     }
-
-    const res = await fetch("https://api.brevo.com/v3/contacts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "api-key": apiKey },
-      body: JSON.stringify({ email, listIds: [parseInt(listId, 10)], updateEnabled: true }),
-    });
-
-    if (!res.ok) {
-      const data = await res.json().catch(() => ({}));
-      console.error("Subscribe: Brevo returned", res.status, data?.code);
-      return NextResponse.json({ error: "We couldn't add you just now. Please try again." }, { status: 400 });
+    if (await overLimit(`subscribe:${await clientKey()}`, 5, 10 * 60_000)) {
+      return NextResponse.json({ error: "Too many attempts. Please try again later." }, { status: 429 });
     }
+    const sql = await db();
+    const clean = email.trim().toLowerCase();
+    const src = typeof source === "string" ? source.slice(0, 40) : null;
+    const rows = await sql`
+      INSERT INTO cs_subscribers (email, created_at, source) VALUES (${clean}, ${Date.now()}, ${src})
+      ON CONFLICT (email) DO UPDATE SET status = 'active'
+      RETURNING (xmax = 0) AS inserted`;
+    if (rows[0]?.inserted) await notify("subscriber", `New subscriber: ${clean}`, src ? `from ${src}` : undefined, "/admin/subscribers");
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error("subscribe failed", err instanceof Error ? err.message : err);
     return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
   }
 }

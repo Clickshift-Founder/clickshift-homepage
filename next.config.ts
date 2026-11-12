@@ -16,6 +16,12 @@ const oldPosts: Record<string, string> = {
   "pulse-agentic-wallet-os-solana": "inside-quantumhire-eight-agents",
 };
 
+// Case studies that were renamed when SPPG became its own client (2026-11-12).
+const oldCases: Record<string, string> = {
+  "endgame-ai-admissions": "sppg-admissions-ai",
+  "endgame-platforms": "sppg-peer-review",
+};
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   turbopack: { root: __dirname },
@@ -26,6 +32,7 @@ const nextConfig: NextConfig = {
         destination: `/blog/${to}`,
         permanent: true,
       })),
+      ...Object.entries(oldCases).map(([from, to]) => ({ source: `/work/${from}`, destination: `/work/${to}`, permanent: true })),
       { source: "/products", destination: "/work", permanent: true },
       { source: "/results", destination: "/work", permanent: true },
       { source: "/roadmap", destination: "/work", permanent: true },

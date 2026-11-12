@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
 import { CASES } from "@/lib/work";
-import { POSTS } from "@/lib/posts";
+import { allPosts } from "@/lib/server/journal";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await allPosts();
   const now = new Date();
   const pages = [
     { path: "", priority: 1 },
@@ -21,6 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...pages.map((p) => ({ url: `${SITE.url}${p.path}`, lastModified: now, priority: p.priority })),
     ...CASES.map((c) => ({ url: `${SITE.url}/work/${c.slug}`, lastModified: now, priority: 0.7 })),
-    ...POSTS.map((p) => ({ url: `${SITE.url}/blog/${p.slug}`, lastModified: new Date(p.date), priority: 0.7 })),
+    ...posts.map((p) => ({ url: `${SITE.url}/blog/${p.slug}`, lastModified: new Date(p.date), priority: 0.7 })),
   ];
 }

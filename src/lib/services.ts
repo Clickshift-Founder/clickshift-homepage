@@ -91,7 +91,7 @@ export const SERVICES: Service[] = [
       "An evaluation set, so quality is measured, not assumed",
     ],
     bestFor: "High-volume review, triage or drafting work",
-    cases: ["endgame-ai-admissions", "the-bfg", "quantumhire"],
+    cases: ["sppg-admissions-ai", "the-bfg", "quantumhire"],
   },
   {
     slug: "retainer",
@@ -110,7 +110,7 @@ export const SERVICES: Service[] = [
       "Unused hours roll over for one month",
     ],
     bestFor: "Teams who want automation to keep improving",
-    cases: ["endgame-platforms", "digital-brothers"],
+    cases: ["sppg-peer-review", "digital-brothers"],
   },
   {
     slug: "programme-tech",
@@ -139,7 +139,7 @@ export const SERVICES: Service[] = [
     unit: "per MVP",
     timeline: "6 – 10 weeks to launch",
     summary:
-      "A new product, from spec to live users: web app, mobile-ready, payments, AI and an admin dashboard. The way we build our own ventures.",
+      "A new product, from spec to live users: web app, mobile-ready, payments, AI and an admin dashboard. The way we built Kobocent and QuantumHire.",
     includes: [
       "Product spec, user flows and the 2045 Standard review",
       "A Next.js web app installable on phones (PWA), with a backend and database",

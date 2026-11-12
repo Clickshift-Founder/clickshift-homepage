@@ -1,12 +1,13 @@
 // The ClickShift Journal. Bodies use a small Markdown subset rendered by src/components/Prose.tsx:
-// ## heading, ### subheading, paragraphs, - lists, 1. lists, > quotes, **bold**, *italic*, [text](url).
+// ## heading, ### subheading, paragraphs, - lists, 1. lists, > quotes, **bold**, *italic*, `code`, [text](url),
+// and fenced code blocks (three backticks, optional language).
 // Old Web3 posts redirect here (next.config.ts). Numbers must come from a case in work.ts.
 
 export type Post = {
   slug: string;
   title: string;
   description: string;
-  category: "The 2045 Standard" | "Automation" | "AI" | "CRM" | "Programmes" | "Building";
+  category: "The 2045 Standard" | "Automation" | "AI" | "CRM" | "Programmes" | "Building" | "Do it yourself";
   date: string; // ISO
   readMinutes: number;
   body: string;
@@ -29,7 +30,10 @@ export const POSTS: Post[] = [
     date: "2026-11-12",
     readMinutes: 6,
     featured: true,
-    originally: { label: "First published on Medium, 18 April 2025. Revised for ClickShift." },
+    originally: {
+      label: "First published on Medium, 18 April 2025. Revised for ClickShift.",
+      href: "https://medium.com/@eeiohanwe/what-kind-of-products-will-survive-2045-cbe32bef6554",
+    },
     cases: ["quantumhire", "kobocent", "chevening-fcdo-sweeap"],
     services: ["product-build"],
     body: `I travelled in thought into 2045 and came back with a question for anyone building products today: **if it were 2045, what would you build, and what would survive?**
@@ -54,7 +58,7 @@ The products that survive 2045 will **learn, secure, trace, sustain and care**. 
 A product that can't learn gets left behind. In [QuantumHire](/work/quantumhire), the outcomes a job seeker reports adjust how future jobs are scored, and lasting preferences are remembered. The product gets better because people use it.
 
 ### 2. Secure
-Security is not a feature you add before launch. In [Kobocent](/work/kobocent), an account can be frozen if a phone is lost, and a frozen account's keys can't sign anything at all. Keys are encrypted, and only the user can trigger a transaction.
+Security is not a feature you add before launch. In [Kobocent](/work/kobocent), a payments platform we built, an account can be frozen if a phone is lost, and a frozen account's keys can't sign anything at all. Keys are encrypted, and only the user can trigger a transaction.
 
 ### 3. Trace
 Trust comes from proof. QuantumHire counts an application as submitted only when it sees the employer's confirmation, and keeps a screenshot. Our programme systems for the [World Bank, UN Women and FCDO-funded programmes](/work/chevening-fcdo-sweeap) were built so that every number in a donor report can be traced back to a person and a date.
@@ -124,7 +128,7 @@ Want this workflow without building it? It is in our template library as the [Zo
     category: "Automation",
     date: "2026-11-12",
     readMinutes: 6,
-    cases: ["endgame-ai-admissions", "the-bfg", "zoom-to-drive"],
+    cases: ["sppg-admissions-ai", "the-bfg", "zoom-to-drive"],
     services: ["audit", "single-workflow"],
     body: `Every comparison of automation tools lists integrations. That is the least useful way to choose. After running production workflows on Make, Zapier, n8n and custom code, for programmes, startups and enterprise sales teams, these are the questions that actually decide it.
 
@@ -144,7 +148,7 @@ Make's error handlers and its ability to store incomplete executions are strong.
 ## 3. How complex is the logic?
 
 - **Zapier:** best for linear "when X, do Y" flows that non-technical teams will own.
-- **Make:** best for branching, iterating over arrays and calling AI models in the middle of a flow. Our [AI admissions review](/work/endgame-ai-admissions) and [The BFG's lead scoring](/work/the-bfg) both run on Make.
+- **Make:** best for branching, iterating over arrays and calling AI models in the middle of a flow. Our [AI admissions review](/work/sppg-admissions-ai) and [The BFG's lead scoring](/work/the-bfg) both run on Make.
 - **n8n:** best when you need code inside the flow, self-hosting for data rules, or no per-run cost.
 - **Custom code:** best when the workflow is core to your business and will run millions of times.
 
@@ -169,7 +173,7 @@ Not sure which fits? An [Automation Audit](/automation#audit) ends with a tool r
     slug: "speed-to-lead-85-percent-faster",
     title: "Speed to lead: how routing by deal value made response 85% faster",
     description:
-      "Most companies treat every lead the same, so the best leads wait the longest. A simple routing rule changed that for a California manufacturer.",
+      "Most companies treat every lead the same, so the best leads wait the longest. A simple routing rule changed that for a mobile RV repair business in California, and gave its CEO his evenings back.",
     category: "CRM",
     date: "2026-11-12",
     readMinutes: 4,
@@ -179,18 +183,18 @@ Not sure which fits? An [Automation Audit](/automation#audit) ends with a tool r
 
 ## The problem: one queue for everyone
 
-[Apex Armor](/work/apex-armor), an RV manufacturer in California, put every enquiry into the same queue. A $40 accessory question and a five-figure build waited in the same line, and by the time a big buyer heard back, they had often moved on.
+[Apex Armor](/work/apex-armor), a mobile RV repair business in California, put every enquiry into the same queue: the CEO's phone. A quick question and a major repair waited in the same line, and by the time a big customer heard back, they had often booked someone else. The CEO was working harder every month and still losing the best jobs.
 
 ## The fix: route by value, automate the rest
 
-We built two lanes:
+We built the platform customers book through, and two lanes behind it:
 
 1. **High value.** Any lead worth more than **$2,000** goes straight to the CEO, with the context they need to call back immediately.
 2. **Everyone else** enters automated email, SMS and call sequences that answer quickly, qualify the lead and book the next step.
 
 Every lead's response time is tracked, so the improvement could be measured rather than assumed.
 
-**Result: lead response time improved by 85%.**
+**Result: lead response time improved by 85%.** The system converts on its own, and the CEO only picks up the phone for customers with a budget of $2,000 or more, including when he is on holiday.
 
 ## How to apply it in your business
 
@@ -203,7 +207,7 @@ Every lead's response time is tracked, so the improvement could be measured rath
 
 For complex B2B leads, value isn't one field. At [The BFG](/work/the-bfg) we used the Claude API to read each enterprise lead and write an IT Readiness Score back to the CRM, replacing 3 to 5 hours of manual review per lead. Pre-sales review time fell by 65%.
 
-Want this funnel ready-made? See the [Lead-to-Booking Funnel](/templates) template for GoHighLevel, or have us [build it with you](/automation).`,
+Want to try the idea this afternoon? Our [free 20-minute lead alert](/blog/text-me-only-when-a-big-lead-arrives) shows how. Want it ready-made? See the [Lead-to-Booking Funnel](/templates) template for GoHighLevel, or have us [build it with you](/automation).`,
   },
   {
     slug: "ai-review-with-a-human-at-every-decision",
@@ -213,13 +217,13 @@ Want this funnel ready-made? See the [Lead-to-Booking Funnel](/templates) templa
     category: "AI",
     date: "2026-11-12",
     readMinutes: 6,
-    cases: ["endgame-ai-admissions"],
+    cases: ["sppg-admissions-ai"],
     services: ["ai-agents"],
     body: `"Let the AI decide" is the fastest way to lose trust in an AI project. "The AI does the reading, a person decides" is how you get real speed without that cost.
 
 ## The situation
 
-An education organisation received hundreds of applications a cycle, each with a personal statement and recommendation letters. A small team read everything by hand. Reviews were slow, and two reviewers could score the same application very differently.
+[SPPG](/work/sppg-admissions-ai), a school of politics, policy and governance that admits future public leaders in Nigeria, Kenya, Senegal and Ghana, received hundreds of applications a cycle, each with a personal statement and recommendation letters. A small team read everything by hand. Reviews were slow, and two reviewers could score the same application very differently.
 
 ## What we built
 
@@ -228,7 +232,7 @@ A two-level review workflow on Make, Airtable and the OpenAI and Claude APIs.
 **First level: AI reads, a person decides.**
 - Each personal statement is scored against a published rubric.
 - Recommendation letters are checked: that they are there, that they are relevant and that they are consistent.
-- The model writes comments in the voice of a calibrated reviewer persona, so the feedback reads like the organisation's own.
+- The reviewer was modelled on the founder's own judgement and the past decisions of **50 earlier reviewers**, so it reasons the way the school does and its comments read like the school's own.
 - **A person triggers the run and reviews the output.** Edge cases are sent to a senior reviewer.
 
 **Second level: values, weighted.**
@@ -248,7 +252,7 @@ Shortlisted candidates are assessed on a weighted **character, competence and ca
 4. **Log everything.** Inputs, outputs, model version and the reviewer's final call. That is your audit trail and your evaluation set.
 5. **Design the escalation path first.** Know where the strange cases go before they arrive.
 
-The same principles run through [QuantumHire](/work/quantumhire), where nothing is submitted without the user's approval.
+Once a person decides, a second automation [writes, sends and files the admission letter in one click](/work/sppg-admission-letters). You can build a free version of that yourself: see [how to send personalised PDF letters from a Google Sheet](/blog/send-personalised-pdf-letters-from-a-google-sheet). The same principles run through [QuantumHire](/work/quantumhire), where nothing is submitted without the user's approval.
 
 We build these systems for admissions, lead triage, grant review and document intake. See [AI Agents & Review](/automation), or start with the [Admissions & Application Review](/templates) template for Airtable.`,
   },
@@ -263,7 +267,7 @@ We build these systems for admissions, lead triage, grant review and document in
     featured: true,
     cases: ["un-women-weeap", "world-bank-sweep", "chevening-fcdo-sweeap"],
     services: ["programme-tech"],
-    body: `Between 2023 and 2025, our founder led the technology for three programmes that helped women entrepreneurs win public contracts:
+    body: `Between 2023 and 2025, our team led the technology for three programmes that helped women entrepreneurs win public contracts:
 
 - **WEEAP**, sponsored by UN Women: [1,930 women](/work/un-women-weeap) in Nigeria, Senegal, Mali and Côte d'Ivoire.
 - **SWEEP**, with the World Bank: [765 women](/work/world-bank-sweep) in Abuja.
@@ -445,7 +449,7 @@ A "queued" response is not a success. A system that sends a receipt when the pro
 - "Queued" never shown as "paid"
 - Every step logged, with no secrets in the logs
 
-We build payment workflows this way for [fintech teams](/work/digital-brothers) and in our own products. If yours moves money, [let's review it](/contact).`,
+We build payment workflows this way for [fintech teams](/work/digital-brothers) and for every product we ship. If yours moves money, [let's review it](/contact).`,
   },
   {
     slug: "the-workforce-that-never-sleeps",
@@ -455,7 +459,7 @@ We build payment workflows this way for [fintech teams](/work/digital-brothers) 
     category: "AI",
     date: "2026-11-12",
     readMinutes: 6,
-    cases: ["quantumhire", "endgame-ai-admissions", "pulse-agentic-wallet"],
+    cases: ["quantumhire", "sppg-admissions-ai", "pulse-agentic-wallet"],
     services: ["ai-agents"],
     body: `An AI agent is not a robot employee. It is a program that uses a language model to carry out one narrow job: read, decide, act and report, inside rules you set. Used well, agents give a small team the output of a large one, around the clock.
 
@@ -467,7 +471,7 @@ The best candidates share three traits:
 - **A checkable result.** You can tell whether the agent got it right.
 
 Examples from our own work:
-- **Reading and scoring:** applications ([60%+ less review time](/work/endgame-ai-admissions)) and enterprise leads ([65% less pre-sales review](/work/the-bfg)).
+- **Reading and scoring:** applications ([60%+ less review time](/work/sppg-admissions-ai)) and enterprise leads ([65% less pre-sales review](/work/the-bfg)).
 - **Finding and matching:** [QuantumHire's](/work/quantumhire) Scanner reads thousands of jobs a day, and its Evaluator scores each one on 10 weighted factors.
 - **Drafting:** tailored CVs, reviewer comments, first-reply emails.
 - **Doing:** filling real application forms, with the user's approval.
@@ -489,7 +493,7 @@ Examples from our own work:
 
 ## Where it started for us
 
-Our first multi-agent system was [Pulse](/work/pulse-agentic-wallet), an experiment with six agents over one wallet, with a risk manager that could stop all of them at once. Those lessons (narrow agents, a kill switch, proof of outcome) are now in every agent system we build.
+The first multi-agent system we built was [Pulse](/work/pulse-agentic-wallet), an experiment with six agents over one wallet, with a risk manager that could stop all of them at once. Those lessons (narrow agents, a kill switch, proof of outcome) are now in every agent system we build.
 
 If your team has a high-volume task with a clear rubric, it is probably an agent waiting to be built. See [AI Agents & Review](/automation).`,
   },
@@ -579,6 +583,198 @@ Funders increasingly want results by gender, location, sector and cohort. During
 This is the design behind the systems we built for programmes funded by [the World Bank](/work/world-bank-sweep), [UN Women](/work/un-women-weeap) and the UK FCDO's Chevening network. It is also packaged as our [Beneficiary CRM + M&E](/templates) template.
 
 Running a programme? [Programme Technology Partner](/automation) covers all of it.`,
+  },
+  {
+    slug: "send-personalised-pdf-letters-from-a-google-sheet",
+    title: "Send personalised PDF letters from a Google Sheet, free, in one afternoon",
+    description:
+      "Admission letters, certificates, offer letters, receipts: if you are copying names into a document and exporting PDFs by hand, this free Google Apps Script does it for you, safely and without sending anything twice.",
+    category: "Do it yourself",
+    date: "2026-11-12",
+    readMinutes: 8,
+    cases: ["sppg-admission-letters", "sppg-learner-operations"],
+    services: ["single-workflow"],
+    body: `Every cycle, someone in your organisation opens a Word template, types a name, changes a date, exports a PDF, attaches it to an email, sends it, and does it again. For 30 people that is a lost day. For 300 it is a lost week, and somebody gets the wrong letter.
+
+We automated exactly this for [SPPG's admissions team](/work/sppg-admission-letters): one click writes the letter, turns it into a PDF, emails it and files it. You can build a simpler version yourself, for free, with tools you already have: **Google Sheets, Google Docs, Gmail and Drive.** No paid software and no code experience needed. You will copy and paste one script.
+
+## What you will have at the end
+
+- A Google Doc template with placeholders like <<Name>> and <<Programme>>
+- A Google Sheet with one row per person
+- A menu button that, for every row not yet done, writes the letter, saves a PDF to a Drive folder, emails it, and marks the row as sent with a link to the PDF
+
+## Step 1: make the template
+
+Create a Google Doc and write your letter. Wherever something changes per person, type a placeholder in double angle brackets that matches a column name exactly: <<Name>>, <<Programme>>, <<StartDate>>.
+
+Copy the document's ID from its address bar. It is the long string between /d/ and /edit.
+
+## Step 2: make the sheet
+
+Create a Google Sheet. In row 1, add these columns:
+
+- **Name** and **Email** (required)
+- One column for every placeholder in your letter, spelled the same way
+- **Status** and **PDF**, left empty: the script fills them in
+
+## Step 3: make a folder
+
+Create a folder in Google Drive for the finished PDFs and copy its ID from the address bar (the string after /folders/).
+
+## Step 4: paste the script
+
+In the sheet, open **Extensions → Apps Script**, delete what is there, and paste this. Put your own IDs and subject line at the top.
+
+\`\`\`js
+const TEMPLATE_ID = 'YOUR_TEMPLATE_DOC_ID';
+const FOLDER_ID = 'YOUR_DRIVE_FOLDER_ID';
+const SUBJECT = 'Your letter';
+
+function onOpen() {
+  SpreadsheetApp.getUi().createMenu('Letters').addItem('Send letters', 'sendLetters').addToUi();
+}
+
+function sendLetters() {
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const rows = sheet.getDataRange().getValues();
+  const header = rows.shift();
+  const col = (name) => header.indexOf(name);
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+  const template = DriveApp.getFileById(TEMPLATE_ID);
+
+  rows.forEach((row, i) => {
+    if (row[col('Status')]) return;                    // already sent: skip it
+    if (MailApp.getRemainingDailyQuota() < 1) return;  // out of email quota: stop for today
+
+    const name = row[col('Name')];
+    const copy = template.makeCopy('Letter - ' + name, folder);
+    const doc = DocumentApp.openById(copy.getId());
+    header.forEach((h, c) => doc.getBody().replaceText('<<' + h + '>>', String(row[c])));
+    doc.saveAndClose();
+
+    const pdf = folder.createFile(copy.getAs(MimeType.PDF)).setName('Letter - ' + name + '.pdf');
+    copy.setTrashed(true);                             // keep the PDF, bin the working copy
+
+    GmailApp.sendEmail(row[col('Email')], SUBJECT,
+      'Dear ' + name + ',\\n\\nPlease find your letter attached.\\n\\nWarm regards',
+      { attachments: [pdf.getBlob()] });
+
+    sheet.getRange(i + 2, col('Status') + 1).setValue('Sent ' + new Date().toLocaleString());
+    sheet.getRange(i + 2, col('PDF') + 1).setValue(pdf.getUrl());
+  });
+}
+\`\`\`
+
+## Step 5: test on yourself first
+
+Add one row with **your own name and email**. Save the script, reload the sheet, and a **Letters** menu appears. Click **Letters → Send letters**. Google will ask you to authorise the script the first time: it needs Docs, Drive and Gmail. Check the PDF in your inbox and in the folder. Only then add the real rows.
+
+## Why it is safe to run twice
+
+This is the part most tutorials leave out. The script **writes "Sent" on every row it finishes and skips any row that already says so.** If it stops halfway (Apps Script stops any run after about six minutes, and free Gmail accounts have a daily sending limit), just click the button again. It carries on where it stopped, and nobody gets two letters. We wrote a whole piece on why this matters: [the automation mistake that pays twice](/blog/the-automation-mistake-that-pays-twice).
+
+## Good to know
+
+- **Daily limits.** A free Gmail account can send to roughly 100 recipients a day from a script; Google Workspace accounts can send more. The script checks the remaining quota and stops cleanly.
+- **Two kinds of letter?** Make two templates and add a **Type** column. Pick the template ID from that column. That is the main/provisional split in [SPPG's version](/work/sppg-admission-letters).
+- **Formatting.** Placeholders keep the formatting of the text around them, so style them in the template.
+- **Privacy.** The PDFs live in your Drive. Share the folder only with people who need it.
+
+## When to stop doing it yourself
+
+This version runs when you click. When you want letters to go out the moment a decision is made in your CRM, with the record updated, the copy filed and a log of every send, that is a [single workflow](/automation#single-workflow) we build in a week or two.`,
+  },
+  {
+    slug: "text-me-only-when-a-big-lead-arrives",
+    title: "Get a phone alert only when a big lead arrives: a free 20-minute set-up",
+    description:
+      "Stop checking your inbox for every enquiry. A Google Form, a Sheet and a few lines of Apps Script send big-budget leads straight to your phone on Telegram and reply to everyone else for you.",
+    category: "Do it yourself",
+    date: "2026-11-12",
+    readMinutes: 6,
+    cases: ["apex-armor"],
+    services: ["single-workflow", "systems-build"],
+    body: `If you run a small business, you probably check your phone every few minutes in case a good customer has written. Most of the time it is a question that could wait. Occasionally it is the job that makes your month, and you see it four hours late.
+
+For a [mobile RV repair business in California](/work/apex-armor) we built a system that only calls the CEO in for customers with a budget of **$2,000 or more** and answers everyone else automatically. Lead response got 85% faster, and the CEO got his holidays back. Here is a free version you can set up in 20 minutes.
+
+## What you will have at the end
+
+- A form where every enquiry gives a budget
+- An instant, friendly email reply to **every** enquiry
+- A Telegram message on your phone **only** when the budget is above your line
+
+## Step 1: the form
+
+Create a Google Form with these questions, spelled exactly like this:
+
+- **Name**
+- **Email**
+- **Budget (USD)**: a short answer, or a dropdown of ranges like "2000" or "5000"
+- **What do you need?**
+
+Under **Responses**, click **Link to Sheets** to create a response sheet.
+
+## Step 2: a Telegram bot to message you
+
+1. In Telegram, open **@BotFather**, send /newbot and follow the steps. Copy the **token** it gives you.
+2. Send your new bot any message, such as "hi".
+3. Open https://api.telegram.org/botYOUR_TOKEN/getUpdates in a browser, with your token in place of YOUR_TOKEN. Find "chat":{"id": and copy the number after it. That is your **chat ID**.
+
+## Step 3: the script
+
+In the response sheet, open **Extensions → Apps Script** and paste:
+
+\`\`\`js
+const THRESHOLD = 2000; // the budget that deserves your phone
+
+function onLead(e) {
+  const v = e.namedValues;
+  const name = v['Name'][0];
+  const email = v['Email'][0];
+  const need = v['What do you need?'][0];
+  const budget = Number(String(v['Budget (USD)'][0]).replace(/[^0-9.]/g, ''));
+
+  if (budget >= THRESHOLD) {
+    alertPhone('Big lead: $' + budget + ' from ' + name + ' (' + email + ')\\n' + need);
+  }
+
+  GmailApp.sendEmail(email, 'We got your request',
+    'Hi ' + name + ',\\n\\nThanks for getting in touch. A real person will reply within one working day.\\n\\nBest regards');
+}
+
+function alertPhone(text) {
+  const props = PropertiesService.getScriptProperties();
+  UrlFetchApp.fetch('https://api.telegram.org/bot' + props.getProperty('BOT_TOKEN') + '/sendMessage', {
+    method: 'post',
+    contentType: 'application/json',
+    payload: JSON.stringify({ chat_id: props.getProperty('CHAT_ID'), text: text }),
+  });
+}
+\`\`\`
+
+## Step 4: keep the token out of the code
+
+Click the gear icon (**Project Settings**), scroll to **Script properties**, and add two: **BOT_TOKEN** with your token and **CHAT_ID** with your chat ID. Keeping secrets here, not in the code, means you can share the script without sharing the keys to your bot.
+
+## Step 5: switch it on
+
+Open **Triggers** (the alarm-clock icon) → **Add trigger**. Choose the function **onLead**, event source **From spreadsheet**, event type **On form submit**. Save and authorise it.
+
+## Step 6: test both lanes
+
+Submit the form twice: once with a budget of 500 and once with 5000. You should get one email reply each time, and one Telegram message, for the 5000 only.
+
+## Make it yours
+
+- **Prefer email to Telegram?** Replace the alertPhone call with MailApp.sendEmail to your own address, and give it a subject Gmail can filter into a "VIP" label with a loud notification.
+- **Different line per service?** Add a **Service** question and keep a small table of thresholds.
+- **Add a booking link** to the auto-reply so smaller jobs can book themselves without waiting for you.
+
+## When to stop doing it yourself
+
+This is the core of a speed-to-lead system. A full version adds SMS and call sequences, a CRM record for every lead, follow-ups when someone goes quiet, and a response-time report. Read [how routing by deal value made response 85% faster](/blog/speed-to-lead-85-percent-faster), or let us [build it with you](/automation#single-workflow).`,
   },
 ];
 

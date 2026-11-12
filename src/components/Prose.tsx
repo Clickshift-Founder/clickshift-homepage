@@ -5,14 +5,15 @@ import { Fragment, type ReactNode } from "react";
 
 function inline(text: string, keyBase: string): ReactNode[] {
   const out: ReactNode[] = [];
-  const re = /(\*\*([^*]+)\*\*)|(\*([^*]+)\*)|(\[([^\]]+)\]\(([^)]+)\))/g;
+  const re = /(\*\*([^*]+)\*\*)|(\*([^*]+)\*)|(\[([^\]]+)\]\(([^)]+)\))|(`([^`]+)`)/g;
   let last = 0;
   let m: RegExpExecArray | null;
   let i = 0;
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(text.slice(last, m.index));
     const k = `${keyBase}-${i++}`;
-    if (m[2]) out.push(<strong key={k}>{inline(m[2], k)}</strong>);
+    if (m[9]) out.push(<code key={k}>{m[9]}</code>);
+    else if (m[2]) out.push(<strong key={k}>{inline(m[2], k)}</strong>);
     else if (m[4]) out.push(<em key={k}>{m[4]}</em>);
     else if (m[6]) {
       const href = m[7];
@@ -45,13 +46,36 @@ export function headings(md: string) {
     .map((l) => ({ text: l.slice(3).trim(), id: slugify(l.slice(3)) }));
 }
 
+// Split out fenced code blocks first, so blank lines inside code don't split it.
+type Block = string | { code: string; lang?: string };
+function toBlocks(md: string): Block[] {
+  const out: Block[] = [];
+  const pushText = (t: string) => t.trim().split(/\n\s*\n/).forEach((b) => b.trim() && out.push(b));
+  const re = /```(\w*)\n([\s\S]*?)```/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(md))) {
+    if (m.index > last) pushText(md.slice(last, m.index));
+    out.push({ code: m[2].replace(/\n$/, ""), lang: m[1] || undefined });
+    last = re.lastIndex;
+  }
+  if (last < md.length) pushText(md.slice(last));
+  return out;
+}
+
 export default function Prose({ md }: { md: string }) {
-  const blocks = md.trim().split(/\n\s*\n/);
+  const blocks = toBlocks(md.replace(/\r\n?/g, "\n").trim());
   return (
     <div className="prose-cs">
       {blocks.map((b, bi) => {
-        const lines = b.split("\n");
         const k = `b${bi}`;
+        if (typeof b !== "string")
+          return (
+            <pre key={k} data-lang={b.lang}>
+              <code>{b.code}</code>
+            </pre>
+          );
+        const lines = b.split("\n");
         if (b.startsWith("## ")) {
           const t = b.slice(3).trim();
           return (

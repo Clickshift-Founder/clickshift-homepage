@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "start:prod": "next start -H 127.0.0.1 -p 3100",
     "lint": "eslint"
   },
   "dependencies": {
@@ -14,6 +15,7 @@
     "framer-motion": "^12.23.15",
     "lucide-react": "^0.544.0",
     "next": "^16.2.0",
+    "postgres": "^3.4.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind-merge": "^3.3.1"

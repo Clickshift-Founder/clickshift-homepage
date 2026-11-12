@@ -6,14 +6,17 @@ import { BRANDS, CASES, PROOF } from "@/lib/work";
 import { PILLARS } from "@/lib/pillars";
 import { SERVICES } from "@/lib/services";
 import { TEMPLATES } from "@/lib/templates";
-import { sortedPosts } from "@/lib/posts";
+import { allPosts } from "@/lib/server/journal";
+
+export const revalidate = 300;
 import FinalCta from "@/components/FinalCta";
+import { FlightTo2045 } from "@/components/Flight";
 
 const LINES = [
   {
     n: "LINE A",
     title: "We build",
-    body: "Products, platforms and AI agents, from first spec to live users. The way we build Kobocent and QuantumHire.",
+    body: "Products, platforms and AI agents, from first spec to live users. The way we built Kobocent and QuantumHire.",
     href: "/work",
     cta: "See the work",
     items: ["Web and mobile apps", "AI agents", "Programme platforms", "Payments"],
@@ -36,11 +39,11 @@ const LINES = [
   },
 ];
 
-export default function Home() {
-  const featured = ["un-women-weeap", "quantumhire", "zoom-to-drive", "kobocent", "endgame-ai-admissions", "chevening-fcdo-sweeap"]
+export default async function Home() {
+  const featured = ["un-women-weeap", "quantumhire", "zoom-to-drive", "kobocent", "sppg-admissions-ai", "chevening-fcdo-sweeap"]
     .map((s) => CASES.find((c) => c.slug === s)!)
     .filter(Boolean);
-  const posts = sortedPosts().slice(0, 3);
+  const posts = (await allPosts()).slice(0, 3);
   const templates = ["airtable-beneficiary-crm", "ghl-lead-to-booking", "n8n-zoom-drive-archiver"].map((s) => TEMPLATES.find((t) => t.slug === s)!);
 
   return (
@@ -65,7 +68,7 @@ export default function Home() {
               .
             </h1>
             <p className="mt-8 max-w-xl animate-rise text-lg leading-relaxed text-paper/70 [animation-delay:160ms] sm:text-xl">
-              Software, AI agents and automations for development programmes, growing companies and our own ventures. Every build is
+              Software, AI agents and automations for development programmes, schools, growing companies and product teams. Every build is
               tested against one question: <span className="text-paper">will this still matter in twenty years?</span>
             </p>
             <div className="mt-9 flex animate-rise flex-col gap-3 [animation-delay:240ms] sm:flex-row">
@@ -162,7 +165,7 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <Reveal>
               <Eyebrow n="03">Selected work</Eyebrow>
-              <H2 className="mt-4 max-w-2xl">From UN programmes to our own products.</H2>
+              <H2 className="mt-4 max-w-2xl">From UN programmes to products in the wild.</H2>
             </Reveal>
             <Button href="/work" variant="ghost-light">
               All {CASES.length} case studies <Arrow />
@@ -178,6 +181,9 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* THE FLIGHT TO 2045 (scroll-driven) */}
+      <FlightTo2045 />
+
       {/* 2045 STANDARD */}
       <section className="grid-dark relative overflow-hidden bg-ink py-20 text-paper sm:py-28">
         <Container>
@@ -189,7 +195,7 @@ export default function Home() {
               <H2 className="mt-4">Five tests every build has to pass.</H2>
               <p className="mt-6 max-w-md text-lg leading-relaxed text-paper/65">
                 In 2025 our founder asked which products will survive 2045. His answer, five pillars, became the checklist we hold every
-                build to, ours and our clients&apos;.
+                build to.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button href="/standard" variant="signal">

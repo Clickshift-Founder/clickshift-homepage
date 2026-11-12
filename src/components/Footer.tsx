@@ -11,7 +11,7 @@ const COLS = [
       { href: "/work", label: "All work" },
       { href: "/work#programmes", label: "Development programmes" },
       { href: "/work#companies", label: "Companies" },
-      { href: "/work#products", label: "Our products" },
+      { href: "/work#products", label: "Products we built" },
     ],
   },
   {
