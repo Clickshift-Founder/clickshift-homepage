@@ -1,0 +1,13 @@
+export const metadata = {
+  title: "About Us | ClickShift",
+  description: "ClickShift exists to make Web3 trading smarter, safer, and simpler.",
+  alternates: { 
+    canonical: "https://clickshift.io/about" }
+
+};
+
+import AboutContent from "./AboutContent";
+
+export default function AboutPage() {
+  return <AboutContent />;
+}

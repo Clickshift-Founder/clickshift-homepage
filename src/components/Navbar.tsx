@@ -1,112 +1,105 @@
 "use client";
-import React, { useState } from 'react';
+
 import Link from "next/link";
-import { Shield, Menu, X, Home } from 'lucide-react';
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Logo } from "./Logo";
+import { NAV } from "@/lib/site";
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Centralized menu items - easy to update from one place
-  const menuItems = [
-    { href: "/", label: "Home"},
-    { href: "/products", label: "Products" },           // ← Changed from # to /products
-    { href: "/pricing", label: "Pricing" },
-    { href: "/docs", label: "API Documentation" },
-    { href: "/blog", label: "Blog" },
-    { href: "https://t.me/ClickShiftAlerts", label: "Community", external: true }, // ← Direct Telegram link
-    { href: "/about", label: "About" },
-    { href: "/faq", label: "FAQ" },
-  ];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const active = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-700">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-          <div className="relative">
-            <Shield className="h-8 w-8 text-blue-400" />
-            <div className="absolute inset-0 bg-blue-400/20 rounded-full animate-pulse"></div>
-          </div>
-          <span className="text-xl font-bold">ClickShift</span>
-        </Link>
-        
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          {menuItems.map((item, index) => (
-            item.external ? (
-              <a
-                key={index}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled || open ? "border-b border-white/8 bg-ink/85 backdrop-blur-xl" : "bg-transparent"
+      }`}
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
+    >
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-[72px] sm:px-6 lg:px-8" aria-label="Main">
+        <Logo tone="dark" />
+
+        <ul className="hidden items-center gap-1 lg:flex">
+          {NAV.map((item) => (
+            <li key={item.href}>
+              <Link
                 href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-400 transition-colors"
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link 
-                key={index} 
-                href={item.href} 
-                className="hover:text-blue-400 transition-colors"
+                className={`rounded-full px-3.5 py-2 text-[14px] transition-colors ${
+                  active(item.href) ? "bg-white/10 text-paper" : "text-paper/65 hover:text-paper"
+                }`}
               >
                 {item.label}
               </Link>
-            )
+            </li>
           ))}
-          
-          <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105">
-            Launch App
+        </ul>
+
+        <div className="flex items-center gap-2">
+          <Link
+            href="/contact"
+            className="hidden min-h-11 items-center rounded-full bg-signal px-5 text-[14px] font-medium text-ink transition-colors hover:bg-white sm:inline-flex"
+          >
+            Start a project
+          </Link>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-paper lg:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden>
+              {open ? (
+                <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              ) : (
+                <path d="M2 5h14M2 9h14M2 13h9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              )}
+            </svg>
           </button>
         </div>
+      </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-slate-800 border-t border-slate-700">
-          <div className="container mx-auto px-4 py-4 space-y-3">
-            {menuItems.map((item, index) => (
-              item.external ? (
-                <a
-                  key={index}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:text-blue-400 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+      {open && (
+        <div id="mobile-menu" className="h-[calc(100dvh-64px)] overflow-y-auto bg-ink px-4 pb-10 pt-4 lg:hidden">
+          <ul className="flex flex-col">
+            {NAV.map((item, i) => (
+              <li key={item.href} className="animate-rise border-b border-white/8" style={{ animationDelay: `${i * 40}ms` }}>
+                <Link href={item.href} className="flex items-center justify-between py-4 font-display text-2xl tracking-tight text-paper">
                   {item.label}
-                </a>
-              ) : (
-                <Link 
-                  key={index} 
-                  href={item.href} 
-                  className="block hover:text-blue-400 transition-colors"
-                  onClick={() => setIsMenuOpen(false)} // Close menu on click
-                >
-                  {item.label}
+                  <span className="font-mono text-xs text-stone">0{i + 1}</span>
                 </Link>
-              )
+              </li>
             ))}
-            
-            <button 
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Launch App
-            </button>
-          </div>
+          </ul>
+          <Link
+            href="/contact"
+            className="mt-8 flex min-h-14 items-center justify-center rounded-full bg-signal text-base font-medium text-ink"
+          >
+            Start a project
+          </Link>
         </div>
       )}
-    </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}

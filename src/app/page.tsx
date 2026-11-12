@@ -1,567 +1,297 @@
-"use client";
-import React, { useState, useEffect, useRef } from 'react';
 import Link from "next/link";
-import { 
-  ArrowRight, 
-  Shield, 
-  Zap, 
-  Target, 
-  Globe, 
-  Star,
-  Play,
-  CheckCircle,
-  ExternalLink,
-  Menu,
-  ChevronLeft,
-  ChevronRight,
-  X
-} from 'lucide-react';
-import ChipShowcase from '@/components/ChipShowcase';
-import ProductShowcase from '@/components/ProductShowcase';
-import AgentThoughtStream from '@/components/AgentThoughtStream';
-import MetricsShowcase from '@/components/MetricsShowcase';
-import ReferralLeaderboard from '@/components/ReferralLeaderboard';
-import ShiftSection from '@/components/ShiftSection';
-import Image from 'next/image';
+import { Arrow, ArrowUpRight, Button, Container, Eyebrow, H2 } from "@/components/ui";
+import { Countdown2045, Marquee, ProductionBoard, Reveal, SavingsCalculator } from "@/components/Interactive";
+import { CaseCard, PostCard, TemplateCard } from "@/components/Cards";
+import { BRANDS, CASES, PROOF } from "@/lib/work";
+import { PILLARS } from "@/lib/pillars";
+import { SERVICES } from "@/lib/services";
+import { TEMPLATES } from "@/lib/templates";
+import { sortedPosts } from "@/lib/posts";
+import FinalCta from "@/components/FinalCta";
 
-  // Particle system
-    type Particle = {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  opacity: number;
-};
+const LINES = [
+  {
+    n: "LINE A",
+    title: "We build",
+    body: "Products, platforms and AI agents, from first spec to live users. The way we build Kobocent and QuantumHire.",
+    href: "/work",
+    cta: "See the work",
+    items: ["Web and mobile apps", "AI agents", "Programme platforms", "Payments"],
+  },
+  {
+    n: "LINE B",
+    title: "We automate",
+    body: "Automation as a Service: we find the manual work that costs you most, automate it and keep it running.",
+    href: "/automation",
+    cta: "Automation services",
+    items: ["Audits from $250", "CRM builds", "AI review", "Monthly retainers"],
+  },
+  {
+    n: "LINE C",
+    title: "We equip",
+    body: "Ready-made CRM templates and workflow packs for HubSpot, Salesforce, Airtable, Monday.com, GoHighLevel, Make and n8n.",
+    href: "/templates",
+    cta: "Browse templates",
+    items: ["14 templates", "From $39", "Born from real builds", "Done-for-you set-up"],
+  },
+];
 
-// Animated Background Particles Component
-const AnimatedBackground = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return; // early exit if null
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    // Set canvas size
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-  
-
-const particles: Particle[] = [];
-const particleCount = 150;
-
-    // Create particles
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.5 + 0.1
-      });
-    }
-
-    // Animation loop
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Update and draw particles
-      particles.forEach((particle, index) => {
-        // Update position
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-        
-        // Wrap around edges
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
-        
-        // Draw particle
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(59, 130, 246, ${particle.opacity})`;
-        ctx.fill();
-        
-        // Draw connections
-        particles.slice(index + 1).forEach(otherParticle => {
-          const dx = particle.x - otherParticle.x;
-          const dy = particle.y - otherParticle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < 100) {
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(59, 130, 246, ${0.1 * (1 - distance / 100)})`;
-            ctx.stroke();
-          }
-        });
-      });
-      
-      requestAnimationFrame(animate);
-    };
-    
-    animate();
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-    };
-  }, []);
+export default function Home() {
+  const featured = ["un-women-weeap", "quantumhire", "zoom-to-drive", "kobocent", "endgame-ai-admissions", "chevening-fcdo-sweeap"]
+    .map((s) => CASES.find((c) => c.slug === s)!)
+    .filter(Boolean);
+  const posts = sortedPosts().slice(0, 3);
+  const templates = ["airtable-beneficiary-crm", "ghl-lead-to-booking", "n8n-zoom-drive-archiver"].map((s) => TEMPLATES.find((t) => t.slug === s)!);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 pointer-events-none"
-      style={{ zIndex: 1 }}
-    />
-  );
-};
-
-// Smooth Scrolling Partners Component
-interface Partner {
-  name: string;
-  desc: string;
-}
-const SmoothScrollingPartners: React.FC<{ partners: Partner[] }> = ({ partners }) => {
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    if (!isHovered) {
-      const interval = setInterval(() => {
-        setCurrentIndex(prev => (prev + 1) % partners.length);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isHovered, partners.length]);
-
-  const nextPartner = () => {
-    setCurrentIndex(prev => (prev + 1) % partners.length);
-  };
-
-  const prevPartner = () => {
-    setCurrentIndex(prev => (prev - 1 + partners.length) % partners.length);
-  };
-
-  const getVisiblePartners = () => {
-    const visible = [];
-    for (let i = 0; i < 6; i++) {
-      visible.push(partners[(currentIndex + i) % partners.length]);
-    }
-    return visible;
-  };
-
-  return (
-    <div 
-      className="relative overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="flex transition-transform duration-500 ease-in-out">
-        {getVisiblePartners().map((partner, index) => (
-          <div
-            key={`${partner.name}-${index}`}
-            className="flex-shrink-0 w-1/6 px-2"
-          >
-            <div className="bg-slate-800/50 rounded-lg p-4 text-center border border-slate-700 hover:border-slate-600 transition-all transform hover:scale-105">
-              <div className="font-semibold mb-1 text-sm">{partner.name}</div>
-              <div className="text-xs text-slate-400">{partner.desc}</div>
+    <>
+      {/* HERO */}
+      <section className="grid-dark relative overflow-hidden bg-ink text-paper">
+        <div aria-hidden className="pointer-events-none absolute -left-32 top-20 h-[32rem] w-[32rem] rounded-full bg-cobalt/25 blur-[120px]" />
+        <div aria-hidden className="pointer-events-none absolute -right-20 bottom-0 h-[26rem] w-[26rem] rounded-full bg-signal/15 blur-[120px]" />
+        <Container className="relative grid gap-12 pb-16 pt-28 sm:pt-36 lg:grid-cols-12 lg:gap-10 lg:pb-24 lg:pt-40">
+          <div className="lg:col-span-7">
+            <div className="animate-rise">
+              <Eyebrow tone="dark">ClickShift · the solutions factory</Eyebrow>
             </div>
-          </div>
-        ))}
-      </div>
-      
-      {/* Navigation arrows */}
-      <button
-        onClick={prevPartner}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 rounded-full p-2 transition-all"
-      >
-        <ChevronLeft className="h-4 w-4" />
-      </button>
-      <button
-        onClick={nextPartner}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-slate-700/80 hover:bg-slate-600/80 rounded-full p-2 transition-all"
-      >
-        <ChevronRight className="h-4 w-4" />
-      </button>
-    </div>
-  );
-};
-
-
-const ClickShiftHomepage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentStats, setCurrentStats] = useState({
-    tradersOnline: 573,
-    accuracy: 73.2,
-    lossesPrevented: 2.4,
-    analysisSpeed: 2.1
-  });
-  
-  // Animate stats counters
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStats(prev => ({
-        ...prev,
-        tradersOnline: prev.tradersOnline + Math.floor(Math.random() * 3 - 1),
-        accuracy: Math.max(70, Math.min(80, prev.accuracy + (Math.random() * 0.2 - 0.1))),
-        lossesPrevented: prev.lossesPrevented + Math.random() * 0.1
-      }));
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, []);
-
-  const countries = [
-    { flag: '🇺🇸', name: 'USA', traders: 121, volume: '$847K' },
-    { flag: '🇬🇧', name: 'UK', traders: 89, volume: '£623K' },
-    { flag: '🇦🇪', name: 'UAE', traders: 72, volume: 'AED 1.2M' },
-     { flag: "🇨🇦", name: "Canada", traders: "67", volume: "$1.2M" },
-    { flag: "🇦🇺", name: "Australia", traders: "54", volume: "$987K" },
-    { flag: '🇳🇬', name: 'Nigeria', traders: 67, volume: '₦145M' },
-    { flag: '🇸🇬', name: 'Singapore', traders: 55, volume: 'S$389K' },
-    { flag: '🇮🇳', name: 'India', traders: 43, volume: '₹2.8M' },
-     { flag: "🇩🇪", name: "Germany", traders: "43", volume: "$756K" },
-    { flag: "🇫🇷", name: "France", traders: "38", volume: "$692K" },
-    { flag: "🇯🇵", name: "Japan", traders: "31", volume: "$543K" },
-    { flag: "🇰🇷", name: "S. Korea", traders: "29", volume: "$512K" },
-  ];
-
-  const testimonials = [
-    {
-      quote: "ClickShift saved me from a -89% rug pull. Their whale exit detection spotted the dump 4 minutes before it happened. Sold at +67% while others got destroyed.",
-      author: "Alex K., Professional Trader",
-      location: "🇺🇸 New York"
-    },
-    {
-      quote: "Found POPCAT at $80K market cap using Alpha's RSI signals. Made 47x returns in 2 weeks. This platform is unfair advantage.",
-      author: "@CryptoWhale_100k",
-      location: "🇬🇧 London"
-    },
-    {
-      quote: "The futures liquidation calculator is game-changing. Haven't blown an account in 6 months since using Leverage. 23 consecutive profitable trades.",
-      author: "Sarah M., Swing Trader",
-      location: "🇦🇪 Dubai"
-    }
-  ];
-
-  const partners = [
-    { name: 'Helius', desc: 'Solana RPC Infrastructure' },
-    { name: 'Shyft', desc: 'Blockchain Data' },
-    { name: 'DexScreener', desc: 'DEX Analytics' },
-    { name: 'Jupiter', desc: 'Solana Aggregator' },
-    { name: 'CoinGecko', desc: 'Market Data' },
-    { name: 'Moralis', desc: 'Cross-Chain API' },
-    { name: 'HelloMoon', desc: 'On-Chain Analytics' },
-    { name: 'Chainlink', desc: 'Oracle Network' },
-    { name: 'Jito', desc: 'MEV Infrastructure' },
-    { name: 'Drift', desc: 'Perps Protocol' },
-    { name: 'Flutterwave', desc: 'Fiat Rails' }
-    
-  ];
-
-  
-  return (
-    
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white overflow-x-hidden">
-       {/* Animated Background */}
-      <div className="fixed inset-0" style={{ zIndex: 0, pointerEvents: 'none' }}>
-        <AnimatedBackground />
-      </div>
-
-      {/* Content Container */}
-      
-      <div className="relative" style={{ zIndex: 2 }}>
-    
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4">
-        <div className="container mx-auto text-center max-w-6xl">
-          <div className="mb-8">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-              The Bloomberg Terminal
-              <br />
-              for the Agentic Economy.
+            <h1 className="mt-6 animate-rise font-display text-[3.1rem] leading-[0.92] tracking-[-0.055em] [animation-delay:80ms] sm:text-[5.2rem] lg:text-[6.2rem]">
+              We build what still works in{" "}
+              <span className="relative inline-block text-signal">
+                2045
+                <svg aria-hidden viewBox="0 0 200 20" className="absolute -bottom-2 left-0 w-full" preserveAspectRatio="none">
+                  <path d="M2 14 C 50 4, 120 4, 198 12" stroke="#D4FF3A" strokeWidth="4" fill="none" strokeLinecap="round" />
+                </svg>
+              </span>
+              .
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-             Six intelligences. One chip. Infinite agents.
-              ClickShift is the intelligence layer that powers autonomous AI agents
-              across DeFi — and the same intelligence is available to human traders
-              through our suite of products.
+            <p className="mt-8 max-w-xl animate-rise text-lg leading-relaxed text-paper/70 [animation-delay:160ms] sm:text-xl">
+              Software, AI agents and automations for development programmes, growing companies and our own ventures. Every build is
+              tested against one question: <span className="text-paper">will this still matter in twenty years?</span>
             </p>
+            <div className="mt-9 flex animate-rise flex-col gap-3 [animation-delay:240ms] sm:flex-row">
+              <Button href="/contact" variant="signal">
+                Start a project <Arrow />
+              </Button>
+              <Button href="/work" variant="ghost-dark">
+                See what we&apos;ve built
+              </Button>
+            </div>
+            <div className="mt-12 animate-rise [animation-delay:320ms]">
+              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-stone">Building for the distance · time to 2045</p>
+              <Countdown2045 />
+            </div>
           </div>
-
-        
-
-                {/* Primary CTAs */}
-          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center items-center mb-8">
-          
-            {/* ClickBot */}
-            <a
-              href='https://clickbot.clickshift.io'
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-gradient-to-r from-green-500 to-blue-600 px-6 py-4 rounded-lg text-base font-semibold hover:from-green-600 hover:to-blue-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto"
-            >
-              <span>🤖 Web3 Siri on Solana</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          
-            {/* Alpha */}
-            <a
-              href='https://alpha.clickshift.io'
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-4 rounded-lg text-base font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto"
-            >
-              <span>🔮 Get 73% Accurate Signals</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          
-            {/* Leverage */}
-            <a
-              href='https://leverage.clickshift.io'
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-gradient-to-r from-orange-500 to-red-600 px-6 py-4 rounded-lg text-base font-semibold hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto"
-            >
-              <span>⚡ Trade Futures, Zero Liquidation</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          
-            {/* Pulse — NEW, gets a subtle "new" ring + cyan gradient */}
-            <a
-              href='https://pulse.clickshift.io'
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative bg-gradient-to-r from-cyan-500 to-teal-600 px-6 py-4 rounded-lg text-base font-semibold hover:from-cyan-600 hover:to-teal-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto ring-2 ring-cyan-400/40 ring-offset-2 ring-offset-transparent"
-            >
-              {/* "New" pill */}
-              <span className="absolute -top-2.5 -right-2.5 bg-white text-cyan-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide shadow">
-                New
-              </span>
-              <span>💓 Run Autonomous Agents</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          
+          <div className="animate-rise [animation-delay:200ms] lg:col-span-5 lg:pt-6">
+            <ProductionBoard />
           </div>
-          
-
-          <button className="flex items-center space-x-2 mx-auto text-slate-300 hover:text-white transition-colors group">
-            <Play className="h-5 w-5 group-hover:scale-110 transition-transform" />
-            <span>Watch 60s Demo</span>
-          </button>
-        </div>
+        </Container>
       </section>
 
-      {/* Global Trust Indicator */}
-      <section className="py-12 border-y border-slate-700">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h3 className="text-lg md:text-xl text-slate-300 mb-4">
-              Trusted by 800+ traders and 12+ active AI agent deployments across 47 nations
-            </h3>
-          </div>
-          
-          {/* Scrolling Countries */}
-          <div className="overflow-x-auto">
-            <div className="flex space-x-6 pb-4 min-w-max">
-              {countries.map((country, index) => (
-                <div key={index} className="flex-shrink-0 bg-slate-800/50 rounded-lg p-4 min-w-[200px] border border-slate-700">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <span className="text-2xl">{country.flag}</span>
-                    <span className="font-semibold">{country.name}</span>
-                  </div>
-                  <div className="text-sm text-slate-400">
-                    <div>{country.traders} traders</div>
-                    <div>{country.volume} analyzed today</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* BRANDS */}
+      <section className="border-b border-ink/8 bg-paper py-10">
+        <Container>
+          <p className="mb-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-mute">
+            Brands and programmes we&apos;ve built for
+          </p>
+        </Container>
+        <Marquee items={BRANDS} />
       </section>
 
-
-       {/* Getting thought stream (New Section) */}
-      <AgentThoughtStream />
-
-          {/* CHIP Showcase Component (New Section) */}
-       <ChipShowcase />
-
-
-        {/* Live Stats */}
-        <MetricsShowcase /> 
-        
-        {/* Trader Leaderboard for the $Shft Tokenive Stats */}
-        <ShiftSection />
-
-        {/* The referral Program Leaderboard*/}
-        <ReferralLeaderboard/>
-
-      {/* Core Value Proposition */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              We Don't Predict Markets.
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-                We Predict Traders.
-              </span>
-            </h2>            
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                ClickShift's intelligence chip processes millions of on-chain signals
-                in real time — feeding both autonomous AI agents and human traders
-                with the same institutional-grade edge. Six intelligences, one chip,
-                infinite applications.
-              </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all transform hover:-translate-y-2">
-              <Shield className="h-12 w-12 text-blue-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">Protection First</h3>
-              <p className="text-slate-300">
-                Our Chip identifies exit clusters before whales dump. 73% accuracy means you sell at peaks, not crashes.
-              </p>            
-            </div>
-
-            <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all transform hover:-translate-y-2">
-              <Zap className="h-12 w-12 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">Lightning-Fast Alert</h3>
-              <p className="text-slate-300">
-                While others analyze for 30 minutes, our Chip deliver precise signals in 2.1 seconds before major price moves.
-              </p>              
-            </div>
-
-            <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all transform hover:-translate-y-2">
-              <Target className="h-12 w-12 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">Surgical Precision</h3>
-              <p className="text-slate-300">
-                "RSI oversold at 28, ATR suggests 67% pump probability in next 4 hours." Turn market volatility into huge profits.
-              </p>             
-            </div>
-
-            <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all transform hover:-translate-y-2">
-              <Globe className="h-12 w-12 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold mb-3">Agent-Ready Infrastructure</h3>
-              <p className="text-slate-300">
-                Our Chip exposes a standard API consumed by AI agents,
-                trading bots, and DeFi protocols. Build on the same intelligence
-                that powers ClickBot, Alpha, Leverage and Pulse.
-              </p>              
-            </div>
-          </div>
-        </div>
-      </section>
-
-  
-          {/* NEW ALIGNED PRODUCT SHOWCASE SECTION
-          ********************************************************************/}
-          <ProductShowcase />
-
-
-
-      {/* Testimonials */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
-            📊 Proven Results, Real Traders
-           </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">    
-                Our users consistently outperform the market. Here's what they're saying:
-              </p>
-              </div>
-             
-            <div className="grid lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-                <div className="mb-4">
-                  <div className="flex space-x-1 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-slate-300 italic">"{testimonial.quote}"</p>
-                </div>
-                <div className="text-sm">
-                  <div className="font-semibold">{testimonial.author}</div>
-                  <div className="text-slate-400">{testimonial.location}</div>
-                </div>
-              </div>
+      {/* PROOF */}
+      <section className="bg-paper py-20 sm:py-28">
+        <Container>
+          <Reveal>
+            <Eyebrow n="01">Output, not promises</Eyebrow>
+            <H2 className="mt-4 max-w-3xl">Numbers that came off the factory floor.</H2>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-[22px] border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
+            {PROOF.map((p, i) => (
+              <Reveal key={p.label} delay={i * 60}>
+                <Link href={p.href} className="group flex h-full flex-col justify-between bg-paper p-7 transition-colors hover:bg-white sm:p-9">
+                  <p className="font-display text-5xl tracking-[-0.045em] sm:text-6xl">{p.value}</p>
+                  <p className="mt-6 flex items-end justify-between gap-4 text-[15px] text-mute">
+                    {p.label}
+                    <ArrowUpRight className="shrink-0 opacity-40 transition-opacity group-hover:opacity-100" />
+                  </p>
+                </Link>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Partners with smooth scrolling */}
-      <section className="py-20 px-4 bg-slate-800/30">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-4">🔌 Infrastructure & Data Partners</h2>
-          <p className="text-slate-300 text-center mb-12">Strategic Partners</p>
-          
-                      <SmoothScrollingPartners partners={partners} />
-
-          <p className="text-center text-slate-400 mt-8 italic">
-            "The infrastructure powering the world's most accurate trading intelligence"
-          </p>
-        </div>
+      {/* THREE LINES */}
+      <section className="grid-light bg-paper-2 py-20 sm:py-28">
+        <Container>
+          <Reveal>
+            <Eyebrow n="02">Three production lines</Eyebrow>
+            <H2 className="mt-4 max-w-3xl">One factory. Three ways to work with us.</H2>
+          </Reveal>
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {LINES.map((l, i) => (
+              <Reveal key={l.title} delay={i * 80}>
+                <Link
+                  href={l.href}
+                  className={`group flex h-full flex-col rounded-[26px] p-7 transition-all duration-300 hover:-translate-y-1 sm:p-9 ${
+                    i === 1 ? "bg-ink text-paper" : "bg-white text-ink"
+                  }`}
+                >
+                  <p className={`font-mono text-[11px] tracking-[0.22em] ${i === 1 ? "text-signal" : "text-cobalt"}`}>{l.n}</p>
+                  <h3 className="mt-4 font-display text-4xl tracking-[-0.04em]">{l.title}</h3>
+                  <p className={`mt-4 text-[16px] leading-relaxed ${i === 1 ? "text-paper/70" : "text-mute"}`}>{l.body}</p>
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {l.items.map((it) => (
+                      <li key={it} className={`rounded-full px-3 py-1 text-[13px] ${i === 1 ? "bg-white/8 text-paper/80" : "bg-paper text-ink/75"}`}>
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-10 text-[15px] font-medium">
+                    {l.cta} <Arrow className="transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
       </section>
 
-      {/* Community */}
-      <section id="community" className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">
-            📱 Join the ClickShift Intelligence Network
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-xl font-bold mb-4">📱 Telegram Community</h3>
-              <p className="text-slate-300 mb-4">Live alerts, market discussions, early access</p>
-              <div className="text-sm text-slate-400 space-y-1">
-                <div>🔥 Live agent activity feed — watch AI execute in real time</div>
-                <div>💎 Early access to new agent deployments</div>
-                <div>🧠 Direct signal feed from ClickShift Alpha</div>
+      {/* FEATURED WORK */}
+      <section className="bg-paper py-20 sm:py-28">
+        <Container>
+          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+            <Reveal>
+              <Eyebrow n="03">Selected work</Eyebrow>
+              <H2 className="mt-4 max-w-2xl">From UN programmes to our own products.</H2>
+            </Reveal>
+            <Button href="/work" variant="ghost-light">
+              All {CASES.length} case studies <Arrow />
+            </Button>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {featured.map((c, i) => (
+              <Reveal key={c.slug} delay={(i % 3) * 70}>
+                <CaseCard c={c} />
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 2045 STANDARD */}
+      <section className="grid-dark relative overflow-hidden bg-ink py-20 text-paper sm:py-28">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-5">
+              <Eyebrow n="04" tone="dark">
+                The 2045 Standard
+              </Eyebrow>
+              <H2 className="mt-4">Five tests every build has to pass.</H2>
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-paper/65">
+                In 2025 our founder asked which products will survive 2045. His answer, five pillars, became the checklist we hold every
+                build to, ours and our clients&apos;.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button href="/standard" variant="signal">
+                  Read the Standard <Arrow />
+                </Button>
+                <Button href="/blog/what-kind-of-products-will-survive-2045" variant="ghost-dark">
+                  The original essay
+                </Button>
               </div>
-            </div>
-            
-            <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-xl font-bold mb-4">💬 Discord</h3>
-              <p className="text-slate-300 mb-4">Strategy sharing, peer learning, founder AMAs</p>
-              <div className="text-sm text-slate-400 space-y-1">
-                <div>📚 Daily educational content</div>
-                <div>🏆 Best performers get premium free</div>
-                <div>👨‍💼 Direct founder access</div>
-              </div>
+            </Reveal>
+            <div className="lg:col-span-7">
+              <ol className="divide-y divide-white/10 border-y border-white/10">
+                {PILLARS.map((p, i) => (
+                  <Reveal key={p.key} delay={i * 60}>
+                    <li className="group grid grid-cols-[3rem_1fr] gap-4 py-6 sm:grid-cols-[4rem_10rem_1fr] sm:items-baseline">
+                      <span className="font-mono text-sm text-signal">{p.n}</span>
+                      <span className="font-display text-3xl tracking-[-0.03em]">{p.name}</span>
+                      <span className="col-span-2 text-[15px] leading-relaxed text-paper/60 sm:col-span-1">
+                        <span className="text-paper/90">{p.line}</span>{" "}
+                        <Link href={p.proof.href} className="underline decoration-white/20 underline-offset-4 hover:text-signal hover:decoration-signal">
+                          {p.proof.text}
+                        </Link>
+                      </span>
+                    </li>
+                  </Reveal>
+                ))}
+              </ol>
             </div>
           </div>
+        </Container>
+      </section>
 
-          <button onClick={() => window.open('https://t.me/ClickShiftAlerts', '_blank')}
-          className="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all">
-                <span>Join Our Telegram</span>
-               <ExternalLink className="h-4 w-4" />
-            </button>
-        </div>
-      </section>     
-    </div>
-    </div>
+      {/* AUTOMATION CALCULATOR */}
+      <section className="bg-ink pb-20 text-paper sm:pb-28">
+        <Container>
+          <Reveal>
+            <div className="flex flex-col justify-between gap-6 border-t border-white/10 pt-20 sm:flex-row sm:items-end sm:pt-28">
+              <div>
+                <Eyebrow n="05" tone="dark">
+                  Automation as a Service
+                </Eyebrow>
+                <H2 className="mt-4 max-w-2xl">What is manual work really costing you?</H2>
+              </div>
+              <Button href="/automation" variant="ghost-dark">
+                {SERVICES.length} services, from $250 <Arrow />
+              </Button>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="mt-12">
+              <SavingsCalculator />
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* TEMPLATES */}
+      <section className="bg-paper-2 py-20 sm:py-28">
+        <Container>
+          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+            <Reveal>
+              <Eyebrow n="06">Template library</Eyebrow>
+              <H2 className="mt-4 max-w-2xl">The systems behind our builds, ready to install.</H2>
+            </Reveal>
+            <Button href="/templates" variant="ghost-light">
+              All {TEMPLATES.length} templates <Arrow />
+            </Button>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {templates.map((t, i) => (
+              <Reveal key={t.slug} delay={i * 70}>
+                <TemplateCard t={t} />
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* JOURNAL */}
+      <section className="bg-paper py-20 sm:py-28">
+        <Container>
+          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+            <Reveal>
+              <Eyebrow n="07">The Journal</Eyebrow>
+              <H2 className="mt-4 max-w-2xl">Notes from the factory floor.</H2>
+            </Reveal>
+            <Button href="/blog" variant="ghost-light">
+              Read the Journal <Arrow />
+            </Button>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {posts.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 70}>
+                <PostCard p={p} />
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <FinalCta />
+    </>
   );
-};
+}
 
-export default ClickShiftHomepage;

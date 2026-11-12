@@ -1,222 +1,158 @@
-"use client";
-import React from 'react';
+import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from 'next/navigation';
-import { 
-  ArrowLeft, 
-  Clock, 
-  Share2,
-  BookmarkPlus,
-  TrendingUp,
-  Shield,
-  Target,
-  Zap,
-  Star,
-  CheckCircle,
-  AlertTriangle,
-  ArrowRight
-} from 'lucide-react';
+import { notFound } from "next/navigation";
+import Prose, { headings } from "@/components/Prose";
+import { Arrow, Button, Container } from "@/components/ui";
+import { CaseCard, PostCard } from "@/components/Cards";
+import NewsletterForm from "@/components/NewsletterForm";
+import { POSTS, POST_AUTHOR, postBySlug } from "@/lib/posts";
+import { caseBySlug } from "@/lib/work";
+import { serviceBySlug } from "@/lib/services";
+import { SITE } from "@/lib/site";
 
-import { blogContent } from './blog-content';
-
-/* ✅ NOT exported — used only inside this file */
-function ShareAndBookmark({
-  title,
-  slug,
-  category,
-}: {
-  title: string;
-  slug: string;
-  category: string;
-}) {
-  const fullUrl = `https://www.clickshift.io/blog/${slug}`;
-
-  const formattedCategory =
-    category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
-
-  const handleShare = async () => {
-    const shareData = {
-      title: `${title} | ClickShift Blog`,
-      text: `As the world migrates to Web3, stay ahead of the pack with ${formattedCategory} insights from ClickShift. Read below 👇`,
-      url: fullUrl,
-    };
-
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-      } catch (error) {
-        console.error("Error sharing:", error);
-      }
-    } else {
-      await navigator.clipboard.writeText(fullUrl);
-      alert("Link copied to clipboard!");
-    }
-  };
-
-  const handleBookmark = () => {
-    alert("Press Ctrl+D (Windows) or Cmd+D (Mac) to bookmark this page.");
-  };
-
-  return (
-    <div className="flex items-center space-x-3">
-      <button
-        onClick={handleShare}
-        className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all"
-        aria-label="Share article"
-      >
-        <Share2 className="h-5 w-5 text-white" />
-      </button>
-
-      <button
-        onClick={handleBookmark}
-        className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all"
-        aria-label="Bookmark article"
-      >
-        <BookmarkPlus className="h-5 w-5 text-white" />
-      </button>
-    </div>
-  );
+export function generateStaticParams() {
+  return POSTS.map((p) => ({ slug: p.slug }));
 }
 
-
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogContent[slug];
+  const p = postBySlug(slug);
+  if (!p) return {};
+  return {
+    title: p.title,
+    description: p.description,
+    alternates: { canonical: `/blog/${p.slug}` },
+    authors: [{ name: POST_AUTHOR }],
+    openGraph: { type: "article", title: p.title, description: p.description, url: `${SITE.url}/blog/${p.slug}`, publishedTime: p.date, authors: [POST_AUTHOR] },
+  };
+}
 
-  if (!post) {
-    notFound();
-  }
+const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
 
-  const relatedPosts = Object.entries(blogContent)
-    .filter(([s]) => s !== slug)
-    .slice(0, 3)
-    .map(([s, content]) => ({ slug: s, ...content }));
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const p = postBySlug(slug);
+  if (!p) notFound();
+
+  const toc = headings(p.body);
+  const cases = (p.cases ?? []).map(caseBySlug).filter((c): c is NonNullable<typeof c> => Boolean(c)).slice(0, 2);
+  const services = (p.services ?? []).map(serviceBySlug).filter((s): s is NonNullable<typeof s> => Boolean(s));
+  const more = POSTS.filter((x) => x.slug !== p.slug && (x.category === p.category || x.cases?.some((c) => p.cases?.includes(c)))).slice(0, 3);
+  const others = more.length >= 2 ? more : POSTS.filter((x) => x.slug !== p.slug).slice(0, 3);
+
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: p.title,
+    description: p.description,
+    datePublished: p.date,
+    dateModified: p.date,
+    author: { "@type": "Person", name: POST_AUTHOR, url: SITE.founder.linkedin },
+    publisher: { "@type": "Organization", name: SITE.name, logo: { "@type": "ImageObject", url: `${SITE.url}/icon.svg` } },
+    mainEntityOfPage: `${SITE.url}/blog/${p.slug}`,
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-white">
-      {/* Hero Section */}
-      <article className="pt-24 pb-12 px-4">
-        <div className="container mx-auto max-w-4xl">
-          {/* Back Button */}
-          <Link 
-            href="/blog"
-            className="inline-flex items-center space-x-2 text-slate-400 hover:text-blue-400 transition-colors mb-8"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            <span>Back to Blog</span>
-          </Link>
-
-          {/* Meta Info */}
-          <div className="flex flex-wrap items-center gap-4 mb-6">
-            <span className="text-sm font-semibold bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">
-              {post.category}
-            </span>
-            <span className="flex items-center space-x-2 text-slate-400 text-sm">
-              <Clock className="h-4 w-4" />
-              <span>{post.readTime}</span>
-            </span>
-            <span className="text-slate-400 text-sm">{post.date}</span>
-            <span className="text-slate-400 text-sm">{post.views} views</span>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      <header className="grid-dark bg-ink pb-14 pt-28 text-paper sm:pb-20 sm:pt-36">
+        <Container className="max-w-4xl">
+          <nav aria-label="Breadcrumb" className="font-mono text-[12px] text-stone">
+            <Link href="/blog" className="hover:text-signal">Journal</Link> <span className="mx-1">/</span> {p.category}
+          </nav>
+          <h1 className="mt-6 font-display text-[2.3rem] leading-[1.02] tracking-[-0.045em] sm:text-6xl">{p.title}</h1>
+          <p className="mt-6 text-lg leading-relaxed text-paper/65">{p.description}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[12px] text-stone">
+            <span className="text-paper/85">{POST_AUTHOR}</span>
+            <span>·</span>
+            <time dateTime={p.date}>{fmt(p.date)}</time>
+            <span>·</span>
+            <span>{p.readMinutes} min read</span>
           </div>
+          {p.originally && <p className="mt-3 text-[13px] text-paper/45">{p.originally.label}</p>}
+        </Container>
+      </header>
 
-          {/* Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            {post.title}
-          </h1>
-
-          {/* Author */}
-          <div className="flex items-center justify-between mb-8 pb-8 border-b border-slate-700">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                <span className="text-lg font-bold">{post.author[0]}</span>
-              </div>
-              <div>
-                <div className="font-semibold">{post.author}</div>
-                <div className="text-sm text-slate-400">{post.role}</div>
+      <section className="bg-paper py-12 sm:py-16">
+        <Container className="grid gap-12 lg:grid-cols-12">
+          <aside className="hidden lg:col-span-3 lg:block">
+            <div className="sticky top-24">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mute">In this piece</p>
+              <ul className="mt-4 space-y-2 border-l border-ink/10">
+                {toc.map((h) => (
+                  <li key={h.id}>
+                    <a href={`#${h.id}`} className="-ml-px block border-l border-transparent py-1 pl-4 text-[14px] text-mute hover:border-cobalt hover:text-ink">
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+          <article className="min-w-0 lg:col-span-6">
+            <Prose md={p.body} />
+            <div className="mt-12 rounded-[22px] bg-ink p-6 text-paper sm:p-8">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-signal">Put this to work</p>
+              <p className="mt-3 font-display text-2xl tracking-tight">Want this built for your team?</p>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <Button href={`/contact?service=${services[0]?.slug ?? "audit"}`} variant="signal">
+                  Start a project <Arrow />
+                </Button>
+                <Button href="/automation" variant="ghost-dark">
+                  See services
+                </Button>
               </div>
             </div>
-
-            <ShareAndBookmark title={post.title} slug={slug} category={post.category} />
-          </div>
-
-          {/* Article Content */}
-          <div className="prose prose-invert prose-lg max-w-none">
-            {post.content}
-          </div>
-
-          {/* CTA Section */}
-          <div className="mt-12 bg-gradient-to-br from-blue-900/30 to-purple-900/30 rounded-2xl p-8 border border-blue-500/30">
-            <h3 className="text-2xl font-bold mb-4">
-              Ready to profit with Intelligence?
-            </h3>
-            <p className="text-slate-300 mb-6">
-              Join 525+ traders using ClickShift's AI-powered intelligence to make smarter trading decisions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://alpha.clickshift.io"
-                className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all"
-              >
-                <span>Try Alpha Free</span>
-                <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="https://leverage.clickshift.io"
-                className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-orange-500 to-red-600 px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all"
-              >
-                <span>Try Leverage Free</span>
-                <ArrowRight className="h-4 w-4" />
-              </a>
+          </article>
+          <aside className="space-y-5 lg:col-span-3">
+            {services.length > 0 && (
+              <div className="rounded-[22px] bg-white p-5">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mute">Related services</p>
+                <ul className="mt-3 space-y-2">
+                  {services.map((s) => (
+                    <li key={s.slug}>
+                      <Link href={`/automation#${s.slug}`} className="flex items-center justify-between rounded-xl bg-paper px-3 py-3 text-[14px] hover:bg-ink hover:text-paper">
+                        <span>{s.name}</span>
+                        <span className="font-mono text-[11px] opacity-70">{s.price}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div className="rounded-[22px] bg-white p-5">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-mute">The Journal, monthly</p>
+              <div className="mt-3">
+                <NewsletterForm tone="light" source={`post-${p.slug}`} />
+              </div>
             </div>
-          </div>
-
-          {/* Tags */}
-          <div className="mt-8 flex flex-wrap gap-2">
-            {post.tags.map((tag: string, index: number) => (
-              <span
-                key={index}
-                className="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded-full hover:bg-slate-700 cursor-pointer transition-all"
-              >
-                #{tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </article>
-
-      {/* Related Posts */}
-      <section className="py-16 px-4 bg-slate-800/20">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold mb-8">Related Articles</h2>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {relatedPosts.map((relatedPost) => (
-              <Link
-                key={relatedPost.slug}
-                href={`/blog/${relatedPost.slug}`}
-                className="group bg-slate-800/50 rounded-xl border border-slate-700 hover:border-blue-500/50 transition-all overflow-hidden"
-              >
-                <div className={`h-2 bg-gradient-to-r ${relatedPost.gradient}`}></div>
-                
-                <div className="p-6">
-                  <span className="text-xs font-semibold bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">
-                    {relatedPost.category}
-                  </span>
-
-                  <h3 className="text-lg font-bold mt-4 mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
-                    {relatedPost.title}
-                  </h3>
-
-                  <div className="flex items-center justify-between text-xs text-slate-400">
-                    <span>{relatedPost.readTime}</span>
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
+          </aside>
+        </Container>
       </section>
-    </div>
+
+      {cases.length > 0 && (
+        <section className="bg-paper-2 py-14 sm:py-20">
+          <Container>
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cobalt">The work behind this piece</p>
+            <div className="mt-6 grid gap-5 md:grid-cols-2">
+              {cases.map((c) => (
+                <CaseCard key={c.slug} c={c} />
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
+      <section className="bg-paper py-14 sm:py-20">
+        <Container>
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cobalt">Keep reading</p>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {others.map((x) => (
+              <PostCard key={x.slug} p={x} />
+            ))}
+          </div>
+        </Container>
+      </section>
+    </>
   );
 }

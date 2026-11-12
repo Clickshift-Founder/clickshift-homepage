@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* ClickShift brand tokens. Mirrored in src/lib/site.ts (BRAND). */
+@theme {
+  --color-ink: #0b0c10;
+  --color-ink-2: #15171d;
+  --color-ink-3: #1f222a;
+  --color-line-dark: #2a2e38;
+  --color-paper: #f3f0e8;
+  --color-paper-2: #e9e4d8;
+  --color-line: #d8d1c2;
+  --color-signal: #d4ff3a;
+  --color-signal-dim: #b6dc2a;
+  --color-cobalt: #2e44ff;
+  --color-cobalt-dark: #1f30d1;
+  --color-stone: #8c9099;
+  --color-mute: #5a5e67;
+
+  --font-display: var(--font-space), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --animate-marquee: marquee 45s linear infinite;
+  --animate-blink: blink 1.2s steps(2, start) infinite;
+  --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes blink {
+  to { visibility: hidden; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection {
+  background: var(--color-signal);
+  color: var(--color-ink);
+}
+:focus-visible {
+  outline: 2px solid var(--color-cobalt);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Blueprint grid for dark sections */
+.grid-dark {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.grid-light {
+  background-image:
+    linear-gradient(to right, rgb(11 12 16 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(11 12 16 / 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Reveal on scroll (see components/Reveal.tsx) */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  .js .reveal { opacity: 1; transform: none; }
+  .animate-rise { animation: none !important; }
+}
+
+/* Long-form article typography */
+.prose-cs { font-size: 1.0625rem; line-height: 1.75; color: #24262c; }
+.prose-cs h2 { font-family: var(--font-display); font-size: 1.6rem; line-height: 1.2; letter-spacing: -0.02em; margin: 2.4rem 0 0.8rem; color: var(--color-ink); }
+.prose-cs h3 { font-family: var(--font-display); font-size: 1.2rem; margin: 1.8rem 0 0.5rem; color: var(--color-ink); }
+.prose-cs p { margin: 0 0 1.15rem; }
+.prose-cs ul, .prose-cs ol { margin: 0 0 1.25rem; padding-left: 1.25rem; }
+.prose-cs ul { list-style: none; padding-left: 0; }
+.prose-cs ul li { position: relative; padding-left: 1.4rem; margin: 0.45rem 0; }
+.prose-cs ul li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 0.6rem; height: 2px; background: var(--color-cobalt); }
+.prose-cs ol { list-style: decimal; }
+.prose-cs ol li { margin: 0.45rem 0; padding-left: 0.25rem; }
+.prose-cs a { color: var(--color-cobalt); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.prose-cs a:hover { text-decoration-thickness: 2px; }
+.prose-cs blockquote { border-left: 3px solid var(--color-signal-dim); background: #fff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 12px 12px 0; font-style: italic; }
+.prose-cs strong { color: var(--color-ink); font-weight: 650; }

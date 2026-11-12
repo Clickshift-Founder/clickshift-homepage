@@ -1,35 +1,36 @@
 import { NextResponse } from "next/server";
 
+// Server-only. Prefer BREVO_API_KEY / BREVO_LIST_ID; the old NEXT_PUBLIC_ names still work until Vercel is updated.
+// A NEXT_PUBLIC_ name can end up in the browser bundle, so rename them in Vercel and then delete the old ones.
+const apiKey = process.env.BREVO_API_KEY || process.env.NEXT_PUBLIC_BREVO_API_KEY;
+const listId = process.env.BREVO_LIST_ID || process.env.NEXT_PUBLIC_BREVO_LIST_ID;
+
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 export async function POST(req: Request) {
   try {
     const { email } = await req.json();
-
-    if (!email) {
-      return NextResponse.json({ error: "Email is required" }, { status: 400 });
+    if (typeof email !== "string" || !EMAIL.test(email) || email.length > 254) {
+      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+    }
+    if (!apiKey || !listId) {
+      console.error("Subscribe: Brevo is not configured");
+      return NextResponse.json({ error: "Sign-ups are paused. Please email us instead." }, { status: 503 });
     }
 
     const res = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "api-key": process.env.NEXT_PUBLIC_BREVO_API_KEY as string, // ✅ from .env.local
-      },
-      body: JSON.stringify({
-        email,
-        listIds: [parseInt(process.env.NEXT_PUBLIC_BREVO_LIST_ID as string, 10)], // ✅ from .env.local
-        updateEnabled: true,
-      }),
+      headers: { "Content-Type": "application/json", "api-key": apiKey },
+      body: JSON.stringify({ email, listIds: [parseInt(listId, 10)], updateEnabled: true }),
     });
 
-    const data = await res.json();
-
     if (!res.ok) {
-      return NextResponse.json({ error: data.message || "Brevo API error" }, { status: 400 });
+      const data = await res.json().catch(() => ({}));
+      console.error("Subscribe: Brevo returned", res.status, data?.code);
+      return NextResponse.json({ error: "We couldn't add you just now. Please try again." }, { status: 400 });
     }
-
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Brevo Subscribe Error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  } catch {
+    return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
   }
 }

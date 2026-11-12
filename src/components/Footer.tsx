@@ -1,210 +1,110 @@
-import NewsletterFooter from "@/components/NewsletterFooter";
-import React from 'react';
 import Link from "next/link";
-import { Shield } from 'lucide-react';
+import { Mark } from "./Logo";
+import { Container } from "./ui";
+import { SITE } from "@/lib/site";
+import NewsletterForm from "./NewsletterForm";
 
-const Footer = () => {
-  // Countries data for trust indicators
-  const countries = [
-    { flag: "🇺🇸", name: "USA" },
-    { flag: "🇬🇧", name: "UK" },
-    { flag: "🇨🇦", name: "Canada" },
-    { flag: "🇦🇺", name: "Australia" },
-    { flag: "🇩🇪", name: "Germany" },
-    { flag: "🇫🇷", name: "France" },
-    { flag: "🇯🇵", name: "Japan" },
-    { flag: "🇰🇷", name: "S. Korea" },
-    { flag: "🇸🇬", name: "Singapore" },
-    { flag: "🇦🇪", name: "UAE" },
-    { flag: "🇳🇱", name: "Netherlands" },
-    { flag: "🇪🇸", name: "Spain" }
-  ];
+const COLS = [
+  {
+    title: "Factory",
+    links: [
+      { href: "/work", label: "All work" },
+      { href: "/work#programmes", label: "Development programmes" },
+      { href: "/work#companies", label: "Companies" },
+      { href: "/work#products", label: "Our products" },
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      { href: "/automation", label: "Automation as a Service" },
+      { href: "/automation#audit", label: "Automation Audit" },
+      { href: "/templates", label: "CRM templates" },
+      { href: "/pricing", label: "Pricing" },
+    ],
+  },
+  {
+    title: "Studio",
+    links: [
+      { href: "/standard", label: "The 2045 Standard" },
+      { href: "/about", label: "About" },
+      { href: "/blog", label: "Journal" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
+];
 
+export default function Footer() {
   return (
-    <footer className="relative py-12 px-4 bg-slate-900 border-t border-slate-700" style={{ backgroundColor: 'rgb(15, 23, 42)' }}>
-      <div className="container mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center justify-center space-x-2 mb-4 hover:opacity-80 transition-opacity group">
-            <div className="relative">
-              <Shield className="h-8 w-8 text-blue-400 group-hover:scale-110 transition-transform" />
-              <div className="absolute inset-0 bg-blue-400/20 rounded-full animate-pulse group-hover:bg-blue-400/30"></div>
+    <footer className="relative overflow-hidden bg-ink text-paper" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      <Container className="pt-20">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-3">
+              <Mark size={40} variant="signal" />
+              <span className="font-display text-2xl font-semibold tracking-[-0.035em]">ClickShift</span>
             </div>
-            <span className="text-2xl font-bold group-hover:text-blue-300 transition-colors">ClickShift</span>
-          </Link>
-          <p className="text-lg text-slate-300">Building DeFi's Intelligence Infrastructure</p>
-        </div>
-
-        {/* Global Trust Indicators */}
-        <div className="text-center mb-8">
-          <p className="text-slate-400 mb-4">Trusted by intelligent traders in:</p>
-          <div className="flex flex-wrap justify-center gap-2 text-sm">
-            {countries.map((country, index) => (
-              <span key={index} className="inline-flex items-center space-x-1 bg-slate-800 px-2 py-1 rounded">
-                <span>{country.flag}</span>
-                <span>{country.name}</span>
-              </span>
+            <p className="mt-5 max-w-sm text-paper/65">
+              The solutions factory. We build software, AI agents and automations that will still be worth using in 2045.
+            </p>
+            <div className="mt-8 max-w-md">
+              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.2em] text-stone">The Journal, monthly</p>
+              <NewsletterForm />
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
+            {COLS.map((col) => (
+              <div key={col.title}>
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-stone">{col.title}</p>
+                <ul className="mt-4 space-y-1">
+                  {col.links.map((l) => (
+                    <li key={l.href}>
+                      <Link href={l.href} className="inline-block py-1.5 text-[15px] text-paper/75 transition-colors hover:text-signal">
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-            <span className="text-slate-500">+ 41 more nations</span>
-          </div>
-        </div>
-
-        <div style={{ background: '#0a0a0a', borderTop: '1px solid #222', padding: '16px 24px', textAlign: 'center' }}>
-  <p style={{ color: '#888', fontSize: '12px', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
-    ⚠️ <strong style={{ color: '#aaa' }}>Disclaimer:</strong> ClickShift as a startup offers analytics,
-    automation, and intelligence tools. No trading, currency exchange, or brokerage services
-    are conducted on this platform. Users connect their own independent wallets and initiate
-    all transactions directly. ClickShift does not hold, custody, or transmit funds on behalf
-    of any user.
-  </p>
-</div>
-
-         {/* Newsletter in footer */}
-        <NewsletterFooter />
-
-        {/* Footer Links Grid */}
-        <div className="grid md:grid-cols-4 gap-6 mb-8">
-          {/* Products */}
-          <div>
-            <h4 className="font-semibold mb-3">Products</h4>
-            <div className="space-y-2 text-sm text-slate-400">
-               <div>
-                <a 
-                  href="https://t.me/clicksolbot" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  ClickBot
-                </a>
-              </div>
-              <div>
-                <a 
-                  href="https://api.clickshift.io/shift/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  $Shift Token WhitePaper
-                </a>
-              </div>
-              
-              <div>
-                <a 
-                  href="https://alpha.clickshift.io" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  ClickShift Alpha
-                </a>
-              </div>
-              <div>
-                <a 
-                  href="https://pulse.clickshift.io" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Pulse
-                </a>
-              </div>
-              
-             
-              <div>
-                <a 
-                  href="https://leverage.clickshift.io" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  ClickShift Leverage
-                </a>
-              </div>
-              <div>
-                <a 
-                  href="https://solanafirstpoc.clickshift.io" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  SolanaFirst Proof of Concept
-                </a>
-              </div>
-              <div>
-                <a 
-                  href="https://t.me/ClickShiftAlerts" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors"
-                >
-                  Launch Detector (Soon)
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          {/* Community */}
-          <div>
-            <h4 className="font-semibold mb-3">Community</h4>
-            <div className="space-y-2 text-sm text-slate-400">
-              <div>
-                <a 
-                  href="https://t.me/ClickShiftAlerts" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-white transition-colors">Telegram</a></div>
-              <div><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></div>
-              <div><Link href="/results" className="hover:text-white transition-colors">Results from ClickShift</Link></div>
-              <div><a href="https://x.com/ClickShifthq" className="hover:text-white transition-colors">Twitter</a></div>
-              <div><a href="https://www.linkedin.com/company/clickshifthq/" className="hover:text-white transition-colors">LinkedIn</a></div>
-              <div><a href="#" className="hover:text-white transition-colors">Discord</a></div>
-              <div><a href="#" className="hover:text-white transition-colors">Medium</a></div>
-            </div>
-          </div>
-          
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold mb-3">Company</h4>
-            <div className="space-y-2 text-sm text-slate-400">
-              <div><Link href="/about" className="hover:text-white transition-colors">About</Link></div>
-              <div><Link href="/products" className="hover:text-white transition-colors">Products</Link></div>
-              <div><Link href="/docs" className="hover:text-white transition-colors">API Documentation</Link></div>
-              <div><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></div>
-              <div><Link href="/roadmap" className="hover:text-white transition-colors">Road map</Link></div>
-              <div><Link href="blog" className="hover:text-white transition-colors">Blog</Link></div>
-              <div><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></div>
-              <div><a href="mailto:trust@clickshift.io" className="hover:text-white transition-colors">Contact</a></div>
-            </div>
-          </div>
-          
-          {/* Legal */}
-          <div>
-            <h4 className="font-semibold mb-3">Legal</h4>
-            <div className="space-y-2 text-sm text-slate-400">
-              <div><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></div>
-              <div><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></div>
-              <div><Link href="/risk-disclosure" className="hover:text-white transition-colors">Risk Disclosure</Link></div>
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-stone">Reach us</p>
+              <ul className="mt-4 space-y-1 text-[15px]">
+                <li>
+                  <a href={`mailto:${SITE.email}`} className="inline-block py-1.5 text-paper/75 hover:text-signal">
+                    {SITE.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={SITE.socials.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 text-paper/75 hover:text-signal">
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a href={SITE.socials.x} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 text-paper/75 hover:text-signal">
+                    X (Twitter)
+                  </a>
+                </li>
+                <li className="py-1.5 text-paper/50">{SITE.location}</li>
+              </ul>
             </div>
           </div>
         </div>
+      </Container>
 
-        {/* Contact Information */}
-        <div className="text-center space-y-2 text-sm text-slate-400 mb-8">
-          <div>Business Inquiries: trust@clickshift.io</div>
-          <div>Support: hello@clickshift.io, +1 945 409 3488</div>
-          <div>HQ: Delaware, USA incorporation in progress.</div>
-          <div>Ops: Dutse, aft Policesignboard, Tipper Garage,Bwari Area Council, Abuja</div>
-        </div>
-
-       {/* Copyright */}
-        <div className="text-center text-sm text-slate-500 border-t border-slate-700 pt-8">
-          <p>© 2025 ClickShift Intelligence Inc. All Rights Reserved</p>
-          <p className="mt-1">Patent-pending algorithms. Regulatory compliant. Built for global scale.</p>
-        </div>
+      <div aria-hidden className="mt-16 select-none overflow-hidden">
+        <p className="whitespace-nowrap text-center font-display text-[22vw] font-semibold leading-[0.8] tracking-[-0.06em] text-white/[0.04]">
+          built for 2045
+        </p>
       </div>
+
+      <Container className="flex flex-col gap-3 border-t border-white/8 py-6 text-[13px] text-paper/45 sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} ClickShift. All rights reserved.</p>
+        <div className="flex gap-5">
+          <Link href="/privacy" className="hover:text-paper">Privacy</Link>
+          <Link href="/terms" className="hover:text-paper">Terms</Link>
+        </div>
+      </Container>
     </footer>
   );
-};
-
-export default Footer;
+}
